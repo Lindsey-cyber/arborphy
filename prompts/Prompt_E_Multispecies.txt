@@ -1,0 +1,1 @@
+Identify whether more than one organism is visible. If yes, describe any visible relationship using only image evidence. Choose from: perched_on, visiting_flower, feeding_on, pollinating_possible, growing_on, no_visible_relationship, inconclusive.

@@ -1,0 +1,1 @@
+Use the reference schema below. For [feature family], choose the feature value best supported by the image from [admissible values]. If the feature is not clearly visible, return INCONCLUSIVE. Reference schema: [definitions + examples].

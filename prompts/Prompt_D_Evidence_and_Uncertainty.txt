@@ -1,0 +1,1 @@
+For [feature family], decide whether the feature is visible. If visible, choose one value from [admissible values] and give short visual evidence. If unclear, return INCONCLUSIVE and explain why.
