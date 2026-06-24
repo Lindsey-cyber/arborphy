@@ -1,0 +1,7 @@
+source_id,feature_name,feature_group,feature_prompt,path_level,is_subgroup,value_count,notes
+newcomb_1989_locator,flower_type,flowers,What is the flower type or structure?,1,false,9,Primary key level 1 — first routing decision. Includes petal count categories and special groups (Asters/Goldenrods/Irregular).
+newcomb_1989_locator,plant_type,growth form,What is the growth form and leaf arrangement?,2,false,6,Primary key level 2 — separates shrubs/vines from wildflowers by leaf arrangement.
+newcomb_1989_locator,leaf_type,leaves,What is the leaf form?,3,false,4,Primary key level 3 — separates entire/toothed/divided/absent leaves.
+newcomb_1989_locator,subgroup_1,mixed,What is the first distinguishing characteristic?,4,true,33,Subgroup level 1 — free prose routing phrases covering morphology across multiple groups. Includes negated assertions (e.g. 'Flowers not yellow').
+newcomb_1989_locator,subgroup_2,mixed,What is the second distinguishing characteristic?,5,true,23,Subgroup level 2 — further refinement within a subgroup_1 branch. Sparser than subgroup_1.
+newcomb_1989_locator,subgroup_3,mixed,What is the third distinguishing characteristic?,6,true,1,Subgroup level 3 — only present in 2 routes. Deepest routing level in the key.

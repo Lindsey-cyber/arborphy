@@ -1,0 +1,832 @@
+pile_slug,character_short_name,value_type,value_index,choice,display_label,friendly_text,value_range_min,value_range_max,scalar,image_url,taxa_count_api
+woody-angiosperms,abaxial_leaf_blade_indument_wa,TEXT,0,pubescent,pubescent,the underside of the leaf has hairs on it,,,,,243
+woody-angiosperms,abaxial_leaf_blade_indument_wa,TEXT,1,glabrous,glabrous,the underside of the leaf has no hairs,,,,,200
+woody-angiosperms,abaxial_leaf_blade_indument_wa,TEXT,2,NA,NA,,,,,,0
+woody-angiosperms,accesory_tissue_as_part_of_the_disperal_unit_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,accesory_tissue_as_part_of_the_disperal_unit_wa,TEXT,1,absent,absent,there are no flower parts that form part of the fruit,,,,,291
+woody-angiosperms,accesory_tissue_as_part_of_the_disperal_unit_wa,TEXT,2,"present, hypanthium","present, hypanthium",the hypanthium of the flower becomes part of the fruit,,,,https://newfs.s3.amazonaws.com/character-value-images/hypanthium.gif,159
+woody-angiosperms,accesory_tissue_as_part_of_the_disperal_unit_wa,TEXT,3,"present, receptacle","present, receptacle",the receptacle of the flower becomes part of the fruit,,,,https://newfs.s3.amazonaws.com/character-value-images/receptacle.gif,3
+woody-angiosperms,adaxial_leaf_blade_indument_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,adaxial_leaf_blade_indument_wa,TEXT,1,glabrous,glabrous,"the upper side of the leaf is not hairy, or has very few hairs",,,,,485
+woody-angiosperms,adaxial_leaf_blade_indument_wa,TEXT,2,pubescent,pubescent,the upper side of the leaf is fuzzy or hairy,,,,,215
+woody-angiosperms,aerial_roots_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,aerial_roots_wa,TEXT,1,absent,absent,the plant has no aerial roots,,,,,549
+woody-angiosperms,aerial_roots_wa,TEXT,2,present,present,the plant has aerial roots,,,,,3
+woody-angiosperms,anther_color_wa,TEXT,0,non-anthocyanic,non-anthocyanic,"the anthers show no hint of a pink, reddish or purplish tint",,,,,146
+woody-angiosperms,anther_color_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,anther_color_wa,TEXT,2,anthocyanic,anthocyanic,"there is a noticeable pink, reddish or purplish tint to the anthers",,,,,80
+woody-angiosperms,apex_of_leaf_lobes_teeth_Quercus_wa,TEXT,0,NA,NA,,,,,,538
+woody-angiosperms,apex_of_leaf_lobes_teeth_Quercus_wa,TEXT,1,rounded to acute,rounded to acute,the lobes of the leaf blade are rounded or bluntly pointed,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-lobe-apex-rounded.gif,9
+woody-angiosperms,apex_of_leaf_lobes_teeth_Quercus_wa,TEXT,2,prolonged into bristle tips,prolonged into bristle tips,the lobes of the leaf blade are tipped with small bristles,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-lobe-apex-bristle.gif,7
+woody-angiosperms,armature_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,armature_wa,TEXT,1,present,present,"the plant has spines, prickles, or thorns",,,,https://newfs.s3.amazonaws.com/character-value-images/armature-wa.gif,133
+woody-angiosperms,armature_wa,TEXT,2,absent,absent,"the plant does not have spines, prickles, or thorns",,,,https://newfs.s3.amazonaws.com/character-value-images/armature-no-wa.gif,433
+woody-angiosperms,berry_color_wa,TEXT,0,blue,blue,blue,,,,,41
+woody-angiosperms,berry_color_wa,TEXT,1,white,white,white,,,,,12
+woody-angiosperms,berry_color_wa,TEXT,2,red,red,red,,,,,157
+woody-angiosperms,berry_color_wa,TEXT,3,yellow,yellow,yellow,,,,,40
+woody-angiosperms,berry_color_wa,TEXT,4,other,other,some other color,,,,,21
+woody-angiosperms,berry_color_wa,TEXT,5,orange,orange,orange,,,,,24
+woody-angiosperms,berry_color_wa,TEXT,6,NA,NA,,,,,,346
+woody-angiosperms,berry_color_wa,TEXT,7,black,black,black,,,,,107
+woody-angiosperms,berry_color_wa,TEXT,8,green,green,green,,,,,20
+woody-angiosperms,berry_color_wa,TEXT,9,purple,purple,purple,,,,,45
+woody-angiosperms,bloom_on_abaxial_leaf_blade_surface_wa,TEXT,0,present,present,there is a noticeable powdery or waxy bloom on the underside of the leaf,,,,,90
+woody-angiosperms,bloom_on_abaxial_leaf_blade_surface_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,bloom_on_abaxial_leaf_blade_surface_wa,TEXT,2,absent,absent,the underside of the leaf has no noticeable bloom,,,,,244
+woody-angiosperms,branch_brittleness_Salix_wa,TEXT,0,NA,NA,,,,,,522
+woody-angiosperms,branch_brittleness_Salix_wa,TEXT,1,brittle,brittle,"the branches are brittle, and break easily",,,,,10
+woody-angiosperms,branch_brittleness_Salix_wa,TEXT,2,flexible,flexible,"the branches are flexible, and do not break easily",,,,,17
+woody-angiosperms,branch_cross-section_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,branch_cross-section_wa,TEXT,1,quadrangular,quadrangular,"the branch is roughly square or rectangular in cross-section, with four sides and four edges",,,,https://newfs.s3.amazonaws.com/character-value-images/branch-cross-section-quadrangular.gif,17
+woody-angiosperms,branch_cross-section_wa,TEXT,2,terete or many-angled,terete or many-angled,"the branch is circular in cross-section, or it has five or more sides, so that there are no sharp angles",,,,https://newfs.s3.amazonaws.com/character-value-images/branch-cross-section-terete.gif,529
+woody-angiosperms,branchlet_bloom_wa,TEXT,0,present,present,the twig has bloom on it,,,,,18
+woody-angiosperms,branchlet_bloom_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,branchlet_bloom_wa,TEXT,2,absent,absent,there is no bloom on the twig,,,,,315
+woody-angiosperms,branchlet_indument_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,branchlet_indument_wa,TEXT,1,glabrous,glabrous,the twigs have few or no hairs on them,,,,https://newfs.s3.amazonaws.com/character-value-images/branchlet-indument-glabrous.gif,206
+woody-angiosperms,branchlet_indument_wa,TEXT,2,"pubescent, at least in part glandular","pubescent, at least in part glandular",the twigs have hairs with glands at their tips,,,,https://newfs.s3.amazonaws.com/character-value-images/branchlet-indument-glandular.gif,37
+woody-angiosperms,branchlet_indument_wa,TEXT,3,"pubescent, entirely eglandular","pubescent, entirely eglandular","the twigs have hairs, but the hairs do not have glands",,,,https://newfs.s3.amazonaws.com/character-value-images/branchlet-indument-eglandular.gif,137
+woody-angiosperms,branchlet_papillae_Vaccinium_wa,TEXT,0,absent,absent,there are no papillae on the twigs,,,,,6
+woody-angiosperms,branchlet_papillae_Vaccinium_wa,TEXT,1,NA,NA,,,,,,539
+woody-angiosperms,branchlet_papillae_Vaccinium_wa,TEXT,2,present,present,the twigs have papillae on them,,,,https://newfs.s3.amazonaws.com/character-value-images/papilla.gif,7
+woody-angiosperms,branch_wings_wa,TEXT,0,absent,absent,the branch does not have wings on it,,,,,547
+woody-angiosperms,branch_wings_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,branch_wings_wa,TEXT,2,present,present,the branch has wings running along it,,,,https://newfs.s3.amazonaws.com/character-value-images/branch-wings.gif,11
+woody-angiosperms,carpel_fusion_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,carpel_fusion_wa,TEXT,1,connate,connate,the carpels are fused to one another,,,,https://newfs.s3.amazonaws.com/character-value-images/carpel-fusion-connate.gif,463
+woody-angiosperms,carpel_fusion_wa,TEXT,2,distinct,distinct,the carpel is solitary or (if 2 or more) the carpels are not fused to one another,,,,https://newfs.s3.amazonaws.com/character-value-images/carpel-fusion-distinct.gif,102
+woody-angiosperms,collateral_buds_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,collateral_buds_wa,TEXT,1,present,present,the branches have collateral buds on them,,,,https://newfs.s3.amazonaws.com/character-value-images/collateral-buds.gif,7
+woody-angiosperms,collateral_buds_wa,TEXT,2,absent,absent,there are no collateral buds on the sides of the branches,,,,https://newfs.s3.amazonaws.com/character-value-images/winter-bud-scale-glabrous.gif,534
+woody-angiosperms,enlarged_sterile_flowers_wa,TEXT,0,present,present,some of the flowers on the plant are enlarged and sterile,,,,,7
+woody-angiosperms,enlarged_sterile_flowers_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,enlarged_sterile_flowers_wa,TEXT,2,absent,absent,there are no enlarged sterile flowers on the plant,,,,,543
+woody-angiosperms,flower_appearance_wa,TEXT,0,serotinous,serotinous,the flowers appear after the leaves have appeared,,,,,9
+woody-angiosperms,flower_appearance_wa,TEXT,1,precocious,precocious,the flowers appear before the leaves,,,,,45
+woody-angiosperms,flower_appearance_wa,TEXT,2,coetaneous,coetaneous,the flowers appear at the same time as the leaves,,,,,41
+woody-angiosperms,flower_symmetry_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,flower_symmetry_wa,TEXT,1,actinomorphic,actinomorphic,there are two or more ways to evenly divide the flower (the flower is radially symmetrical),,,,https://newfs.s3.amazonaws.com/character-value-images/floral-symmetry-actinomorphic.gif,469
+woody-angiosperms,flower_symmetry_wa,TEXT,2,asymmetrical,asymmetrical,there is no way to evenly divide the flower (the flower is asymmetrical),,,,https://newfs.s3.amazonaws.com/character-value-images/floral-symmetry-asymmetric.gif,0
+woody-angiosperms,flower_symmetry_wa,TEXT,3,zygomorphic,zygomorphic,there is only one way to evenly divide the flower (the flower is bilaterally symmetrical),,,,https://newfs.s3.amazonaws.com/character-value-images/floral-symmetry-zygomorphic.gif,91
+woody-angiosperms,fruit_type_general_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,fruit_type_general_wa,TEXT,1,fleshy,fleshy,the fruit is fleshy,,,,https://newfs.s3.amazonaws.com/character-value-images/fruit-type-pome.gif,290
+woody-angiosperms,fruit_type_general_wa,TEXT,2,dry and indehiscent,dry and indehiscent,the fruit is dry but does not split open when ripe,,,,https://newfs.s3.amazonaws.com/character-value-images/fruit-type-achene.gif,113
+woody-angiosperms,fruit_type_general_wa,TEXT,3,dry and dehiscent,dry and dehiscent,the fruit is dry and splits open when ripe,,,,https://newfs.s3.amazonaws.com/character-value-images/fruit-type-capsule.gif,168
+woody-angiosperms,fruit_type_specific_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,fruit_type_specific_wa,TEXT,1,pyxis,pyxis,"the fruit is a pyxis (when dry it splits around the middle, and the top falls off, exposing the seeds)",,,,https://newfs.s3.amazonaws.com/character-value-images/pyxis.gif,0
+woody-angiosperms,fruit_type_specific_wa,TEXT,2,follicle,follicle,the fruit is a follicle (has one ovary that splits along one side to release the seeds),,,,https://newfs.s3.amazonaws.com/character-value-images/fruit-type-follicle.gif,12
+woody-angiosperms,fruit_type_specific_wa,TEXT,3,nut,nut,"the fruit is a nut (dry and indehiscent, with a hard wall, usually containing only one seed and usually subtended by an involucre)",,,,https://newfs.s3.amazonaws.com/character-value-images/fruit-type-nut.gif,35
+woody-angiosperms,fruit_type_specific_wa,TEXT,4,aggregate,aggregate,the fruit is an aggregate (composed of multiple fused ovaries from one flower),,,,https://newfs.s3.amazonaws.com/character-value-images/fruit-type-aggregate.gif,58
+woody-angiosperms,fruit_type_specific_wa,TEXT,5,berry,berry,"the fruit is a berry (fleshy, with the wall enclosing one or more sections, with two or more seeds)",,,,https://newfs.s3.amazonaws.com/character-value-images/fruit-type-berry-wa.gif,186
+woody-angiosperms,fruit_type_specific_wa,TEXT,6,achene,achene,"the fruit is an achene (dry, usually 1-seeded, does not separate or split open at maturity)",,,,https://newfs.s3.amazonaws.com/character-value-images/fruit-type-achene.gif,88
+woody-angiosperms,fruit_type_specific_wa,TEXT,7,schizocarp,schizocarp,"the fruit is a schizocarp (when dry it splits into sections, each holding one or more seeds)",,,,https://newfs.s3.amazonaws.com/character-value-images/fruit-type-schizocarp.gif,14
+woody-angiosperms,fruit_type_specific_wa,TEXT,8,legume,legume,,,,,https://newfs.s3.amazonaws.com/character-value-images/fruit-type-multiple.gif,20
+woody-angiosperms,fruit_type_specific_wa,TEXT,9,drupe,drupe,"the fruit is a drupe (fleshy, with a firm inner ovary wall that encloses a single seed)",,,,https://newfs.s3.amazonaws.com/character-value-images/fruit-type-drupe.gif,138
+woody-angiosperms,fruit_type_specific_wa,TEXT,10,multiple,multiple,the fruit is a multiple (composed of two or more ovaries from separate flowers),,,,https://newfs.s3.amazonaws.com/character-value-images/fruit-type-multiple.gif,6
+woody-angiosperms,fruit_type_specific_wa,TEXT,11,caryopsis,caryopsis,the fruit is a caryopsis (achene with the seed coat fused to the ovary wall),,,,https://newfs.s3.amazonaws.com/character-value-images/fruit-type-caryopsis.gif,0
+woody-angiosperms,fruit_type_specific_wa,TEXT,12,capsule,capsule,"the fruit is a capsule (splits along two or more seams, apical teeth or pores when dry, to release two or more seeds)",,,,https://newfs.s3.amazonaws.com/character-value-images/fruit-type-capsule.gif,124
+woody-angiosperms,fruit_wing_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,fruit_wing_wa,TEXT,1,absent,absent,there are no wings on the fruit,,,,,504
+woody-angiosperms,fruit_wing_wa,TEXT,2,present,present,the fruit has one or more wings on it,,,,https://newfs.s3.amazonaws.com/character-value-images/fruit-type-samara.gif,42
+woody-angiosperms,habit_of_primocane_Rubus_wa,TEXT,0,upright to arching,upright to arching,the first year cane stems are upright or arching,,,,,20
+woody-angiosperms,habit_of_primocane_Rubus_wa,TEXT,1,doming to trailing,doming to trailing,the first year cane stems are doming (arched over to touch the ground at their tips) to trailing (lying along the ground or neighboring vegetation),,,,,10
+woody-angiosperms,habit_of_primocane_Rubus_wa,TEXT,2,NA,NA,,,,,,527
+woody-angiosperms,hypanthium_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,hypanthium_wa,TEXT,1,absent,absent,the flower does not have a hypanthium,,,,,306
+woody-angiosperms,hypanthium_wa,TEXT,2,present,present,the flower has a hypanthium,,,,https://newfs.s3.amazonaws.com/character-value-images/hypanthium.gif,219
+woody-angiosperms,inflorescence_position_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,inflorescence_position_wa,TEXT,1,on branches,on branches,the inflorescences grow on older branches,,,,,48
+woody-angiosperms,inflorescence_position_wa,TEXT,2,on branchlets,on branchlets,the inflorescences grow on the twigs,,,,,207
+woody-angiosperms,inflorescence_pubescence_wa,TEXT,0,glabrous,glabrous,there are no hairs on the inflorescence,,,,,183
+woody-angiosperms,inflorescence_pubescence_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,inflorescence_pubescence_wa,TEXT,2,pubescent,pubescent,there are hairs on some part of the inflorescence,,,,,78
+woody-angiosperms,inflorescence_type_wa,TEXT,0,other,other,the inflorescence differs from the choices given,,,,,15
+woody-angiosperms,inflorescence_type_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,inflorescence_type_wa,TEXT,2,raceme,raceme,the inflorescence is a raceme (a long unbranched stem with stalked flowers growing along it),,,,https://newfs.s3.amazonaws.com/character-value-images/inflorescence-type-raceme.gif,120
+woody-angiosperms,inflorescence_type_wa,TEXT,3,monochasial cyme,monochasial cyme,"the inflorescence is a monochasial cyme (an axis with a terminal flower, below it a branch with a terminal flower, this branch may itself have a branch and so on)",,,,https://newfs.s3.amazonaws.com/character-value-images/inflorescence-type-monochasium.gif,31
+woody-angiosperms,inflorescence_type_wa,TEXT,4,pseudanthium (including capitulum),pseudanthium (including capitulum),"the inflorescence is a  pseudanthium (a cluster of small flowers that appear to be one flower, as in the flower head of the composite family, Asteraceae)",,,,https://newfs.s3.amazonaws.com/character-value-images/inflorescence-type-pseudanthium.gif,10
+woody-angiosperms,inflorescence_type_wa,TEXT,5,dichasial cyme,dichasial cyme,"the inflorescence is a dichasial cyme (an axis with a terminal flower, below it a pair of branches, each with a terminal flower, these branches may in turn each have a pair of branches and so on)",,,,https://newfs.s3.amazonaws.com/character-value-images/inflorescence-type-dichasium.gif,43
+woody-angiosperms,inflorescence_type_wa,TEXT,6,fascicle,fascicle,the inflorescence is a fascicle (compact cluster of flowers),,,,https://newfs.s3.amazonaws.com/character-value-images/inflorescence-type-fascicle.gif,58
+woody-angiosperms,inflorescence_type_wa,TEXT,7,axillary flowers,axillary flowers,the flowers grow out of the axil (point where a branch or leaf is attached to the main stem),,,,https://newfs.s3.amazonaws.com/character-value-images/inflorescence-type-axillary.gif,76
+woody-angiosperms,inflorescence_type_wa,TEXT,8,solitary flower,solitary flower,the inflorescence has only one flower on it,,,,https://newfs.s3.amazonaws.com/character-value-images/inflorescence-type-solitary-flower.gif,114
+woody-angiosperms,inflorescence_type_wa,TEXT,9,corymb,corymb,"the inflorescence is a corymb (with long lower branches and shorter upper branches, giving it a more or less flat-topped look)",,,,https://newfs.s3.amazonaws.com/character-value-images/inflorescence-type-corymb.gif,122
+woody-angiosperms,inflorescence_type_wa,TEXT,10,umbel,umbel,the inflorescence is an umbel (with an axis so short it appears the flowers all originate from the same point),,,,https://newfs.s3.amazonaws.com/character-value-images/inflorescence-type-umbel.gif,32
+woody-angiosperms,inflorescence_type_wa,TEXT,11,panicle,panicle,the inflorescence is a panicle (branched with the individual flowers on stalks),,,,https://newfs.s3.amazonaws.com/character-value-images/inflorescence-type-panicle.gif,81
+woody-angiosperms,inflorescence_type_wa,TEXT,12,spike,spike,the inflorescence is a spike (a long unbranched stem with flowers along it that lack stalks),,,,https://newfs.s3.amazonaws.com/character-value-images/inflorescence-type-spike.gif,10
+woody-angiosperms,inflorescence_type_wa,TEXT,13,scorpioid cyme,scorpioid cyme,the inflorescence is a scorpioid cyme (a curled cyme that uncurls as the flowers sequentially bloom),,,,https://newfs.s3.amazonaws.com/character-value-images/inflorescence-type-scorpioid-cyme.gif,0
+woody-angiosperms,inflorescence_type_wa,TEXT,14,ament,ament,"the inflorescence is an ament (catkin; slender, usually pendulous inflorescence with crowded unisexual flowers)",,,,https://newfs.s3.amazonaws.com/character-value-images/inflorescence-type-ament.gif,96
+woody-angiosperms,involucre_armature_Fagaceae_wa,TEXT,0,NA,NA,,,,,,520
+woody-angiosperms,involucre_armature_Fagaceae_wa,TEXT,1,unarmed,unarmed,the involucre has no spines,,,,https://newfs.s3.amazonaws.com/character-value-images/fruit-type-nut.gif,9
+woody-angiosperms,involucre_armature_Fagaceae_wa,TEXT,2,armed with spines,armed with spines,the involucre has spines,,,,https://newfs.s3.amazonaws.com/character-value-images/involucre-spine-fagaceae.gif,5
+woody-angiosperms,leaf_arrangement_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,leaf_arrangement_wa,TEXT,1,4 leaves per node,4 leaves per node,there are four leaves per node along the stem,,,,https://newfs.s3.amazonaws.com/character-value-images/leaves-four-per-node.gif,10
+woody-angiosperms,leaf_arrangement_wa,TEXT,2,2 leaves per node,2 leaves per node,there are two leaves per node along the stem,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-two-per-node-wa.gif,120
+woody-angiosperms,leaf_arrangement_wa,TEXT,3,3 leaves per node,3 leaves per node,there are three leaves per node along the stem,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-three-per-node-wa.gif,13
+woody-angiosperms,leaf_arrangement_wa,TEXT,4,1 leaf per node,1 leaf per node,there is one leaf per node along the stem,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-one-per-node-wa.gif,427
+woody-angiosperms,leaf_blade_base_shape_wa,TEXT,0,NA,NA,,,,,,1
+woody-angiosperms,leaf_blade_base_shape_wa,TEXT,1,cordate,cordate,"The base of the leaf blade is cordate (heart-shaped, with rounded lobes)",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-base-cordate.gif,157
+woody-angiosperms,leaf_blade_base_shape_wa,TEXT,2,attenuate,attenuate,the base of the leaf blade is attenuate (tapering very gradually to a prolonged tip),,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-base-attenuate.gif,37
+woody-angiosperms,leaf_blade_base_shape_wa,TEXT,3,truncate,truncate,the base of the leaf blade is truncate (ends abruptly in a more or less straight line as though cut off),,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-base-truncate.gif,114
+woody-angiosperms,leaf_blade_base_shape_wa,TEXT,4,rounded,rounded,the base of the leaf blade is rounded,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-base-round.gif,265
+woody-angiosperms,leaf_blade_base_shape_wa,TEXT,5,cuneate,cuneate,"the base of the leaf blade is cuneate (wedge-shaped, tapers to the base with relatively straight, converging edges), or narrow",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-base-cuneate.gif,344
+woody-angiosperms,leaf_blade_base_symmetry_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,leaf_blade_base_symmetry_wa,TEXT,1,symmetrical,symmetrical,the leaf blade base is symmetrical,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-base-symmetrical.gif,326
+woody-angiosperms,leaf_blade_base_symmetry_wa,TEXT,2,asymmetrical,asymmetrical,the leaf blade base is asymmetrical,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-base-asymmetrical.gif,31
+woody-angiosperms,leaf_blade_indument_description_wa,TEXT,0,other,other,the hairs on the leaf blade are different from the choices given,,,,,366
+woody-angiosperms,leaf_blade_indument_description_wa,TEXT,1,NA,NA,,,,,,123
+woody-angiosperms,leaf_blade_indument_description_wa,TEXT,2,"branched, at least in part","branched, at least in part",at least some of the hairs on the leaf blade are branched,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-indument-branched.gif,32
+woody-angiosperms,leaf_blade_indument_description_wa,TEXT,3,"glandular, at least in part","glandular, at least in part",at least some of the hairs on the leaf blade have glands at their tips,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-indument-glandular.gif,87
+woody-angiosperms,leaf_blade_indument_description_wa,TEXT,4,"eglandular and red-brown-colored, at least in part","eglandular and red-brown-colored, at least in part","at least some of the hairs on the leaf blade are reddish-brown, and they do not have glands",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-indument-eglandular.gif,30
+woody-angiosperms,leaf_blade_indument_description_wa,TEXT,5,"eglandular and tomentose, at least in part","eglandular and tomentose, at least in part","the leaf blade has tangled or woolly-looking hairs, without glands",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-indument-tomentose.gif,66
+woody-angiosperms,leaf_blade_length_wa,LENGTH,0,,50.0-130.0 mm,,50.0,130.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,1,,27.0-85.0 mm,,27.0,85.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,2,,70.0-110.0 mm,,70.0,110.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,3,,42.0-83.0 mm,,42.0,83.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,4,,55.0-111.0 mm,,55.0,111.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,5,,,,,180.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,6,,3.0-6.0 mm,,3.0,6.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,7,,,,,350.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,8,,254.0-381.0 mm,,254.0,381.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,9,,4.0-35.0 mm,,4.0,35.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,10,,50.0-70.0 mm,,50.0,70.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,11,,35.0-100.0 mm,,35.0,100.0,,,3
+woody-angiosperms,leaf_blade_length_wa,LENGTH,12,,30.0-50.0 mm,,30.0,50.0,,,9
+woody-angiosperms,leaf_blade_length_wa,LENGTH,13,,80.0-120.0 mm,,80.0,120.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,14,,120.0-220.0 mm,,120.0,220.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,15,,40.0-100.0 mm,,40.0,100.0,,,10
+woody-angiosperms,leaf_blade_length_wa,LENGTH,16,,40.0-60.0 mm,,40.0,60.0,,,3
+woody-angiosperms,leaf_blade_length_wa,LENGTH,17,,45.0-170.0 mm,,45.0,170.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,18,,2.5-3.5 mm,,2.5,3.5,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,19,,8.0-20.0 mm,,8.0,20.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,20,,38.0-89.0 mm,,38.0,89.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,21,,5.0-18.0 mm,,5.0,18.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,22,,4.0-15.0 mm,,4.0,15.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,23,,,,,200.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,24,,15.0-100.0 mm,,15.0,100.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,25,,70.0-250.0 mm,,70.0,250.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,26,,3.0-5.0 mm,,3.0,5.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,27,,40.0-130.0 mm,,40.0,130.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,28,,25.0-150.0 mm,,25.0,150.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,29,,80.0-100.0 mm,,80.0,100.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,30,,120.0-200.0 mm,,120.0,200.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,31,,120.0-230.0 mm,,120.0,230.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,32,,20.0-70.0 mm,,20.0,70.0,,,4
+woody-angiosperms,leaf_blade_length_wa,LENGTH,33,,3.0-4.5 mm,,3.0,4.5,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,34,,110.0-190.0 mm,,110.0,190.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,35,,8.0-21.0 mm,,8.0,21.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,36,,5.0-17.0 mm,,5.0,17.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,37,,16.0-66.0 mm,,16.0,66.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,38,,17.0-30.0 mm,,17.0,30.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,39,,60.0-150.0 mm,,60.0,150.0,,,3
+woody-angiosperms,leaf_blade_length_wa,LENGTH,40,,4.0-7.0 mm,,4.0,7.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,41,,10.0-50.0 mm,,10.0,50.0,,,4
+woody-angiosperms,leaf_blade_length_wa,LENGTH,42,,15.0-35.0 mm,,15.0,35.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,43,,48.0-87.0 mm,,48.0,87.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,44,,38.0-80.0 mm,,38.0,80.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,45,,15.0-70.0 mm,,15.0,70.0,,,4
+woody-angiosperms,leaf_blade_length_wa,LENGTH,46,,60.0-100.0 mm,,60.0,100.0,,,7
+woody-angiosperms,leaf_blade_length_wa,LENGTH,47,,35.0-240.0 mm,,35.0,240.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,48,,25.0-130.0 mm,,25.0,130.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,49,,100.0-180.0 mm,,100.0,180.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,50,,17.0-73.0 mm,,17.0,73.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,51,,5.0-20.0 mm,,5.0,20.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,52,,10.0-20.0 mm,,10.0,20.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,53,,16.0-63.0 mm,,16.0,63.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,54,,25.0-160.0 mm,,25.0,160.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,55,,47.0-103.0 mm,,47.0,103.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,56,,25.0-45.0 mm,,25.0,45.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,57,,25.0-80.0 mm,,25.0,80.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,58,,20.0-90.0 mm,,20.0,90.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,59,,70.0-360.0 mm,,70.0,360.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,60,,50.0-310.0 mm,,50.0,310.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,61,,5.0-160.0 mm,,5.0,160.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,62,,17.0-68.0 mm,,17.0,68.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,63,,8.0-74.0 mm,,8.0,74.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,64,,50.0-150.0 mm,,50.0,150.0,,,6
+woody-angiosperms,leaf_blade_length_wa,LENGTH,65,,200.0-300.0 mm,,200.0,300.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,66,,25.0-60.0 mm,,25.0,60.0,,,8
+woody-angiosperms,leaf_blade_length_wa,LENGTH,67,,30.0-103.0 mm,,30.0,103.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,68,,110.0-220.0 mm,,110.0,220.0,,,3
+woody-angiosperms,leaf_blade_length_wa,LENGTH,69,,30.0-120.0 mm,,30.0,120.0,,,3
+woody-angiosperms,leaf_blade_length_wa,LENGTH,70,,100.0-240.0 mm,,100.0,240.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,71,,60.0-140.0 mm,,60.0,140.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,72,,17.0-50.0 mm,,17.0,50.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,73,,20.0-60.0 mm,,20.0,60.0,,,6
+woody-angiosperms,leaf_blade_length_wa,LENGTH,74,,50.0-200.0 mm,,50.0,200.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,75,,550.0-1300.0 mm,,550.0,1300.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,76,,19.0-69.0 mm,,19.0,69.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,77,,70.0-140.0 mm,,70.0,140.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,78,,10.0-51.0 mm,,10.0,51.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,79,,300.0-500.0 mm,,300.0,500.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,80,,50.0-130.0 mm,,50.0,130.0,,,3
+woody-angiosperms,leaf_blade_length_wa,LENGTH,81,,,,,150.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,82,,15.0-75.0 mm,,15.0,75.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,83,,60.0-125.0 mm,,60.0,125.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,84,,40.0-160.0 mm,,40.0,160.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,85,,30.0-65.0 mm,,30.0,65.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,86,,8.0-60.0 mm,,8.0,60.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,87,,60.0-90.0 mm,,60.0,90.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,88,,17.0-66.0 mm,,17.0,66.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,89,,60.0-180.0 mm,,60.0,180.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,90,,200.0-500.0 mm,,200.0,500.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,91,,100.0-300.0 mm,,100.0,300.0,,,3
+woody-angiosperms,leaf_blade_length_wa,LENGTH,92,,400.0-800.0 mm,,400.0,800.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,93,,10.0-80.0 mm,,10.0,80.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,94,,2.0-10.0 mm,,2.0,10.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,95,,15.0-50.0 mm,,15.0,50.0,,,3
+woody-angiosperms,leaf_blade_length_wa,LENGTH,96,,60.0-200.0 mm,,60.0,200.0,,,3
+woody-angiosperms,leaf_blade_length_wa,LENGTH,97,,26.0-44.0 mm,,26.0,44.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,98,,75.0-150.0 mm,,75.0,150.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,99,,36.0-61.0 mm,,36.0,61.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,100,,80.0-160.0 mm,,80.0,160.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,101,,35.0-65.0 mm,,35.0,65.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,102,,30.0-60.0 mm,,30.0,60.0,,,9
+woody-angiosperms,leaf_blade_length_wa,LENGTH,103,,70.0-160.0 mm,,70.0,160.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,104,,40.0-90.0 mm,,40.0,90.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,105,,2.5-5.0 mm,,2.5,5.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,106,,50.0-120.0 mm,,50.0,120.0,,,8
+woody-angiosperms,leaf_blade_length_wa,LENGTH,107,,10.0-60.0 mm,,10.0,60.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,108,,40.0-123.0 mm,,40.0,123.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,109,,150.0-400.0 mm,,150.0,400.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,110,,70.0-200.0 mm,,70.0,200.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,111,,15.0-60.0 mm,,15.0,60.0,,,3
+woody-angiosperms,leaf_blade_length_wa,LENGTH,112,,25.0-105.0 mm,,25.0,105.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,113,,6.0-34.0 mm,,6.0,34.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,114,,25.0-120.0 mm,,25.0,120.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,115,,100.0-120.0 mm,,100.0,120.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,116,,200.0-400.0 mm,,200.0,400.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,117,,50.0-170.0 mm,,50.0,170.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,118,,50.0-100.0 mm,,50.0,100.0,,,21
+woody-angiosperms,leaf_blade_length_wa,LENGTH,119,,35.0-110.0 mm,,35.0,110.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,120,,35.0-60.0 mm,,35.0,60.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,121,,10.0-30.0 mm,,10.0,30.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,122,,150.0-300.0 mm,,150.0,300.0,,,5
+woody-angiosperms,leaf_blade_length_wa,LENGTH,123,,20.0-50.0 mm,,20.0,50.0,,,12
+woody-angiosperms,leaf_blade_length_wa,LENGTH,124,,36.0-70.0 mm,,36.0,70.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,125,,20.0-30.0 mm,,20.0,30.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,126,,15.0-79.0 mm,,15.0,79.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,127,,30.0-100.0 mm,,30.0,100.0,,,7
+woody-angiosperms,leaf_blade_length_wa,LENGTH,128,,85.0-110.0 mm,,85.0,110.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,129,,60.0-120.0 mm,,60.0,120.0,,,11
+woody-angiosperms,leaf_blade_length_wa,LENGTH,130,,70.0-180.0 mm,,70.0,180.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,131,,100.0-250.0 mm,,100.0,250.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,132,,1.0-3.0 mm,,1.0,3.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,133,,80.0-250.0 mm,,80.0,250.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,134,,13.0-57.0 mm,,13.0,57.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,135,,105.0-120.0 mm,,105.0,120.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,136,,100.0-150.0 mm,,100.0,150.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,137,,15.0-32.0 mm,,15.0,32.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,138,,50.0-80.0 mm,,50.0,80.0,,,4
+woody-angiosperms,leaf_blade_length_wa,LENGTH,139,,35.0-150.0 mm,,35.0,150.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,140,,70.0-100.0 mm,,70.0,100.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,141,,30.0-70.0 mm,,30.0,70.0,,,12
+woody-angiosperms,leaf_blade_length_wa,LENGTH,142,,130.0-170.0 mm,,130.0,170.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,143,,43.0-110.0 mm,,43.0,110.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,144,,100.0-200.0 mm,,100.0,200.0,,,7
+woody-angiosperms,leaf_blade_length_wa,LENGTH,145,,70.0-150.0 mm,,70.0,150.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,146,,80.0-150.0 mm,,80.0,150.0,,,3
+woody-angiosperms,leaf_blade_length_wa,LENGTH,147,,40.0-120.0 mm,,40.0,120.0,,,8
+woody-angiosperms,leaf_blade_length_wa,LENGTH,148,,35.0-70.0 mm,,35.0,70.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,149,,53.0-130.0 mm,,53.0,130.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,150,,5.0-15.0 mm,,5.0,15.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,151,,80.0-110.0 mm,,80.0,110.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,152,,120.0-180.0 mm,,120.0,180.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,153,,3.5-5.0 mm,,3.5,5.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,154,,30.0-80.0 mm,,30.0,80.0,,,17
+woody-angiosperms,leaf_blade_length_wa,LENGTH,155,,65.0-105.0 mm,,65.0,105.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,156,,80.0-300.0 mm,,80.0,300.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,157,,10.0-25.0 mm,,10.0,25.0,,,4
+woody-angiosperms,leaf_blade_length_wa,LENGTH,158,,15.0-80.0 mm,,15.0,80.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,159,,60.0-160.0 mm,,60.0,160.0,,,3
+woody-angiosperms,leaf_blade_length_wa,LENGTH,160,,152.0-203.0 mm,,152.0,203.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,161,,5.0-25.0 mm,,5.0,25.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,162,,50.0-180.0 mm,,50.0,180.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,163,,60.0-110.0 mm,,60.0,110.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,164,,8.0-14.0 mm,,8.0,14.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,165,,25.0-100.0 mm,,25.0,100.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,166,,15.0-72.0 mm,,15.0,72.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,167,,30.0-85.0 mm,,30.0,85.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,168,,20.0-80.0 mm,,20.0,80.0,,,4
+woody-angiosperms,leaf_blade_length_wa,LENGTH,169,,5.0-10.0 mm,,5.0,10.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,170,,100.0-220.0 mm,,100.0,220.0,,,3
+woody-angiosperms,leaf_blade_length_wa,LENGTH,171,,120.0-250.0 mm,,120.0,250.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,172,,40.0-200.0 mm,,40.0,200.0,,,3
+woody-angiosperms,leaf_blade_length_wa,LENGTH,173,,50.0-160.0 mm,,50.0,160.0,,,4
+woody-angiosperms,leaf_blade_length_wa,LENGTH,174,,25.0-90.0 mm,,25.0,90.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,175,,4.5-6.0 mm,,4.5,6.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,176,,90.0-350.0 mm,,90.0,350.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,177,,10.0-40.0 mm,,10.0,40.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,178,,45.0-62.0 mm,,45.0,62.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,179,,300.0-600.0 mm,,300.0,600.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,180,,14.0-75.0 mm,,14.0,75.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,181,,60.0-130.0 mm,,60.0,130.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,182,,60.0-220.0 mm,,60.0,220.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,183,,2.5-7.0 mm,,2.5,7.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,184,,130.0-250.0 mm,,130.0,250.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,185,,8.0-25.0 mm,,8.0,25.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,186,,30.0-150.0 mm,,30.0,150.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,187,,200.0-600.0 mm,,200.0,600.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,188,,10.0-83.0 mm,,10.0,83.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,189,,32.0-210.0 mm,,32.0,210.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,190,,100.0-700.0 mm,,100.0,700.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,191,,40.0-150.0 mm,,40.0,150.0,,,3
+woody-angiosperms,leaf_blade_length_wa,LENGTH,192,,300.0-1000.0 mm,,300.0,1000.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,193,,50.0-85.0 mm,,50.0,85.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,194,,58.0-150.0 mm,,58.0,150.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,195,,70.0-120.0 mm,,70.0,120.0,,,5
+woody-angiosperms,leaf_blade_length_wa,LENGTH,196,,5.0-30.0 mm,,5.0,30.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,197,,25.0-50.0 mm,,25.0,50.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,198,,80.0-140.0 mm,,80.0,140.0,,,4
+woody-angiosperms,leaf_blade_length_wa,LENGTH,199,,20.0-100.0 mm,,20.0,100.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,200,,79.0-230.0 mm,,79.0,230.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,201,,80.0-200.0 mm,,80.0,200.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,202,,79.0-215.0 mm,,79.0,215.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,203,,20.0-40.0 mm,,20.0,40.0,,,4
+woody-angiosperms,leaf_blade_length_wa,LENGTH,204,,40.0-70.0 mm,,40.0,70.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,205,,50.0-90.0 mm,,50.0,90.0,,,5
+woody-angiosperms,leaf_blade_length_wa,LENGTH,206,,45.0-91.0 mm,,45.0,91.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,207,,90.0-180.0 mm,,90.0,180.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,208,,40.0-110.0 mm,,40.0,110.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,209,,35.0-80.0 mm,,35.0,80.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,210,,11.0-60.0 mm,,11.0,60.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,211,,600.0-900.0 mm,,600.0,900.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,212,,40.0-80.0 mm,,40.0,80.0,,,13
+woody-angiosperms,leaf_blade_length_wa,LENGTH,213,,6.0-20.0 mm,,6.0,20.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,214,,23.0-170.0 mm,,23.0,170.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,215,,10.0-78.0 mm,,10.0,78.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,216,,25.0-70.0 mm,,25.0,70.0,,,4
+woody-angiosperms,leaf_blade_length_wa,LENGTH,217,,50.0-110.0 mm,,50.0,110.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,218,,3.0-8.0 mm,,3.0,8.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,219,,25.0-115.0 mm,,25.0,115.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,220,,40.0-65.0 mm,,40.0,65.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,221,,17.0-77.0 mm,,17.0,77.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,222,,30.0-125.0 mm,,30.0,125.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,223,,37.0-70.0 mm,,37.0,70.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,224,,,,,60.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,225,,30.0-90.0 mm,,30.0,90.0,,,5
+woody-angiosperms,leaf_blade_length_wa,LENGTH,226,,90.0-200.0 mm,,90.0,200.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,227,,250.0-300.0 mm,,250.0,300.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,228,,70.0-340.0 mm,,70.0,340.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,229,,14.0-80.0 mm,,14.0,80.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,230,,87.0-225.0 mm,,87.0,225.0,,,1
+woody-angiosperms,leaf_blade_length_wa,LENGTH,231,,150.0-350.0 mm,,150.0,350.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,232,,20.0-65.0 mm,,20.0,65.0,,,2
+woody-angiosperms,leaf_blade_length_wa,LENGTH,233,,60.0-500.0 mm,,60.0,500.0,,,1
+woody-angiosperms,leaf_blade_margin_Acer_wa,TEXT,0,NA,NA,,,,,,534
+woody-angiosperms,leaf_blade_margin_Acer_wa,TEXT,1,toothed throughout the margin,toothed throughout the margin,"the leaves have teeth throughout the leaf blade, including between the lobes",,,,,8
+woody-angiosperms,leaf_blade_margin_Acer_wa,TEXT,2,toothed only on lobes,toothed only on lobes,the leaves have teeth only at the tips of the lobes,,,,,6
+woody-angiosperms,leaf_blade_margin_general_wa,TEXT,0,NA,NA,,,,,,1
+woody-angiosperms,leaf_blade_margin_general_wa,TEXT,1,lobed,lobed,"the edge of the leaf blade has lobes, or it has both teeth and lobes",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-margin-lobed-wa.gif,134
+woody-angiosperms,leaf_blade_margin_general_wa,TEXT,2,entire,entire,the edge of the leaf blade has no teeth or lobes,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-margin-entire-wa.gif,191
+woody-angiosperms,leaf_blade_margin_general_wa,TEXT,3,toothed,toothed,the edge of the leaf blade has teeth,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-margin-toothed-wa.gif,351
+woody-angiosperms,leaf_blade_margin_planeness_wa,TEXT,0,NA,NA,,,,,,1
+woody-angiosperms,leaf_blade_margin_planeness_wa,TEXT,1,involute,involute,the edges of the leaf are curled up,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-margin-plane-involute.gif,10
+woody-angiosperms,leaf_blade_margin_planeness_wa,TEXT,2,revolute,revolute,the edges of the leaf are curled under,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-margin-plane-revolute.gif,45
+woody-angiosperms,leaf_blade_margin_planeness_wa,TEXT,3,plane,plane,the leaf is flat (planar) at the edges,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-margin-plane-plane.gif,485
+woody-angiosperms,leaf_blade_margin_specific_wa,TEXT,0,NA,NA,,,,,,1
+woody-angiosperms,leaf_blade_margin_specific_wa,TEXT,1,undulate,undulate,"the leaf blade margin is undulate (wavy), but does not have teeth",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-margin-undulate.gif,51
+woody-angiosperms,leaf_blade_margin_specific_wa,TEXT,2,crenate or crenulate,crenate or crenulate,"the leaf blade margin is crenate (with rounded teeth) or crenulate (with tiny, rounded teeth)",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-margin-crenate.gif,83
+woody-angiosperms,leaf_blade_margin_specific_wa,TEXT,3,double toothed,double toothed,"the leaf blade margin has teeth, which themselves have smaller teeth on them",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-margin-double-tooth.gif,84
+woody-angiosperms,leaf_blade_margin_specific_wa,TEXT,4,entire,entire,the edge of the leaf blade is entire (has no teeth or lobes),,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-margin-entire.gif,198
+woody-angiosperms,leaf_blade_margin_specific_wa,TEXT,5,serrate or dentate,serrate or dentate,the leaf blade margin is serrate (with forward-pointing) or dentate (with outward-pointing) with medium-sized to coarse teeth,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-margin-dentate.gif,292
+woody-angiosperms,leaf_blade_margin_specific_wa,TEXT,6,serrulate or denticulate,serrulate or denticulate,the leaf blade margin is serrulate (with forward-pointing) or denticulate (with outward-pointing) with tiny teeth,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-margin-denticulate.gif,68
+woody-angiosperms,leaf_blade_midrib_glands_wa,TEXT,0,absent,absent,the midrib of the leaf blade lacks glands on the upper surface,,,,,428
+woody-angiosperms,leaf_blade_midrib_glands_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,leaf_blade_midrib_glands_wa,TEXT,2,present,present,the midrib of the leaf blade has glands on the upper surface,,,,,27
+woody-angiosperms,leaf_blade_scales_wa,TEXT,0,NA,NA,,,,,,1
+woody-angiosperms,leaf_blade_scales_wa,TEXT,1,absent,absent,there are no scales on the leaf blades,,,,,514
+woody-angiosperms,leaf_blade_scales_wa,TEXT,2,present,present,there are scales on the leaf blades,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-scale.gif,18
+woody-angiosperms,leaf_blade_shape_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,leaf_blade_shape_wa,TEXT,1,linear,linear,the leaf blade is linear (very narrow with more or less parallel sides),,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-shape-linear.gif,32
+woody-angiosperms,leaf_blade_shape_wa,TEXT,2,oblanceolate,oblanceolate,"the leaf blade is oblanceolate (lance-shaped, but with the widest point above the middle of the leaf blade)",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-shape-oblanceolate.gif,53
+woody-angiosperms,leaf_blade_shape_wa,TEXT,3,orbicular,orbicular,"the leaf blade is orbicular (roughly circular, as wide as long)",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-shape-orbicular.gif,103
+woody-angiosperms,leaf_blade_shape_wa,TEXT,4,obtriangular,obtriangular,"the leaf blade is obtriangular (triangular, but widening out from a narrow base to a broad, truncate tip)",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-shape-obtriangular.gif,2
+woody-angiosperms,leaf_blade_shape_wa,TEXT,5,lanceolate,lanceolate,the leaf blade is lanceolate (lance-shaped; widest below the middle and tapering at both ends),,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-shape-lanceolate.gif,114
+woody-angiosperms,leaf_blade_shape_wa,TEXT,6,subulate,subulate,the leaf blade is subulate (awl-shaped; narrowly tapering from the base to the apex),,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-shape-subulate.gif,1
+woody-angiosperms,leaf_blade_shape_wa,TEXT,7,ovate,ovate,the leaf blade is ovate (widest below the middle and broadly tapering at both ends),,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-shape-ovate.gif,311
+woody-angiosperms,leaf_blade_shape_wa,TEXT,8,rhombic,rhombic,the leaf blade is rhombic (roughly diamond-shaped),,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-shape-rhombic.gif,37
+woody-angiosperms,leaf_blade_shape_wa,TEXT,9,obovate,obovate,"the leaf blade is obovate (egg-shaped, but with the widest point above the middle of the leaf blade)",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-shape-obovate.gif,172
+woody-angiosperms,leaf_blade_shape_wa,TEXT,10,elliptic,elliptic,the leaf blade is elliptic (widest near the middle and tapering at both ends),,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-shape-elliptic.gif,274
+woody-angiosperms,leaf_blade_shape_wa,TEXT,11,oblong,oblong,the leaf blade is oblong (rectangular but with rounded ends),,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-shape-oblong.gif,217
+woody-angiosperms,leaf_blade_shape_wa,TEXT,12,triangular,triangular,"the leaf blade is triangular, with the stalk or attachment point on one of the sides",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-shape-triangular.gif,31
+woody-angiosperms,leaf_blade_texture_wa,TEXT,0,membranaceous,membranaceous,"the leaf blade is membranaceous (thin, flexible, almost translucent)",,,,,28
+woody-angiosperms,leaf_blade_texture_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,leaf_blade_texture_wa,TEXT,2,coriaceous,coriaceous,"the leaf blade is coriaceous (has a firm, leathery texture)",,,,,253
+woody-angiosperms,leaf_blade_texture_wa,TEXT,3,herbaceous,herbaceous,the leaf blade is herbaceous (has a leafy texture),,,,,390
+woody-angiosperms,leaf_blade_texture_wa,TEXT,4,chartaceous,chartaceous,the leaf blade is chartaceous (thin and dry like paper),,,,,27
+woody-angiosperms,leaf_blade_venation_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,leaf_blade_venation_wa,TEXT,1,pinnate and arcuate,pinnate and arcuate,the main veins of the leaf blade are pinnate (the secondary veins branch off at intervals from the main central vein) and arcuate (slightly arched in the direction of the tip),,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-venation-arcuate.gif,14
+woody-angiosperms,leaf_blade_venation_wa,TEXT,2,palmate,palmate,"the main veins of the leaf blade are palmate (radiate out from the base, like a hand)",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-venation-palmate.gif,36
+woody-angiosperms,leaf_blade_venation_wa,TEXT,3,pinnate and non-arcuate,pinnate and non-arcuate,the main veins of the leaf blade are pinnate (the secondary veins branch off at intervals from the main central vein) and non-arcuate (not arched towards the leaf tip),,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-venation-pinnate.gif,276
+woody-angiosperms,leaf_blade_venation_wa,TEXT,4,parallel,parallel,"the main veins of the leaf blade are parallel (running in one direction, from near the base to near the tip)",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-venation-parallel.gif,0
+woody-angiosperms,leaf_blade_width_wa,LENGTH,0,,30.0-100.0 mm,,30.0,100.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,1,,80.0-200.0 mm,,80.0,200.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,2,,20.0-100.0 mm,,20.0,100.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,3,,20.0-50.0 mm,,20.0,50.0,,,17
+woody-angiosperms,leaf_blade_width_wa,LENGTH,4,,7.0-12.0 mm,,7.0,12.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,5,,100.0-350.0 mm,,100.0,350.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,6,,19.0-64.0 mm,,19.0,64.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,7,,50.0-150.0 mm,,50.0,150.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,8,,,,,150.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,9,,5.0-15.0 mm,,5.0,15.0,,,3
+woody-angiosperms,leaf_blade_width_wa,LENGTH,10,,9.0-36.0 mm,,9.0,36.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,11,,4.0-25.0 mm,,4.0,25.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,12,,25.0-55.0 mm,,25.0,55.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,13,,240.0-370.0 mm,,240.0,370.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,14,,40.0-50.0 mm,,40.0,50.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,15,,10.0-55.0 mm,,10.0,55.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,16,,120.0-230.0 mm,,120.0,230.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,17,,7.0-15.0 mm,,7.0,15.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,18,,15.0-20.0 mm,,15.0,20.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,19,,3.0-11.0 mm,,3.0,11.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,20,,20.0-110.0 mm,,20.0,110.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,21,,5.0-40.0 mm,,5.0,40.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,22,,40.0-120.0 mm,,40.0,120.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,23,,25.0-77.0 mm,,25.0,77.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,24,,20.0-30.0 mm,,20.0,30.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,25,,10.0-30.0 mm,,10.0,30.0,,,11
+woody-angiosperms,leaf_blade_width_wa,LENGTH,26,,30.0-70.0 mm,,30.0,70.0,,,3
+woody-angiosperms,leaf_blade_width_wa,LENGTH,27,,80.0-130.0 mm,,80.0,130.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,28,,8.0-28.0 mm,,8.0,28.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,29,,,,,350.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,30,,25.0-50.0 mm,,25.0,50.0,,,6
+woody-angiosperms,leaf_blade_width_wa,LENGTH,31,,7.0-14.0 mm,,7.0,14.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,32,,22.0-50.0 mm,,22.0,50.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,33,,18.0-35.0 mm,,18.0,35.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,34,,15.0-50.0 mm,,15.0,50.0,,,14
+woody-angiosperms,leaf_blade_width_wa,LENGTH,35,,6.0-23.0 mm,,6.0,23.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,36,,1.0-8.0 mm,,1.0,8.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,37,,5.0-17.0 mm,,5.0,17.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,38,,50.0-80.0 mm,,50.0,80.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,39,,110.0-220.0 mm,,110.0,220.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,40,,15.0-25.0 mm,,15.0,25.0,,,4
+woody-angiosperms,leaf_blade_width_wa,LENGTH,41,,70.0-150.0 mm,,70.0,150.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,42,,35.0-105.0 mm,,35.0,105.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,43,,10.0-60.0 mm,,10.0,60.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,44,,30.0-100.0 mm,,30.0,100.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,45,,150.0-300.0 mm,,150.0,300.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,46,,9.0-33.0 mm,,9.0,33.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,47,,38.0-76.0 mm,,38.0,76.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,48,,30.0-155.0 mm,,30.0,155.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,49,,15.0-110.0 mm,,15.0,110.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,50,,35.0-50.0 mm,,35.0,50.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,51,,40.0-100.0 mm,,40.0,100.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,52,,6.0-20.0 mm,,6.0,20.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,53,,,,,200.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,54,,50.0-100.0 mm,,50.0,100.0,,,5
+woody-angiosperms,leaf_blade_width_wa,LENGTH,55,,44.0-160.0 mm,,44.0,160.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,56,,130.0-170.0 mm,,130.0,170.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,57,,25.0-70.0 mm,,25.0,70.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,58,,5.0-33.0 mm,,5.0,33.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,59,,22.0-52.0 mm,,22.0,52.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,60,,38.1-63.5 mm,,38.1,63.5,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,61,,50.0-75.0 mm,,50.0,75.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,62,,,,,90.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,63,,20.0-35.0 mm,,20.0,35.0,,,6
+woody-angiosperms,leaf_blade_width_wa,LENGTH,64,,30.0-60.0 mm,,30.0,60.0,,,12
+woody-angiosperms,leaf_blade_width_wa,LENGTH,65,,100.0-140.0 mm,,100.0,140.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,66,,9.0-32.0 mm,,9.0,32.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,67,,40.0-70.0 mm,,40.0,70.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,68,,20.0-55.0 mm,,20.0,55.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,69,,50.0-120.0 mm,,50.0,120.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,70,,35.0-90.0 mm,,35.0,90.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,71,,40.0-90.0 mm,,40.0,90.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,72,,20.0-80.0 mm,,20.0,80.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,73,,35.0-60.0 mm,,35.0,60.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,74,,35.0-80.0 mm,,35.0,80.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,75,,18.0-28.0 mm,,18.0,28.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,76,,90.0-180.0 mm,,90.0,180.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,77,,2.0-18.0 mm,,2.0,18.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,78,,100.0-300.0 mm,,100.0,300.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,79,,10.0-40.0 mm,,10.0,40.0,,,6
+woody-angiosperms,leaf_blade_width_wa,LENGTH,80,,30.0-90.0 mm,,30.0,90.0,,,3
+woody-angiosperms,leaf_blade_width_wa,LENGTH,81,,19.0-40.0 mm,,19.0,40.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,82,,30.0-75.0 mm,,30.0,75.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,83,,12.0-90.0 mm,,12.0,90.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,84,,1.0-6.0 mm,,1.0,6.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,85,,110.0-150.0 mm,,110.0,150.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,86,,3.0-15.0 mm,,3.0,15.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,87,,0.5-0.7 mm,,0.5,0.7,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,88,,25.0-80.0 mm,,25.0,80.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,89,,11.0-50.0 mm,,11.0,50.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,90,,10.0-45.0 mm,,10.0,45.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,91,,1.0-2.0 mm,,1.0,2.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,92,,50.0-180.0 mm,,50.0,180.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,93,,10.0-25.0 mm,,10.0,25.0,,,8
+woody-angiosperms,leaf_blade_width_wa,LENGTH,94,,35.0-55.0 mm,,35.0,55.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,95,,3.0-7.0 mm,,3.0,7.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,96,,72.0-300.0 mm,,72.0,300.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,97,,36.0-50.0 mm,,36.0,50.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,98,,100.0-200.0 mm,,100.0,200.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,99,,3.0-75.0 mm,,3.0,75.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,100,,23.0-110.0 mm,,23.0,110.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,101,,10.0-20.0 mm,,10.0,20.0,,,3
+woody-angiosperms,leaf_blade_width_wa,LENGTH,102,,4.0-11.0 mm,,4.0,11.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,103,,,,,120.0,,,4
+woody-angiosperms,leaf_blade_width_wa,LENGTH,104,,3.0-20.0 mm,,3.0,20.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,105,,70.0-120.0 mm,,70.0,120.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,106,,80.0-140.0 mm,,80.0,140.0,,,4
+woody-angiosperms,leaf_blade_width_wa,LENGTH,107,,40.0-160.0 mm,,40.0,160.0,,,3
+woody-angiosperms,leaf_blade_width_wa,LENGTH,108,,40.0-65.0 mm,,40.0,65.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,109,,18.0-30.0 mm,,18.0,30.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,110,,12.0-37.0 mm,,12.0,37.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,111,,3.0-6.0 mm,,3.0,6.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,112,,14.0-35.0 mm,,14.0,35.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,113,,25.0-66.0 mm,,25.0,66.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,114,,60.0-140.0 mm,,60.0,140.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,115,,5.0-20.0 mm,,5.0,20.0,,,4
+woody-angiosperms,leaf_blade_width_wa,LENGTH,116,,2.0-17.0 mm,,2.0,17.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,117,,20.0-120.0 mm,,20.0,120.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,118,,10.0-15.0 mm,,10.0,15.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,119,,1.0-7.0 mm,,1.0,7.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,120,,25.0-100.0 mm,,25.0,100.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,121,,6.0-30.0 mm,,6.0,30.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,122,,8.0-20.0 mm,,8.0,20.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,123,,20.0-70.0 mm,,20.0,70.0,,,3
+woody-angiosperms,leaf_blade_width_wa,LENGTH,124,,15.0-40.0 mm,,15.0,40.0,,,4
+woody-angiosperms,leaf_blade_width_wa,LENGTH,125,,5.0-18.0 mm,,5.0,18.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,126,,60.0-130.0 mm,,60.0,130.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,127,,30.0-50.0 mm,,30.0,50.0,,,4
+woody-angiosperms,leaf_blade_width_wa,LENGTH,128,,110.0-190.0 mm,,110.0,190.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,129,,15.0-30.0 mm,,15.0,30.0,,,4
+woody-angiosperms,leaf_blade_width_wa,LENGTH,130,,12.0-50.0 mm,,12.0,50.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,131,,,,,610.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,132,,2.0-8.0 mm,,2.0,8.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,133,,60.0-200.0 mm,,60.0,200.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,134,,100.0-180.0 mm,,100.0,180.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,135,,60.0-150.0 mm,,60.0,150.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,136,,25.0-60.0 mm,,25.0,60.0,,,4
+woody-angiosperms,leaf_blade_width_wa,LENGTH,137,,30.0-55.0 mm,,30.0,55.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,138,,35.0-65.0 mm,,35.0,65.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,139,,45.0-83.0 mm,,45.0,83.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,140,,80.0-120.0 mm,,80.0,120.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,141,,30.0-80.0 mm,,30.0,80.0,,,6
+woody-angiosperms,leaf_blade_width_wa,LENGTH,142,,4.0-15.0 mm,,4.0,15.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,143,,11.0-46.0 mm,,11.0,46.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,144,,8.0-18.0 mm,,8.0,18.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,145,,4.0-40.0 mm,,4.0,40.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,146,,7.0-20.0 mm,,7.0,20.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,147,,4.0-30.0 mm,,4.0,30.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,148,,40.0-560.0 mm,,40.0,560.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,149,,10.0-35.0 mm,,10.0,35.0,,,3
+woody-angiosperms,leaf_blade_width_wa,LENGTH,150,,10.0-22.0 mm,,10.0,22.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,151,,0.5-0.8 mm,,0.5,0.8,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,152,,100.0-240.0 mm,,100.0,240.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,153,,0.3-0.6 mm,,0.3,0.6,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,154,,14.0-50.0 mm,,14.0,50.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,155,,25.4-63.5 mm,,25.4,63.5,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,156,,15.0-45.0 mm,,15.0,45.0,,,3
+woody-angiosperms,leaf_blade_width_wa,LENGTH,157,,18.0-70.0 mm,,18.0,70.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,158,,80.0-150.0 mm,,80.0,150.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,159,,7.0-25.0 mm,,7.0,25.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,160,,19.1-44.5 mm,,19.1,44.5,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,161,,1.0-3.0 mm,,1.0,3.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,162,,50.0-250.0 mm,,50.0,250.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,163,,60.0-120.0 mm,,60.0,120.0,,,6
+woody-angiosperms,leaf_blade_width_wa,LENGTH,164,,10.0-106.0 mm,,10.0,106.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,165,,8.0-55.0 mm,,8.0,55.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,166,,40.0-165.0 mm,,40.0,165.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,167,,35.0-190.0 mm,,35.0,190.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,168,,15.0-75.0 mm,,15.0,75.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,169,,20.0-65.0 mm,,20.0,65.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,170,,4.0-28.0 mm,,4.0,28.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,171,,20.0-40.0 mm,,20.0,40.0,,,5
+woody-angiosperms,leaf_blade_width_wa,LENGTH,172,,3.0-12.0 mm,,3.0,12.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,173,,0.7-20.0 mm,,0.7,20.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,174,,40.0-75.0 mm,,40.0,75.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,175,,10.0-80.0 mm,,10.0,80.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,176,,13.0-33.0 mm,,13.0,33.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,177,,100.0-150.0 mm,,100.0,150.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,178,,20.0-60.0 mm,,20.0,60.0,,,8
+woody-angiosperms,leaf_blade_width_wa,LENGTH,179,,5.0-23.0 mm,,5.0,23.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,180,,19.0-52.0 mm,,19.0,52.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,181,,5.0-10.0 mm,,5.0,10.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,182,,10.0-18.0 mm,,10.0,18.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,183,,40.0-80.0 mm,,40.0,80.0,,,3
+woody-angiosperms,leaf_blade_width_wa,LENGTH,184,,4.0-9.0 mm,,4.0,9.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,185,,15.0-60.0 mm,,15.0,60.0,,,5
+woody-angiosperms,leaf_blade_width_wa,LENGTH,186,,0.2-1.5 mm,,0.2,1.5,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,187,,25.4-76.2 mm,,25.4,76.2,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,188,,1.0-1.0 mm,,1.0,1.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,189,,30.0-110.0 mm,,30.0,110.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,190,,2.0-9.0 mm,,2.0,9.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,191,,80.0-160.0 mm,,80.0,160.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,192,,26.0-70.0 mm,,26.0,70.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,193,,10.0-50.0 mm,,10.0,50.0,,,4
+woody-angiosperms,leaf_blade_width_wa,LENGTH,194,,7.0-90.0 mm,,7.0,90.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,195,,30.0-130.0 mm,,30.0,130.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,196,,,,,50.8,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,197,,60.0-90.0 mm,,60.0,90.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,198,,23.0-150.0 mm,,23.0,150.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,199,,80.0-185.0 mm,,80.0,185.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,200,,25.0-40.0 mm,,25.0,40.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,201,,2.0-4.0 mm,,2.0,4.0,,,1
+woody-angiosperms,leaf_blade_width_wa,LENGTH,202,,2.0-6.0 mm,,2.0,6.0,,,2
+woody-angiosperms,leaf_blade_width_wa,LENGTH,203,,15.0-35.0 mm,,15.0,35.0,,,6
+woody-angiosperms,leaf_blade_width_wa,LENGTH,204,,38.0-114.0 mm,,38.0,114.0,,,1
+woody-angiosperms,leaf_bundle_scar_number_wa,TEXT,0,5 or more,5 or more,5 or more,,,,,4
+woody-angiosperms,leaf_bundle_scar_number_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,leaf_bundle_scar_number_wa,TEXT,2,2,2,2,,,,,0
+woody-angiosperms,leaf_bundle_scar_number_wa,TEXT,3,4,4,4,,,,,0
+woody-angiosperms,leaf_bundle_scar_number_wa,TEXT,4,3,3,3,,,,,43
+woody-angiosperms,leaf_bundle_scar_number_wa,TEXT,5,1,1,1,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-bundle-scar.gif,9
+woody-angiosperms,leaf_duration_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,leaf_duration_wa,TEXT,1,evergreen,evergreen,the leaves remain green all winter,,,,,58
+woody-angiosperms,leaf_duration_wa,TEXT,2,deciduous or marcescent,deciduous or marcescent,the leaves drop off in winter (or they wither but persist on the plant),,,,,508
+woody-angiosperms,leaf_form_wa,TEXT,0,needle-like or scale-like leaf,needle-like or scale-like leaf,"the plant has leaves that are needle-like (narrow and thickened) or scale-like (small, thin and lacking leaf stalks)",,,,,13
+woody-angiosperms,leaf_form_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,leaf_form_wa,TEXT,2,broad-leaf,broad-leaf,the plant is broad-leaved (with broadly flattened leaf blades),,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-form-broad.gif,393
+woody-angiosperms,leaf_scar_arrangment_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,leaf_scar_arrangment_wa,TEXT,1,opposite,opposite,there are two leaf scars per node on the stem or twig,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-scar-arrangement-opposite.gif,87
+woody-angiosperms,leaf_scar_arrangment_wa,TEXT,2,alternate,alternate,there is one leaf scar per node on the stem or twig,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-scar-arrangement-alternate.gif,274
+woody-angiosperms,leaf_scar_arrangment_wa,TEXT,3,whorled,whorled,there are three or more leaf scars per node on the stem or twig,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-scar-arrangement-whorled.gif,11
+woody-angiosperms,leaf_teeth_subapical_tufts_of_hairs_Carya_wa,TEXT,0,NA,NA,,,,,,542
+woody-angiosperms,leaf_teeth_subapical_tufts_of_hairs_Carya_wa,TEXT,1,absent,absent,there are no tufts of hairs on the edges of the leaf blade,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-teeth-gland-absent.gif,4
+woody-angiosperms,leaf_teeth_subapical_tufts_of_hairs_Carya_wa,TEXT,2,present,present,the leaf blades have tiny tufts of hairs on their edges below the tips of the teeth,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-teeth-hairs-carya.gif,1
+woody-angiosperms,leaf_type_general_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,leaf_type_general_wa,TEXT,1,compound,compound,"the leaf blade is compound (i.e., made up of two or more discrete leaflets",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-type-compound-wa.gif,111
+woody-angiosperms,leaf_type_general_wa,TEXT,2,simple,simple,"the leaf blade is simple (i.e., lobed or unlobed but not separated into leaflets)",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-type-simple-wa.gif,440
+woody-angiosperms,leaf_type_specific_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,leaf_type_specific_wa,TEXT,1,twice pinnately compound,twice pinnately compound,"the leaf is twice pinnately compound (it has a row of two or more leaflets on each side of the central axis, each of which are divided into two or more leaflets)",,,,https://newfs.s3.amazonaws.com/character-value-images/bipinnate.gif,5
+woody-angiosperms,leaf_type_specific_wa,TEXT,2,once imparapinnately compound with 3 leaflets,once imparapinnately compound with 3 leaflets,"the leaf is compound, with three leaflets",,,,https://newfs.s3.amazonaws.com/character-value-images/pinnate-3-leaflets.gif,46
+woody-angiosperms,leaf_type_specific_wa,TEXT,3,thrice or more times pinnately compound,thrice or more times pinnately compound,"the leaf is three or more times pinnately compound (it has a row of two more more leaflets on each side of the central axis, each of which are divided into two or more leaflets, each of which are in turn divided into two or more leaflets, and so on)",,,,https://newfs.s3.amazonaws.com/character-value-images/tripinnate.gif,3
+woody-angiosperms,leaf_type_specific_wa,TEXT,4,palmately compound with more than 3 leaflets,palmately compound with more than 3 leaflets,the leaf is palmately compound with more than three leaflets,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-type-compound-palmate.gif,24
+woody-angiosperms,leaf_type_specific_wa,TEXT,5,compound with 2 leaflets,compound with 2 leaflets,"the leaf is compound, with exactly two leaflets",,,,https://newfs.s3.amazonaws.com/character-value-images/pinnate-2-leaves.gif,0
+woody-angiosperms,leaf_type_specific_wa,TEXT,6,once parapinnately compound with more than 3 leaflets,once parapinnately compound with more than 3 leaflets,"the leaf is compound, with at least four leaflets, and lacks a terminal leaflet",,,,https://newfs.s3.amazonaws.com/character-value-images/parapinnate.gif,1
+woody-angiosperms,leaf_type_specific_wa,TEXT,7,palmately compound with 3 leaflets,palmately compound with 3 leaflets,the leaf is palmately compound with three leaflets,,,,https://newfs.s3.amazonaws.com/character-value-images/palmate-3-leaflets.gif,6
+woody-angiosperms,leaf_type_specific_wa,TEXT,8,once imparapinnately compound with more than 3 leaflets,once imparapinnately compound with more than 3 leaflets,"the leaf is compound, with a single terminal leaflet and more than two additional leaflets",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-type-compound-pinnate.gif,53
+woody-angiosperms,leaf_type_specific_wa,TEXT,9,simple,simple,"the leaves are simple (i.e., lobed or unlobed but not separated into leaflets",,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-type-simple.gif,439
+woody-angiosperms,lenticels_on_branchlets_wa,TEXT,0,absent or obscure,absent or obscure,"there are no lenticels on the twigs, or they are very hard to see",,,,,174
+woody-angiosperms,lenticels_on_branchlets_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,lenticels_on_branchlets_wa,TEXT,2,prominent,prominent,there are clearly lenticels on the twigs,,,,https://newfs.s3.amazonaws.com/character-value-images/lenticels-wa.gif,131
+woody-angiosperms,outer_bark_main_stem_wa,TEXT,0,exfoliating,exfoliating,the bark of an adult plant peels off easily or hangs off,,,,,88
+woody-angiosperms,outer_bark_main_stem_wa,TEXT,1,ridged or plated,ridged or plated,the bark of an adult plant is ridged or plated,,,,,188
+woody-angiosperms,outer_bark_main_stem_wa,TEXT,2,NA,NA,,,,,,2
+woody-angiosperms,outer_bark_main_stem_wa,TEXT,3,close and smooth,close and smooth,the bark of an adult plant is thin and smooth,,,,,366
+woody-angiosperms,ovary_position_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,ovary_position_wa,TEXT,1,superior,superior,the ovary is above the point of petal and/or sepal  attachment,,,,https://newfs.s3.amazonaws.com/character-value-images/ovary-position-superior.gif,406
+woody-angiosperms,ovary_position_wa,TEXT,2,inferior,inferior,the ovary is below the point of petal and/or sepal attachment,,,,https://newfs.s3.amazonaws.com/character-value-images/ovary-position-inferior.gif,224
+woody-angiosperms,ovary_summit_Amelanchier_wa,TEXT,0,glabrous,glabrous,the top of the ovary has no hairs,,,,,5
+woody-angiosperms,ovary_summit_Amelanchier_wa,TEXT,1,NA,NA,,,,,,542
+woody-angiosperms,ovary_summit_Amelanchier_wa,TEXT,2,pubescent,pubescent,the top of the ovary has hairs on it,,,,https://newfs.s3.amazonaws.com/character-value-images/ovary-summit-amelanchier.gif,6
+woody-angiosperms,pellucid_dots_on_leaf_blades_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,pellucid_dots_on_leaf_blades_wa,TEXT,1,absent,absent,there are no translucent dots on the leaf blade,,,,,504
+woody-angiosperms,pellucid_dots_on_leaf_blades_wa,TEXT,2,present,present,the leaf blade has translucent dots on it,,,,,8
+woody-angiosperms,perianth_description_wa,TEXT,0,trichlamydeous,trichlamydeous,the flower includes three distinct cycles of petal- or sepal-like structures,,,,,0
+woody-angiosperms,perianth_description_wa,TEXT,1,NA,NA,,,,,,1
+woody-angiosperms,perianth_description_wa,TEXT,2,dichlamydeous,dichlamydeous,the flower includes two cycles of petal- or sepal-like structures,,,,https://newfs.s3.amazonaws.com/character-value-images/perianth-dichlamydeous.gif,421
+woody-angiosperms,perianth_description_wa,TEXT,3,monochlamydeous,monochlamydeous,the flower includes only one cycle of petals or sepals,,,,https://newfs.s3.amazonaws.com/character-value-images/perianth-monochlamydeous.gif,86
+woody-angiosperms,perianth_description_wa,TEXT,4,no perianth,no perianth,the flower lacks sepals and petals,,,,,62
+woody-angiosperms,petal_appearance_wa,TEXT,0,petaloid,petaloid,"the petals are thin and delicate, and pigmented (colored other than green or brown)",,,,,435
+woody-angiosperms,petal_appearance_wa,TEXT,1,NA,NA,,,,,,123
+woody-angiosperms,petal_appearance_wa,TEXT,2,sepaloid,sepaloid,the petals are green and/or leafy in texture,,,,,2
+woody-angiosperms,petal_color_wa,TEXT,0,purple,purple,purple,,,,,40
+woody-angiosperms,petal_color_wa,TEXT,1,orther,orther,other,,,,,4
+woody-angiosperms,petal_color_wa,TEXT,2,blue,blue,blue,,,,,4
+woody-angiosperms,petal_color_wa,TEXT,3,pink,pink,pink,,,,,83
+woody-angiosperms,petal_color_wa,TEXT,4,brown,brown,brown,,,,,7
+woody-angiosperms,petal_color_wa,TEXT,5,NA,NA,,,,,,123
+woody-angiosperms,petal_color_wa,TEXT,6,yellow;/ green,yellow;/ green,yellow or green,,,,,122
+woody-angiosperms,petal_color_wa,TEXT,7,red,red,red,,,,,37
+woody-angiosperms,petal_color_wa,TEXT,8,white,white,white,,,,,285
+woody-angiosperms,petal_color_wa,TEXT,9,orange,orange,orange,,,,,11
+woody-angiosperms,petal_fusion_wa,TEXT,0,NA,NA,,,,,,121
+woody-angiosperms,petal_fusion_wa,TEXT,1,distinct,distinct,the perianth parts are separate,,,,https://newfs.s3.amazonaws.com/character-value-images/petal-fusion-distinct.gif,290
+woody-angiosperms,petal_fusion_wa,TEXT,2,connate,connate,"the perianth parts are fused to form a tube, cup, or bell shape",,,,https://newfs.s3.amazonaws.com/character-value-images/petal-fusion-connate.gif,156
+woody-angiosperms,petiole_attachment_wa,TEXT,0,NA,NA,,,,,,7
+woody-angiosperms,petiole_attachment_wa,TEXT,1,basifixed,basifixed,the petiole attaches at the basal margin of the leaf blade,,,,https://newfs.s3.amazonaws.com/character-value-images/petiole-attachment-basifixed.gif,322
+woody-angiosperms,petiole_attachment_wa,TEXT,2,mesifixed,mesifixed,"the petiole attaches at the center of the leaf blade (like an umbrella), or somewhere between the edge and the center",,,,https://newfs.s3.amazonaws.com/character-value-images/petiole-attachment-mesifixed.gif,0
+woody-angiosperms,petiole_nectaries_wa,TEXT,0,absent,absent,there are no nectaries on the leaf stalk,,,,,433
+woody-angiosperms,petiole_nectaries_wa,TEXT,1,NA,NA,,,,,,5
+woody-angiosperms,petiole_nectaries_wa,TEXT,2,present,present,the leaf stalk has nectaries on it,,,,https://newfs.s3.amazonaws.com/character-value-images/petiole-nectary.gif,50
+woody-angiosperms,petiole_shape_wa,TEXT,0,other,other,the leaf stalk is not flattened,,,,,314
+woody-angiosperms,petiole_shape_wa,TEXT,1,NA,NA,,,,,,5
+woody-angiosperms,petiole_shape_wa,TEXT,2,conspicuously flattened perpendicular to the plane of the leaf blade,conspicuously flattened perpendicular to the plane of the leaf blade,"the leaf stalk is flattened, perpendicular to the plane of the leaf blade",,,,,3
+woody-angiosperms,petiole_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,petiole_wa,TEXT,1,absent,absent,"the leaves have no leaf stalks, but attach directly to the stem",,,,https://newfs.s3.amazonaws.com/character-value-images/petiole-absent.gif,19
+woody-angiosperms,petiole_wa,TEXT,2,present,present,the leaves have leaf stalks,,,,https://newfs.s3.amazonaws.com/character-value-images/petiole.gif,537
+woody-angiosperms,pistil_number_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,pistil_number_wa,TEXT,1,5,5,5,,,,,14
+woody-angiosperms,pistil_number_wa,TEXT,2,6 or more,6 or more,6 or more,,,,,57
+woody-angiosperms,pistil_number_wa,TEXT,3,2,2,2,,,,,4
+woody-angiosperms,pistil_number_wa,TEXT,4,3,3,3,,,,,8
+woody-angiosperms,pistil_number_wa,TEXT,5,0,0,0,,,,,10
+woody-angiosperms,pistil_number_wa,TEXT,6,4,4,4,,,,,8
+woody-angiosperms,pistil_number_wa,TEXT,7,1,1,1,,,,https://newfs.s3.amazonaws.com/character-value-images/pistil.gif,476
+woody-angiosperms,pith_shape_in_cross-section_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,pith_shape_in_cross-section_wa,TEXT,1,triangular,triangular,the outline of the pith in a twig is roughly triangular,,,,https://newfs.s3.amazonaws.com/character-value-images/pith-cross-section-triangular.gif,9
+woody-angiosperms,pith_shape_in_cross-section_wa,TEXT,2,terete,terete,the outline of the pith in a twig is roughly round,,,,https://newfs.s3.amazonaws.com/character-value-images/pith-cross-section-terete.gif,315
+woody-angiosperms,pith_shape_in_cross-section_wa,TEXT,3,stellate,stellate,"the ouline of the pith in a twig is roughly star-shaped, with several points or arms radiating from the center",,,,https://newfs.s3.amazonaws.com/character-value-images/pith-cross-section-stellate.gif,21
+woody-angiosperms,pith_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,pith_wa,TEXT,1,solid,solid,"the pith inside the twig is solid, completely filled with spongy tissue",,,,https://newfs.s3.amazonaws.com/character-value-images/pith-solid.gif,123
+woody-angiosperms,pith_wa,TEXT,2,chambered,chambered,the pith inside the twig is chambered (there are hollow sections with walls between them),,,,https://newfs.s3.amazonaws.com/character-value-images/pith-chambered.gif,5
+woody-angiosperms,pith_wa,TEXT,3,diaphragmed,diaphragmed,the pith inside the twig is diaphragmed (the pith is solid but has walls between sections),,,,https://newfs.s3.amazonaws.com/character-value-images/pith-diaphragmed.gif,4
+woody-angiosperms,pith_wa,TEXT,4,hollow,hollow,the pith inside the twig is hollow at its center,,,,https://newfs.s3.amazonaws.com/character-value-images/pith-hollow.gif,6
+woody-angiosperms,plant_habit_wa,TEXT,0,NA,NA,,,,,,2
+woody-angiosperms,plant_habit_wa,TEXT,1,tree,tree,the plant is a tree,,,,https://newfs.s3.amazonaws.com/character-value-images/tree.gif,210
+woody-angiosperms,plant_habit_wa,TEXT,2,liana,liana,"the plant is a liana (i.e., a woody plant with a vine-like growth form)",,,,https://newfs.s3.amazonaws.com/character-value-images/liana.gif,43
+woody-angiosperms,plant_habit_wa,TEXT,3,shrub,shrub,"the plant is a shrub (i.e., a woody plant with several stems growing from the base)",,,,https://newfs.s3.amazonaws.com/character-value-images/shrub-subshrub-wa.gif,403
+woody-angiosperms,primary_veins_at_base_of_blade_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,primary_veins_at_base_of_blade_wa,TEXT,1,three or more veins of nearly equal size originating from the very base or near to the base,three or more veins of nearly equal size originating from the very base or near to the base,the leaf blade has three or more main veins running from the base (or near the base) towards the tip,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-venation-parallel.gif,42
+woody-angiosperms,primary_veins_at_base_of_blade_wa,TEXT,2,main vein (the midrib) from the base,main vein (the midrib) from the base,the leaf blade has one main vein running from the base toward the tip,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-blade-venation-pinnate.gif,284
+woody-angiosperms,pseudoterminal_bud_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,pseudoterminal_bud_wa,TEXT,1,present,present,the tips of the branches have pseudoterminal buds,,,,https://newfs.s3.amazonaws.com/character-value-images/pseudoterminal-bud.gif,4
+woody-angiosperms,pseudoterminal_bud_wa,TEXT,2,absent,absent,there are no pseudoterminal buds on the tips of the branches,,,,https://newfs.s3.amazonaws.com/character-value-images/terminal-bud.gif,10
+woody-angiosperms,sap_wa,TEXT,0,"clear, watery","clear, watery",the sap is clear and watery,,,,,533
+woody-angiosperms,sap_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,sap_wa,TEXT,2,"thick, colored","thick, colored",the sap is thick and colored,,,,,17
+woody-angiosperms,scales_on_branchlets_wa,TEXT,0,present,present,there are scales on the twig surface,,,,,11
+woody-angiosperms,scales_on_branchlets_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,scales_on_branchlets_wa,TEXT,2,absent,absent,there are no scales on the twig surface,,,,,311
+woody-angiosperms,scent_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,scent_wa,TEXT,1,pleasantly aromatic,pleasantly aromatic,the plant has a pleasantly aromatic odor,,,,,40
+woody-angiosperms,scent_wa,TEXT,2,not aromatic or unpleasantly aromatic,not aromatic or unpleasantly aromatic,"the plant does not have much of an odor, or it has an unpleasant or repellant odor",,,,,486
+woody-angiosperms,sepal_appearance_wa,TEXT,0,petaloid,petaloid,the sepals resemble petals in color and texture,,,,,41
+woody-angiosperms,sepal_appearance_wa,TEXT,1,sepaloid,sepaloid,the sepals resemble leaves in color and texture,,,,,190
+woody-angiosperms,sepal_appearance_wa,TEXT,2,NA,NA,,,,,,52
+woody-angiosperms,sepal_cilia_Ilex_wa,TEXT,0,NA,NA,,,,,,544
+woody-angiosperms,sepal_cilia_Ilex_wa,TEXT,1,absent or very sparse,absent or very sparse,"there are no cilia on the sepal edges, or there are very few",,,,,3
+woody-angiosperms,sepal_cilia_Ilex_wa,TEXT,2,present and abundant,present and abundant,the sepal edges have cilia on them,,,,https://newfs.s3.amazonaws.com/character-value-images/sepal-cilia-ilex.gif,3
+woody-angiosperms,sepal_fusion_wa,TEXT,0,NA,NA,,,,,,64
+woody-angiosperms,sepal_fusion_wa,TEXT,1,connate,connate,"the sepals are fused to each other (not other flower parts), at least near their bases",,,,https://newfs.s3.amazonaws.com/character-value-images/sepal-fusion-connate.gif,221
+woody-angiosperms,sepal_fusion_wa,TEXT,2,distinct,distinct,the sepals are separate from one another,,,,https://newfs.s3.amazonaws.com/character-value-images/sepal-fusion-distinct.gif,118
+woody-angiosperms,sepal_marginal_glands_wa,TEXT,0,absent,absent,there are no glands at the tips of the sepal lobes,,,,,288
+woody-angiosperms,sepal_marginal_glands_wa,TEXT,1,NA,NA,,,,,,49
+woody-angiosperms,sepal_marginal_glands_wa,TEXT,2,present,present,there are glands at the tips of the sepal lobes,,,,https://newfs.s3.amazonaws.com/character-value-images/sepal-gland-prunus.gif,72
+woody-angiosperms,shape_of_distal_portion_of_bud_scar_Fraxinus_wa,TEXT,0,NA,NA,,,,,,543
+woody-angiosperms,shape_of_distal_portion_of_bud_scar_Fraxinus_wa,TEXT,1,deeply concave,deeply concave,"the upper edge of the bud scar is deeply concave, like a smile",,,,https://newfs.s3.amazonaws.com/character-value-images/winter-bud-fraxinus-concave.gif,1
+woody-angiosperms,shape_of_distal_portion_of_bud_scar_Fraxinus_wa,TEXT,2,straight or shallowly concave,straight or shallowly concave,the upper edge of the bud scar is straight across or slightly concave,,,,https://newfs.s3.amazonaws.com/character-value-images/winter-bud-fraxinus-straight.gif,2
+woody-angiosperms,short_shoots_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,short_shoots_wa,TEXT,1,present,present,there are peg- or knob-like shoots present,,,,https://newfs.s3.amazonaws.com/character-value-images/short-shoot.gif,38
+woody-angiosperms,short_shoots_wa,TEXT,2,absent,absent,there are no peg- or knob-like shoots present,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-scar-arrangement-alternate.gif,257
+woody-angiosperms,stamen_fusion_within_cycle_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,stamen_fusion_within_cycle_wa,TEXT,1,distinct,distinct,the stamens are not fused to one another,,,,https://newfs.s3.amazonaws.com/character-value-images/stamen-fusion-distinct.gif,363
+woody-angiosperms,stamen_fusion_within_cycle_wa,TEXT,2,connate,connate,the stamens are fused to one another at or near their bases,,,,https://newfs.s3.amazonaws.com/character-value-images/stamen-fusion-connate.gif,17
+woody-angiosperms,stamen_number_wa,TEXT,0,10,10,10,,,,,141
+woody-angiosperms,stamen_number_wa,TEXT,1,5,5,5,,,,,190
+woody-angiosperms,stamen_number_wa,TEXT,2,NA,NA,,,,,,0
+woody-angiosperms,stamen_number_wa,TEXT,3,1 or 2,1 or 2,1 or 2,,,,,72
+woody-angiosperms,stamen_number_wa,TEXT,4,6,6,6,,,,,103
+woody-angiosperms,stamen_number_wa,TEXT,5,0,0,0,,,,,2
+woody-angiosperms,stamen_number_wa,TEXT,6,12,12,12,,,,,66
+woody-angiosperms,stamen_number_wa,TEXT,7,7,7,7,,,,,88
+woody-angiosperms,stamen_number_wa,TEXT,8,8,8,8,,,,,115
+woody-angiosperms,stamen_number_wa,TEXT,9,3,3,3,,,,,36
+woody-angiosperms,stamen_number_wa,TEXT,10,9,9,9,,,,,84
+woody-angiosperms,stamen_number_wa,TEXT,11,13 or more,13 or more,13 or more,,,,,169
+woody-angiosperms,stamen_number_wa,TEXT,12,4,4,4,,,,,114
+woody-angiosperms,stamen_number_wa,TEXT,13,11,11,11,,,,,50
+woody-angiosperms,stamen_position_wa,TEXT,0,NA,NA,,,,,,230
+woody-angiosperms,stamen_position_wa,TEXT,1,antesepalous,antesepalous,the stamens are lined up with the sepals (antesepalous),,,,https://newfs.s3.amazonaws.com/character-value-images/stamen-position-antesepalous.gif,70
+woody-angiosperms,stamen_position_wa,TEXT,2,antepetalous,antepetalous,the stamens are lined up with the petals (antepetalous),,,,https://newfs.s3.amazonaws.com/character-value-images/stamen-position-antepetalous.gif,57
+woody-angiosperms,stipitate_glands_on_hypanthium_Rosa_wa,TEXT,0,NA,NA,,,,,,531
+woody-angiosperms,stipitate_glands_on_hypanthium_Rosa_wa,TEXT,1,absent,absent,there are no stalked glands on the fruit,,,,,14
+woody-angiosperms,stipitate_glands_on_hypanthium_Rosa_wa,TEXT,2,present,present,the fruit has stalked glands on it,,,,,7
+woody-angiosperms,stipules_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,stipules_wa,TEXT,1,present,present,the plant has stipules,,,,https://newfs.s3.amazonaws.com/character-value-images/stipule.gif,185
+woody-angiosperms,stipules_wa,TEXT,2,absent or rudimentary or caducous,absent or rudimentary or caducous,"there are no stipules on the plant, or they fall off as the leaf expands",,,,https://newfs.s3.amazonaws.com/character-value-images/petiole.gif,216
+woody-angiosperms,superposed_buds_wa,TEXT,0,absent,absent,there are no superposed buds on the branch,,,,,522
+woody-angiosperms,superposed_buds_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,superposed_buds_wa,TEXT,2,present,present,there are superposed buds above the main (terminal) bud,,,,https://newfs.s3.amazonaws.com/character-value-images/superposed-bud.gif,17
+woody-angiosperms,terminal_bud_wa,TEXT,0,absent,absent,there is no terminal bud on the branch,,,,,43
+woody-angiosperms,terminal_bud_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,terminal_bud_wa,TEXT,2,present,present,the branch has a terminal bud on it,,,,https://newfs.s3.amazonaws.com/character-value-images/terminal-bud.gif,66
+woody-angiosperms,winter_branchlet_color_wa,TEXT,0,blue,blue,blue,,,,,1
+woody-angiosperms,winter_branchlet_color_wa,TEXT,1,gray,gray,gray,,,,,245
+woody-angiosperms,winter_branchlet_color_wa,TEXT,2,white,white,white,,,,,13
+woody-angiosperms,winter_branchlet_color_wa,TEXT,3,red,red,red,,,,,344
+woody-angiosperms,winter_branchlet_color_wa,TEXT,4,black,black,black,,,,,5
+woody-angiosperms,winter_branchlet_color_wa,TEXT,5,green,green,green,,,,,91
+woody-angiosperms,winter_branchlet_color_wa,TEXT,6,brown,brown,brown,,,,,482
+woody-angiosperms,winter_branchlet_color_wa,TEXT,7,purple,purple,purple,,,,,95
+woody-angiosperms,winter_branchlet_color_wa,TEXT,8,orange,orange,orange,,,,,37
+woody-angiosperms,winter_branchlet_color_wa,TEXT,9,NA,NA,,,,,,2
+woody-angiosperms,winter_branchlet_color_wa,TEXT,10,yellow,yellow,yellow,,,,,65
+woody-angiosperms,winter_bud_covering_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,winter_bud_covering_wa,TEXT,1,naked,naked,the winter bud is naked (not covered with scales),,,,https://newfs.s3.amazonaws.com/character-value-images/winter-bud-naked.gif,15
+woody-angiosperms,winter_bud_covering_wa,TEXT,2,perulate,perulate,the winter bud is perulate (partially or completely covered with one or more scales),,,,https://newfs.s3.amazonaws.com/character-value-images/winter-bud-perulate.gif,193
+woody-angiosperms,winter_bud_distribution_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,winter_bud_distribution_wa,TEXT,1,conspicuously clustered near branchlet apex,conspicuously clustered near branchlet apex,the winter buds are clustered near the tip of the twig,,,,https://newfs.s3.amazonaws.com/character-value-images/buds-clustered-at-top.gif,14
+woody-angiosperms,winter_bud_distribution_wa,TEXT,2,rather uniform,rather uniform,the winter buds are distributed fairly evenly along the twig,,,,https://newfs.s3.amazonaws.com/character-value-images/buds-uniform.gif,53
+woody-angiosperms,winter_bud_position_wa,TEXT,0,embedded in petiole base,embedded in petiole base,the winter bud has a leaf scar partially or completely surrounding it,,,,,9
+woody-angiosperms,winter_bud_position_wa,TEXT,1,NA,NA,,,,,,0
+woody-angiosperms,winter_bud_position_wa,TEXT,2,in leaf axil,in leaf axil,the winter bud has a leaf scar just below it,,,,https://newfs.s3.amazonaws.com/character-value-images/leaf-bundle-scar.gif,29
+woody-angiosperms,winter_bud_scale_indument_wa,TEXT,0,NA,NA,,,,,,7
+woody-angiosperms,winter_bud_scale_indument_wa,TEXT,1,pubescent,pubescent,the winter bud scales are hairy,,,,https://newfs.s3.amazonaws.com/character-value-images/winter-bud-scale-pubescent.gif,65
+woody-angiosperms,winter_bud_scale_indument_wa,TEXT,2,glabrous,glabrous,the winter bud scales have no hairs on them,,,,https://newfs.s3.amazonaws.com/character-value-images/winter-bud-scale-glabrous.gif,85
+woody-angiosperms,winter_bud_scale_number_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,winter_bud_scale_number_wa,TEXT,1,absent,absent,there are no scales on the winter buds,,,,,24
+woody-angiosperms,winter_bud_scale_number_wa,TEXT,2,two and valvate,two and valvate,"there are two scales on the winter bud, and their edges meet",,,,https://newfs.s3.amazonaws.com/character-value-images/winter-bud-scale-2.gif,87
+woody-angiosperms,winter_bud_scale_number_wa,TEXT,3,three or more and imbricate,three or more and imbricate,"there are three or more scales on the winter bud, and they overlap like shingles, with one edge covered and the other edge exposed",,,,https://newfs.s3.amazonaws.com/character-value-images/winter-bud-scale-3.gif,392
+woody-angiosperms,winter_bud_scale_number_wa,TEXT,4,one and cap-like,one and cap-like,"there is one scale on the winter bud, and it covers the scale like a cap",,,,https://newfs.s3.amazonaws.com/character-value-images/winter-bud-scale-1.gif,37
+woody-angiosperms,winter_bud_shape_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,winter_bud_shape_wa,TEXT,1,other,other,the winter buds are a shape other than the choices given,,,,,11
+woody-angiosperms,winter_bud_shape_wa,TEXT,2,conical,conical,the winter buds are conical (cone-shaped),,,,https://newfs.s3.amazonaws.com/character-value-images/conical-generic.gif,18
+woody-angiosperms,winter_bud_shape_wa,TEXT,3,ellipsoid,ellipsoid,the winter buds are ellipsoid (elliptical in three dimensions),,,,https://newfs.s3.amazonaws.com/character-value-images/ellipsoid-generic.gif,13
+woody-angiosperms,winter_bud_shape_wa,TEXT,4,globose,globose,"the winter buds are globose (spherical, globe-shaped)",,,,https://newfs.s3.amazonaws.com/character-value-images/globose-generic.gif,20
+woody-angiosperms,winter_bud_shape_wa,TEXT,5,lanceoloid,lanceoloid,"the winter buds are lanceoloid (lance-shaped, widest below the middle and tapering to the ends)",,,,https://newfs.s3.amazonaws.com/character-value-images/lanceoloid-generic.gif,14
+woody-angiosperms,winter_bud_shape_wa,TEXT,6,ovoid,ovoid,the winter buds are ovoid (egg-shaped),,,,https://newfs.s3.amazonaws.com/character-value-images/ovoid-generic.gif,111
+woody-angiosperms,winter_bud_stalks_wa,TEXT,0,NA,NA,,,,,,0
+woody-angiosperms,winter_bud_stalks_wa,TEXT,1,present,present,the winter buds have short stalks,,,,https://newfs.s3.amazonaws.com/character-value-images/winter-bud-stalk.gif,15
+woody-angiosperms,winter_bud_stalks_wa,TEXT,2,absent,absent,the winter buds have no stalks,,,,https://newfs.s3.amazonaws.com/character-value-images/winter-bud-scale-glabrous.gif,282

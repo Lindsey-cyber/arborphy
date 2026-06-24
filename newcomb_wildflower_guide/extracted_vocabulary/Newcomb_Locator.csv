@@ -1,0 +1,236 @@
+group_number,flower_type_label,plant_type_label,leaf_type_label,sub_group_1,sub_group_2,sub_group_3,description,page_number,extractor_warning
+111,Irregular Flowers,Wildflowers - No Apparent Leaves,No Apparent Leaves,,,,Aquatic plants of ponds and wet shores,16,0
+111,Irregular Flowers,Wildflowers - No Apparent Leaves,No Apparent Leaves,Not aquatic,,,Plants with a single flower,16,0
+111,Irregular Flowers,Wildflowers - No Apparent Leaves,No Apparent Leaves,Not aquatic,,,Flowers in spikes or racemes,18,0
+122,Irregular Flowers,Wildflowers - Basal Leaves Only,Leaves Entire,,,,Leaves with a heart- or arrow-shaped base,20,0
+122,Irregular Flowers,Wildflowers - Basal Leaves Only,Leaves Entire,,,,"Leaf solitary, not heart- or arrow-shaped",20,0
+122,Irregular Flowers,Wildflowers - Basal Leaves Only,Leaves Entire,,,,"Leaves 2, large and broad",22,0
+122,Irregular Flowers,Wildflowers - Basal Leaves Only,Leaves Entire,,,,"Leaves more than 2 (normally), not heart- or arrow-shaped",24,0
+123,Irregular Flowers,Wildflowers - Basal Leaves Only,Leaves Toothed or Lobed,,,,White or yellow flowers,28,0
+123,Irregular Flowers,Wildflowers - Basal Leaves Only,Leaves Toothed or Lobed,,,,"Blue, violet or purple flowers",30,0
+124,Irregular Flowers,Wildflowers - Basal Leaves Only,Leaves Divided,,,,Leaves divided into narrow segments,34,0
+124,Irregular Flowers,Wildflowers - Basal Leaves Only,Leaves Divided,,,,Leaves divided into 3 or more leaflets,36,0
+132,Irregular Flowers,Wildflowers - Alternate Leaves,Leaves Entire,Flowers growing singly or 2-4 in a cluster,,,Orchids with crested or pouched lip,38,0
+132,Irregular Flowers,Wildflowers - Alternate Leaves,Leaves Entire,Flowers growing singly or 2-4 in a cluster,,,Otherwise,40,0
+132,Irregular Flowers,Wildflowers - Alternate Leaves,Leaves Entire,"Flowers in spikes, racemes or heads",,,Flowers spurred (Rein Orchids),42,0
+132,Irregular Flowers,Wildflowers - Alternate Leaves,Leaves Entire,"Flowers in spikes, racemes or heads",,,Flowers not spurred,46,0
+132,Irregular Flowers,Wildflowers - Alternate Leaves,Leaves Entire,"Flowers in spikes, racemes or heads",,,Yellow or orange flowers,48,0
+132,Irregular Flowers,Wildflowers - Alternate Leaves,Leaves Entire,"Flowers in spikes, racemes or heads",,,Blue flowers,50,0
+133,Irregular Flowers,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,,,,Flowers short-stalked or stalkless,52,0
+133,Irregular Flowers,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,,,,"Flowers long-stalked, the stalks nearly as long as or longer than the flowers",54,0
+134,Irregular Flowers,Wildflowers - Alternate Leaves,Leaves Divided,"Leaflets 3, entire or finely toothed",,,Yellow flowers,58,0
+134,Irregular Flowers,Wildflowers - Alternate Leaves,Leaves Divided,"Leaflets 3, entire or finely toothed",Flowers not yellow,,Middle leaflet stalkless or nearly so,60,0
+134,Irregular Flowers,Wildflowers - Alternate Leaves,Leaves Divided,"Leaflets 3, entire or finely toothed",Flowers not yellow,Middle leaflet distinctly stalked,Leaflets finely toothed,60,0
+134,Irregular Flowers,Wildflowers - Alternate Leaves,Leaves Divided,"Leaflets 3, entire or finely toothed",Flowers not yellow,Middle leaflet distinctly stalked,Leaflets entire,62,0
+134,Irregular Flowers,Wildflowers - Alternate Leaves,Leaves Divided,,,,"Leaflets 4 or more, entire or finely toothed",66,0
+134,Irregular Flowers,Wildflowers - Alternate Leaves,Leaves Divided,Leaves deeply cleft into irregularly lobed or very narrow segments,Leaves deeply cleft into irregularly lobed or very narrow segments,,Blue or white flowers,68,0
+134,Irregular Flowers,Wildflowers - Alternate Leaves,Leaves Divided,Leaves deeply cleft into irregularly lobed or very narrow segments,Leaves deeply cleft into irregularly lobed or very narrow segments,,"Yellow, red or pink flowers",70,0
+142,Irregular Flowers,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,,,,Leaves whorled,72,0
+142,Irregular Flowers,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,,,,"Leaves 2, in the middle of the stem",74,0
+142,Irregular Flowers,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,Leaves in pairs,"Flowers short- or long-stalked, growing singly, or in pairs or racemes",,"Flowers white or blue, 4-lobed (Speedwells)",74,0
+142,Irregular Flowers,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,,,,Flowers 2-lipped or 6-petaled,76,0
+142,Irregular Flowers,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,Leaves in pairs,,,"Flowers stalkless, growing in whorls, heads or dense clusters",76,0
+142,Irregular Flowers,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,,,,"Flowers stalkless, growing in whorls, heads or dense clusters",78,0
+143,Irregular Flowers,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,,,,"Yellow, yellowish or straw-colored flowers",82,0
+143,Irregular Flowers,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,Flowers not yellow or yellowish,"Individual flowers stalkless, growing in 1 or more heads, spikes or whorls",,"Flowers medium-sized (1/4-3/4"" long)",84,0
+143,Irregular Flowers,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,Flowers not yellow or yellowish,"Individual flowers stalkless, growing in 1 or more heads, spikes or whorls",,Stamens protruding,84,0
+143,Irregular Flowers,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,Flowers not yellow or yellowish,"Individual flowers stalkless, growing in 1 or more heads, spikes or whorls",,Stamens not protruding,86,0
+143,Irregular Flowers,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,Flowers not yellow or yellowish,"Individual flowers stalkless, growing in 1 or more heads, spikes or whorls",,"Flowers very small (under 1/4"" long)",90,0
+143,Irregular Flowers,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,Flowers not yellow or yellowish,"Individual flowers stalkless, growing in 1 or more heads, spikes or whorls",,"Flowers large (1"" or more long)",92,0
+143,Irregular Flowers,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,Flowers not yellow or yellowish,,,"Flowers 4-lobed, with the lower lobe smaller than the other (Speedwells)",96,0
+143,Irregular Flowers,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,Flowers not yellow or yellowish,- Flowers 2-lipped,,Stem square,98,0
+143,Irregular Flowers,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,Flowers not yellow or yellowish,- Flowers 2-lipped,,Stem round,102,0
+144,Irregular Flowers,Wildflowers - Opposite or Whorled Leaves,Leaves Divided,,,,Leaves divided,102,0
+151,Irregular Flowers,Shrubs,No Apparent Leaves,,,,With no apparent leaves,104,0
+152,Irregular Flowers,Shrubs,Leaves Entire,,,,Leaves entire,104,0
+153,Irregular Flowers,Shrubs,Leaves Toothed or Lobed,,,,Leaves toothed,106,0
+154,Irregular Flowers,Shrubs,Leaves Divided,,,,Leaves divided,106,0
+162,Irregular Flowers,Vines,Leaves Entire,,,,Leaves entire,108,0
+164,Irregular Flowers,Vines,Leaves Divided,Leaves without tendrils,,,Leaflets 5 or more,108,0
+232-264,2 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,,,,Wildflowers or Vines,116,0
+322,3 Regular Parts,Wildflowers - Basal Leaves Only,Leaves Entire,,,,"Yellow, blue or purple-brown flowers",116,0
+322,3 Regular Parts,Wildflowers - Basal Leaves Only,Leaves Entire,,,,White or pink flowers,118,0
+332,3 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,,,,"Flowers large (3/4"" or more wide)",120,0
+332,3 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,,,,"Flowers small (under 1/2"" wide)",122,0
+333,3 Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,,,,Leaves toothed or lobed,122,0
+334,3 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,,,,Leaves divided,122,0
+342,3 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,,,,Wildflowers with Whorled Leaves,124,0
+352,3 Regular Parts,Shrubs,Leaves Entire,,,,Shrubs,126,0
+362,3 Regular Parts,Vines,Leaves Entire,,,,Vines,126,0
+411,4 Regular Parts,Wildflowers - No Apparent Leaves,No Apparent Leaves,,,,Wildflowers with No Apparent Leaves,126,0
+422,4 Regular Parts,Wildflowers - Basal Leaves Only,Leaves Entire,,,,Wildflowers with Basal Leaves only,128,0
+432,4 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,"White, pink, magenta or purple flowers",,,"Leaves under 1"" long, evergreen",128,0
+432,4 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,"White, pink, magenta or purple flowers",,,Leaves not evergreen,130,0
+432,4 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,,,,Yellow or green flowers,132,0
+433,4 Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,,,,Yellow flowers,134,0
+433,4 Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,"White, pink or purple flowers",,,"Leaves with an arrow-shaped base, which clasps the stem",136,0
+433,4 Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,"White, pink or purple flowers",Leaves not arrow-shaped,,Flowers in 1 or more spikes or racemes,138,0
+433,4 Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,"White, pink or purple flowers",Leaves not arrow-shaped,,Flowers not in spikes or racemes,140,0
+434,4 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,Yellow flowers,,,"Flowers 1/2"" or more wide",142,0
+434,4 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,Yellow flowers,,,"Flowers under 1/2"" wide",144,0
+434,4 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,Flowers not yellow,,,Stamens numerous and conspicuous,146,0
+434,4 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,Flowers not yellow,,,"Stamens few (5 or 6), inconspicuous",148,0
+442,4 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,,,,Leaves in whorls,152,0
+442,4 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,Leaves in pairs,,,Yellow or straw-colored flowers,154,0
+442,4 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,Leaves in pairs,,,Flowers not yellow or straw-colored,156,0
+443,4 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,,,,Flowers with 4 separate petals or flower rays,160,0
+443,4 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,,,,"Flowers 4-lobed, the parts obviously joined",160,0
+444,4 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Divided,,,,Leaves divided,162,0
+452,4 Regular Parts,Shrubs,Leaves Entire,,,,Shrubs under 2' high,164,0
+452,4 Regular Parts,Shrubs,Leaves Entire,Shrubs over 2' high,,,Flowers bell-shaped or tubular,164,0
+452,4 Regular Parts,Shrubs,Leaves Entire,Shrubs over 2' high,,,Flowers with 4 petals,166,0
+453,4 Regular Parts,Shrubs,Leaves Toothed or Lobed,,,,Leaves toothed or lobed,168,0
+454,4 Regular Parts,Shrubs,Leaves Divided,,,,Leaves divided,170,0
+464,4 Regular Parts,Vines,Leaves Divided,,,,Vines,170,0
+511,5 Regular Parts,Wildflowers - No Apparent Leaves,No Apparent Leaves,,,,Wildflowers with No Apparent Leaves,172,0
+522,5 Regular Parts,Wildflowers - Basal Leaves Only,Leaves Entire,,,,Flower stalk bearing more than 1 flower,174,0
+522,5 Regular Parts,Wildflowers - Basal Leaves Only,Leaves Entire,,,,Each flower stalk bearing a single flower,176,0
+523,5 Regular Parts,Wildflowers - Basal Leaves Only,Leaves Toothed or Lobed,,,,Flowers in a raceme or spike,178,0
+523,5 Regular Parts,Wildflowers - Basal Leaves Only,Leaves Toothed or Lobed,,,,Flowers in an umbel or branched cluster,180,0
+523,5 Regular Parts,Wildflowers - Basal Leaves Only,Leaves Toothed or Lobed,,,,Flowers growing singly or 2-3 in a cluster,182,0
+524,5 Regular Parts,Wildflowers - Basal Leaves Only,Leaves Divided,,,,Leaflets more than 3,182,0
+524,5 Regular Parts,Wildflowers - Basal Leaves Only,Leaves Divided,,,,Leaflets 3,184,0
+532,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,Yellow or orange flowers,,,"Largest leaves under 2"" long",186,0
+532,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,Yellow or orange flowers,,,"Largest leaves over 2"" long",188,0
+532,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,Flowers not yellow or orange,Stems jointed (Buckwheat Family),,Leaves arrow-shaped,188,0
+532,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,Flowers not yellow or orange,Stems jointed (Buckwheat Family),,Leaves not arrow-shaped,190,0
+532,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,Flowers not yellow or orange,Stems not jointed,,"Blue, violet or purple flowers",194,0
+532,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,Flowers not yellow or orange,Stems not jointed,,Low plants with evergreen or floating leaves,198,0
+532,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,Flowers not yellow or orange,Stems not jointed,,"Flowers 3/4"" or more wide",198,0
+532,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,Flowers not yellow or orange,Stems not jointed,,"Flowers under 3/4"" wide; leaves not evergreen or floating",200,0
+533,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Yellow flowers,,,Largest leaves about as wide as long,204,0
+533,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Yellow flowers,,,Largest leaves longer than wide,204,0
+533,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Flowers not yellow,Largest leaves as wide as long,,Plants prostrate or creeping over the ground,206,0
+533,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Flowers not yellow,Largest leaves as wide as long,,Erect plants,208,0
+533,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Flowers not yellow,Leaves longer than wide,,Flowers in heads,210,0
+533,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Flowers not yellow,Leaves longer than wide,,Flowers bell- or funnel-shaped,212,0
+533,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Flowers not yellow,Leaves longer than wide,,"Flowers showy (over 1"" wide), with large veiny petals (Mallows)",214,0
+533,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Flowers not yellow,Leaves longer than wide,,Flowers star- or wheel-shaped,216,0
+534,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,"Flowers very small (under 1/4"" wide or long)",,,"Flowers in dense spikes, racemes or heads",218,0
+534,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,"Flowers very small (under 1/4"" wide or long)",Flowers in umbels or flat clusters,,Leaves palmate with 3-5 leaflets,218,0
+534,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,"Flowers very small (under 1/4"" wide or long)",Flowers in umbels or flat clusters,,Leaves finely divided,220,0
+534,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,"Flowers very small (under 1/4"" wide or long)",Flowers in umbels or flat clusters,,Leaves once-pinnate,222,0
+534,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,"Flowers very small (under 1/4"" wide or long)",Flowers in umbels or flat clusters,,"Leaves 2 to 3-times-divided, but not finely divided",222,0
+534,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,"Flowers very small (under 1/4"" wide or long)",Flowers in umbels or flat clusters,,Yellow or purple flowers,226,0
+534,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,"Flowers 1/4"" or more wide or long",Flowers not yellow,,Bell-shaped or nodding flowers,228,0
+534,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,"Flowers 1/4"" or more wide or long",Flowers not yellow,,"Stem leaves with 3 or more entire, toothed or shallowly lobed leaflets",230,0
+534,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,"Flowers 1/4"" or more wide or long",Flowers not yellow,,Stem leaves or leaflets deeply lobed or divided,234,0
+534,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,"Flowers 1/4"" or more wide or long",Yellow flowers,,Basal (or lowest) leaves pinnately divided or lobed,236,0
+534,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,"Flowers 1/4"" or more wide or long",Yellow flowers,,"Leaflets 3-7, regularly toothed",240,0
+534,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,"Flowers 1/4"" or more wide or long",Yellow flowers,,Leaf divisions deeply lobed or divided,242,0
+534,5 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,"Flowers 1/4"" or more wide or long",Yellow flowers,,Leaflets entire or notched at the tip,246,0
+542,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,"Petals (or petal-like parts) grown together to form a tube, bell or cup",At least some of the flowers terminal,,"Flowers flat-topped, the lobes very narrow at the base and united to form a slender tube (Phloxes)",246,0
+542,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,"Petals (or petal-like parts) grown together to form a tube, bell or cup",At least some of the flowers terminal,,"Flowers under 1/2"" long, bell- or cup-shaped or tubular",250,0
+542,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,"Petals (or petal-like parts) grown together to form a tube, bell or cup",At least some of the flowers terminal,,"Flowers 1/2"" or more long, funnel- or club-shaped, or tubular with small flaring lobes",252,0
+542,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,"Petals (or petal-like parts) grown together to form a tube, bell or cup",,,Flowers all growing in the axils,256,0
+542,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,"Petals separate; sepals united into a tube, cup or bladder from which the petals emerge",,,Plants of dry habitats,258,0
+542,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,"Petals separate; sepals united into a tube, cup or bladder from which the petals emerge",,,Plants of swamps and wet meadows,262,0
+542,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,Both sepals and petals (if present) separate or appearing so,,,Plants with milky juice (Milkweeds),262,0
+542,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,Both sepals and petals (if present) separate or appearing so,Juice not milky,,Yellow flowers,266,0
+542,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,Both sepals and petals (if present) separate or appearing so,Juice not milky,,"Pink, red, blue or purple flowers",270,0
+542,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,Both sepals and petals (if present) separate or appearing so,Juice not milky,,Leaves whorled,272,0
+542,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,Both sepals and petals (if present) separate or appearing so,Juice not milky,,Leaves in pairs,274,0
+543,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,,,,Yellow flowers,278,0
+543,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,Flowers not yellow,,,Leaves deeply cut or lobed (halfway or more into the leaf),280,0
+543,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,Flowers not yellow,Leaves toothed or shallowly lobed,,Flowers in slender spikes or racemes,282,0
+543,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,Flowers not yellow,Leaves toothed or shallowly lobed,,Flowers growing in the axils,282,0
+543,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,Flowers not yellow,Leaves toothed or shallowly lobed,,Flowers in heads or in 1 or more small clusters,284,0
+544,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Divided,,,,Yellow flowers,286,0
+544,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Divided,Flowers not yellow,,,"Individual flowers under 1/4"" wide",286,0
+544,5 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Divided,Flowers not yellow,,,"Flowers 1/2"" or more wide",288,0
+551,5 Regular Parts,Shrubs,No Apparent Leaves,,,,With no apparent leaves,290,0
+552,5 Regular Parts,Shrubs,Leaves Entire,"Leaves evergreen, stiff and leathery",,,"Leaves under 1"" long",290,0
+552,5 Regular Parts,Shrubs,Leaves Entire,"Leaves evergreen, stiff and leathery",,,"Leaves 1"" or more long",292,0
+552,5 Regular Parts,Shrubs,Leaves Entire,Leaves not evergreen,,,Leaves growing in pairs or 3's,294,0
+552,5 Regular Parts,Shrubs,Leaves Entire,Leaves not evergreen,Leaves alternate or clustered at the ends of the branches,,"Flowers bell- or globe-shaped, 1/8-1/2"" long",296,0
+552,5 Regular Parts,Shrubs,Leaves Entire,Leaves not evergreen,Leaves alternate or clustered at the ends of the branches,,Flowers not bell- or globe-shaped,300,0
+553,5 Regular Parts,Shrubs,Leaves Toothed or Lobed,"Leaves opposite, obviously growing in pairs",,,White flowers in broad branching clusters,302,0
+553,5 Regular Parts,Shrubs,Leaves Toothed or Lobed,"Leaves opposite, obviously growing in pairs",,,"Yellow, greenish or purplish flowers",304,0
+553,5 Regular Parts,Shrubs,Leaves Toothed or Lobed,Leaves alternate or clustered,Leaves with 3-7 lobes,,"Flowers small and inconspicuous, growing in the axils",306,0
+553,5 Regular Parts,Shrubs,Leaves Toothed or Lobed,Leaves alternate or clustered,Leaves with 3-7 lobes,,"Showy, white or rose-purple flowers",308,0
+553,5 Regular Parts,Shrubs,Leaves Toothed or Lobed,Leaves alternate or clustered,Leaves unlobed,,Flowers bell- or funnel-shaped,308,0
+553,5 Regular Parts,Shrubs,Leaves Toothed or Lobed,Leaves alternate or clustered,Leaves unlobed,,"Greenish-white or greenish flowers, growing in the axils",310,0
+553,5 Regular Parts,Shrubs,Leaves Toothed or Lobed,Leaves alternate or clustered,Leaves unlobed,,Blooming mid-June to fall,310,0
+553,5 Regular Parts,Shrubs,Leaves Toothed or Lobed,Leaves alternate or clustered,Leaves unlobed,,Blooming in spring,312,0
+554,5 Regular Parts,Shrubs,Leaves Divided,,,,"Flowers 1/2"" or more wide",316,0
+554,5 Regular Parts,Shrubs,Leaves Divided,"Flowers under 1/2"" wide",,,Leaflets 3,318,0
+554,5 Regular Parts,Shrubs,Leaves Divided,"Flowers under 1/2"" wide",Leaflets 5 or more,,Stems not prickly,320,0
+554,5 Regular Parts,Shrubs,Leaves Divided,"Flowers under 1/2"" wide",Leaflets 5 or more,,Stems prickly,322,0
+561,5 Regular Parts,Vines,No Apparent Leaves,,,,With no apparent leaves,322,0
+562,5 Regular Parts,Vines,Leaves Entire,,,,Leaves heart- or arrow-shaped at the base,322,0
+562,5 Regular Parts,Vines,Leaves Entire,,,,Leaves not heart- or arrow-shaped,326,0
+563,5 Regular Parts,Vines,Leaves Toothed or Lobed,,,,Vines without tendrils,326,0
+563,5 Regular Parts,Vines,Leaves Toothed or Lobed,,,,Vines clinging by tendrils,328,0
+564,5 Regular Parts,Vines,Leaves Divided,,,,Flowers not white or green,328,0
+564,5 Regular Parts,Vines,Leaves Divided,,,,White or green flowers,330,0
+611,6 Regular Parts,Wildflowers - No Apparent Leaves,No Apparent Leaves,,,,Wildflowers with No Apparent Leaves,332,0
+622,6 Regular Parts,Wildflowers - Basal Leaves Only,Leaves Entire,Leaves narrow,,,Blue or violet flowers,332,0
+622,6 Regular Parts,Wildflowers - Basal Leaves Only,Leaves Entire,Leaves narrow,,,"White, pink or greenish flowers",334,0
+622,6 Regular Parts,Wildflowers - Basal Leaves Only,Leaves Entire,Leaves narrow,,,"Orange, yellow or greenish-yellow flowers",336,0
+622,6 Regular Parts,Wildflowers - Basal Leaves Only,Leaves Entire,Leaves lance-shaped or wider,,,Flowers in a spike or raceme,336,0
+622,6 Regular Parts,Wildflowers - Basal Leaves Only,Leaves Entire,Leaves lance-shaped or wider,,,Flowers single or in a small cluster,338,0
+623-624,6 Regular Parts,Wildflowers - Basal Leaves Only,Leaves Toothed or Lobed,,,,"Leaves toothed, lobed or divided",338,0
+632,6 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,,,,"Nodding, bell-shaped flowers",340,0
+632,6 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,"Flowers in racemes, spikes or widely branched clusters",,,Larger leaves long and narrow,344,0
+632,6 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,"Flowers in racemes, spikes or widely branched clusters",,,Larger leaves lance-shaped or wider,346,0
+632,6 Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,,,,"Flowers solitary, or in umbels or small clusters, not bell-shaped",348,0
+633,6 Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,,,,Leaves toothed or lobed,350,0
+634,6 Regular Parts,Wildflowers - Alternate Leaves,Leaves Divided,,,,Leaves divided,351,0
+642,6 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,,,,Flowers white or purple,351,0
+642,6 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,,,,Flowers neither white nor purple,352,0
+643-644,6 Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,,,,"Leaves toothed, lobed or divided",354,0
+651-653,6 Regular Parts,Shrubs,No Apparent Leaves,,,,Shrubs,354,0
+662-663,6 Regular Parts,Vines,Leaves Entire,,,,Vines,356,0
+711,7 or More Regular Parts,Wildflowers - No Apparent Leaves,No Apparent Leaves,,,,Wildflowers with No Apparent Leaves,358,0
+722,7 or More Regular Parts,Wildflowers - Basal Leaves Only,Leaves Entire,,,,Aquatic plants,358,0
+722,7 or More Regular Parts,Wildflowers - Basal Leaves Only,Leaves Entire,,,,Plants of dry places,360,0
+723-724,7 or More Regular Parts,Wildflowers - Basal Leaves Only,Leaves Toothed or Lobed,Yellow flowers,,,Leaves 2 or more times longer than wide,362,0
+723-724,7 or More Regular Parts,Wildflowers - Basal Leaves Only,Leaves Toothed or Lobed,Yellow flowers,,,Leaves about as wide as long,364,0
+723-724,7 or More Regular Parts,Wildflowers - Basal Leaves Only,Leaves Toothed or Lobed,,,,"White, pink or blue flowers",364,0
+732,7 or More Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,Yellow or orange flowers,,,Daisylike or asterlike flowers,366,0
+732,7 or More Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,Yellow or orange flowers,,,Dandelionlike flowers,366,0
+732,7 or More Regular Parts,Wildflowers - Alternate Leaves,Leaves Entire,,,,Flowers not yellow,368,0
+733-734,7 or More Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Yellow or orange flowers,Dandelionlike flowers,,"Stem leaves with a heart- or arrow-shaped base, which clasps the stem",370,0
+733-734,7 or More Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Yellow or orange flowers,Dandelionlike flowers,,Stem leaves not heart- or arrow-shaped at the base,372,0
+733-734,7 or More Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Yellow or orange flowers,Daisylike or asterlike flowers or flowers with shining petals,,Flower heads with a dark central disk,374,0
+733-734,7 or More Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Yellow or orange flowers,Daisylike or asterlike flowers or flowers with shining petals,,"Flower heads or flowers 1"" or more wide",376,0
+733-734,7 or More Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Yellow or orange flowers,Daisylike or asterlike flowers or flowers with shining petals,,"Flower heads or flowers under 1"" wide",378,0
+733-734,7 or More Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Flowers not yellow or orange,Daisylike or asterlike flowers,,Leaves deeply lobed or divided,380,0
+733-734,7 or More Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Flowers not yellow or orange,Daisylike or asterlike flowers,,Leaves toothed,382,0
+733-734,7 or More Regular Parts,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Flowers not yellow or orange,,,Flowers not daisylike or asterlike,384,0
+742,7 or More Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,,,,Leaves entire,386,0
+743,7 or More Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,Yellow flowers,,,Leaves with a pair of prominent lower veins running parallel to the midrib,388,0
+743,7 or More Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,Yellow flowers,,,Leaves with only the midrib prominent,392,0
+743,7 or More Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,,,,White or pink flowers,392,0
+744,7 or More Regular Parts,Wildflowers - Opposite or Whorled Leaves,Leaves Divided,,,,Leaves divided,394,0
+752-764,7 or More Regular Parts,Shrubs,Leaves Entire,,,,Shrubs and Vines,396,0
+811,Parts Indistinguishable,Wildflowers - No Apparent Leaves,No Apparent Leaves,,,,Wildflowers with No Apparent Leaves,398,0
+822-823,Parts Indistinguishable,Wildflowers - Basal Leaves Only,Leaves Entire,,,,Wildflowers with Basal Leaves Only,398,0
+832,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Entire,,,,Stem and underside of leaves white-woolly,400,0
+832,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Entire,Stem jointed,,,Leaves arrow-shaped,402,0
+832,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Entire,Stem jointed,,,Leaves not arrow-shaped,402,0
+832,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Entire,Stem neither white-woolly nor jointed,"Larger leaves under 2"" long",,Flowers growing mostly in the axils,406,0
+832,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Entire,Stem neither white-woolly nor jointed,"Larger leaves under 2"" long",,Flowers mostly in terminal clusters,408,0
+832,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Entire,Stem neither white-woolly nor jointed,,,"Larger leaves over 1' long, very narrow",410,0
+832,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Entire,Stem neither white-woolly nor jointed,,,"Larger leaves 2-12"" long",412,0
+833,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,,,,Flowers growing mostly in the axils,416,0
+833,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Flowers terminal,,,Yellow flowers,416,0
+833,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Flowers terminal,,,Purple or pink flowers in heads,418,0
+833,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Flowers terminal,White or greenish-white flowers,,Larger leaves more than twice as long as wide,418,0
+833,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Flowers terminal,White or greenish-white flowers,,"Larger leaves broad, no more than 11/2 times as long as wide",420,0
+833,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Toothed or Lobed,Flowers terminal,,,Greenish or reddish flowers,420,0
+834,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Divided,Leaves divided into 3 or more lance-shaped or wider leaflets,,,"Flowers in spikes, racemes or heads",424,0
+834,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Divided,Leaves divided into 3 or more lance-shaped or wider leaflets,,,Flowers in umbels or branching clusters,426,0
+834,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Divided,Leaves deeply and irregularly lobed or divided into narrow segments,,,Leaves not prickly,426,0
+834,Parts Indistinguishable,Wildflowers - Alternate Leaves,Leaves Divided,Leaves deeply and irregularly lobed or divided into narrow segments,,,Leaves prickly; flowers in large heads (Thistles),430,0
+842,Parts Indistinguishable,Wildflowers - Opposite or Whorled Leaves,Leaves Entire,,,,Leaves entire,432,0
+843-844,Parts Indistinguishable,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,"Flowers numerous, in broad, branching clusters",,,White flowers,434,0
+843-844,Parts Indistinguishable,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,"Flowers numerous, in broad, branching clusters",,,"Purple, pink, blue or violet flowers",436,0
+843-844,Parts Indistinguishable,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,,,,Flowers mostly in terminal racemes or spikes,438,0
+843-844,Parts Indistinguishable,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,,,,Flowers growing mostly in the axils,438,0
+843-844,Parts Indistinguishable,Wildflowers - Opposite or Whorled Leaves,Leaves Toothed or Lobed,,,,"Flowers in heads, not in broad clusters",440,0
+851-853,Parts Indistinguishable,Shrubs,No Apparent Leaves,,,,Shrubs,442,0
+862-864,Parts Indistinguishable,Vines,Leaves Entire,,,,Vines,444,0
+000,Goldenrods (Solidago),,,,,,,446,
+000,Asters (Aster),,,,,,,454,
+,End of book,,,,,,,463,

@@ -1,0 +1,1884 @@
+{
+  "summary": {
+    "feature_value_pairs.csv": {
+      "count": 74,
+      "columns": [
+        [
+          "feature",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "value",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "references.csv": {
+      "count": 67,
+      "columns": [
+        [
+          "feature_value",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "reference_image_link",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "reference_illustration_path",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "reference_description",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "feature",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "newcomb_preprocessed.csv": {
+      "count": 387,
+      "columns": [
+        [
+          "newcomb_species_name",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "species_inat",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "subspecies_inat",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "suggested_species_id",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "species_page",
+          "DOUBLE",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_page_range_start",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_page_range_end",
+          "DOUBLE",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_group_number",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_flower_type",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_plant_type",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_leaf_type",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_subgroup_1",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_subgroup_2",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_subgroup_3",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_description",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "species_inat_link",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "subspecies_inat_link",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "warning_species_extraction",
+          "DOUBLE",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "warning_key_extraction",
+          "DOUBLE",
+          "YES",
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "newcomb_feature_concept.parquet": {
+      "count": 6,
+      "columns": [
+        [
+          "source_id",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "feature_name",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "feature_group",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "feature_prompt",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "path_level",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "is_subgroup",
+          "BOOLEAN",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "value_count",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "notes",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "newcomb_key_route.parquet": {
+      "count": 147,
+      "columns": [
+        [
+          "route_id",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_group_number",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_flower_type",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_plant_type",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_leaf_type",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_subgroup_1",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_subgroup_2",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_subgroup_3",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_page_range_start",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_page_range_end",
+          "DOUBLE",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "key_description",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "newcomb_route_feature_value.parquet": {
+      "count": 595,
+      "columns": [
+        [
+          "route_id",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "path_k",
+          "INTEGER",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "feature_name",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "feature_value",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "newcomb_taxon.parquet": {
+      "count": 423,
+      "columns": [
+        [
+          "taxon_id",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "scientific_name",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "canonical_name",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "subspecies_inat",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "suggested_species_id",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "species_inat_link",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "newcomb_taxon_route.parquet": {
+      "count": 781,
+      "columns": [
+        [
+          "taxon_id",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "route_id",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "species_page",
+          "DOUBLE",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "warning_species_extraction",
+          "DOUBLE",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "warning_key_extraction",
+          "DOUBLE",
+          "YES",
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "newcomb_locator_entry.parquet": {
+      "count": 232,
+      "columns": [
+        [
+          "locator_entry_id",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "flower_type",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "plant_type",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "leaf_type",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "group_number",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "entry_ordinal",
+          "INTEGER",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "entry_description",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "entry_page",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "newcomb_locator_entry_subgroup.parquet": {
+      "count": 210,
+      "columns": [
+        [
+          "locator_entry_id",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "subgroup_ordinal",
+          "INTEGER",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "subgroup_value",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "newcomb_locator_decision_edge.parquet": {
+      "count": 647,
+      "columns": [
+        [
+          "from_node_id",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "to_node_id",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "edge_type",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "from_label",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "to_label",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "group_number",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "locator_entry_id",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "edge_order",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "newcomb_locator_json_tree.parquet": {
+      "count": 1683,
+      "columns": [
+        [
+          "json_node_id",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "parent_json_node_id",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "node_key",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "node_type",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "fullkey",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "parent_path",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "atom",
+          "JSON",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "value",
+          "JSON",
+          "YES",
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "newcomb_source_meta.parquet": {
+      "count": 1,
+      "columns": [
+        [
+          "source_id",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "source_title",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "source_type",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "source_version",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "extraction_description",
+          "VARCHAR",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "total_entries",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ],
+        [
+          "unique_groups",
+          "BIGINT",
+          "YES",
+          null,
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "metrics": {
+    "jm_feature_value_pairs_by_feature": [
+      [
+        "key_flower_type",
+        7
+      ],
+      [
+        "key_leaf_type",
+        4
+      ],
+      [
+        "key_plant_type",
+        6
+      ],
+      [
+        "key_subgroup_1",
+        33
+      ],
+      [
+        "key_subgroup_2",
+        23
+      ],
+      [
+        "key_subgroup_3",
+        1
+      ]
+    ],
+    "jm_references_by_feature": [
+      [
+        "key_flower_type",
+        7
+      ],
+      [
+        "key_leaf_type",
+        4
+      ],
+      [
+        "key_plant_type",
+        6
+      ],
+      [
+        "key_subgroup_1",
+        28
+      ],
+      [
+        "key_subgroup_2",
+        21
+      ],
+      [
+        "key_subgroup_3",
+        1
+      ]
+    ],
+    "jm_newcomb_distinct_nonnull_counts": [
+      387,
+      387,
+      344,
+      53,
+      7,
+      6,
+      4,
+      33,
+      23,
+      1
+    ],
+    "pq_feature_concept_by_feature": [
+      [
+        "flower_type",
+        9,
+        1,
+        false
+      ],
+      [
+        "plant_type",
+        6,
+        2,
+        false
+      ],
+      [
+        "leaf_type",
+        4,
+        3,
+        false
+      ],
+      [
+        "subgroup_1",
+        33,
+        4,
+        true
+      ],
+      [
+        "subgroup_2",
+        23,
+        5,
+        true
+      ],
+      [
+        "subgroup_3",
+        1,
+        6,
+        true
+      ]
+    ],
+    "pq_route_feature_value_by_feature": [
+      [
+        "flower_type",
+        147,
+        9
+      ],
+      [
+        "leaf_type",
+        147,
+        4
+      ],
+      [
+        "plant_type",
+        147,
+        6
+      ],
+      [
+        "subgroup_1",
+        99,
+        33
+      ],
+      [
+        "subgroup_2",
+        53,
+        23
+      ],
+      [
+        "subgroup_3",
+        2,
+        1
+      ]
+    ],
+    "pq_taxon_route_stats": [
+      781,
+      387,
+      145
+    ],
+    "pq_taxon_stats": [
+      423,
+      423
+    ],
+    "jm_values_missing_in_pq": [
+      [
+        "key_flower_type",
+        "3 Regular Parts"
+      ],
+      [
+        "key_flower_type",
+        "4 Regular Parts"
+      ],
+      [
+        "key_flower_type",
+        "5 Regular Parts"
+      ],
+      [
+        "key_flower_type",
+        "6 Regular Parts"
+      ],
+      [
+        "key_flower_type",
+        "7 or More Regular Parts"
+      ],
+      [
+        "key_flower_type",
+        "Irregular Flowers"
+      ],
+      [
+        "key_flower_type",
+        "Parts Indistinguishable"
+      ],
+      [
+        "key_leaf_type",
+        "Leaves Divided"
+      ],
+      [
+        "key_leaf_type",
+        "Leaves Entire"
+      ],
+      [
+        "key_leaf_type",
+        "Leaves Toothed or Lobed"
+      ],
+      [
+        "key_leaf_type",
+        "No Apparent Leaves"
+      ],
+      [
+        "key_plant_type",
+        "Shrubs"
+      ],
+      [
+        "key_plant_type",
+        "Vines"
+      ],
+      [
+        "key_plant_type",
+        "Wildflowers - Alternate Leaves"
+      ],
+      [
+        "key_plant_type",
+        "Wildflowers - Basal Leaves Only"
+      ],
+      [
+        "key_plant_type",
+        "Wildflowers - No Apparent Leaves"
+      ],
+      [
+        "key_plant_type",
+        "Wildflowers - Opposite or Whorled Leaves"
+      ],
+      [
+        "key_subgroup_1",
+        "Both sepals and petals (if present) separate or appearing so"
+      ],
+      [
+        "key_subgroup_1",
+        "Flowers 1/4\" or more wide or long"
+      ],
+      [
+        "key_subgroup_1",
+        "Flowers growing singly or 2-4 in a cluster"
+      ],
+      [
+        "key_subgroup_1",
+        "Flowers in racemes, spikes or widely branched clusters"
+      ],
+      [
+        "key_subgroup_1",
+        "Flowers in spikes, racemes or heads"
+      ],
+      [
+        "key_subgroup_1",
+        "Flowers not yellow"
+      ],
+      [
+        "key_subgroup_1",
+        "Flowers not yellow or orange"
+      ],
+      [
+        "key_subgroup_1",
+        "Flowers not yellow or yellowish"
+      ],
+      [
+        "key_subgroup_1",
+        "Flowers numerous, in broad, branching clusters"
+      ],
+      [
+        "key_subgroup_1",
+        "Flowers terminal"
+      ],
+      [
+        "key_subgroup_1",
+        "Flowers under 1/2\" wide"
+      ],
+      [
+        "key_subgroup_1",
+        "Flowers very small (under 1/4\" wide or long)"
+      ],
+      [
+        "key_subgroup_1",
+        "Leaflets 3, entire or finely toothed"
+      ],
+      [
+        "key_subgroup_1",
+        "Leaves alternate or clustered"
+      ],
+      [
+        "key_subgroup_1",
+        "Leaves deeply and irregularly lobed or divided into narrow segments"
+      ],
+      [
+        "key_subgroup_1",
+        "Leaves deeply cleft into irregularly lobed or very narrow segments"
+      ],
+      [
+        "key_subgroup_1",
+        "Leaves divided into 3 or more lance-shaped or wider leaflets"
+      ],
+      [
+        "key_subgroup_1",
+        "Leaves evergreen, stiff and leathery"
+      ],
+      [
+        "key_subgroup_1",
+        "Leaves in pairs"
+      ],
+      [
+        "key_subgroup_1",
+        "Leaves narrow"
+      ],
+      [
+        "key_subgroup_1",
+        "Leaves not evergreen"
+      ],
+      [
+        "key_subgroup_1",
+        "Leaves opposite, obviously growing in pairs"
+      ],
+      [
+        "key_subgroup_1",
+        "Leaves without tendrils"
+      ],
+      [
+        "key_subgroup_1",
+        "Not aquatic"
+      ],
+      [
+        "key_subgroup_1",
+        "Petals (or petal-like parts) grown together to form a tube, bell or cup"
+      ],
+      [
+        "key_subgroup_1",
+        "Petals separate; sepals united into a tube, cup or bladder from which the petals emerge"
+      ],
+      [
+        "key_subgroup_1",
+        "Shrubs over 2' high"
+      ],
+      [
+        "key_subgroup_1",
+        "Stem jointed"
+      ],
+      [
+        "key_subgroup_1",
+        "Stem neither white-woolly nor jointed"
+      ],
+      [
+        "key_subgroup_1",
+        "White, pink or purple flowers"
+      ],
+      [
+        "key_subgroup_1",
+        "White, pink, magenta or purple flowers"
+      ],
+      [
+        "key_subgroup_1",
+        "Yellow flowers"
+      ],
+      [
+        "key_subgroup_1",
+        "Yellow or orange flowers"
+      ],
+      [
+        "key_subgroup_2",
+        "- Flowers 2-lipped"
+      ],
+      [
+        "key_subgroup_2",
+        "At least some of the flowers terminal"
+      ],
+      [
+        "key_subgroup_2",
+        "Daisylike or asterlike flowers"
+      ],
+      [
+        "key_subgroup_2",
+        "Daisylike or asterlike flowers or flowers with shining petals"
+      ],
+      [
+        "key_subgroup_2",
+        "Dandelionlike flowers"
+      ],
+      [
+        "key_subgroup_2",
+        "Flowers in umbels or flat clusters"
+      ],
+      [
+        "key_subgroup_2",
+        "Flowers not yellow"
+      ],
+      [
+        "key_subgroup_2",
+        "Individual flowers stalkless, growing in 1 or more heads, spikes or whorls"
+      ],
+      [
+        "key_subgroup_2",
+        "Juice not milky"
+      ],
+      [
+        "key_subgroup_2",
+        "Larger leaves under 2\" long"
+      ],
+      [
+        "key_subgroup_2",
+        "Largest leaves as wide as long"
+      ],
+      [
+        "key_subgroup_2",
+        "Leaflets 5 or more"
+      ],
+      [
+        "key_subgroup_2",
+        "Leaves alternate or clustered at the ends of the branches"
+      ],
+      [
+        "key_subgroup_2",
+        "Leaves deeply cleft into irregularly lobed or very narrow segments"
+      ],
+      [
+        "key_subgroup_2",
+        "Leaves longer than wide"
+      ],
+      [
+        "key_subgroup_2",
+        "Leaves not arrow-shaped"
+      ],
+      [
+        "key_subgroup_2",
+        "Leaves toothed or shallowly lobed"
+      ],
+      [
+        "key_subgroup_2",
+        "Leaves unlobed"
+      ],
+      [
+        "key_subgroup_2",
+        "Leaves with 3-7 lobes"
+      ],
+      [
+        "key_subgroup_2",
+        "Stems jointed (Buckwheat Family)"
+      ],
+      [
+        "key_subgroup_2",
+        "Stems not jointed"
+      ],
+      [
+        "key_subgroup_2",
+        "White or greenish-white flowers"
+      ],
+      [
+        "key_subgroup_2",
+        "Yellow flowers"
+      ],
+      [
+        "key_subgroup_3",
+        "Middle leaflet distinctly stalked"
+      ]
+    ],
+    "pq_values_not_in_jm": [
+      [
+        "flower_type",
+        "3 Regular Parts"
+      ],
+      [
+        "flower_type",
+        "4 Regular Parts"
+      ],
+      [
+        "flower_type",
+        "5 Regular Parts"
+      ],
+      [
+        "flower_type",
+        "6 Regular Parts"
+      ],
+      [
+        "flower_type",
+        "7 or More Regular Parts"
+      ],
+      [
+        "flower_type",
+        "Asters (Aster)"
+      ],
+      [
+        "flower_type",
+        "Goldenrods (Solidago)"
+      ],
+      [
+        "flower_type",
+        "Irregular Flowers"
+      ],
+      [
+        "flower_type",
+        "Parts Indistinguishable"
+      ],
+      [
+        "leaf_type",
+        "Leaves Divided"
+      ],
+      [
+        "leaf_type",
+        "Leaves Entire"
+      ],
+      [
+        "leaf_type",
+        "Leaves Toothed or Lobed"
+      ],
+      [
+        "leaf_type",
+        "No Apparent Leaves"
+      ],
+      [
+        "leaf_type",
+        null
+      ],
+      [
+        "plant_type",
+        "Shrubs"
+      ],
+      [
+        "plant_type",
+        "Vines"
+      ],
+      [
+        "plant_type",
+        "Wildflowers - Alternate Leaves"
+      ],
+      [
+        "plant_type",
+        "Wildflowers - Basal Leaves Only"
+      ],
+      [
+        "plant_type",
+        "Wildflowers - No Apparent Leaves"
+      ],
+      [
+        "plant_type",
+        "Wildflowers - Opposite or Whorled Leaves"
+      ],
+      [
+        "plant_type",
+        null
+      ],
+      [
+        "subgroup_1",
+        "Both sepals and petals (if present) separate or appearing so"
+      ],
+      [
+        "subgroup_1",
+        "Flowers 1/4\" or more wide or long"
+      ],
+      [
+        "subgroup_1",
+        "Flowers growing singly or 2-4 in a cluster"
+      ],
+      [
+        "subgroup_1",
+        "Flowers in racemes, spikes or widely branched clusters"
+      ],
+      [
+        "subgroup_1",
+        "Flowers in spikes, racemes or heads"
+      ],
+      [
+        "subgroup_1",
+        "Flowers not yellow"
+      ],
+      [
+        "subgroup_1",
+        "Flowers not yellow or orange"
+      ],
+      [
+        "subgroup_1",
+        "Flowers not yellow or yellowish"
+      ],
+      [
+        "subgroup_1",
+        "Flowers numerous, in broad, branching clusters"
+      ],
+      [
+        "subgroup_1",
+        "Flowers terminal"
+      ],
+      [
+        "subgroup_1",
+        "Flowers under 1/2\" wide"
+      ],
+      [
+        "subgroup_1",
+        "Flowers very small (under 1/4\" wide or long)"
+      ],
+      [
+        "subgroup_1",
+        "Leaflets 3, entire or finely toothed"
+      ],
+      [
+        "subgroup_1",
+        "Leaves alternate or clustered"
+      ],
+      [
+        "subgroup_1",
+        "Leaves deeply and irregularly lobed or divided into narrow segments"
+      ],
+      [
+        "subgroup_1",
+        "Leaves deeply cleft into irregularly lobed or very narrow segments"
+      ],
+      [
+        "subgroup_1",
+        "Leaves divided into 3 or more lance-shaped or wider leaflets"
+      ],
+      [
+        "subgroup_1",
+        "Leaves evergreen, stiff and leathery"
+      ],
+      [
+        "subgroup_1",
+        "Leaves in pairs"
+      ],
+      [
+        "subgroup_1",
+        "Leaves narrow"
+      ],
+      [
+        "subgroup_1",
+        "Leaves not evergreen"
+      ],
+      [
+        "subgroup_1",
+        "Leaves opposite, obviously growing in pairs"
+      ],
+      [
+        "subgroup_1",
+        "Leaves without tendrils"
+      ],
+      [
+        "subgroup_1",
+        "Not aquatic"
+      ],
+      [
+        "subgroup_1",
+        "Petals (or petal-like parts) grown together to form a tube, bell or cup"
+      ],
+      [
+        "subgroup_1",
+        "Petals separate; sepals united into a tube, cup or bladder from which the petals emerge"
+      ],
+      [
+        "subgroup_1",
+        "Shrubs over 2' high"
+      ],
+      [
+        "subgroup_1",
+        "Stem jointed"
+      ],
+      [
+        "subgroup_1",
+        "Stem neither white-woolly nor jointed"
+      ],
+      [
+        "subgroup_1",
+        "White, pink or purple flowers"
+      ],
+      [
+        "subgroup_1",
+        "White, pink, magenta or purple flowers"
+      ],
+      [
+        "subgroup_1",
+        "Yellow flowers"
+      ],
+      [
+        "subgroup_1",
+        "Yellow or orange flowers"
+      ],
+      [
+        "subgroup_2",
+        "- Flowers 2-lipped"
+      ],
+      [
+        "subgroup_2",
+        "At least some of the flowers terminal"
+      ],
+      [
+        "subgroup_2",
+        "Daisylike or asterlike flowers"
+      ],
+      [
+        "subgroup_2",
+        "Daisylike or asterlike flowers or flowers with shining petals"
+      ],
+      [
+        "subgroup_2",
+        "Dandelionlike flowers"
+      ],
+      [
+        "subgroup_2",
+        "Flowers in umbels or flat clusters"
+      ],
+      [
+        "subgroup_2",
+        "Flowers not yellow"
+      ],
+      [
+        "subgroup_2",
+        "Individual flowers stalkless, growing in 1 or more heads, spikes or whorls"
+      ],
+      [
+        "subgroup_2",
+        "Juice not milky"
+      ],
+      [
+        "subgroup_2",
+        "Larger leaves under 2\" long"
+      ],
+      [
+        "subgroup_2",
+        "Largest leaves as wide as long"
+      ],
+      [
+        "subgroup_2",
+        "Leaflets 5 or more"
+      ],
+      [
+        "subgroup_2",
+        "Leaves alternate or clustered at the ends of the branches"
+      ],
+      [
+        "subgroup_2",
+        "Leaves deeply cleft into irregularly lobed or very narrow segments"
+      ],
+      [
+        "subgroup_2",
+        "Leaves longer than wide"
+      ],
+      [
+        "subgroup_2",
+        "Leaves not arrow-shaped"
+      ],
+      [
+        "subgroup_2",
+        "Leaves toothed or shallowly lobed"
+      ],
+      [
+        "subgroup_2",
+        "Leaves unlobed"
+      ],
+      [
+        "subgroup_2",
+        "Leaves with 3-7 lobes"
+      ],
+      [
+        "subgroup_2",
+        "Stems jointed (Buckwheat Family)"
+      ],
+      [
+        "subgroup_2",
+        "Stems not jointed"
+      ],
+      [
+        "subgroup_2",
+        "White or greenish-white flowers"
+      ],
+      [
+        "subgroup_2",
+        "Yellow flowers"
+      ],
+      [
+        "subgroup_3",
+        "Middle leaflet distinctly stalked"
+      ]
+    ],
+    "jm_species_not_in_pq_taxon": [
+      [
+        "Actaea podocarpa"
+      ],
+      [
+        "Actaea racemosa"
+      ],
+      [
+        "Agalinis maritima"
+      ],
+      [
+        "Agalinis purpurea"
+      ],
+      [
+        "Agalinis tenuifolia"
+      ],
+      [
+        "Agastache scrophulariifolia"
+      ],
+      [
+        "Ageratina altissima"
+      ],
+      [
+        "Ageratina aromatica"
+      ],
+      [
+        "Alliaria petiolata"
+      ],
+      [
+        "Amaranthus blitoides"
+      ],
+      [
+        "Amaranthus cannabinus"
+      ],
+      [
+        "Amianthium muscitoxicum"
+      ],
+      [
+        "Amphicarpaea bracteata"
+      ],
+      [
+        "Anchusa arvensis"
+      ],
+      [
+        "Andersonglossum virginianum"
+      ],
+      [
+        "Andromeda polifolia"
+      ],
+      [
+        "Anemonastrum canadense"
+      ],
+      [
+        "Anemone virginiana"
+      ],
+      [
+        "Anemonoides lancifolia"
+      ],
+      [
+        "Anemonoides quinquefolia"
+      ],
+      [
+        "Antennaria howellii ssp. canadensis"
+      ],
+      [
+        "Antennaria howellii ssp. neodioica"
+      ],
+      [
+        "Antennaria parlinii ssp. parlinii"
+      ],
+      [
+        "Aphyllon uniflorum"
+      ],
+      [
+        "Apocynum \u00d7floribundum"
+      ],
+      [
+        "Arabidopsis lyrata"
+      ],
+      [
+        "Arabis pycnocarpa"
+      ],
+      [
+        "Argentina anserina"
+      ],
+      [
+        "Arisaema pusillum"
+      ],
+      [
+        "Aristolochia macrophylla"
+      ],
+      [
+        "Armoracia rusticana"
+      ],
+      [
+        "Arnoglossum atriplicifolium"
+      ],
+      [
+        "Arnoglossum plantagineum"
+      ],
+      [
+        "Arnoglossum reniforme"
+      ],
+      [
+        "Aronia arbutifolia"
+      ],
+      [
+        "Aronia melanocarpa"
+      ],
+      [
+        "Aronia \u00d7prunifolia"
+      ],
+      [
+        "Artemisia campestris"
+      ],
+      [
+        "Atriplex cristata"
+      ],
+      [
+        "Aureolaria flava"
+      ],
+      [
+        "Aureolaria levigata"
+      ],
+      [
+        "Aureolaria pedicularia"
+      ],
+      [
+        "Aureolaria virginica"
+      ],
+      [
+        "Bidens beckii"
+      ],
+      [
+        "Bidens trichosperma"
+      ],
+      [
+        "Bistorta vivipara"
+      ],
+      [
+        "Blitum capitatum"
+      ],
+      [
+        "Borodinia canadensis"
+      ],
+      [
+        "Borodinia laevigata"
+      ],
+      [
+        "Buglossoides arvensis"
+      ]
+    ],
+    "pq_taxon_not_in_jm_suggested": [
+      [
+        " Baptisa tinctoria"
+      ],
+      [
+        "Acnida cannabina"
+      ],
+      [
+        "Acorus calamus"
+      ],
+      [
+        "Actinomeris alternifolia"
+      ],
+      [
+        "Agastache scrophulariaefolia"
+      ],
+      [
+        "Alliaria officinalis"
+      ],
+      [
+        "Amaranthus graecizans"
+      ],
+      [
+        "Amianthium muscaetoxicum"
+      ],
+      [
+        "Amphicarpa bracteata"
+      ],
+      [
+        "Anagallis arvensis"
+      ],
+      [
+        "Andromeda glaucophylla"
+      ],
+      [
+        "Anemone canadensis"
+      ],
+      [
+        "Anemone lancifolia"
+      ],
+      [
+        "Anemone quinquefolia"
+      ],
+      [
+        "Anemone riparia"
+      ],
+      [
+        "Anemonella thalictroides"
+      ],
+      [
+        "Antennaria canadensis"
+      ],
+      [
+        "Antennaria neodioica"
+      ],
+      [
+        "Antennaria parlinii"
+      ],
+      [
+        "Apocynum medium"
+      ],
+      [
+        "Arabis canadensis"
+      ],
+      [
+        "Arabis glabra"
+      ],
+      [
+        "Arabis hirsuta"
+      ],
+      [
+        "Arabis laevigata"
+      ],
+      [
+        "Arabis lyrata"
+      ],
+      [
+        "Arenaria caroliniana"
+      ],
+      [
+        "Arenaria groenlandica"
+      ],
+      [
+        "Arenaria lateriflora"
+      ],
+      [
+        "Arenaria peploides"
+      ],
+      [
+        "Arenaria serpyllifolia"
+      ],
+      [
+        "Arenaria stricta"
+      ],
+      [
+        "Arisaema atrorubens"
+      ],
+      [
+        "Aristolochia durior"
+      ],
+      [
+        "Armoracia aquatica"
+      ],
+      [
+        "Armoracia lapathifolia"
+      ],
+      [
+        "Arnica mollis"
+      ],
+      [
+        "Artemisia caudata"
+      ],
+      [
+        "Asclepias tuberosa"
+      ],
+      [
+        "Ascyrum hypericoides"
+      ],
+      [
+        "Ascyrum stans"
+      ],
+      [
+        "Aster acuminatus"
+      ],
+      [
+        "Aster concolor"
+      ],
+      [
+        "Aster cordifolius"
+      ],
+      [
+        "Aster divaricatus"
+      ],
+      [
+        "Aster dumosus"
+      ],
+      [
+        "Aster ericoides"
+      ],
+      [
+        "Aster infirmus"
+      ],
+      [
+        "Aster junciformis"
+      ],
+      [
+        "Aster laevis"
+      ],
+      [
+        "Aster lateriflorus"
+      ]
+    ],
+    "jm_key_group_count": 53,
+    "pq_route_count": 147
+  }
+}

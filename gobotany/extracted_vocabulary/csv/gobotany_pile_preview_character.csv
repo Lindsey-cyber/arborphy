@@ -1,0 +1,16 @@
+pile_slug,character_short_name,friendly_name,order_k,partner_site,unit,value_type
+woody-angiosperms,habitat_general,Habitat,-2,gobotany,,TEXT
+woody-angiosperms,state_distribution,New England state,-1,gobotany,,TEXT
+woody-angiosperms,plant_habit_wa,Growth form,1,gobotany,,TEXT
+woody-angiosperms,leaf_type_general_wa,Leaf type,2,gobotany,,TEXT
+woody-angiosperms,leaf_arrangement_wa,Leaves per node,3,gobotany,,TEXT
+woody-angiosperms,leaf_blade_margin_general_wa,Leaf blade edges,4,gobotany,,TEXT
+woody-angiosperms,leaf_duration_wa,Leaf duration,5,gobotany,,TEXT
+woody-angiosperms,armature_wa,armature on plant,6,gobotany,,TEXT
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,7,gobotany,mm,LENGTH
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,8,gobotany,mm,LENGTH
+woody-angiosperms,petiole_wa,Leaf stalk,9,gobotany,,TEXT
+woody-angiosperms,fruit_type_general_wa,Fruit type (general),10,gobotany,,TEXT
+woody-angiosperms,outer_bark_main_stem_wa,Bark texture,11,gobotany,,TEXT
+woody-angiosperms,winter_branchlet_color_wa,Twig winter color,12,gobotany,,TEXT
+woody-angiosperms,winter_bud_scale_number_wa,Bud scale number,13,gobotany,,TEXT

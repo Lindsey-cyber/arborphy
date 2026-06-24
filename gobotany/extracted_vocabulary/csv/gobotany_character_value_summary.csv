@@ -1,0 +1,832 @@
+pile_slug,character_short_name,character_name,character_group,ease,value_type,value_index,taxa_count
+woody-angiosperms,terminal_bud_wa,Terminal bud,buds or leaf scars,2,TEXT,0,43
+woody-angiosperms,terminal_bud_wa,Terminal bud,buds or leaf scars,2,TEXT,1,0
+woody-angiosperms,terminal_bud_wa,Terminal bud,buds or leaf scars,2,TEXT,2,66
+woody-angiosperms,inflorescence_type_wa,Inflorescence type,flowers,2,TEXT,0,15
+woody-angiosperms,inflorescence_type_wa,Inflorescence type,flowers,2,TEXT,1,0
+woody-angiosperms,inflorescence_type_wa,Inflorescence type,flowers,2,TEXT,2,120
+woody-angiosperms,inflorescence_type_wa,Inflorescence type,flowers,2,TEXT,3,31
+woody-angiosperms,inflorescence_type_wa,Inflorescence type,flowers,2,TEXT,4,10
+woody-angiosperms,inflorescence_type_wa,Inflorescence type,flowers,2,TEXT,5,43
+woody-angiosperms,inflorescence_type_wa,Inflorescence type,flowers,2,TEXT,6,58
+woody-angiosperms,inflorescence_type_wa,Inflorescence type,flowers,2,TEXT,7,76
+woody-angiosperms,inflorescence_type_wa,Inflorescence type,flowers,2,TEXT,8,114
+woody-angiosperms,inflorescence_type_wa,Inflorescence type,flowers,2,TEXT,9,122
+woody-angiosperms,inflorescence_type_wa,Inflorescence type,flowers,2,TEXT,10,32
+woody-angiosperms,inflorescence_type_wa,Inflorescence type,flowers,2,TEXT,11,81
+woody-angiosperms,inflorescence_type_wa,Inflorescence type,flowers,2,TEXT,12,10
+woody-angiosperms,inflorescence_type_wa,Inflorescence type,flowers,2,TEXT,13,0
+woody-angiosperms,inflorescence_type_wa,Inflorescence type,flowers,2,TEXT,14,96
+woody-angiosperms,enlarged_sterile_flowers_wa,Enlarged sterile flowers,flowers,1,TEXT,0,7
+woody-angiosperms,enlarged_sterile_flowers_wa,Enlarged sterile flowers,flowers,1,TEXT,1,0
+woody-angiosperms,enlarged_sterile_flowers_wa,Enlarged sterile flowers,flowers,1,TEXT,2,543
+woody-angiosperms,petiole_nectaries_wa,Leaf stalk nectaries,leaves,5,TEXT,0,433
+woody-angiosperms,petiole_nectaries_wa,Leaf stalk nectaries,leaves,5,TEXT,1,5
+woody-angiosperms,petiole_nectaries_wa,Leaf stalk nectaries,leaves,5,TEXT,2,50
+woody-angiosperms,short_shoots_wa,Short shoots,"stem, shoot, branch",3,TEXT,0,0
+woody-angiosperms,short_shoots_wa,Short shoots,"stem, shoot, branch",3,TEXT,1,38
+woody-angiosperms,short_shoots_wa,Short shoots,"stem, shoot, branch",3,TEXT,2,257
+woody-angiosperms,leaf_arrangement_wa,Leaves per node,leaves,2,TEXT,0,0
+woody-angiosperms,leaf_arrangement_wa,Leaves per node,leaves,2,TEXT,1,10
+woody-angiosperms,leaf_arrangement_wa,Leaves per node,leaves,2,TEXT,2,120
+woody-angiosperms,leaf_arrangement_wa,Leaves per node,leaves,2,TEXT,3,13
+woody-angiosperms,leaf_arrangement_wa,Leaves per node,leaves,2,TEXT,4,427
+woody-angiosperms,stipitate_glands_on_hypanthium_Rosa_wa,Stalked glands on fruit (Rosa),glands or sap,3,TEXT,0,531
+woody-angiosperms,stipitate_glands_on_hypanthium_Rosa_wa,Stalked glands on fruit (Rosa),glands or sap,3,TEXT,1,14
+woody-angiosperms,stipitate_glands_on_hypanthium_Rosa_wa,Stalked glands on fruit (Rosa),glands or sap,3,TEXT,2,7
+woody-angiosperms,stamen_number_wa,Stamen number,flowers,4,TEXT,0,141
+woody-angiosperms,stamen_number_wa,Stamen number,flowers,4,TEXT,1,190
+woody-angiosperms,stamen_number_wa,Stamen number,flowers,4,TEXT,2,0
+woody-angiosperms,stamen_number_wa,Stamen number,flowers,4,TEXT,3,72
+woody-angiosperms,stamen_number_wa,Stamen number,flowers,4,TEXT,4,103
+woody-angiosperms,stamen_number_wa,Stamen number,flowers,4,TEXT,5,2
+woody-angiosperms,stamen_number_wa,Stamen number,flowers,4,TEXT,6,66
+woody-angiosperms,stamen_number_wa,Stamen number,flowers,4,TEXT,7,88
+woody-angiosperms,stamen_number_wa,Stamen number,flowers,4,TEXT,8,115
+woody-angiosperms,stamen_number_wa,Stamen number,flowers,4,TEXT,9,36
+woody-angiosperms,stamen_number_wa,Stamen number,flowers,4,TEXT,10,84
+woody-angiosperms,stamen_number_wa,Stamen number,flowers,4,TEXT,11,169
+woody-angiosperms,stamen_number_wa,Stamen number,flowers,4,TEXT,12,114
+woody-angiosperms,stamen_number_wa,Stamen number,flowers,4,TEXT,13,50
+woody-angiosperms,leaf_blade_scales_wa,Leaf blade scales,leaves,3,TEXT,0,1
+woody-angiosperms,leaf_blade_scales_wa,Leaf blade scales,leaves,3,TEXT,1,514
+woody-angiosperms,leaf_blade_scales_wa,Leaf blade scales,leaves,3,TEXT,2,18
+woody-angiosperms,accesory_tissue_as_part_of_the_disperal_unit_wa,Fruit tissue origin,fruits or seeds,1,TEXT,0,0
+woody-angiosperms,accesory_tissue_as_part_of_the_disperal_unit_wa,Fruit tissue origin,fruits or seeds,1,TEXT,1,291
+woody-angiosperms,accesory_tissue_as_part_of_the_disperal_unit_wa,Fruit tissue origin,fruits or seeds,1,TEXT,2,159
+woody-angiosperms,accesory_tissue_as_part_of_the_disperal_unit_wa,Fruit tissue origin,fruits or seeds,1,TEXT,3,3
+woody-angiosperms,shape_of_distal_portion_of_bud_scar_Fraxinus_wa,Bud scar shape (Fraxinus),buds or leaf scars,4,TEXT,0,543
+woody-angiosperms,shape_of_distal_portion_of_bud_scar_Fraxinus_wa,Bud scar shape (Fraxinus),buds or leaf scars,4,TEXT,1,1
+woody-angiosperms,shape_of_distal_portion_of_bud_scar_Fraxinus_wa,Bud scar shape (Fraxinus),buds or leaf scars,4,TEXT,2,2
+woody-angiosperms,habit_of_primocane_Rubus_wa,First-year cane (Rubus),"stem, shoot, branch",2,TEXT,0,20
+woody-angiosperms,habit_of_primocane_Rubus_wa,First-year cane (Rubus),"stem, shoot, branch",2,TEXT,1,10
+woody-angiosperms,habit_of_primocane_Rubus_wa,First-year cane (Rubus),"stem, shoot, branch",2,TEXT,2,527
+woody-angiosperms,leaf_blade_shape_wa,Leaf blade shape,leaves,2,TEXT,0,0
+woody-angiosperms,leaf_blade_shape_wa,Leaf blade shape,leaves,2,TEXT,1,32
+woody-angiosperms,leaf_blade_shape_wa,Leaf blade shape,leaves,2,TEXT,2,53
+woody-angiosperms,leaf_blade_shape_wa,Leaf blade shape,leaves,2,TEXT,3,103
+woody-angiosperms,leaf_blade_shape_wa,Leaf blade shape,leaves,2,TEXT,4,2
+woody-angiosperms,leaf_blade_shape_wa,Leaf blade shape,leaves,2,TEXT,5,114
+woody-angiosperms,leaf_blade_shape_wa,Leaf blade shape,leaves,2,TEXT,6,1
+woody-angiosperms,leaf_blade_shape_wa,Leaf blade shape,leaves,2,TEXT,7,311
+woody-angiosperms,leaf_blade_shape_wa,Leaf blade shape,leaves,2,TEXT,8,37
+woody-angiosperms,leaf_blade_shape_wa,Leaf blade shape,leaves,2,TEXT,9,172
+woody-angiosperms,leaf_blade_shape_wa,Leaf blade shape,leaves,2,TEXT,10,274
+woody-angiosperms,leaf_blade_shape_wa,Leaf blade shape,leaves,2,TEXT,11,217
+woody-angiosperms,leaf_blade_shape_wa,Leaf blade shape,leaves,2,TEXT,12,31
+woody-angiosperms,leaf_blade_margin_Acer_wa,Leaf blade edges (Acer),leaves,2,TEXT,0,534
+woody-angiosperms,leaf_blade_margin_Acer_wa,Leaf blade edges (Acer),leaves,2,TEXT,1,8
+woody-angiosperms,leaf_blade_margin_Acer_wa,Leaf blade edges (Acer),leaves,2,TEXT,2,6
+woody-angiosperms,sap_wa,Sap color,glands or sap,3,TEXT,0,533
+woody-angiosperms,sap_wa,Sap color,glands or sap,3,TEXT,1,0
+woody-angiosperms,sap_wa,Sap color,glands or sap,3,TEXT,2,17
+woody-angiosperms,pellucid_dots_on_leaf_blades_wa,Leaf blade translucent dots,leaves,5,TEXT,0,0
+woody-angiosperms,pellucid_dots_on_leaf_blades_wa,Leaf blade translucent dots,leaves,5,TEXT,1,504
+woody-angiosperms,pellucid_dots_on_leaf_blades_wa,Leaf blade translucent dots,leaves,5,TEXT,2,8
+woody-angiosperms,pseudoterminal_bud_wa,Pseudoterminal bud,buds or leaf scars,5,TEXT,0,0
+woody-angiosperms,pseudoterminal_bud_wa,Pseudoterminal bud,buds or leaf scars,5,TEXT,1,4
+woody-angiosperms,pseudoterminal_bud_wa,Pseudoterminal bud,buds or leaf scars,5,TEXT,2,10
+woody-angiosperms,scent_wa,Plant odor,scent,4,TEXT,0,0
+woody-angiosperms,scent_wa,Plant odor,scent,4,TEXT,1,40
+woody-angiosperms,scent_wa,Plant odor,scent,4,TEXT,2,486
+woody-angiosperms,abaxial_leaf_blade_indument_wa,Hairs on underside of leaf blade,leaves,3,TEXT,0,243
+woody-angiosperms,abaxial_leaf_blade_indument_wa,Hairs on underside of leaf blade,leaves,3,TEXT,1,200
+woody-angiosperms,abaxial_leaf_blade_indument_wa,Hairs on underside of leaf blade,leaves,3,TEXT,2,0
+woody-angiosperms,stipules_wa,Stipules,leaves,3,TEXT,0,0
+woody-angiosperms,stipules_wa,Stipules,leaves,3,TEXT,1,185
+woody-angiosperms,stipules_wa,Stipules,leaves,3,TEXT,2,216
+woody-angiosperms,leaf_blade_indument_description_wa,Leaf blade hairs,leaves,4,TEXT,0,366
+woody-angiosperms,leaf_blade_indument_description_wa,Leaf blade hairs,leaves,4,TEXT,1,123
+woody-angiosperms,leaf_blade_indument_description_wa,Leaf blade hairs,leaves,4,TEXT,2,32
+woody-angiosperms,leaf_blade_indument_description_wa,Leaf blade hairs,leaves,4,TEXT,3,87
+woody-angiosperms,leaf_blade_indument_description_wa,Leaf blade hairs,leaves,4,TEXT,4,30
+woody-angiosperms,leaf_blade_indument_description_wa,Leaf blade hairs,leaves,4,TEXT,5,66
+woody-angiosperms,collateral_buds_wa,Collateral buds,buds or leaf scars,5,TEXT,0,0
+woody-angiosperms,collateral_buds_wa,Collateral buds,buds or leaf scars,5,TEXT,1,7
+woody-angiosperms,collateral_buds_wa,Collateral buds,buds or leaf scars,5,TEXT,2,534
+woody-angiosperms,leaf_bundle_scar_number_wa,Bundle scar number,buds or leaf scars,5,TEXT,0,4
+woody-angiosperms,leaf_bundle_scar_number_wa,Bundle scar number,buds or leaf scars,5,TEXT,1,0
+woody-angiosperms,leaf_bundle_scar_number_wa,Bundle scar number,buds or leaf scars,5,TEXT,2,0
+woody-angiosperms,leaf_bundle_scar_number_wa,Bundle scar number,buds or leaf scars,5,TEXT,3,0
+woody-angiosperms,leaf_bundle_scar_number_wa,Bundle scar number,buds or leaf scars,5,TEXT,4,43
+woody-angiosperms,leaf_bundle_scar_number_wa,Bundle scar number,buds or leaf scars,5,TEXT,5,9
+woody-angiosperms,leaf_teeth_subapical_tufts_of_hairs_Carya_wa,Leaf teeth hairs (Carya),leaves,5,TEXT,0,542
+woody-angiosperms,leaf_teeth_subapical_tufts_of_hairs_Carya_wa,Leaf teeth hairs (Carya),leaves,5,TEXT,1,4
+woody-angiosperms,leaf_teeth_subapical_tufts_of_hairs_Carya_wa,Leaf teeth hairs (Carya),leaves,5,TEXT,2,1
+woody-angiosperms,winter_bud_covering_wa,Winter bud scales,buds or leaf scars,1,TEXT,0,0
+woody-angiosperms,winter_bud_covering_wa,Winter bud scales,buds or leaf scars,1,TEXT,1,15
+woody-angiosperms,winter_bud_covering_wa,Winter bud scales,buds or leaf scars,1,TEXT,2,193
+woody-angiosperms,leaf_blade_margin_general_wa,Leaf blade edges,leaves,2,TEXT,0,1
+woody-angiosperms,leaf_blade_margin_general_wa,Leaf blade edges,leaves,2,TEXT,1,134
+woody-angiosperms,leaf_blade_margin_general_wa,Leaf blade edges,leaves,2,TEXT,2,191
+woody-angiosperms,leaf_blade_margin_general_wa,Leaf blade edges,leaves,2,TEXT,3,351
+woody-angiosperms,petal_fusion_wa,Petal fusion,flowers,5,TEXT,0,121
+woody-angiosperms,petal_fusion_wa,Petal fusion,flowers,5,TEXT,1,290
+woody-angiosperms,petal_fusion_wa,Petal fusion,flowers,5,TEXT,2,156
+woody-angiosperms,carpel_fusion_wa,Carpels fused,flowers,5,TEXT,0,0
+woody-angiosperms,carpel_fusion_wa,Carpels fused,flowers,5,TEXT,1,463
+woody-angiosperms,carpel_fusion_wa,Carpels fused,flowers,5,TEXT,2,102
+woody-angiosperms,leaf_blade_midrib_glands_wa,Leaf midrib glands,leaves,4,TEXT,0,428
+woody-angiosperms,leaf_blade_midrib_glands_wa,Leaf midrib glands,leaves,4,TEXT,1,0
+woody-angiosperms,leaf_blade_midrib_glands_wa,Leaf midrib glands,leaves,4,TEXT,2,27
+woody-angiosperms,petiole_wa,Leaf stalk,leaves,3,TEXT,0,0
+woody-angiosperms,petiole_wa,Leaf stalk,leaves,3,TEXT,1,19
+woody-angiosperms,petiole_wa,Leaf stalk,leaves,3,TEXT,2,537
+woody-angiosperms,aerial_roots_wa,Aerial roots,"stem, shoot, branch",3,TEXT,0,0
+woody-angiosperms,aerial_roots_wa,Aerial roots,"stem, shoot, branch",3,TEXT,1,549
+woody-angiosperms,aerial_roots_wa,Aerial roots,"stem, shoot, branch",3,TEXT,2,3
+woody-angiosperms,stamen_fusion_within_cycle_wa,Stamens fused,flowers,5,TEXT,0,0
+woody-angiosperms,stamen_fusion_within_cycle_wa,Stamens fused,flowers,5,TEXT,1,363
+woody-angiosperms,stamen_fusion_within_cycle_wa,Stamens fused,flowers,5,TEXT,2,17
+woody-angiosperms,adaxial_leaf_blade_indument_wa,Hairs on upper side of leaf blade,leaves,3,TEXT,0,0
+woody-angiosperms,adaxial_leaf_blade_indument_wa,Hairs on upper side of leaf blade,leaves,3,TEXT,1,485
+woody-angiosperms,adaxial_leaf_blade_indument_wa,Hairs on upper side of leaf blade,leaves,3,TEXT,2,215
+woody-angiosperms,pith_wa,Pith type,"stem, shoot, branch",5,TEXT,0,0
+woody-angiosperms,pith_wa,Pith type,"stem, shoot, branch",5,TEXT,1,123
+woody-angiosperms,pith_wa,Pith type,"stem, shoot, branch",5,TEXT,2,5
+woody-angiosperms,pith_wa,Pith type,"stem, shoot, branch",5,TEXT,3,4
+woody-angiosperms,pith_wa,Pith type,"stem, shoot, branch",5,TEXT,4,6
+woody-angiosperms,leaf_blade_venation_wa,Leaf blade vein pattern,leaves,3,TEXT,0,0
+woody-angiosperms,leaf_blade_venation_wa,Leaf blade vein pattern,leaves,3,TEXT,1,14
+woody-angiosperms,leaf_blade_venation_wa,Leaf blade vein pattern,leaves,3,TEXT,2,36
+woody-angiosperms,leaf_blade_venation_wa,Leaf blade vein pattern,leaves,3,TEXT,3,276
+woody-angiosperms,leaf_blade_venation_wa,Leaf blade vein pattern,leaves,3,TEXT,4,0
+woody-angiosperms,leaf_form_wa,Leaf form,leaves,1,TEXT,0,13
+woody-angiosperms,leaf_form_wa,Leaf form,leaves,1,TEXT,1,0
+woody-angiosperms,leaf_form_wa,Leaf form,leaves,1,TEXT,2,393
+woody-angiosperms,winter_bud_scale_indument_wa,Winter bud scale hairs,buds or leaf scars,3,TEXT,0,7
+woody-angiosperms,winter_bud_scale_indument_wa,Winter bud scale hairs,buds or leaf scars,3,TEXT,1,65
+woody-angiosperms,winter_bud_scale_indument_wa,Winter bud scale hairs,buds or leaf scars,3,TEXT,2,85
+woody-angiosperms,stamen_position_wa,Stamen position relative to petals,flowers,4,TEXT,0,230
+woody-angiosperms,stamen_position_wa,Stamen position relative to petals,flowers,4,TEXT,1,70
+woody-angiosperms,stamen_position_wa,Stamen position relative to petals,flowers,4,TEXT,2,57
+woody-angiosperms,petal_color_wa,Flower petal color,flowers,2,TEXT,0,40
+woody-angiosperms,petal_color_wa,Flower petal color,flowers,2,TEXT,1,4
+woody-angiosperms,petal_color_wa,Flower petal color,flowers,2,TEXT,2,4
+woody-angiosperms,petal_color_wa,Flower petal color,flowers,2,TEXT,3,83
+woody-angiosperms,petal_color_wa,Flower petal color,flowers,2,TEXT,4,7
+woody-angiosperms,petal_color_wa,Flower petal color,flowers,2,TEXT,5,123
+woody-angiosperms,petal_color_wa,Flower petal color,flowers,2,TEXT,6,122
+woody-angiosperms,petal_color_wa,Flower petal color,flowers,2,TEXT,7,37
+woody-angiosperms,petal_color_wa,Flower petal color,flowers,2,TEXT,8,285
+woody-angiosperms,petal_color_wa,Flower petal color,flowers,2,TEXT,9,11
+woody-angiosperms,involucre_armature_Fagaceae_wa,Nut with spines (Fagaceae),fruits or seeds,4,TEXT,0,520
+woody-angiosperms,involucre_armature_Fagaceae_wa,Nut with spines (Fagaceae),fruits or seeds,4,TEXT,1,9
+woody-angiosperms,involucre_armature_Fagaceae_wa,Nut with spines (Fagaceae),fruits or seeds,4,TEXT,2,5
+woody-angiosperms,armature_wa,armature on plant,"stem, shoot, branch",3,TEXT,0,0
+woody-angiosperms,armature_wa,armature on plant,"stem, shoot, branch",3,TEXT,1,133
+woody-angiosperms,armature_wa,armature on plant,"stem, shoot, branch",3,TEXT,2,433
+woody-angiosperms,branch_brittleness_Salix_wa,Branch brittleness (willows only),"stem, shoot, branch",5,TEXT,0,522
+woody-angiosperms,branch_brittleness_Salix_wa,Branch brittleness (willows only),"stem, shoot, branch",5,TEXT,1,10
+woody-angiosperms,branch_brittleness_Salix_wa,Branch brittleness (willows only),"stem, shoot, branch",5,TEXT,2,17
+woody-angiosperms,branchlet_papillae_Vaccinium_wa,Twig papillae (Vaccinium species only),"stem, shoot, branch",4,TEXT,0,6
+woody-angiosperms,branchlet_papillae_Vaccinium_wa,Twig papillae (Vaccinium species only),"stem, shoot, branch",4,TEXT,1,539
+woody-angiosperms,branchlet_papillae_Vaccinium_wa,Twig papillae (Vaccinium species only),"stem, shoot, branch",4,TEXT,2,7
+woody-angiosperms,winter_bud_shape_wa,Winter bud shape,buds or leaf scars,2,TEXT,0,0
+woody-angiosperms,winter_bud_shape_wa,Winter bud shape,buds or leaf scars,2,TEXT,1,11
+woody-angiosperms,winter_bud_shape_wa,Winter bud shape,buds or leaf scars,2,TEXT,2,18
+woody-angiosperms,winter_bud_shape_wa,Winter bud shape,buds or leaf scars,2,TEXT,3,13
+woody-angiosperms,winter_bud_shape_wa,Winter bud shape,buds or leaf scars,2,TEXT,4,20
+woody-angiosperms,winter_bud_shape_wa,Winter bud shape,buds or leaf scars,2,TEXT,5,14
+woody-angiosperms,winter_bud_shape_wa,Winter bud shape,buds or leaf scars,2,TEXT,6,111
+woody-angiosperms,petal_appearance_wa,Petal appearance,flowers,3,TEXT,0,435
+woody-angiosperms,petal_appearance_wa,Petal appearance,flowers,3,TEXT,1,123
+woody-angiosperms,petal_appearance_wa,Petal appearance,flowers,3,TEXT,2,2
+woody-angiosperms,sepal_marginal_glands_wa,Sepal tip glands,flowers,4,TEXT,0,288
+woody-angiosperms,sepal_marginal_glands_wa,Sepal tip glands,flowers,4,TEXT,1,49
+woody-angiosperms,sepal_marginal_glands_wa,Sepal tip glands,flowers,4,TEXT,2,72
+woody-angiosperms,branch_cross-section_wa,Branch cross-section,"stem, shoot, branch",3,TEXT,0,0
+woody-angiosperms,branch_cross-section_wa,Branch cross-section,"stem, shoot, branch",3,TEXT,1,17
+woody-angiosperms,branch_cross-section_wa,Branch cross-section,"stem, shoot, branch",3,TEXT,2,529
+woody-angiosperms,perianth_description_wa,Petal and sepal arrangement,flowers,2,TEXT,0,0
+woody-angiosperms,perianth_description_wa,Petal and sepal arrangement,flowers,2,TEXT,1,1
+woody-angiosperms,perianth_description_wa,Petal and sepal arrangement,flowers,2,TEXT,2,421
+woody-angiosperms,perianth_description_wa,Petal and sepal arrangement,flowers,2,TEXT,3,86
+woody-angiosperms,perianth_description_wa,Petal and sepal arrangement,flowers,2,TEXT,4,62
+woody-angiosperms,sepal_fusion_wa,Sepals fused only to sepals,flowers,4,TEXT,0,64
+woody-angiosperms,sepal_fusion_wa,Sepals fused only to sepals,flowers,4,TEXT,1,221
+woody-angiosperms,sepal_fusion_wa,Sepals fused only to sepals,flowers,4,TEXT,2,118
+woody-angiosperms,winter_bud_stalks_wa,Winter bud stalks,buds or leaf scars,4,TEXT,0,0
+woody-angiosperms,winter_bud_stalks_wa,Winter bud stalks,buds or leaf scars,4,TEXT,1,15
+woody-angiosperms,winter_bud_stalks_wa,Winter bud stalks,buds or leaf scars,4,TEXT,2,282
+woody-angiosperms,petiole_shape_wa,Leaf stalk shape,leaves,3,TEXT,0,314
+woody-angiosperms,petiole_shape_wa,Leaf stalk shape,leaves,3,TEXT,1,5
+woody-angiosperms,petiole_shape_wa,Leaf stalk shape,leaves,3,TEXT,2,3
+woody-angiosperms,flower_symmetry_wa,Flower symmetry,flowers,1,TEXT,0,0
+woody-angiosperms,flower_symmetry_wa,Flower symmetry,flowers,1,TEXT,1,469
+woody-angiosperms,flower_symmetry_wa,Flower symmetry,flowers,1,TEXT,2,0
+woody-angiosperms,flower_symmetry_wa,Flower symmetry,flowers,1,TEXT,3,91
+woody-angiosperms,winter_bud_scale_number_wa,Bud scale number,buds or leaf scars,3,TEXT,0,0
+woody-angiosperms,winter_bud_scale_number_wa,Bud scale number,buds or leaf scars,3,TEXT,1,24
+woody-angiosperms,winter_bud_scale_number_wa,Bud scale number,buds or leaf scars,3,TEXT,2,87
+woody-angiosperms,winter_bud_scale_number_wa,Bud scale number,buds or leaf scars,3,TEXT,3,392
+woody-angiosperms,winter_bud_scale_number_wa,Bud scale number,buds or leaf scars,3,TEXT,4,37
+woody-angiosperms,sepal_cilia_Ilex_wa,Sepal cilia (Ilex),flowers,5,TEXT,0,544
+woody-angiosperms,sepal_cilia_Ilex_wa,Sepal cilia (Ilex),flowers,5,TEXT,1,3
+woody-angiosperms,sepal_cilia_Ilex_wa,Sepal cilia (Ilex),flowers,5,TEXT,2,3
+woody-angiosperms,fruit_wing_wa,Wings on fruit,fruits or seeds,2,TEXT,0,0
+woody-angiosperms,fruit_wing_wa,Wings on fruit,fruits or seeds,2,TEXT,1,504
+woody-angiosperms,fruit_wing_wa,Wings on fruit,fruits or seeds,2,TEXT,2,42
+woody-angiosperms,primary_veins_at_base_of_blade_wa,Leaf blade veins,leaves,4,TEXT,0,0
+woody-angiosperms,primary_veins_at_base_of_blade_wa,Leaf blade veins,leaves,4,TEXT,1,42
+woody-angiosperms,primary_veins_at_base_of_blade_wa,Leaf blade veins,leaves,4,TEXT,2,284
+woody-angiosperms,leaf_blade_texture_wa,Leaf blade texture,leaves,3,TEXT,0,28
+woody-angiosperms,leaf_blade_texture_wa,Leaf blade texture,leaves,3,TEXT,1,0
+woody-angiosperms,leaf_blade_texture_wa,Leaf blade texture,leaves,3,TEXT,2,253
+woody-angiosperms,leaf_blade_texture_wa,Leaf blade texture,leaves,3,TEXT,3,390
+woody-angiosperms,leaf_blade_texture_wa,Leaf blade texture,leaves,3,TEXT,4,27
+woody-angiosperms,berry_color_wa,Berry color,fruits or seeds,2,TEXT,0,41
+woody-angiosperms,berry_color_wa,Berry color,fruits or seeds,2,TEXT,1,12
+woody-angiosperms,berry_color_wa,Berry color,fruits or seeds,2,TEXT,2,157
+woody-angiosperms,berry_color_wa,Berry color,fruits or seeds,2,TEXT,3,40
+woody-angiosperms,berry_color_wa,Berry color,fruits or seeds,2,TEXT,4,21
+woody-angiosperms,berry_color_wa,Berry color,fruits or seeds,2,TEXT,5,24
+woody-angiosperms,berry_color_wa,Berry color,fruits or seeds,2,TEXT,6,346
+woody-angiosperms,berry_color_wa,Berry color,fruits or seeds,2,TEXT,7,107
+woody-angiosperms,berry_color_wa,Berry color,fruits or seeds,2,TEXT,8,20
+woody-angiosperms,berry_color_wa,Berry color,fruits or seeds,2,TEXT,9,45
+woody-angiosperms,lenticels_on_branchlets_wa,Lenticels on twigs,"stem, shoot, branch",2,TEXT,0,174
+woody-angiosperms,lenticels_on_branchlets_wa,Lenticels on twigs,"stem, shoot, branch",2,TEXT,1,0
+woody-angiosperms,lenticels_on_branchlets_wa,Lenticels on twigs,"stem, shoot, branch",2,TEXT,2,131
+woody-angiosperms,apex_of_leaf_lobes_teeth_Quercus_wa,Leaf lobe tips (Quercus),leaves,2,TEXT,0,538
+woody-angiosperms,apex_of_leaf_lobes_teeth_Quercus_wa,Leaf lobe tips (Quercus),leaves,2,TEXT,1,9
+woody-angiosperms,apex_of_leaf_lobes_teeth_Quercus_wa,Leaf lobe tips (Quercus),leaves,2,TEXT,2,7
+woody-angiosperms,pith_shape_in_cross-section_wa,Pith shape,"stem, shoot, branch",5,TEXT,0,0
+woody-angiosperms,pith_shape_in_cross-section_wa,Pith shape,"stem, shoot, branch",5,TEXT,1,9
+woody-angiosperms,pith_shape_in_cross-section_wa,Pith shape,"stem, shoot, branch",5,TEXT,2,315
+woody-angiosperms,pith_shape_in_cross-section_wa,Pith shape,"stem, shoot, branch",5,TEXT,3,21
+woody-angiosperms,leaf_blade_base_shape_wa,Leaf blade base shape,leaves,3,TEXT,0,1
+woody-angiosperms,leaf_blade_base_shape_wa,Leaf blade base shape,leaves,3,TEXT,1,157
+woody-angiosperms,leaf_blade_base_shape_wa,Leaf blade base shape,leaves,3,TEXT,2,37
+woody-angiosperms,leaf_blade_base_shape_wa,Leaf blade base shape,leaves,3,TEXT,3,114
+woody-angiosperms,leaf_blade_base_shape_wa,Leaf blade base shape,leaves,3,TEXT,4,265
+woody-angiosperms,leaf_blade_base_shape_wa,Leaf blade base shape,leaves,3,TEXT,5,344
+woody-angiosperms,fruit_type_specific_wa,Fruit type (specific),fruits or seeds,2,TEXT,0,0
+woody-angiosperms,fruit_type_specific_wa,Fruit type (specific),fruits or seeds,2,TEXT,1,0
+woody-angiosperms,fruit_type_specific_wa,Fruit type (specific),fruits or seeds,2,TEXT,2,12
+woody-angiosperms,fruit_type_specific_wa,Fruit type (specific),fruits or seeds,2,TEXT,3,35
+woody-angiosperms,fruit_type_specific_wa,Fruit type (specific),fruits or seeds,2,TEXT,4,58
+woody-angiosperms,fruit_type_specific_wa,Fruit type (specific),fruits or seeds,2,TEXT,5,186
+woody-angiosperms,fruit_type_specific_wa,Fruit type (specific),fruits or seeds,2,TEXT,6,88
+woody-angiosperms,fruit_type_specific_wa,Fruit type (specific),fruits or seeds,2,TEXT,7,14
+woody-angiosperms,fruit_type_specific_wa,Fruit type (specific),fruits or seeds,2,TEXT,8,20
+woody-angiosperms,fruit_type_specific_wa,Fruit type (specific),fruits or seeds,2,TEXT,9,138
+woody-angiosperms,fruit_type_specific_wa,Fruit type (specific),fruits or seeds,2,TEXT,10,6
+woody-angiosperms,fruit_type_specific_wa,Fruit type (specific),fruits or seeds,2,TEXT,11,0
+woody-angiosperms,fruit_type_specific_wa,Fruit type (specific),fruits or seeds,2,TEXT,12,124
+woody-angiosperms,branchlet_indument_wa,Twig hairs,"stem, shoot, branch",1,TEXT,0,0
+woody-angiosperms,branchlet_indument_wa,Twig hairs,"stem, shoot, branch",1,TEXT,1,206
+woody-angiosperms,branchlet_indument_wa,Twig hairs,"stem, shoot, branch",1,TEXT,2,37
+woody-angiosperms,branchlet_indument_wa,Twig hairs,"stem, shoot, branch",1,TEXT,3,137
+woody-angiosperms,petiole_attachment_wa,Leaf stalk attachment to leaf,leaves,3,TEXT,0,7
+woody-angiosperms,petiole_attachment_wa,Leaf stalk attachment to leaf,leaves,3,TEXT,1,322
+woody-angiosperms,petiole_attachment_wa,Leaf stalk attachment to leaf,leaves,3,TEXT,2,0
+woody-angiosperms,winter_bud_position_wa,Bud position relative to scar,buds or leaf scars,3,TEXT,0,9
+woody-angiosperms,winter_bud_position_wa,Bud position relative to scar,buds or leaf scars,3,TEXT,1,0
+woody-angiosperms,winter_bud_position_wa,Bud position relative to scar,buds or leaf scars,3,TEXT,2,29
+woody-angiosperms,bloom_on_abaxial_leaf_blade_surface_wa,Leaf blade bloom,leaves,1,TEXT,0,90
+woody-angiosperms,bloom_on_abaxial_leaf_blade_surface_wa,Leaf blade bloom,leaves,1,TEXT,1,0
+woody-angiosperms,bloom_on_abaxial_leaf_blade_surface_wa,Leaf blade bloom,leaves,1,TEXT,2,244
+woody-angiosperms,scales_on_branchlets_wa,Twig scales,"stem, shoot, branch",2,TEXT,0,11
+woody-angiosperms,scales_on_branchlets_wa,Twig scales,"stem, shoot, branch",2,TEXT,1,0
+woody-angiosperms,scales_on_branchlets_wa,Twig scales,"stem, shoot, branch",2,TEXT,2,311
+woody-angiosperms,inflorescence_position_wa,Inflorescence position,flowers,3,TEXT,0,0
+woody-angiosperms,inflorescence_position_wa,Inflorescence position,flowers,3,TEXT,1,48
+woody-angiosperms,inflorescence_position_wa,Inflorescence position,flowers,3,TEXT,2,207
+woody-angiosperms,pistil_number_wa,Number of pistils,flowers,4,TEXT,0,0
+woody-angiosperms,pistil_number_wa,Number of pistils,flowers,4,TEXT,1,14
+woody-angiosperms,pistil_number_wa,Number of pistils,flowers,4,TEXT,2,57
+woody-angiosperms,pistil_number_wa,Number of pistils,flowers,4,TEXT,3,4
+woody-angiosperms,pistil_number_wa,Number of pistils,flowers,4,TEXT,4,8
+woody-angiosperms,pistil_number_wa,Number of pistils,flowers,4,TEXT,5,10
+woody-angiosperms,pistil_number_wa,Number of pistils,flowers,4,TEXT,6,8
+woody-angiosperms,pistil_number_wa,Number of pistils,flowers,4,TEXT,7,476
+woody-angiosperms,leaf_duration_wa,Leaf duration,leaves,2,TEXT,0,0
+woody-angiosperms,leaf_duration_wa,Leaf duration,leaves,2,TEXT,1,58
+woody-angiosperms,leaf_duration_wa,Leaf duration,leaves,2,TEXT,2,508
+woody-angiosperms,leaf_blade_base_symmetry_wa,Leaf blade base symmetry,leaves,1,TEXT,0,0
+woody-angiosperms,leaf_blade_base_symmetry_wa,Leaf blade base symmetry,leaves,1,TEXT,1,326
+woody-angiosperms,leaf_blade_base_symmetry_wa,Leaf blade base symmetry,leaves,1,TEXT,2,31
+woody-angiosperms,ovary_summit_Amelanchier_wa,Hairs on ovary (Amelanchier),flowers,5,TEXT,0,5
+woody-angiosperms,ovary_summit_Amelanchier_wa,Hairs on ovary (Amelanchier),flowers,5,TEXT,1,542
+woody-angiosperms,ovary_summit_Amelanchier_wa,Hairs on ovary (Amelanchier),flowers,5,TEXT,2,6
+woody-angiosperms,branch_wings_wa,Wings on branch,"stem, shoot, branch",1,TEXT,0,547
+woody-angiosperms,branch_wings_wa,Wings on branch,"stem, shoot, branch",1,TEXT,1,0
+woody-angiosperms,branch_wings_wa,Wings on branch,"stem, shoot, branch",1,TEXT,2,11
+woody-angiosperms,sepal_appearance_wa,Sepal appearance,flowers,3,TEXT,0,41
+woody-angiosperms,sepal_appearance_wa,Sepal appearance,flowers,3,TEXT,1,190
+woody-angiosperms,sepal_appearance_wa,Sepal appearance,flowers,3,TEXT,2,52
+woody-angiosperms,flower_appearance_wa,Flower appearance,flowers,3,TEXT,0,9
+woody-angiosperms,flower_appearance_wa,Flower appearance,flowers,3,TEXT,1,45
+woody-angiosperms,flower_appearance_wa,Flower appearance,flowers,3,TEXT,2,41
+woody-angiosperms,fruit_type_general_wa,Fruit type (general),fruits or seeds,1,TEXT,0,0
+woody-angiosperms,fruit_type_general_wa,Fruit type (general),fruits or seeds,1,TEXT,1,290
+woody-angiosperms,fruit_type_general_wa,Fruit type (general),fruits or seeds,1,TEXT,2,113
+woody-angiosperms,fruit_type_general_wa,Fruit type (general),fruits or seeds,1,TEXT,3,168
+woody-angiosperms,hypanthium_wa,Hypanthium present,flowers,3,TEXT,0,0
+woody-angiosperms,hypanthium_wa,Hypanthium present,flowers,3,TEXT,1,306
+woody-angiosperms,hypanthium_wa,Hypanthium present,flowers,3,TEXT,2,219
+woody-angiosperms,ovary_position_wa,Ovary position,flowers,3,TEXT,0,0
+woody-angiosperms,ovary_position_wa,Ovary position,flowers,3,TEXT,1,406
+woody-angiosperms,ovary_position_wa,Ovary position,flowers,3,TEXT,2,224
+woody-angiosperms,inflorescence_pubescence_wa,Inflorescence hairs,flowers,4,TEXT,0,183
+woody-angiosperms,inflorescence_pubescence_wa,Inflorescence hairs,flowers,4,TEXT,1,0
+woody-angiosperms,inflorescence_pubescence_wa,Inflorescence hairs,flowers,4,TEXT,2,78
+woody-angiosperms,leaf_blade_margin_planeness_wa,Leaf blade flatness,leaves,2,TEXT,0,1
+woody-angiosperms,leaf_blade_margin_planeness_wa,Leaf blade flatness,leaves,2,TEXT,1,10
+woody-angiosperms,leaf_blade_margin_planeness_wa,Leaf blade flatness,leaves,2,TEXT,2,45
+woody-angiosperms,leaf_blade_margin_planeness_wa,Leaf blade flatness,leaves,2,TEXT,3,485
+woody-angiosperms,leaf_scar_arrangment_wa,Leaf scar arrangement,buds or leaf scars,5,TEXT,0,0
+woody-angiosperms,leaf_scar_arrangment_wa,Leaf scar arrangement,buds or leaf scars,5,TEXT,1,87
+woody-angiosperms,leaf_scar_arrangment_wa,Leaf scar arrangement,buds or leaf scars,5,TEXT,2,274
+woody-angiosperms,leaf_scar_arrangment_wa,Leaf scar arrangement,buds or leaf scars,5,TEXT,3,11
+woody-angiosperms,outer_bark_main_stem_wa,Bark texture,"stem, shoot, branch",1,TEXT,0,88
+woody-angiosperms,outer_bark_main_stem_wa,Bark texture,"stem, shoot, branch",1,TEXT,1,188
+woody-angiosperms,outer_bark_main_stem_wa,Bark texture,"stem, shoot, branch",1,TEXT,2,2
+woody-angiosperms,outer_bark_main_stem_wa,Bark texture,"stem, shoot, branch",1,TEXT,3,366
+woody-angiosperms,winter_bud_distribution_wa,Winter bud distribution,buds or leaf scars,1,TEXT,0,0
+woody-angiosperms,winter_bud_distribution_wa,Winter bud distribution,buds or leaf scars,1,TEXT,1,14
+woody-angiosperms,winter_bud_distribution_wa,Winter bud distribution,buds or leaf scars,1,TEXT,2,53
+woody-angiosperms,anther_color_wa,Anther color,flowers,4,TEXT,0,146
+woody-angiosperms,anther_color_wa,Anther color,flowers,4,TEXT,1,0
+woody-angiosperms,anther_color_wa,Anther color,flowers,4,TEXT,2,80
+woody-angiosperms,branchlet_bloom_wa,Twig bloom,"stem, shoot, branch",1,TEXT,0,18
+woody-angiosperms,branchlet_bloom_wa,Twig bloom,"stem, shoot, branch",1,TEXT,1,0
+woody-angiosperms,branchlet_bloom_wa,Twig bloom,"stem, shoot, branch",1,TEXT,2,315
+woody-angiosperms,superposed_buds_wa,Superposed buds,buds or leaf scars,5,TEXT,0,522
+woody-angiosperms,superposed_buds_wa,Superposed buds,buds or leaf scars,5,TEXT,1,0
+woody-angiosperms,superposed_buds_wa,Superposed buds,buds or leaf scars,5,TEXT,2,17
+woody-angiosperms,leaf_blade_margin_specific_wa,Leaf teeth,leaves,2,TEXT,0,1
+woody-angiosperms,leaf_blade_margin_specific_wa,Leaf teeth,leaves,2,TEXT,1,51
+woody-angiosperms,leaf_blade_margin_specific_wa,Leaf teeth,leaves,2,TEXT,2,83
+woody-angiosperms,leaf_blade_margin_specific_wa,Leaf teeth,leaves,2,TEXT,3,84
+woody-angiosperms,leaf_blade_margin_specific_wa,Leaf teeth,leaves,2,TEXT,4,198
+woody-angiosperms,leaf_blade_margin_specific_wa,Leaf teeth,leaves,2,TEXT,5,292
+woody-angiosperms,leaf_blade_margin_specific_wa,Leaf teeth,leaves,2,TEXT,6,68
+woody-angiosperms,winter_branchlet_color_wa,Twig winter color,"stem, shoot, branch",2,TEXT,0,1
+woody-angiosperms,winter_branchlet_color_wa,Twig winter color,"stem, shoot, branch",2,TEXT,1,245
+woody-angiosperms,winter_branchlet_color_wa,Twig winter color,"stem, shoot, branch",2,TEXT,2,13
+woody-angiosperms,winter_branchlet_color_wa,Twig winter color,"stem, shoot, branch",2,TEXT,3,344
+woody-angiosperms,winter_branchlet_color_wa,Twig winter color,"stem, shoot, branch",2,TEXT,4,5
+woody-angiosperms,winter_branchlet_color_wa,Twig winter color,"stem, shoot, branch",2,TEXT,5,91
+woody-angiosperms,winter_branchlet_color_wa,Twig winter color,"stem, shoot, branch",2,TEXT,6,482
+woody-angiosperms,winter_branchlet_color_wa,Twig winter color,"stem, shoot, branch",2,TEXT,7,95
+woody-angiosperms,winter_branchlet_color_wa,Twig winter color,"stem, shoot, branch",2,TEXT,8,37
+woody-angiosperms,winter_branchlet_color_wa,Twig winter color,"stem, shoot, branch",2,TEXT,9,2
+woody-angiosperms,winter_branchlet_color_wa,Twig winter color,"stem, shoot, branch",2,TEXT,10,65
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,0,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,1,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,2,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,3,17
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,4,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,5,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,6,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,7,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,8,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,9,3
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,10,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,11,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,12,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,13,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,14,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,15,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,16,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,17,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,18,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,19,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,20,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,21,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,22,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,23,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,24,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,25,11
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,26,3
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,27,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,28,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,29,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,30,6
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,31,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,32,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,33,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,34,14
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,35,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,36,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,37,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,38,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,39,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,40,4
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,41,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,42,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,43,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,44,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,45,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,46,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,47,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,48,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,49,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,50,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,51,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,52,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,53,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,54,5
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,55,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,56,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,57,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,58,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,59,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,60,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,61,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,62,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,63,6
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,64,12
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,65,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,66,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,67,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,68,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,69,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,70,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,71,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,72,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,73,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,74,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,75,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,76,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,77,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,78,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,79,6
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,80,3
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,81,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,82,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,83,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,84,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,85,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,86,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,87,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,88,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,89,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,90,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,91,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,92,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,93,8
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,94,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,95,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,96,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,97,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,98,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,99,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,100,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,101,3
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,102,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,103,4
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,104,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,105,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,106,4
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,107,3
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,108,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,109,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,110,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,111,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,112,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,113,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,114,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,115,4
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,116,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,117,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,118,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,119,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,120,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,121,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,122,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,123,3
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,124,4
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,125,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,126,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,127,4
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,128,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,129,4
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,130,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,131,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,132,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,133,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,134,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,135,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,136,4
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,137,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,138,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,139,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,140,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,141,6
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,142,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,143,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,144,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,145,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,146,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,147,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,148,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,149,3
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,150,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,151,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,152,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,153,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,154,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,155,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,156,3
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,157,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,158,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,159,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,160,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,161,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,162,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,163,6
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,164,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,165,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,166,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,167,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,168,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,169,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,170,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,171,5
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,172,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,173,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,174,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,175,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,176,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,177,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,178,8
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,179,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,180,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,181,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,182,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,183,3
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,184,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,185,5
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,186,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,187,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,188,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,189,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,190,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,191,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,192,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,193,4
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,194,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,195,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,196,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,197,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,198,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,199,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,200,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,201,1
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,202,2
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,203,6
+woody-angiosperms,leaf_blade_width_wa,Leaf blade width,leaves,2,LENGTH,204,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,0,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,1,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,2,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,3,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,4,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,5,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,6,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,7,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,8,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,9,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,10,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,11,3
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,12,9
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,13,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,14,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,15,10
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,16,3
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,17,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,18,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,19,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,20,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,21,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,22,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,23,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,24,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,25,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,26,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,27,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,28,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,29,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,30,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,31,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,32,4
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,33,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,34,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,35,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,36,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,37,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,38,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,39,3
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,40,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,41,4
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,42,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,43,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,44,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,45,4
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,46,7
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,47,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,48,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,49,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,50,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,51,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,52,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,53,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,54,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,55,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,56,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,57,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,58,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,59,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,60,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,61,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,62,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,63,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,64,6
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,65,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,66,8
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,67,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,68,3
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,69,3
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,70,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,71,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,72,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,73,6
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,74,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,75,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,76,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,77,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,78,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,79,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,80,3
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,81,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,82,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,83,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,84,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,85,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,86,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,87,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,88,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,89,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,90,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,91,3
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,92,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,93,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,94,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,95,3
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,96,3
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,97,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,98,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,99,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,100,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,101,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,102,9
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,103,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,104,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,105,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,106,8
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,107,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,108,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,109,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,110,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,111,3
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,112,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,113,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,114,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,115,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,116,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,117,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,118,21
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,119,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,120,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,121,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,122,5
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,123,12
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,124,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,125,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,126,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,127,7
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,128,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,129,11
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,130,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,131,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,132,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,133,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,134,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,135,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,136,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,137,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,138,4
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,139,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,140,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,141,12
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,142,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,143,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,144,7
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,145,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,146,3
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,147,8
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,148,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,149,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,150,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,151,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,152,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,153,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,154,17
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,155,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,156,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,157,4
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,158,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,159,3
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,160,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,161,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,162,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,163,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,164,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,165,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,166,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,167,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,168,4
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,169,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,170,3
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,171,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,172,3
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,173,4
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,174,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,175,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,176,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,177,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,178,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,179,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,180,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,181,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,182,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,183,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,184,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,185,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,186,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,187,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,188,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,189,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,190,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,191,3
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,192,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,193,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,194,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,195,5
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,196,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,197,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,198,4
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,199,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,200,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,201,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,202,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,203,4
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,204,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,205,5
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,206,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,207,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,208,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,209,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,210,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,211,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,212,13
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,213,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,214,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,215,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,216,4
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,217,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,218,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,219,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,220,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,221,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,222,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,223,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,224,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,225,5
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,226,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,227,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,228,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,229,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,230,1
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,231,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,232,2
+woody-angiosperms,leaf_blade_length_wa,Leaf blade length,leaves,2,LENGTH,233,1
+woody-angiosperms,plant_habit_wa,Growth form,growth form,1,TEXT,0,2
+woody-angiosperms,plant_habit_wa,Growth form,growth form,1,TEXT,1,210
+woody-angiosperms,plant_habit_wa,Growth form,growth form,1,TEXT,2,43
+woody-angiosperms,plant_habit_wa,Growth form,growth form,1,TEXT,3,403
+woody-angiosperms,leaf_type_general_wa,Leaf type,leaves,3,TEXT,0,0
+woody-angiosperms,leaf_type_general_wa,Leaf type,leaves,3,TEXT,1,111
+woody-angiosperms,leaf_type_general_wa,Leaf type,leaves,3,TEXT,2,440
+woody-angiosperms,leaf_type_specific_wa,Specific leaf type,leaves,3,TEXT,0,0
+woody-angiosperms,leaf_type_specific_wa,Specific leaf type,leaves,3,TEXT,1,5
+woody-angiosperms,leaf_type_specific_wa,Specific leaf type,leaves,3,TEXT,2,46
+woody-angiosperms,leaf_type_specific_wa,Specific leaf type,leaves,3,TEXT,3,3
+woody-angiosperms,leaf_type_specific_wa,Specific leaf type,leaves,3,TEXT,4,24
+woody-angiosperms,leaf_type_specific_wa,Specific leaf type,leaves,3,TEXT,5,0
+woody-angiosperms,leaf_type_specific_wa,Specific leaf type,leaves,3,TEXT,6,1
+woody-angiosperms,leaf_type_specific_wa,Specific leaf type,leaves,3,TEXT,7,6
+woody-angiosperms,leaf_type_specific_wa,Specific leaf type,leaves,3,TEXT,8,53
+woody-angiosperms,leaf_type_specific_wa,Specific leaf type,leaves,3,TEXT,9,439

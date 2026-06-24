@@ -1,0 +1,17 @@
+pile_name,pile_slug,pile_friendly_name,description,character_group_count,default_filter_count,preview_character_count,resource_uri
+Alternate Remaining Non-Monocots,alternate-remaining-non-monocots,,,0,19,11,/api/piles/alternate-remaining-non-monocots/
+Carex,carex,Species in the genus Carex,"Grass-like plants with stems that have edges, and flowers that are enclosed inside an inflated sac (perigynium)",5,20,11,/api/piles/carex/
+Composites,composites,Plants in the family Asteraceae,"Plants whose daisy-like ""flowers"" actually consist of two flowers - disks and rays",7,21,12,/api/piles/composites/
+Equisetaceae,equisetaceae,"Primitive plants in the genus Equisetum, lacking true leaves","Spore-bearing plants with firm, jointed branches, usually hollow stems, and cones",3,21,12,/api/piles/equisetaceae/
+Lycophytes,lycophytes,Plants in the families Lycopodiaceae or Isoetaceae,"Spore-bearing plants with small, scale-like or grass-like leaves",4,21,12,/api/piles/lycophytes/
+Monilophytes,monilophytes,"Ferns, moonworts, and Adder's-tongues with obvious leaves","Spore-bearing plants with large, often lobed or compound leaves",3,21,12,/api/piles/monilophytes/
+Non-Alternate Remaining Non-Monocots,non-alternate-remaining-non-monocots,,,0,21,12,/api/piles/non-alternate-remaining-non-monocots/
+Non-Orchid Monocots,non-orchid-monocots,"Lilies, irises, aroids and others",Plants with flower parts numbering 3 or 6 mostly equal-sized parts,8,21,12,/api/piles/non-orchid-monocots/
+Non-Thalloid Aquatic,non-thalloid-aquatic,"Milfoils, watershields, bladderworts, and other submerged plants","Plants with their leaves and/or stems submerged or floating in water, only flowers (if anything) standing above the water surface (note:  if the plant has leaves that protrude above the surface of the water, then seek its identification in other piles)",7,20,12,/api/piles/non-thalloid-aquatic/
+Orchid Monocots,orchid-monocots,Plants in the family Orchidaceae,"Plants with showy, bilaterally symmetrical flowers with one part (the lip) often larger or more elaborate than the other petals",4,21,12,/api/piles/orchid-monocots/
+Poaceae,poaceae,"Plants in the grass family, Poaceae","Plants with narrow leaves enclosing a hollow, rounded stem with a sheath at a swollen node",5,21,12,/api/piles/poaceae/
+Remaining Graminoids,remaining-graminoids,"Bulrushes, rushes, cat-tails, and other narrow-leaved plants","Grass-like plants without swollen stem nodes, that bear flowers in more than two ranks",5,21,12,/api/piles/remaining-graminoids/
+Remaining Non-Monocots,remaining-non-monocots,,Herbaceous plants without composite flowers,8,21,12,/api/piles/remaining-non-monocots/
+Thalloid Aquatic,thalloid-aquatic,Duckweeds and other very small floating species,Floating plants that consist only of a small (10mm) body,4,17,8,/api/piles/thalloid-aquatic/
+Woody Angiosperms,woody-angiosperms,"Trees, shrubs, and lianas that produce flowers and seeds with carpels","Woody plants with flat or broad leaves, which bear flowers and fruits",8,24,15,/api/piles/woody-angiosperms/
+Woody Gymnosperms,woody-gymnosperms,"Pines, spruces, larches, cedars, and other conifers","Woody plants with needle-like leaves, which bear their seeds in scaly or berry-like cones",5,18,10,/api/piles/woody-gymnosperms/

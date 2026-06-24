@@ -1,1 +1,0 @@
-Is the feature family [feature family] visually discernible in this image? Return one of: YES, INCONCLUSIVE, NO.

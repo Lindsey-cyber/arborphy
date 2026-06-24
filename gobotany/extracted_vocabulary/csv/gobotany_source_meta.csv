@@ -1,0 +1,2 @@
+source_title,source_type,source_url,api_base_url,pilegroup_slug,pile_slug,pilot_scope,extracted_at_utc,successful_endpoints,warning_count
+Go Botany Simple Key,web,https://gobotany.nativeplanttrust.org/simple/,https://gobotany.nativeplanttrust.org/api/,woody-plants,woody-angiosperms,api-first woody-angiosperms,2026-03-24T21:10:51.153499+00:00,6,0
