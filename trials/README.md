@@ -1,57 +1,53 @@
-# Trial Process
+# Trials
 
-Each experiment should be treated as a small trial with its own setup, output
-artifact, notes, and commit.
+This folder stores stepwise trial result CSVs under `trials/artifacts/`.
 
-## Required Flow
+The trial wrapper reads `.env` from the repo root before it starts the model
+runner, so `OPENROUTER_API_KEY=...` can live there. To load the same `.env` into
+your current terminal session, run:
 
-1. `git checkout X`
-   - Start from the parent branch for the trial setup.
+```bash
+set -a
+source .env
+set +a
+```
 
-2. Work on experiment setup
-   - Make only the code/config changes needed for the trial.
-   - Keep data expansion and unrelated refactors out of the trial.
+Run the normal smoke test from the repo root:
 
-3. `git checkout X.x`
-   - Move to the specific trial branch or checkpoint before running.
+```bash
+uv run python scripts/run_stepwise_trial.py \
+  --model 'openai/gpt-4o-mini' \
+  --sample-limit 1 \
+  --features key_flower_type
+```
 
-4. Run experiment
-   - Use the trial wrapper when possible: `uv run python scripts/run_stepwise_trial.py`.
-   - Let the runner auto-generate a distinct output filename, or set `EXPERIMENT_OUT_FILE` when a fixed name is needed.
-   - Record the exact command in the trial log.
+Full option version:
 
-5. Gather artifacts
-   - Record output CSV path.
-   - Record image URL(s).
-   - Record exact prompt(s) sent to the model.
-   - Record raw model answer(s).
-   - Record parsed answer(s).
-   - Record the parse rule used.
-   - Record expected answer and correctness fields.
+```bash
+uv run python scripts/run_stepwise_trial.py \
+  --model openrouter/free \
+  --sample-limit 20 \
+  --features key_flower_type,key_plant_type,key_leaf_type \
+  --workers 4 \
+  --timeout 120 \
+  --mode command \
+  --out-file stepwise_trial_result.csv \
+  --trial-id trial_001
+```
 
-6. Log results
-   - Update the trial log in `trials/`.
-   - Summarize what worked, what failed, and what changed.
+Supported feature names are currently `key_flower_type`, `key_plant_type`, and
+`key_leaf_type`.
 
-7. Commit
-   - Commit only the trial setup, trial log, and intended artifacts.
-   - Do not include unrelated local/user changes.
+If `--out-file` is omitted, the wrapper writes an auto-named CSV to
+`trials/artifacts/` using the run time, model, sample limit, and feature list,
+for example:
 
-## Trial Log Fields
+```text
+trials/artifacts/stepwise-20260624-143000-openai-gpt-4o-mini-n1-key_flower_type.csv
+```
 
-- Trial ID
-- Parent branch / setup branch
-- Run branch / checkpoint
-- Goal
-- Exact command
-- Output artifact path
-- Image URL
-- Prompt parts JSON
-- Input species / observation
-- Expected answer
-- Raw model answer
-- Parsed answer
-- Parse rule
-- Correctness
-- Blockers
-- Next step
+If `--out-file` is a relative filename, it is also written under
+`trials/artifacts/`. Use an absolute path only when you intentionally want to
+write somewhere else.
+
+The generated CSV does not include `trial_id` or `model_command` columns.

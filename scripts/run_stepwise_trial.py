@@ -9,12 +9,39 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPERIMENT_DIR = ROOT / "newcomb_wildflower_guide" / "experiment_repro"
+ARTIFACT_DIR = ROOT / "trials" / "artifacts"
 
 sys.path.insert(0, str(ROOT / "scripts" / "adapters"))
 from openrouter_models import resolve_model_alias  # noqa: E402
 
 
+def load_dotenv(path: Path) -> None:
+    if not path.exists():
+        return
+
+    for raw_line in path.read_text().splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("export "):
+            line = line.removeprefix("export ").lstrip()
+        if "=" not in line:
+            continue
+
+        key, value = line.split("=", 1)
+        key = key.strip()
+        if not key or key in os.environ:
+            continue
+
+        value = value.strip()
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
+            value = value[1:-1]
+        os.environ[key] = value
+
+
 def main() -> int:
+    load_dotenv(ROOT / ".env")
+
     parser = argparse.ArgumentParser(description="Run a JM stepwise trial with concise options.")
     parser.add_argument("--model", default="openrouter/free", help="OpenRouter model id or local alias openrouter/free.")
     parser.add_argument("--sample-limit", default="1", help="Number of sample rows to run.")
@@ -22,9 +49,23 @@ def main() -> int:
     parser.add_argument("--workers", default="1", help="Thread worker count.")
     parser.add_argument("--timeout", default="75", help="Seconds before one model call is treated as timed out.")
     parser.add_argument("--mode", choices=["command", "mock"], default="command", help="Model adapter mode.")
-    parser.add_argument("--out-file", default="", help="Optional output CSV filename. Default is auto-generated.")
-    parser.add_argument("--trial-id", default="", help="Optional trial id. Default is timestamp-based.")
-    args = parser.parse_args()
+    parser.add_argument(
+        "--out-file",
+        default="",
+        help="Optional output CSV filename. Relative paths are written under trials/artifacts.",
+    )
+    parser.add_argument(
+        "--trial-id",
+        default="",
+        help="Optional label appended to the default output filename. It is not written as a CSV column.",
+    )
+    raw_args = sys.argv[1:]
+    if any(arg.strip() == "" for arg in raw_args):
+        parser.error(
+            "received a whitespace-only argument. If you used a multiline shell command, "
+            "make sure each line-continuation backslash is the final character on its line."
+        )
+    args = parser.parse_args(raw_args)
 
     model = args.model
     if args.mode == "command":
@@ -37,6 +78,7 @@ def main() -> int:
     env["EXPERIMENT_FEATURES"] = args.features
     env["EXPERIMENT_NUM_WORKERS"] = args.workers
     env["EXPERIMENT_MODEL_COMMAND_TIMEOUT"] = args.timeout
+    env["EXPERIMENT_ARTIFACT_DIR"] = str(ARTIFACT_DIR)
     env["OPENROUTER_TIMEOUT"] = args.timeout
 
     if args.mode == "command":

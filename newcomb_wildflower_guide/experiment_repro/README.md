@@ -80,30 +80,39 @@ uv run python run_stepwise_local.py
 Run the smallest real OpenRouter stepwise smoke test:
 
 ```bash
-cd /Users/lindseyma/Downloads/JM_Assets/descriptive_vocab_assets
+cd /Users/lindseyma/Documents/GitHub/arborphy
 uv run python scripts/run_stepwise_trial.py \
-  --model openrouter/free \
-  --sample-limit 10 \
+  --model openai/gpt-4o-mini \
+  --sample-limit 1 \
   --features key_flower_type
 ```
 
+When using the multiline form, each `\` must be the final character on its
+line. A trailing space after `\` makes the shell pass a stray blank argument and
+then try to run the next line as a separate command.
+
 The stepwise output records the image URL, prompt parts JSON, raw model answers,
-parsed answers, and parse rules. For each trial, set a distinct
-`EXPERIMENT_OUT_FILE` if you want a fixed name; otherwise the runner creates an
-auto-named CSV using the timestamp, model, sample limit, and feature list.
+parsed answers, and parse rules. Results are written under
+`trials/artifacts/` from the repo root. Use `--out-file` if you want a fixed
+name; otherwise the runner creates an auto-named CSV using the timestamp, model,
+sample limit, and feature list.
 
 `openrouter/free` is a local convenience alias. It resolves to a current free
 OpenRouter model that supports image input. To force a specific free model, set
 `OPENROUTER_FREE_MODEL` to a concrete model id ending in `:free`.
 
-For OpenRouter, set `OPENROUTER_API_KEY` first. The included
-`../../scripts/adapters/openrouter_command_adapter.py` reads the runner payload from stdin, calls
-OpenRouter chat completions, and prints the model response to stdout.
+For OpenRouter, the trial wrapper reads `OPENROUTER_API_KEY` from the repo
+root `.env` file if it is not already set in the shell. The included
+`../../scripts/adapters/openrouter_command_adapter.py` reads the runner payload
+from stdin, calls OpenRouter chat completions, and prints the model response to
+stdout.
 
 Small text-only adapter smoke test:
 
 ```bash
-export OPENROUTER_API_KEY='...'
+set -a
+source ../../.env
+set +a
 printf '{"model":"openai/gpt-4o-mini","parts":["Reply with OK only."]}' \
   | uv run python ../../scripts/adapters/openrouter_command_adapter.py
 ```

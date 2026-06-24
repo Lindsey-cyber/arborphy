@@ -24,8 +24,8 @@ from runner_common import (
 )
 
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
 MODEL_MODE = os.environ.get("EXPERIMENT_MODEL_MODE", "mock").strip().lower()
-MODEL_COMMAND = os.environ.get("EXPERIMENT_MODEL_COMMAND", "").strip()
 MODELS = [m.strip() for m in os.environ.get("EXPERIMENT_MODELS", "mock-local").split(",") if m.strip()]
 NUM_WORKERS = int(os.environ.get("EXPERIMENT_NUM_WORKERS", "3"))
 FEATURES = [
@@ -39,6 +39,10 @@ RUN_STARTED_AT = RUN_STARTED.isoformat(timespec="seconds")
 TRIAL_ID = os.environ.get("EXPERIMENT_TRIAL_ID", RUN_STARTED.strftime("trial-%Y%m%d-%H%M%S"))
 FEATURES_REQUESTED = ",".join(FEATURES)
 
+ARTIFACT_DIR = Path(os.environ.get("EXPERIMENT_ARTIFACT_DIR", REPO_ROOT / "trials" / "artifacts")).expanduser()
+if not ARTIFACT_DIR.is_absolute():
+    ARTIFACT_DIR = REPO_ROOT / ARTIFACT_DIR
+
 
 def _slug(value: str) -> str:
     slug = re.sub(r"[^A-Za-z0-9_.-]+", "-", value).strip("-")
@@ -49,13 +53,15 @@ def _output_file() -> Path:
     explicit = os.environ.get("EXPERIMENT_OUT_FILE")
     if explicit:
         path = Path(explicit)
-        return path if path.is_absolute() else OUTPUT_DIR / path
+        return path if path.is_absolute() else ARTIFACT_DIR / path
 
     model_slug = _slug("-".join(MODELS))
     feature_slug = _slug("-".join(FEATURES))
     sample_slug = f"n{SAMPLE_LIMIT}" if SAMPLE_LIMIT else "all"
-    filename = f"{_slug(TRIAL_ID)}-{_slug(MODEL_MODE)}-{model_slug}-{sample_slug}-{feature_slug}.csv"
-    return OUTPUT_DIR / filename
+    timestamp_slug = RUN_STARTED.strftime("%Y%m%d-%H%M%S")
+    trial_slug = f"-{_slug(TRIAL_ID)}" if os.environ.get("EXPERIMENT_TRIAL_ID") else ""
+    filename = f"stepwise-{timestamp_slug}-{model_slug}-{sample_slug}-{feature_slug}{trial_slug}.csv"
+    return ARTIFACT_DIR / filename
 
 
 OUT_FILE = _output_file()
@@ -86,6 +92,7 @@ def main() -> None:
 
     csv_lock = threading.Lock()
     done_lock = threading.Lock()
+    error_count = 0
 
     def process_task(model: str, row: pd.Series, feature_col: str) -> None:
         obs_id = str(row["observation_id"])
@@ -126,10 +133,8 @@ def main() -> None:
         with csv_lock:
             pd.DataFrame([
                 {
-                    "trial_id": TRIAL_ID,
                     "run_started_at": RUN_STARTED_AT,
                     "model_mode": MODEL_MODE,
-                    "model_command": MODEL_COMMAND,
                     "model": model,
                     "sample_limit": SAMPLE_LIMIT or "",
                     "features_requested": FEATURES_REQUESTED,
@@ -170,7 +175,11 @@ def main() -> None:
             for future in as_completed(futures):
                 exc = future.exception()
                 if exc:
+                    error_count += 1
                     print(f"  [ERROR] {exc}")
+
+    if error_count:
+        raise SystemExit(f"\nFailed: {error_count} task(s) raised errors.")
 
     print(f"\nDone. Raw results -> {OUT_FILE}")
 
