@@ -93,9 +93,11 @@ then try to run the next line as a separate command.
 
 The stepwise output records the image URL, prompt parts JSON, raw model answers,
 parsed answers, and parse rules. Results are written under
-`trials/artifacts/` from the repo root. Use `--out-file` if you want a fixed
-name; otherwise the runner creates an auto-named CSV using the timestamp, model,
-sample limit, and feature list.
+`trials/artifacts/` from the repo root. Each run writes a CSV plus a
+`.metadata.json` file named from the trial id. Use `--out-file` if you want a
+fixed CSV name; otherwise the runner creates an auto-named CSV using the
+timestamp, model, sample limit, and feature list. Use `--trial-id` to force a
+stable trial id and, when `--out-file` is omitted, a stable CSV filename too.
 
 `openrouter/free` is a local convenience alias. It resolves to a current free
 OpenRouter model that supports image input. To force a specific free model, set

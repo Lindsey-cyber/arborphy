@@ -133,6 +133,7 @@ def main() -> None:
         with csv_lock:
             pd.DataFrame([
                 {
+                    "trial_id": TRIAL_ID,
                     "run_started_at": RUN_STARTED_AT,
                     "model_mode": MODEL_MODE,
                     "model": model,

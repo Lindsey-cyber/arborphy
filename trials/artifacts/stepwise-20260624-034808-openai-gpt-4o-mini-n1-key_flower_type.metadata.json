@@ -1,0 +1,14 @@
+{
+  "trial_id": "stepwise-20260624-034808-openai-gpt-4o-mini-n1-key_flower_type",
+  "command": "uv run python scripts/run_stepwise_trial.py --model openai/gpt-4o-mini --sample-limit 1 --features key_flower_type",
+  "model": "openai/gpt-4o-mini",
+  "sample_limit": 1,
+  "features": [
+    "key_flower_type"
+  ],
+  "mode": "command",
+  "output_file": "trials/artifacts/stepwise-20260624-034808-openai-gpt-4o-mini-n1-key_flower_type.csv",
+  "git_commit": "8a41cae034dbf49af49868dc0b25231bbccaa650",
+  "python": "3.12.10",
+  "package_manager": "uv"
+}
