@@ -1,0 +1,4 @@
+trial_id,model,feature,source_file,n_rows,n_observations,sees_feature_count,sees_feature_rate,committed_count,commitment_rate,inc_count,inc_rate,correct_count,overall_correct_rate,wrong_count,wrong_rate,committed_accuracy
+real-smoke-nvidia-nemotron-nano-12b-v2-vl-free-n3-primary-run-001,nvidia/nemotron-nano-12b-v2-vl:free,key_flower_type,trials/artifacts/real-smoke-nvidia-nemotron-nano-12b-v2-vl-free-n3-primary-run-001.csv,1,1,1,1.0,1,1.0,0,0.0,0,0.0,1,1.0,0.0
+real-smoke-nvidia-nemotron-nano-12b-v2-vl-free-n3-primary-run-001,nvidia/nemotron-nano-12b-v2-vl:free,key_leaf_type,trials/artifacts/real-smoke-nvidia-nemotron-nano-12b-v2-vl-free-n3-primary-run-001.csv,2,2,2,1.0,2,1.0,0,0.0,1,0.5,1,0.5,0.5
+real-smoke-nvidia-nemotron-nano-12b-v2-vl-free-n3-primary-run-001,nvidia/nemotron-nano-12b-v2-vl:free,key_plant_type,trials/artifacts/real-smoke-nvidia-nemotron-nano-12b-v2-vl-free-n3-primary-run-001.csv,1,1,1,1.0,1,1.0,0,0.0,0,0.0,1,1.0,0.0

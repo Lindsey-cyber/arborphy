@@ -1,0 +1,2 @@
+trial_id,model,source_file,n_rows,n_observations,sees_feature_count,sees_feature_rate,committed_count,commitment_rate,inc_count,inc_rate,correct_count,overall_correct_rate,wrong_count,wrong_rate,committed_accuracy
+real-smoke-google-gemma-4-26b-a4b-it-free-n3-primary-run-001,google/gemma-4-26b-a4b-it:free,trials/artifacts/real-smoke-google-gemma-4-26b-a4b-it-free-n3-primary-run-001.csv,9,3,9,1.0,8,0.8888888888888888,1,0.1111111111111111,5,0.5555555555555556,3,0.3333333333333333,0.625
