@@ -1,0 +1,22 @@
+{
+  "trial_id": "real-smoke-nvidia-nemotron-nano-12b-v2-vl-free-n3-primary-run-001",
+  "command": "uv run python scripts/run_stepwise_trial.py --mode command --model nvidia/nemotron-nano-12b-v2-vl:free --image-set sample-head --sample-limit 3 --features primary --prompt-set john-stepwise-v1 --temperature 0 --max-tokens 200 --run-id run-001 --workers 1 --timeout 120 --trial-id real-smoke-nvidia-nemotron-nano-12b-v2-vl-free-n3-primary-run-001",
+  "image_set": "sample-head",
+  "data_split": "all",
+  "prompt_set": "john-stepwise-v1",
+  "run_id": "run-001",
+  "model": "nvidia/nemotron-nano-12b-v2-vl:free",
+  "sample_limit": 3,
+  "features": [
+    "key_flower_type",
+    "key_plant_type",
+    "key_leaf_type"
+  ],
+  "temperature": 0.0,
+  "max_tokens": 200,
+  "mode": "command",
+  "output_file": "trials/artifacts/real-smoke-nvidia-nemotron-nano-12b-v2-vl-free-n3-primary-run-001.csv",
+  "git_commit": "e1f3c972c59f373a82f4bb02c423825bcae94520",
+  "python": "3.12.10",
+  "package_manager": "uv"
+}
