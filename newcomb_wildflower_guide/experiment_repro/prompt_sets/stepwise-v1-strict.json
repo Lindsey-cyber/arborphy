@@ -1,0 +1,12 @@
+{
+  "id": "stepwise-v1-strict",
+  "description": "Stricter version that discourages guessing and explanations while preserving the same output labels for the parser.",
+  "p1_visibility": "Inspect the image for the botanical feature '{feature_display}'. Answer only: YES, NO, or INCONCLUSIVE. Do not explain. Answer YES only if the feature is directly observable; answer INCONCLUSIVE if the image does not provide enough evidence.{leaf_absence_note}",
+  "p2_intro": "Choose the single option that best matches the plant's '{feature_display}'. Do not infer beyond visible evidence. If evidence is insufficient, choose 'Cannot determine from this image'.\n\nOptions:",
+  "p2_option_line": "\n{index}. **{value}**{description_clause}",
+  "p2_reference_photo_label": "Reference photo for option {index}:",
+  "p2_reference_illustration_label": "Botanical illustration for option {index}:",
+  "p2_uncertain_option": "\n{index}. **Cannot determine from this image**",
+  "p2_response_instruction": "\nRespond with one exact option text only, for example \"{example_value}\", or \"{uncertain_option}\". No explanation.",
+  "leaf_absence_note": " If the plant clearly has no apparent leaves, answer YES because that absence is the observable leaf-type feature."
+}

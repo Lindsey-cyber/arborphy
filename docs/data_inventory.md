@@ -20,14 +20,29 @@ The runner also reads `illustration_paths.json`, which maps
 bridge to the old JM illustration assets, not a full canonical Newcomb
 illustration extraction.
 
+The runner also reads prompt versions from
+`newcomb_wildflower_guide/experiment_repro/prompt_sets/*.json`. These files
+control the actual P1/P2 prompt text selected by `--prompt-set`.
+
 ## Current Trial Outputs
 
 Stepwise trial outputs now live in `trials/artifacts/`.
 
 | File Pattern | Role | Notes |
 | --- | --- | --- |
-| `*.csv` | Per-observation, per-feature trial results. | Includes prompt parts JSON, raw model answers, parsed answers, expected value, `feature_correct`, `committed`, and `trial_id`. |
-| `*.metadata.json` | Reproduction metadata for the trial. | Includes command, model, sample limit, features, mode, output file, git commit, Python version, and package manager. |
+| `*.csv` | Per-observation, per-feature trial results. | Includes trial id, run id, prompt set, prompt parts JSON, raw model answers, parsed answers, expected value, `feature_correct`, and `committed`. |
+| `*.metadata.json` | Reproduction metadata for the trial. | Includes command, image set, data split, prompt set, model, sample limit, features, mode, output file, git commit, Python version, and package manager. |
+
+Analysis outputs from `scripts/analyze_stepwise_results.py` are layered:
+
+| File | Layer | Notes |
+| --- | --- | --- |
+| `per_trial_rows.csv` | Per-trial | Raw result rows plus derived metric fields. |
+| `summary_by_model_feature.csv` | Per-feature/model | Feature-level rates by trial, run, model, prompt set, and feature. |
+| `outcome_by_true_value.csv` | Per-feature/model | `CORRECT` / `WRONG` / `INCONCLUSIVE` counts and rates by true value. |
+| `outcome_pairs.csv` | Per-feature/model | Long-form `true_value` x `predicted_value` x `outcome` counts. |
+| `dashboard_whole_experiment.csv` | Whole experiment | Aggregate counts and rates across all analyzed rows. |
+| `metric_definitions.csv` | Reference | Numerator, denominator, CSV formula, and signal caveat for each metric. |
 
 The current real smoke test artifact is:
 
@@ -66,4 +81,3 @@ to about four conceptual tables:
 
 The locator graph tables look useful for auditing and future UI/path work, but
 they are not necessary for the current JM-style smoke test.
-

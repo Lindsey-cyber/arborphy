@@ -9,6 +9,17 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parent
 OUTPUT_DIR = ROOT / "output"
+PROMPT_SET_DIR = ROOT / "prompt_sets"
+DEFAULT_PROMPT_SET_ID = "stepwise-v1"
+DEFAULT_IMAGE_SET = "sample.csv"
+REQUIRED_SAMPLE_COLUMNS = [
+    "newcomb_species_name",
+    "species_inat",
+    "taxon_id",
+    "observation_id",
+    "photo_id",
+    "photo_url",
+]
 
 FEATURE_DISPLAY = {
     "key_flower_type": "flower type",
@@ -22,11 +33,73 @@ FEATURE_DISPLAY = {
 PRIMARY_FEATURES = ["key_flower_type", "key_plant_type", "key_leaf_type"]
 
 
-def load_inputs() -> dict[str, object]:
+def available_prompt_sets() -> list[str]:
+    if not PROMPT_SET_DIR.exists():
+        return []
+    return sorted(path.stem for path in PROMPT_SET_DIR.glob("*.json"))
+
+
+def load_prompt_set(prompt_set_id: str | None = None) -> dict[str, str]:
+    prompt_set_id = (prompt_set_id or DEFAULT_PROMPT_SET_ID).strip()
+    if prompt_set_id.endswith(".json"):
+        prompt_set_id = prompt_set_id.removesuffix(".json")
+    if not prompt_set_id or Path(prompt_set_id).name != prompt_set_id:
+        raise ValueError(f"Invalid prompt set id: {prompt_set_id!r}")
+    prompt_path = PROMPT_SET_DIR / f"{prompt_set_id}.json"
+    if not prompt_path.exists():
+        available = ", ".join(available_prompt_sets()) or "(none)"
+        raise ValueError(f"Unknown prompt set '{prompt_set_id}'. Available prompt sets: {available}")
+
+    data = json.loads(prompt_path.read_text())
+    if data.get("id", prompt_set_id) != prompt_set_id:
+        raise ValueError(f"Prompt set id mismatch in {prompt_path}: expected '{prompt_set_id}'")
+
+    required = [
+        "id",
+        "p1_visibility",
+        "p2_intro",
+        "p2_option_line",
+        "p2_reference_photo_label",
+        "p2_reference_illustration_label",
+        "p2_uncertain_option",
+        "p2_response_instruction",
+        "leaf_absence_note",
+    ]
+    missing = [key for key in required if not isinstance(data.get(key), str)]
+    if missing:
+        raise ValueError(f"Prompt set '{prompt_set_id}' is missing string fields: {', '.join(missing)}")
+    return data
+
+
+def resolve_image_set_path(image_set: str | None = None) -> Path:
+    image_set = (image_set or DEFAULT_IMAGE_SET).strip()
+    image_set_path = Path(image_set)
+    if not image_set or image_set_path.name != image_set:
+        raise ValueError(f"Invalid image_set {image_set!r}. Use a CSV filename from {OUTPUT_DIR}.")
+    if image_set_path.suffix.lower() != ".csv":
+        raise ValueError(f"Invalid image_set {image_set!r}. image_set must be a CSV filename.")
+
+    sample_path = OUTPUT_DIR / image_set
+    if not sample_path.exists():
+        raise FileNotFoundError(f"image_set CSV does not exist: {sample_path}")
+    return sample_path
+
+
+def validate_sample_columns(sample: pd.DataFrame, sample_path: Path) -> None:
+    missing = [column for column in REQUIRED_SAMPLE_COLUMNS if column not in sample.columns]
+    if missing:
+        raise ValueError(
+            f"image_set CSV {sample_path} is missing required columns: {', '.join(missing)}"
+        )
+
+
+def load_inputs(image_set: str | None = None) -> dict[str, object]:
     refs = pd.read_csv(OUTPUT_DIR / "references.csv")
     fv = pd.read_csv(OUTPUT_DIR / "feature_value_pairs.csv")
     kg = pd.read_csv(OUTPUT_DIR / "newcomb_preprocessed.csv")
-    sample = pd.read_csv(OUTPUT_DIR / "sample.csv")
+    sample_path = resolve_image_set_path(image_set)
+    sample = pd.read_csv(sample_path)
+    validate_sample_columns(sample, sample_path)
     illustration_paths = json.loads((OUTPUT_DIR / "illustration_paths.json").read_text())
 
     values_by_feature = {
@@ -52,6 +125,7 @@ def load_inputs() -> dict[str, object]:
         "fv": fv,
         "kg": kg,
         "sample": sample,
+        "sample_path": sample_path,
         "illustration_paths": illustration_paths,
         "values_by_feature": values_by_feature,
         "ref_mat": ref_mat,
@@ -70,21 +144,20 @@ def get_true_path(path_table: pd.DataFrame, species_inat: str) -> dict[str, str]
     }
 
 
-def existence_parts(feature_col: str, image_path_or_url: str, true_value: str = "") -> list:
+def existence_parts(
+    feature_col: str,
+    image_path_or_url: str,
+    true_value: str = "",
+    prompt_set: dict[str, str] | None = None,
+) -> list:
+    prompt_set = prompt_set or load_prompt_set()
     fname = FEATURE_DISPLAY.get(feature_col, feature_col)
     extra = ""
     if feature_col == "key_leaf_type" and "no apparent" in true_value.lower():
-        extra = (
-            " Note: the absence of visible leaves is itself a discernible leaf-type feature"
-            " — if the stem has no apparent leaves, answer YES."
-        )
+        extra = prompt_set["leaf_absence_note"]
     return [
         {"image": image_path_or_url},
-        (
-            f"Your task is to identify if the visual feature '{fname}' is discernible "
-            f"in the following image. Answer only: YES, NO, or INCONCLUSIVE. "
-            f"Answer YES if and only if the feature is clearly discernible in the image.{extra}"
-        ),
+        prompt_set["p1_visibility"].format(feature_display=fname, leaf_absence_note=extra),
     ]
 
 
@@ -102,29 +175,40 @@ def agreement_parts(feature_col: str, true_value: str, description: str, image_p
     ]
 
 
-def blind_mc_parts(feature_col: str, options: list[dict], image_path_or_url: str) -> list:
+def blind_mc_parts(
+    feature_col: str,
+    options: list[dict],
+    image_path_or_url: str,
+    prompt_set: dict[str, str] | None = None,
+) -> list:
+    prompt_set = prompt_set or load_prompt_set()
     fname = FEATURE_DISPLAY.get(feature_col, feature_col)
     parts = [
         {"image": image_path_or_url},
-        (
-            f"Which of the following options best describes the '{fname}' of the plant in this image?\n"
-            f"If the feature is not clearly visible, choose 'Cannot determine from this image'.\n\n"
-            f"Options:"
-        ),
+        prompt_set["p2_intro"].format(feature_display=fname),
     ]
     for i, opt in enumerate(options, 1):
         desc = f" — {opt['description']}" if opt["description"] else ""
-        parts.append(f"\n{i}. **{opt['value']}**{desc}")
+        parts.append(
+            prompt_set["p2_option_line"].format(
+                index=i,
+                value=opt["value"],
+                description_clause=desc,
+            )
+        )
         if opt.get("img_path"):
-            parts.append(f"Reference photo for option {i}:")
+            parts.append(prompt_set["p2_reference_photo_label"].format(index=i))
             parts.append({"image": opt["img_path"]})
         if opt.get("illust_path"):
-            parts.append(f"Botanical illustration for option {i}:")
+            parts.append(prompt_set["p2_reference_illustration_label"].format(index=i))
             parts.append({"image": opt["illust_path"]})
-    parts.append(f"\n{len(options) + 1}. **Cannot determine from this image**")
+    parts.append(prompt_set["p2_uncertain_option"].format(index=len(options) + 1))
+    example_value = options[0]["value"] if options else "one listed option"
     parts.append(
-        f"\nRespond with ONLY the exact option text (e.g., \"{options[0]['value']}\") "
-        f"or \"Cannot determine from this image\"."
+        prompt_set["p2_response_instruction"].format(
+            example_value=example_value,
+            uncertain_option="Cannot determine from this image",
+        )
     )
     return parts
 

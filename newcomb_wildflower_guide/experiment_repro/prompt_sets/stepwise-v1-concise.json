@@ -1,0 +1,12 @@
+{
+  "id": "stepwise-v1-concise",
+  "description": "Shorter version of the baseline stepwise prompt, useful for testing whether reduced instruction length changes model behavior.",
+  "p1_visibility": "Can the plant's '{feature_display}' be determined from this image? Answer only: YES, NO, or INCONCLUSIVE. Use YES only when the feature is clearly visible.{leaf_absence_note}",
+  "p2_intro": "Select the best '{feature_display}' for this plant. If the image is unclear, choose 'Cannot determine from this image'.\n\nOptions:",
+  "p2_option_line": "\n{index}. **{value}**{description_clause}",
+  "p2_reference_photo_label": "Reference photo for option {index}:",
+  "p2_reference_illustration_label": "Botanical illustration for option {index}:",
+  "p2_uncertain_option": "\n{index}. **Cannot determine from this image**",
+  "p2_response_instruction": "\nReturn only \"{example_value}\" or another exact option text, or \"{uncertain_option}\".",
+  "leaf_absence_note": " If no leaves are apparent, treat that absence as visible evidence and answer YES."
+}

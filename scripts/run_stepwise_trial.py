@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 from datetime import datetime
 import json
 import os
@@ -14,14 +15,22 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPERIMENT_DIR = ROOT / "newcomb_wildflower_guide" / "experiment_repro"
+EXPERIMENT_OUTPUT_DIR = EXPERIMENT_DIR / "output"
 ARTIFACT_DIR = ROOT / "trials" / "artifacts"
+PROMPT_SET_DIR = EXPERIMENT_DIR / "prompt_sets"
+DEFAULT_PROMPT_SET_ID = "stepwise-v1"
+DEFAULT_IMAGE_SET = "sample.csv"
+REQUIRED_SAMPLE_COLUMNS = [
+    "newcomb_species_name",
+    "species_inat",
+    "taxon_id",
+    "observation_id",
+    "photo_id",
+    "photo_url",
+]
 PRIMARY_FEATURES = ["key_flower_type", "key_plant_type", "key_leaf_type"]
 FEATURE_ALIASES = {
     "primary": PRIMARY_FEATURES,
-}
-IMAGE_SET_SAMPLE_LIMITS = {
-    "sample-head": None,
-    "john30-proxy": "30",
 }
 
 sys.path.insert(0, str(ROOT / "scripts" / "adapters"))
@@ -67,29 +76,97 @@ def split_features(features: str) -> list[str]:
     return feature_list
 
 
+def available_prompt_sets() -> list[str]:
+    if not PROMPT_SET_DIR.exists():
+        return []
+    return sorted(path.stem for path in PROMPT_SET_DIR.glob("*.json"))
+
+
+def normalize_prompt_set(prompt_set: str) -> str:
+    prompt_set = prompt_set.strip()
+    if prompt_set.endswith(".json"):
+        prompt_set = prompt_set.removesuffix(".json")
+    if not prompt_set or Path(prompt_set).name != prompt_set:
+        raise SystemExit(f"Invalid --prompt-set {prompt_set!r}. Use a prompt JSON name from {relative_or_absolute(PROMPT_SET_DIR)}.")
+    available = available_prompt_sets()
+    if prompt_set not in available:
+        choices = ", ".join(available) or "(none)"
+        raise SystemExit(f"Unknown --prompt-set {prompt_set!r}. Available prompt sets: {choices}")
+    return prompt_set
+
+
+def available_image_sets() -> list[str]:
+    if not EXPERIMENT_OUTPUT_DIR.exists():
+        return []
+    available = []
+    for path in sorted(EXPERIMENT_OUTPUT_DIR.glob("*.csv")):
+        try:
+            with path.open(newline="") as f:
+                header = next(csv.reader(f))
+        except (OSError, StopIteration):
+            continue
+        if all(column in header for column in REQUIRED_SAMPLE_COLUMNS):
+            available.append(path.name)
+    return available
+
+
 def joined_features(features: str) -> str:
     return ",".join(split_features(features))
 
 
-def explicit_arg(raw_args: list[str], name: str) -> bool:
-    prefix = f"{name}="
-    return any(arg == name or arg.startswith(prefix) for arg in raw_args)
-
-
-def effective_sample_limit(args: argparse.Namespace, raw_args: list[str]) -> str:
-    image_set_limit = IMAGE_SET_SAMPLE_LIMITS[args.image_set]
-    sample_limit_was_explicit = explicit_arg(raw_args, "--sample-limit")
-    if image_set_limit is None:
-        return args.sample_limit
-    if sample_limit_was_explicit and args.sample_limit != image_set_limit:
+def normalize_image_set(image_set: str) -> str:
+    image_set = image_set.strip()
+    image_set_path = Path(image_set)
+    if not image_set or image_set_path.name != image_set:
         raise SystemExit(
-            f"{args.image_set} is fixed at sample-limit {image_set_limit}. "
-            "Remove --sample-limit or set it to the same value."
+            f"Invalid --image-set {image_set!r}. Use a CSV filename from "
+            f"{relative_or_absolute(EXPERIMENT_OUTPUT_DIR)}."
         )
-    return image_set_limit
+    if image_set_path.suffix.lower() != ".csv":
+        raise SystemExit(f"Invalid --image-set {image_set!r}. image_set must be a CSV filename.")
+    return image_set
+
+
+def image_set_path(image_set: str) -> Path:
+    return EXPERIMENT_OUTPUT_DIR / normalize_image_set(image_set)
+
+
+def validate_image_set_csv(image_set: str) -> None:
+    path = image_set_path(image_set)
+    if not path.exists():
+        available = ", ".join(available_image_sets()) or "(none)"
+        raise SystemExit(f"image_set CSV does not exist: {relative_or_absolute(path)}. Available CSVs: {available}")
+
+    with path.open(newline="") as f:
+        reader = csv.reader(f)
+        try:
+            header = next(reader)
+        except StopIteration as exc:
+            raise SystemExit(f"image_set CSV is empty: {relative_or_absolute(path)}") from exc
+
+    missing = [column for column in REQUIRED_SAMPLE_COLUMNS if column not in header]
+    if missing:
+        raise SystemExit(
+            f"image_set CSV {relative_or_absolute(path)} is missing required columns: {', '.join(missing)}"
+        )
+
+
+def normalize_sample_limit(sample_limit: str) -> str:
+    sample_limit = sample_limit.strip()
+    if sample_limit.lower() == "all":
+        return "all"
+    try:
+        limit = int(sample_limit)
+    except ValueError as exc:
+        raise SystemExit("--sample-limit must be a positive integer or 'all'") from exc
+    if limit < 1:
+        raise SystemExit("--sample-limit must be a positive integer or 'all'")
+    return str(limit)
 
 
 def metadata_sample_limit(sample_limit: str) -> int | str:
+    if sample_limit.lower() == "all":
+        return "all"
     try:
         return int(sample_limit)
     except ValueError:
@@ -134,7 +211,7 @@ def default_trial_id(args: argparse.Namespace, model: str, sample_limit: str) ->
         return args.trial_id
 
     timestamp = datetime.now().astimezone().strftime("%Y%m%d-%H%M%S")
-    sample_slug = f"n{sample_limit}" if sample_limit else "all"
+    sample_slug = "all" if sample_limit.lower() == "all" else f"n{sample_limit}"
     feature_slug = slug("-".join(split_features(args.features)))
     return f"stepwise-{timestamp}-{slug(model)}-{slug(args.image_set)}-{sample_slug}-{feature_slug}"
 
@@ -187,12 +264,11 @@ def main() -> int:
 
     parser = argparse.ArgumentParser(description="Run a JM stepwise trial with concise options.")
     parser.add_argument("--model", default="openrouter/free", help="OpenRouter model id or local alias openrouter/free.")
-    parser.add_argument("--sample-limit", default="1", help="Number of sample rows to run.")
+    parser.add_argument("--sample-limit", default="1", help="Number of sample rows to run, or 'all'.")
     parser.add_argument(
         "--image-set",
-        choices=sorted(IMAGE_SET_SAMPLE_LIMITS),
-        default="sample-head",
-        help="Named image set. john30-proxy means the first 30 rows of sample.csv.",
+        default=DEFAULT_IMAGE_SET,
+        help="CSV filename under newcomb_wildflower_guide/experiment_repro/output, for example sample.csv.",
     )
     parser.add_argument(
         "--data-split",
@@ -205,7 +281,11 @@ def main() -> int:
         default="key_flower_type",
         help="Comma-separated feature list, or alias 'primary' for the three Newcomb primary features.",
     )
-    parser.add_argument("--prompt-set", default="john-stepwise-v1", help="Prompt version label recorded in metadata.")
+    parser.add_argument(
+        "--prompt-set",
+        default=DEFAULT_PROMPT_SET_ID,
+        help="Prompt JSON version from newcomb_wildflower_guide/experiment_repro/prompt_sets. Accepts names with or without .json.",
+    )
     parser.add_argument("--temperature", type=float, default=0.0, help="Model sampling temperature.")
     parser.add_argument("--max-tokens", type=int, default=200, help="OpenRouter max_tokens value.")
     parser.add_argument("--run-id", default="run-001", help="Independent run label for repeated-run experiments.")
@@ -230,7 +310,10 @@ def main() -> int:
         )
     args = parser.parse_args(raw_args)
     args.features = joined_features(args.features)
-    sample_limit = effective_sample_limit(args, raw_args)
+    args.image_set = normalize_image_set(args.image_set)
+    args.prompt_set = normalize_prompt_set(args.prompt_set)
+    sample_limit = normalize_sample_limit(args.sample_limit)
+    validate_image_set_csv(args.image_set)
 
     model = args.model
     if args.mode == "command":

@@ -12,13 +12,15 @@ import pandas as pd
 
 from model_adapter import call_model
 from runner_common import (
-    OUTPUT_DIR,
+    DEFAULT_IMAGE_SET,
+    DEFAULT_PROMPT_SET_ID,
     PRIMARY_FEATURES,
     blind_mc_parts,
     build_options,
     existence_parts,
     get_true_path,
     load_inputs,
+    load_prompt_set,
     parse_mc,
     parse_ync,
 )
@@ -34,6 +36,9 @@ FEATURES = [
     if f.strip()
 ]
 SAMPLE_LIMIT = os.environ.get("EXPERIMENT_SAMPLE_LIMIT")
+IMAGE_SET = os.environ.get("EXPERIMENT_IMAGE_SET", DEFAULT_IMAGE_SET)
+PROMPT_SET_ID = os.environ.get("EXPERIMENT_PROMPT_SET", DEFAULT_PROMPT_SET_ID)
+RUN_ID = os.environ.get("EXPERIMENT_RUN_ID", "run-001")
 RUN_STARTED = datetime.now().astimezone()
 RUN_STARTED_AT = RUN_STARTED.isoformat(timespec="seconds")
 TRIAL_ID = os.environ.get("EXPERIMENT_TRIAL_ID", RUN_STARTED.strftime("trial-%Y%m%d-%H%M%S"))
@@ -57,7 +62,7 @@ def _output_file() -> Path:
 
     model_slug = _slug("-".join(MODELS))
     feature_slug = _slug("-".join(FEATURES))
-    sample_slug = f"n{SAMPLE_LIMIT}" if SAMPLE_LIMIT else "all"
+    sample_slug = "all" if not SAMPLE_LIMIT or SAMPLE_LIMIT.lower() == "all" else f"n{SAMPLE_LIMIT}"
     timestamp_slug = RUN_STARTED.strftime("%Y%m%d-%H%M%S")
     trial_slug = f"-{_slug(TRIAL_ID)}" if os.environ.get("EXPERIMENT_TRIAL_ID") else ""
     filename = f"stepwise-{timestamp_slug}-{model_slug}-{sample_slug}-{feature_slug}{trial_slug}.csv"
@@ -67,20 +72,34 @@ def _output_file() -> Path:
 OUT_FILE = _output_file()
 
 
+def sample_limit_label() -> str:
+    return SAMPLE_LIMIT or "all"
+
+
+def apply_sample_limit(sample: pd.DataFrame) -> pd.DataFrame:
+    if not SAMPLE_LIMIT or SAMPLE_LIMIT.lower() == "all":
+        return sample
+    limit = int(SAMPLE_LIMIT)
+    if limit < 1:
+        raise ValueError("EXPERIMENT_SAMPLE_LIMIT must be a positive integer or 'all'")
+    return sample.head(limit)
+
+
 def main() -> None:
-    inputs = load_inputs()
+    inputs = load_inputs(IMAGE_SET)
     refs = inputs["refs"]
     ref_mat = inputs["ref_mat"]
     path_table = inputs["kg"]
     sample = inputs["sample"]
+    sample_path = inputs["sample_path"]
     values_by_feature = inputs["values_by_feature"]
+    prompt_set = load_prompt_set(PROMPT_SET_ID)
 
     unknown_features = [feature for feature in FEATURES if feature not in PRIMARY_FEATURES]
     if unknown_features:
         raise ValueError(f"Unsupported EXPERIMENT_FEATURES: {', '.join(unknown_features)}")
 
-    if SAMPLE_LIMIT:
-        sample = sample.head(int(SAMPLE_LIMIT))
+    sample = apply_sample_limit(sample)
 
     OUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     options_by_feature = {feature: build_options(refs, ref_mat, feature) for feature in refs["feature"].dropna().unique()}
@@ -88,7 +107,18 @@ def main() -> None:
     done = set()
     if OUT_FILE.exists():
         existing = pd.read_csv(OUT_FILE)
-        done = set(zip(existing["model"], existing["observation_id"].astype(str), existing["feature"]))
+        if "run_id" in existing.columns:
+            existing_run_ids = existing["run_id"].fillna("").astype(str)
+        else:
+            existing_run_ids = pd.Series([RUN_ID] * len(existing), index=existing.index)
+        done = set(
+            zip(
+                existing_run_ids,
+                existing["model"],
+                existing["observation_id"].astype(str),
+                existing["feature"],
+            )
+        )
 
     csv_lock = threading.Lock()
     done_lock = threading.Lock()
@@ -97,7 +127,7 @@ def main() -> None:
     def process_task(model: str, row: pd.Series, feature_col: str) -> None:
         obs_id = str(row["observation_id"])
         with done_lock:
-            if (model, obs_id, feature_col) in done:
+            if (RUN_ID, model, obs_id, feature_col) in done:
                 return
 
         true_path = get_true_path(path_table, row["species_inat"])
@@ -105,7 +135,7 @@ def main() -> None:
         if true_value is None:
             return
 
-        p1_prompt_parts = existence_parts(feature_col, row["photo_url"], true_value)
+        p1_prompt_parts = existence_parts(feature_col, row["photo_url"], true_value, prompt_set)
         p1_raw = call_model(model, p1_prompt_parts)
         p1_parsed = parse_ync(p1_raw)
         p1_parse_rule = "parse_ync: startswith YES -> YES; startswith NO -> NO; contains INC -> INCONCLUSIVE; else INCONCLUSIVE"
@@ -113,7 +143,7 @@ def main() -> None:
         values = values_by_feature.get(feature_col, [])
         options = options_by_feature.get(feature_col, [])
         if p1_parsed == "YES":
-            p2_prompt_parts = blind_mc_parts(feature_col, options, row["photo_url"])
+            p2_prompt_parts = blind_mc_parts(feature_col, options, row["photo_url"], prompt_set)
             p2_raw = call_model(model, p2_prompt_parts)
             p2_parsed = parse_mc(p2_raw, values)
             p2_parse_rule = "parse_mc: exact value match; else substring value match; else contains 'cannot determine' -> INCONCLUSIVE; else leading option number; else INCONCLUSIVE"
@@ -126,7 +156,7 @@ def main() -> None:
         if p2_parsed == true_value:
             feature_correct, committed = True, True
         elif p2_parsed == "INCONCLUSIVE":
-            feature_correct, committed = True, False
+            feature_correct, committed = False, False
         else:
             feature_correct, committed = False, True
 
@@ -134,10 +164,13 @@ def main() -> None:
             pd.DataFrame([
                 {
                     "trial_id": TRIAL_ID,
+                    "run_id": RUN_ID,
                     "run_started_at": RUN_STARTED_AT,
                     "model_mode": MODEL_MODE,
                     "model": model,
-                    "sample_limit": SAMPLE_LIMIT or "",
+                    "prompt_set": prompt_set["id"],
+                    "image_set": IMAGE_SET,
+                    "sample_limit": sample_limit_label(),
                     "features_requested": FEATURES_REQUESTED,
                     "observation_id": obs_id,
                     "photo_id": row.get("photo_id", ""),
@@ -159,15 +192,19 @@ def main() -> None:
                     "committed": committed,
                 }
             ]).to_csv(OUT_FILE, mode="a", header=not OUT_FILE.exists(), index=False)
-            done.add((model, obs_id, feature_col))
+            done.add((RUN_ID, model, obs_id, feature_col))
 
         status = "✓" if feature_correct else "✗"
         print(f"  obs={obs_id} {feature_col} P1={p1_parsed} P2={p2_parsed} [{status}]")
 
     for model in MODELS:
         print(f"\n=== {model} ===")
+        print(f"image set: {IMAGE_SET} ({sample_path})")
         print(f"sample rows: {len(sample)}")
+        print(f"sample limit: {sample_limit_label()}")
         print(f"features: {', '.join(FEATURES)}")
+        print(f"prompt set: {prompt_set['id']}")
+        print(f"run id: {RUN_ID}")
         print(f"workers: {NUM_WORKERS}")
         print(f"output: {OUT_FILE}")
         tasks = [(model, row, feature_col) for _, row in sample.iterrows() for feature_col in FEATURES]

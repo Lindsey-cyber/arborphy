@@ -1,0 +1,12 @@
+{
+  "id": "stepwise-v1",
+  "description": "Baseline stepwise prompt matching the current JM reproduction flow: P1 asks whether a feature is discernible, P2 asks for one option or uncertainty.",
+  "p1_visibility": "Your task is to identify if the visual feature '{feature_display}' is discernible in the following image. Answer only: YES, NO, or INCONCLUSIVE. Answer YES if and only if the feature is clearly discernible in the image.{leaf_absence_note}",
+  "p2_intro": "Which of the following options best describes the '{feature_display}' of the plant in this image?\nIf the feature is not clearly visible, choose 'Cannot determine from this image'.\n\nOptions:",
+  "p2_option_line": "\n{index}. **{value}**{description_clause}",
+  "p2_reference_photo_label": "Reference photo for option {index}:",
+  "p2_reference_illustration_label": "Botanical illustration for option {index}:",
+  "p2_uncertain_option": "\n{index}. **Cannot determine from this image**",
+  "p2_response_instruction": "\nRespond with ONLY the exact option text (e.g., \"{example_value}\") or \"{uncertain_option}\".",
+  "leaf_absence_note": " Note: the absence of visible leaves is itself a discernible leaf-type feature - if the stem has no apparent leaves, answer YES."
+}

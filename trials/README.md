@@ -27,8 +27,11 @@ Full option version:
 ```bash
 uv run python scripts/run_stepwise_trial.py \
   --model openrouter/free \
+  --image-set sample.csv \
+  --data-split all \
   --sample-limit 20 \
   --features key_flower_type,key_plant_type,key_leaf_type \
+  --prompt-set stepwise-v1 \
   --workers 4 \
   --timeout 120 \
   --mode command \
@@ -38,6 +41,16 @@ uv run python scripts/run_stepwise_trial.py \
 
 Supported feature names are currently `key_flower_type`, `key_plant_type`, and
 `key_leaf_type`.
+
+Prompt versions live as JSON files in
+`newcomb_wildflower_guide/experiment_repro/prompt_sets/`; `--prompt-set`
+selects one of those files and changes the actual P1/P2 prompt text sent to the
+model. `--image-set` is a CSV filename under
+`newcomb_wildflower_guide/experiment_repro/output/`; the default `sample.csv`
+resolves to `newcomb_wildflower_guide/experiment_repro/output/sample.csv`.
+`--sample-limit` controls how many rows are taken from that CSV: use a positive
+integer for the first N rows or `all` for the full CSV. `--data-split`
+currently supports only `all`.
 
 If `--out-file` is omitted, the wrapper creates an auto-generated `trial_id`
 using the run time, model, sample limit, and feature list, then writes matching
@@ -63,12 +76,32 @@ trials/artifacts/jm-baseline-001.metadata.json
 Each generated CSV includes a `trial_id` column and does not include a
 `model_command` column.
 
+Use `scripts/analyze_stepwise_results.py` to build analysis views from one or
+more raw trial CSVs. It writes:
+
+- `per_trial_rows.csv`
+- `summary_overall.csv`
+- `summary_by_model_feature.csv`
+- `dashboard_whole_experiment.csv`
+- `outcome_by_true_value.csv`
+- `outcome_pairs.csv`
+- `metric_definitions.csv`
+
+Each row is assigned one primary outcome: `CORRECT`, `WRONG`, or
+`INCONCLUSIVE`. `outcome_by_true_value.csv` groups by model, feature, and true
+value to show `correct_count`, `wrong_count`, `inconclusive_count`,
+`correct_rate`, `wrong_rate`, `inconclusive_rate`, and
+`most_common_wrong_prediction`.
+
 Each metadata JSON records the trial setup:
 
 ```json
 {
   "trial_id": "jm-baseline-001",
   "command": "uv run python scripts/run_stepwise_trial.py --model openai/gpt-4o-mini --sample-limit 20 --features key_flower_type,key_plant_type,key_leaf_type --trial-id jm-baseline-001",
+  "image_set": "sample.csv",
+  "data_split": "all",
+  "prompt_set": "stepwise-v1",
   "model": "openai/gpt-4o-mini",
   "sample_limit": 20,
   "features": ["key_flower_type", "key_plant_type", "key_leaf_type"],
