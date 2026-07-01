@@ -252,7 +252,7 @@ def write_metadata(
         "max_tokens": args.max_tokens,
         "mode": args.mode,
         "output_file": relative_or_absolute(output_file),
-        "git_commit": git_commit(),
+        #"git_commit": git_commit(),
         "python": sys.version.split()[0],
         "package_manager": "uv",
     }

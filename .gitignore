@@ -4,3 +4,8 @@ __pycache__/
 *.py[cod]
 newcomb_wildflower_guide/experiment_repro/output/
 .env
+tmp/
+trials/artifacts/*
+!trials/artifacts/.gitkeep
+!trials/artifacts/notebook-20260701-085321.csv
+!trials/artifacts/notebook-20260701-085321.metadata.json

@@ -13,6 +13,7 @@ PROJECT_ROOT = SOURCE_ROOT.parent
 
 PARQUET_DIR = SOURCE_ROOT / "extracted_vocabulary" / "parquet"
 OBS_DIR = PROJECT_ROOT / "observations_pound_ridge"
+REPO_ILLUSTRATIONS_DIR = SOURCE_ROOT / "illustrations"
 JM_DIR = PROJECT_ROOT.parent / "JM_Assets" / "data"
 JM_ILLUSTRATIONS_DIR = JM_DIR / "illustrations"
 OUT_DIR = ROOT / "output"
@@ -186,8 +187,8 @@ def build_references_and_paths(feature_values: pd.DataFrame) -> tuple[pd.DataFra
     paths = {}
     for row in feature_values.itertuples(index=False):
         png = ILLUSTRATION_BY_VALUE.get(row.value)
-        local_path = JM_ILLUSTRATIONS_DIR / png if png else None
-        local_str = str(local_path) if local_path and local_path.exists() else ""
+        local_path = resolve_illustration_path(png) if png else None
+        local_str = str(local_path) if local_path else ""
         key = f"{row.feature}:{row.value}"
         paths[key] = local_str
         rows.append(
@@ -201,6 +202,16 @@ def build_references_and_paths(feature_values: pd.DataFrame) -> tuple[pd.DataFra
         )
     refs = pd.DataFrame(rows)
     return refs, paths
+
+
+def resolve_illustration_path(filename: str | None) -> Path | None:
+    if not filename:
+        return None
+    for directory in (REPO_ILLUSTRATIONS_DIR, JM_ILLUSTRATIONS_DIR):
+        candidate = directory / filename
+        if candidate.exists():
+            return candidate
+    return None
 
 
 def build_sample(con: duckdb.DuckDBPyConnection) -> pd.DataFrame:

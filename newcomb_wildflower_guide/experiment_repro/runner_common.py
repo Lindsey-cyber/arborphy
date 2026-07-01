@@ -8,8 +8,10 @@ import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parent
+SOURCE_ROOT = ROOT.parent
 OUTPUT_DIR = ROOT / "output"
 PROMPT_SET_DIR = ROOT / "prompt_sets"
+REPO_ILLUSTRATIONS_DIR = SOURCE_ROOT / "illustrations"
 DEFAULT_PROMPT_SET_ID = "stepwise-v1"
 DEFAULT_IMAGE_SET = "sample.csv"
 REQUIRED_SAMPLE_COLUMNS = [
@@ -114,9 +116,10 @@ def load_inputs(image_set: str | None = None) -> dict[str, object]:
         illust_path = row.get("reference_illustration_path", "")
         if not isinstance(illust_path, str):
             illust_path = ""
+        illust_path = resolve_illustration_path(illust_path)
         ref_mat[(feat, val)] = {
             "img_path": None,
-            "illust_path": illust_path if illust_path and Path(illust_path).exists() else None,
+            "illust_path": illust_path,
             "description": row.get("reference_description", "") or "",
         }
 
@@ -130,6 +133,22 @@ def load_inputs(image_set: str | None = None) -> dict[str, object]:
         "values_by_feature": values_by_feature,
         "ref_mat": ref_mat,
     }
+
+
+def resolve_illustration_path(path_text: str) -> str | None:
+    path_text = path_text.strip()
+    if not path_text:
+        return None
+
+    path = Path(path_text).expanduser()
+    if path.exists():
+        return str(path)
+
+    repo_candidate = REPO_ILLUSTRATIONS_DIR / path.name
+    if path.name and repo_candidate.exists():
+        return str(repo_candidate)
+
+    return None
 
 
 def get_true_path(path_table: pd.DataFrame, species_inat: str) -> dict[str, str]:
@@ -156,8 +175,8 @@ def existence_parts(
     if feature_col == "key_leaf_type" and "no apparent" in true_value.lower():
         extra = prompt_set["leaf_absence_note"]
     return [
-        {"image": image_path_or_url},
         prompt_set["p1_visibility"].format(feature_display=fname, leaf_absence_note=extra),
+        {"image": image_path_or_url},
     ]
 
 
@@ -165,13 +184,13 @@ def agreement_parts(feature_col: str, true_value: str, description: str, image_p
     fname = FEATURE_DISPLAY.get(feature_col, feature_col)
     desc_clause = f" — {description}" if description else ""
     return [
-        {"image": image_path_or_url},
         (
             f"A botanical expert has classified the '{fname}' of the plant in this image "
             f"as '{true_value}'{desc_clause}.\n"
             f"Is this classification consistent with what you can observe in the image?\n"
             f"Reply with exactly one word: YES, NO, or INCONCLUSIVE."
         ),
+        {"image": image_path_or_url},
     ]
 
 
@@ -184,8 +203,9 @@ def blind_mc_parts(
     prompt_set = prompt_set or load_prompt_set()
     fname = FEATURE_DISPLAY.get(feature_col, feature_col)
     parts = [
-        {"image": image_path_or_url},
         prompt_set["p2_intro"].format(feature_display=fname),
+        "Plant image to classify:",
+        {"image": image_path_or_url},
     ]
     for i, opt in enumerate(options, 1):
         desc = f" — {opt['description']}" if opt["description"] else ""

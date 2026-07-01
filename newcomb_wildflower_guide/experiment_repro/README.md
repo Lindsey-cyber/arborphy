@@ -4,9 +4,9 @@ This folder recreates John Matter's Spring-2026 Newcomb experiment inputs from
 the newer `descriptive_vocab_assets` source data.
 
 It is rooted in `descriptive_vocab_assets/newcomb_wildflower_guide/` rather
-than `JM_Assets/`, but it temporarily reuses the 11 JM Newcomb illustration
-PNGs because the canonical Newcomb illustration extraction has not yet been
-completed.
+than `JM_Assets/`. It uses the repo-local Newcomb illustration PNGs under
+`newcomb_wildflower_guide/illustrations/`, with the old `JM_Assets` location
+kept only as a fallback for older checkouts.
 
 ## What this generates
 
@@ -45,16 +45,16 @@ The runners use a simple adapter contract:
 
 - Newcomb parquets from `../extracted_vocabulary/parquet/`
 - Site observations from `../../observations_pound_ridge/`
-- JM illustration PNGs from `../../../JM_Assets/data/illustrations/`
+- Newcomb illustration PNGs from `../illustrations/`
 
 ## Notes
 
 - `feature_value_pairs.csv` is generated from the Newcomb route-step model.
 - `newcomb_preprocessed.csv` is reconstructed by expanding taxon-to-route links
   into a flattened JM-style path table.
-- `references.csv` is a best-effort bridge table. Because the canonical Newcomb
-  illustration extraction is still pending, only values that can be matched to
-  JM's hand-curated illustrations receive local illustration paths.
+- `references.csv` is a best-effort bridge table. Only values that can be
+  matched to the repo-local Newcomb illustrations receive local illustration
+  paths.
 - `sample.csv` is rebuilt from the current Pound Ridge observation snapshot,
   joined by scientific name to Newcomb taxa.
 
