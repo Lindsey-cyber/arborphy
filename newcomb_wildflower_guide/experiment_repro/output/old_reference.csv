@@ -1,0 +1,77 @@
+feature_value,reference_image_link,reference_illustration_path,reference_description,feature
+3 Regular Parts,,/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/regular_flowers.png,What is the flower type or structure?,key_flower_type
+4 Regular Parts,,/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/regular_flowers.png,What is the flower type or structure?,key_flower_type
+5 Regular Parts,,/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/regular_flowers.png,What is the flower type or structure?,key_flower_type
+6 Regular Parts,,/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/regular_flowers.png,What is the flower type or structure?,key_flower_type
+7 or More Regular Parts,,/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/regular_flowers.png,What is the flower type or structure?,key_flower_type
+Asters (Aster),,,What is the flower type or structure?,key_flower_type
+Goldenrods (Solidago),,,What is the flower type or structure?,key_flower_type
+Irregular Flowers,,/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/irregular_flowers.png,What is the flower type or structure?,key_flower_type
+Parts Indistinguishable,,,What is the flower type or structure?,key_flower_type
+Leaves Divided,,/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_divided.png,What is the leaf form?,key_leaf_type
+Leaves Entire,,/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_entire.png,What is the leaf form?,key_leaf_type
+Leaves Toothed or Lobed,,/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_toothed.png,What is the leaf form?,key_leaf_type
+No Apparent Leaves,,,What is the leaf form?,key_leaf_type
+Shrubs,,,What is the growth form and leaf arrangement?,key_plant_type
+Vines,,,What is the growth form and leaf arrangement?,key_plant_type
+Wildflowers - Alternate Leaves,,/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/alternate_leaves.png,What is the growth form and leaf arrangement?,key_plant_type
+Wildflowers - Basal Leaves Only,,/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/basal_leaves.png,What is the growth form and leaf arrangement?,key_plant_type
+Wildflowers - No Apparent Leaves,,,What is the growth form and leaf arrangement?,key_plant_type
+Wildflowers - Opposite or Whorled Leaves,,/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/opposite_leaves.png,What is the growth form and leaf arrangement?,key_plant_type
+Both sepals and petals (if present) separate or appearing so,,,What is the first distinguishing characteristic?,key_subgroup_1
+"Flowers 1/4"" or more wide or long",,,What is the first distinguishing characteristic?,key_subgroup_1
+Flowers growing singly or 2-4 in a cluster,,,What is the first distinguishing characteristic?,key_subgroup_1
+"Flowers in racemes, spikes or widely branched clusters",,,What is the first distinguishing characteristic?,key_subgroup_1
+"Flowers in spikes, racemes or heads",,,What is the first distinguishing characteristic?,key_subgroup_1
+Flowers not yellow,,,What is the first distinguishing characteristic?,key_subgroup_1
+Flowers not yellow or orange,,,What is the first distinguishing characteristic?,key_subgroup_1
+Flowers not yellow or yellowish,,,What is the first distinguishing characteristic?,key_subgroup_1
+"Flowers numerous, in broad, branching clusters",,,What is the first distinguishing characteristic?,key_subgroup_1
+Flowers terminal,,,What is the first distinguishing characteristic?,key_subgroup_1
+"Flowers under 1/2"" wide",,,What is the first distinguishing characteristic?,key_subgroup_1
+"Flowers very small (under 1/4"" wide or long)",,,What is the first distinguishing characteristic?,key_subgroup_1
+"Leaflets 3, entire or finely toothed",,,What is the first distinguishing characteristic?,key_subgroup_1
+Leaves alternate or clustered,,,What is the first distinguishing characteristic?,key_subgroup_1
+Leaves deeply and irregularly lobed or divided into narrow segments,,,What is the first distinguishing characteristic?,key_subgroup_1
+Leaves deeply cleft into irregularly lobed or very narrow segments,,,What is the first distinguishing characteristic?,key_subgroup_1
+Leaves divided into 3 or more lance-shaped or wider leaflets,,,What is the first distinguishing characteristic?,key_subgroup_1
+"Leaves evergreen, stiff and leathery",,,What is the first distinguishing characteristic?,key_subgroup_1
+Leaves in pairs,,,What is the first distinguishing characteristic?,key_subgroup_1
+Leaves narrow,,,What is the first distinguishing characteristic?,key_subgroup_1
+Leaves not evergreen,,,What is the first distinguishing characteristic?,key_subgroup_1
+"Leaves opposite, obviously growing in pairs",,,What is the first distinguishing characteristic?,key_subgroup_1
+Leaves without tendrils,,,What is the first distinguishing characteristic?,key_subgroup_1
+Not aquatic,,,What is the first distinguishing characteristic?,key_subgroup_1
+"Petals (or petal-like parts) grown together to form a tube, bell or cup",,,What is the first distinguishing characteristic?,key_subgroup_1
+"Petals separate; sepals united into a tube, cup or bladder from which the petals emerge",,,What is the first distinguishing characteristic?,key_subgroup_1
+Shrubs over 2' high,,,What is the first distinguishing characteristic?,key_subgroup_1
+Stem jointed,,,What is the first distinguishing characteristic?,key_subgroup_1
+Stem neither white-woolly nor jointed,,,What is the first distinguishing characteristic?,key_subgroup_1
+"White, pink or purple flowers",,,What is the first distinguishing characteristic?,key_subgroup_1
+"White, pink, magenta or purple flowers",,,What is the first distinguishing characteristic?,key_subgroup_1
+Yellow flowers,,,What is the first distinguishing characteristic?,key_subgroup_1
+Yellow or orange flowers,,,What is the first distinguishing characteristic?,key_subgroup_1
+- Flowers 2-lipped,,,What is the second distinguishing characteristic?,key_subgroup_2
+At least some of the flowers terminal,,,What is the second distinguishing characteristic?,key_subgroup_2
+Daisylike or asterlike flowers,,,What is the second distinguishing characteristic?,key_subgroup_2
+Daisylike or asterlike flowers or flowers with shining petals,,,What is the second distinguishing characteristic?,key_subgroup_2
+Dandelionlike flowers,,,What is the second distinguishing characteristic?,key_subgroup_2
+Flowers in umbels or flat clusters,,,What is the second distinguishing characteristic?,key_subgroup_2
+Flowers not yellow,,,What is the second distinguishing characteristic?,key_subgroup_2
+"Individual flowers stalkless, growing in 1 or more heads, spikes or whorls",,,What is the second distinguishing characteristic?,key_subgroup_2
+Juice not milky,,,What is the second distinguishing characteristic?,key_subgroup_2
+"Larger leaves under 2"" long",,,What is the second distinguishing characteristic?,key_subgroup_2
+Largest leaves as wide as long,,,What is the second distinguishing characteristic?,key_subgroup_2
+Leaflets 5 or more,,,What is the second distinguishing characteristic?,key_subgroup_2
+Leaves alternate or clustered at the ends of the branches,,,What is the second distinguishing characteristic?,key_subgroup_2
+Leaves deeply cleft into irregularly lobed or very narrow segments,,,What is the second distinguishing characteristic?,key_subgroup_2
+Leaves longer than wide,,,What is the second distinguishing characteristic?,key_subgroup_2
+Leaves not arrow-shaped,,,What is the second distinguishing characteristic?,key_subgroup_2
+Leaves toothed or shallowly lobed,,,What is the second distinguishing characteristic?,key_subgroup_2
+Leaves unlobed,,,What is the second distinguishing characteristic?,key_subgroup_2
+Leaves with 3-7 lobes,,,What is the second distinguishing characteristic?,key_subgroup_2
+Stems jointed (Buckwheat Family),,,What is the second distinguishing characteristic?,key_subgroup_2
+Stems not jointed,,,What is the second distinguishing characteristic?,key_subgroup_2
+White or greenish-white flowers,,,What is the second distinguishing characteristic?,key_subgroup_2
+Yellow flowers,,,What is the second distinguishing characteristic?,key_subgroup_2
+Middle leaflet distinctly stalked,,,What is the third distinguishing characteristic?,key_subgroup_3

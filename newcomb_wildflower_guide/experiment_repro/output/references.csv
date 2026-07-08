@@ -1,0 +1,68 @@
+feature_value,reference_image_link,reference_illustration_path,reference_description,feature
+3 Regular Parts,https://www.inaturalist.org/photos/57834500,/Users/John/Newcomb/illustrations/regular_flowers.png,"Regular flowers are radially symmetrical, which means that their petals or petal-like parts (or rays in flowers like the Daisy) are arranged around the center like the spokes of a wheel. Each petal or petal-like part is similar in size, shape, and color to all the others. If the petals or parts are united, as in bell-shaped flowers like the Lily-of-the-valley, then the lobes of the flower are likewise similar in size, shape and color.",key_flower_type
+4 Regular Parts,https://www.inaturalist.org/photos/310472154,/Users/John/Newcomb/illustrations/regular_flowers.png,"Regular flowers are radially symmetrical, which means that their petals or petal-like parts (or rays in flowers like the Daisy) are arranged around the center like the spokes of a wheel. Each petal or petal-like part is similar in size, shape, and color to all the others. If the petals or parts are united, as in bell-shaped flowers like the Lily-of-the-valley, then the lobes of the flower are likewise similar in size, shape and color.",key_flower_type
+5 Regular Parts,https://www.inaturalist.org/photos/424459597,/Users/John/Newcomb/illustrations/regular_flowers.png,"Regular flowers are radially symmetrical, which means that their petals or petal-like parts (or rays in flowers like the Daisy) are arranged around the center like the spokes of a wheel. Each petal or petal-like part is similar in size, shape, and color to all the others. If the petals or parts are united, as in bell-shaped flowers like the Lily-of-the-valley, then the lobes of the flower are likewise similar in size, shape and color.",key_flower_type
+6 Regular Parts,https://www.inaturalist.org/photos/80342041,/Users/John/Newcomb/illustrations/regular_flowers.png,"Regular flowers are radially symmetrical, which means that their petals or petal-like parts (or rays in flowers like the Daisy) are arranged around the center like the spokes of a wheel. Each petal or petal-like part is similar in size, shape, and color to all the others. If the petals or parts are united, as in bell-shaped flowers like the Lily-of-the-valley, then the lobes of the flower are likewise similar in size, shape and color.",key_flower_type
+7 or More Regular Parts,https://www.inaturalist.org/photos/222876592,/Users/John/Newcomb/illustrations/regular_flowers.png,"Regular flowers are radially symmetrical, which means that their petals or petal-like parts (or rays in flowers like the Daisy) are arranged around the center like the spokes of a wheel. Each petal or petal-like part is similar in size, shape, and color to all the others. If the petals or parts are united, as in bell-shaped flowers like the Lily-of-the-valley, then the lobes of the flower are likewise similar in size, shape and color.",key_flower_type
+Parts Indistinguishable,https://www.inaturalist.org/photos/52243420,,Indistinguishable flowers either have no visible petal-like parts or the parts are so small that it is difficult to make out their number of arrangement. A flower may be very small and still have parts that are quite discernible.,key_flower_type
+Irregular Flowers,https://www.inaturalist.org/photos/196377999,/Users/John/Newcomb/illustrations/irregular_flowers.png,"Irregular flowers are not radially symmetrical; that is, their petals or petal-like parts are not similar in size, shape or color. Usually, these flowers have upper and lower parts that are called lips.",key_flower_type
+Wildflowers - Alternate Leaves,https://www.inaturalist.org/photos/307163812,/Users/John/Newcomb/illustrations/alternate_leaves.png,"Wildflowers with stem leaves that are arranged singly on the stem, first at one point and then at another, they are alternate. If there is only one stem leaf, it is considered alternate.",key_plant_type
+Wildflowers - No Apparent Leaves,https://www.inaturalist.org/photos/50286623,,,key_plant_type
+Wildflowers - Opposite or Whorled Leaves,https://www.inaturalist.org/photos/421678053,/Users/John/Newcomb/illustrations/opposite_leaves.png,"Wildflowers with stem leaves growing directly across from each other that are either in pairs or in circles of threes, fours, fives or more are opposite or whorled. If there is only one stem leaf, it is considered alternate.",key_plant_type
+Wildflowers - Basal Leaves Only,https://www.inaturalist.org/photos/396753070,/Users/John/Newcomb/illustrations/basal_leaves.png,Leaves growing from the base of the plant are basal leaves.,key_plant_type
+Vines,https://www.inaturalist.org/photos/116667850,,"A vine is a plant with long trailing, twining or climbing stems generally over two feet long.",key_plant_type
+Shrubs,https://www.inaturalist.org/photos/392514942,,"A shrub is a plant with woody stem permanently above the ground, but at maturity it is usually under ten feet high.",key_plant_type
+Leaves Entire,https://www.inaturalist.org/photos/139502186,/Users/John/Newcomb/illustrations/leaves_entire.png,"If the margin of a leaf is even and unbroken, the leaf is said to be entire.",key_leaf_type
+No Apparent Leaves,https://www.inaturalist.org/photos/50286623,,,key_leaf_type
+Leaves Toothed or Lobed,https://www.inaturalist.org/photos/307213903,/Users/John/Newcomb/illustrations/leaves_toothed.png,"If the margin has more or less regular, shallow indentations, the leaf is toothed. The leaves of some plants have one or more deeper indentations, which separate the leaf into several sections known as lobes.",key_leaf_type
+Leaves Divided,https://www.inaturalist.org/photos/127978485,/Users/John/Newcomb/illustrations/leaves_divided.png,"Often a leaf is actually divided into separate parts known as leaflets. If some of the leave indentations go almost to the midrib, even though the divisions are not strictly leaflets, the leaf is considered to be divided.",key_leaf_type
+Stem neither white-woolly nor jointed,https://www.inaturalist.org/photos/89501637,,,key_subgroup_1
+Yellow or orange flowers,https://www.inaturalist.org/photos/10506489,,,key_subgroup_1
+Flowers not yellow or yellowish,https://www.inaturalist.org/photos/47275791,,,key_subgroup_1
+"White, pink or purple flowers",https://www.inaturalist.org/photos/363221,,,key_subgroup_1
+Leaves narrow,https://www.inaturalist.org/photos/77639051,,,key_subgroup_1
+Leaves without tendrils,https://www.inaturalist.org/photos/39288956,,,key_subgroup_1
+Both sepals and petals (if present) separate or appearing so,https://www.inaturalist.org/photos/143767829,,,key_subgroup_1
+"Leaves evergreen, stiff and leathery",https://www.inaturalist.org/photos/14124095,,,key_subgroup_1
+Flowers not yellow,https://www.inaturalist.org/photos/89968873,,,key_subgroup_1
+Flowers not yellow,https://www.inaturalist.org/photos/89968873,,,key_subgroup_2
+"Petals (or petal-like parts) grown together to form a tube, bell or cup",https://www.inaturalist.org/photos/132128184,,,key_subgroup_1
+Yellow flowers,https://www.inaturalist.org/photos/225748890,,,key_subgroup_1
+Yellow flowers,https://www.inaturalist.org/photos/225748890,,,key_subgroup_2
+Leaves deeply and irregularly lobed or divided into narrow segments,https://www.inaturalist.org/photos/78982747,,,key_subgroup_1
+Leaves in pairs,https://www.inaturalist.org/photos/457825,,,key_subgroup_1
+Flowers not yellow or orange,https://www.inaturalist.org/photos/556914565,,,key_subgroup_1
+"Leaflets 3, entire or finely toothed",https://www.inaturalist.org/photos/600869545,,,key_subgroup_1
+Flowers terminal,https://www.inaturalist.org/photos/217021140,,,key_subgroup_1
+Flowers growing singly or 2-4 in a cluster,https://www.inaturalist.org/photos/40077410,,,key_subgroup_1
+Leaves divided into 3 or more lance-shaped or wider leaflets,https://www.inaturalist.org/photos/9240504,,,key_subgroup_1
+Leaves deeply cleft into irregularly lobed or very narrow segments,https://www.inaturalist.org/photos/4015248,,,key_subgroup_1
+Leaves deeply cleft into irregularly lobed or very narrow segments,https://www.inaturalist.org/photos/4015248,,,key_subgroup_2
+"White, pink, magenta or purple flowers",https://www.inaturalist.org/photos/589344702,,,key_subgroup_1
+"Flowers numerous, in broad, branching clusters",https://www.inaturalist.org/photos/2309528,,,key_subgroup_1
+Leaves not evergreen,https://www.inaturalist.org/photos/71853870,,,key_subgroup_1
+Stem jointed,https://www.inaturalist.org/photos/156250801,,,key_subgroup_1
+"Flowers in spikes, racemes or heads",https://www.inaturalist.org/photos/84061129,,,key_subgroup_1
+"Leaves opposite, obviously growing in pairs",https://www.inaturalist.org/photos/17536664,,,key_subgroup_1
+"Flowers in racemes, spikes or widely branched clusters",https://www.inaturalist.org/photos/5315,,,key_subgroup_1
+"Petals separate; sepals united into a tube, cup or bladder from which the petals emerge",https://www.inaturalist.org/photos/149687809,,,key_subgroup_1
+Leaves alternate or clustered,https://www.inaturalist.org/photos/22598400,,,key_subgroup_1
+Daisylike or asterlike flowers or flowers with shining petals,https://www.inaturalist.org/photos/112498,,,key_subgroup_2
+"Individual flowers stalkless, growing in 1 or more heads, spikes or whorls",https://www.inaturalist.org/photos/143624,,,key_subgroup_2
+Leaves not arrow-shaped,https://www.inaturalist.org/photos/49023044,,,key_subgroup_2
+At least some of the flowers terminal,https://www.inaturalist.org/photos/903610,,,key_subgroup_2
+Stems jointed (Buckwheat Family),https://www.inaturalist.org/photos/92331694,,,key_subgroup_2
+White or greenish-white flowers,https://www.inaturalist.org/photos/217021140,,,key_subgroup_2
+Leaves longer than wide,https://www.inaturalist.org/photos/228207800,,,key_subgroup_2
+Stems not jointed,https://www.inaturalist.org/photos/207313654,,,key_subgroup_2
+Daisylike or asterlike flowers,https://www.inaturalist.org/photos/10145,,,key_subgroup_2
+- Flowers 2-lipped,https://www.inaturalist.org/photos/80803238,,,key_subgroup_2
+Leaves toothed or shallowly lobed,https://www.inaturalist.org/photos/256923677,,,key_subgroup_2
+Leaves alternate or clustered at the ends of the branches,https://www.inaturalist.org/photos/18397060,,,key_subgroup_2
+Dandelionlike flowers,https://www.inaturalist.org/photos/5228,,,key_subgroup_2
+Leaves unlobed,https://www.inaturalist.org/photos/12231787,,,key_subgroup_2
+Leaflets 5 or more,https://www.inaturalist.org/photos/44300095,,,key_subgroup_2
+Leaves with 3-7 lobes,https://www.inaturalist.org/photos/38159318,,,key_subgroup_2
+Largest leaves as wide as long,https://www.inaturalist.org/photos/377793501,,,key_subgroup_2
+Flowers in umbels or flat clusters,https://www.inaturalist.org/photos/265452182,,,key_subgroup_2
+Middle leaflet distinctly stalked,https://www.inaturalist.org/photos/49736,,,key_subgroup_3

@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import base64
+from functools import lru_cache
 import json
 import mimetypes
 import os
 from pathlib import Path
+import re
 import sys
 from typing import Any
 import urllib.error
@@ -102,8 +104,12 @@ def parts_has_image(parts: list[Any]) -> bool:
     return any(isinstance(part, dict) and "image" in part for part in parts)
 
 
+@lru_cache(maxsize=512)
 def image_to_url(image_ref: str) -> str:
     if image_ref.startswith(("http://", "https://", "data:")):
+        inat_image = inaturalist_photo_page_to_image_url(image_ref)
+        if inat_image:
+            return inat_image
         return image_ref
 
     path = Path(image_ref).expanduser()
@@ -118,6 +124,55 @@ def image_to_url(image_ref: str) -> str:
     mime_type = mimetypes.guess_type(path.name)[0] or "image/png"
     encoded = base64.b64encode(path.read_bytes()).decode("ascii")
     return f"data:{mime_type};base64,{encoded}"
+
+
+@lru_cache(maxsize=512)
+def inaturalist_photo_page_to_image_url(image_ref: str) -> str | None:
+    match = re.match(r"^https?://(?:www\.)?inaturalist\.org/photos/(\d+)/?$", image_ref)
+    if not match:
+        return None
+
+    photo_or_observation_id = match.group(1)
+    direct_photo_url = static_inaturalist_photo_url(photo_or_observation_id)
+    if direct_photo_url:
+        return direct_photo_url
+
+    observation_id = photo_or_observation_id
+    api_url = f"https://api.inaturalist.org/v1/observations/{observation_id}"
+    request = urllib.request.Request(api_url, headers={"User-Agent": "arborphy-repro/1.0"})
+    try:
+        with urllib.request.urlopen(request, timeout=20) as response:
+            data = json.loads(response.read().decode("utf-8"))
+    except (urllib.error.URLError, json.JSONDecodeError, TimeoutError):
+        return None
+
+    try:
+        photo_url = data["results"][0]["photos"][0]["url"]
+    except (KeyError, IndexError, TypeError):
+        return None
+    if not isinstance(photo_url, str) or not photo_url:
+        return None
+    return re.sub(r"/square\.(jpg|jpeg|png)$", r"/medium.\1", photo_url)
+
+
+@lru_cache(maxsize=512)
+def static_inaturalist_photo_url(photo_id: str) -> str | None:
+    hosts = (
+        "https://static.inaturalist.org/photos",
+        "https://inaturalist-open-data.s3.amazonaws.com/photos",
+    )
+    for host in hosts:
+        for ext in ("jpeg", "jpg", "png"):
+            url = f"{host}/{photo_id}/medium.{ext}"
+            request = urllib.request.Request(url, method="HEAD", headers={"User-Agent": "arborphy-repro/1.0"})
+            try:
+                with urllib.request.urlopen(request, timeout=10) as response:
+                    content_type = response.headers.get("content-type", "")
+                    if response.status == 200 and content_type.startswith("image/"):
+                        return url
+            except urllib.error.URLError:
+                continue
+    return None
 
 
 def normalize_content(content: Any) -> str:

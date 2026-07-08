@@ -1,0 +1,367 @@
+model,feature,feature_value,prompt_type,raw_response,parsed,expected,correct
+openai/gpt-4o-mini,key_flower_type,4 Regular Parts,agreement,INCONCLUSIVE,INCONCLUSIVE,YES,False
+openai/gpt-4o-mini,key_flower_type,3 Regular Parts,agreement,INCONCLUSIVE,INCONCLUSIVE,YES,False
+openai/gpt-4o-mini,key_flower_type,4 Regular Parts,existence,YES,YES,YES,True
+openai/gpt-4o-mini,key_flower_type,3 Regular Parts,existence,YES,YES,YES,True
+openai/gpt-4o-mini,key_flower_type,6 Regular Parts,existence,INCONCLUSIVE,INCONCLUSIVE,YES,False
+openai/gpt-4o-mini,key_flower_type,5 Regular Parts,existence,YES,YES,YES,True
+openai/gpt-4o-mini,key_flower_type,6 Regular Parts,agreement,INCONCLUSIVE,INCONCLUSIVE,YES,False
+openai/gpt-4o-mini,key_flower_type,4 Regular Parts,blind_mc,Cannot determine from this image.,INCONCLUSIVE,4 Regular Parts,False
+openai/gpt-4o-mini,key_flower_type,5 Regular Parts,blind_mc,Cannot determine from this image.,INCONCLUSIVE,5 Regular Parts,False
+openai/gpt-4o-mini,key_flower_type,5 Regular Parts,agreement,INCONCLUSIVE,INCONCLUSIVE,YES,False
+openai/gpt-4o-mini,key_flower_type,7 or More Regular Parts,agreement,YES,YES,YES,True
+openai/gpt-4o-mini,key_flower_type,Parts Indistinguishable,existence,YES,YES,YES,True
+openai/gpt-4o-mini,key_flower_type,7 or More Regular Parts,existence,YES,YES,YES,True
+openai/gpt-4o-mini,key_flower_type,3 Regular Parts,blind_mc,1. **3 Regular Parts**,3 Regular Parts,3 Regular Parts,True
+openai/gpt-4o-mini,key_flower_type,Irregular Flowers,existence,YES,YES,YES,True
+openai/gpt-4o-mini,key_flower_type,6 Regular Parts,blind_mc,4. **6 Regular Parts**,6 Regular Parts,6 Regular Parts,True
+openai/gpt-4o-mini,key_flower_type,Parts Indistinguishable,agreement,INCONCLUSIVE,INCONCLUSIVE,YES,False
+openai/gpt-4o-mini,key_flower_type,7 or More Regular Parts,blind_mc,5. **7 or More Regular Parts**,7 or More Regular Parts,7 or More Regular Parts,True
+openai/gpt-4o-mini,key_flower_type,Irregular Flowers,agreement,YES,YES,YES,True
+openai/gpt-4o-mini,key_flower_type,Irregular Flowers,blind_mc,7. **Irregular Flowers**,Irregular Flowers,Irregular Flowers,True
+openai/gpt-4o-mini,key_plant_type,Wildflowers - Alternate Leaves,existence,INCONCLUSIVE,INCONCLUSIVE,YES,False
+openai/gpt-4o-mini,key_flower_type,Parts Indistinguishable,blind_mc,6. **Parts Indistinguishable**,Parts Indistinguishable,Parts Indistinguishable,True
+openai/gpt-4o-mini,key_plant_type,Wildflowers - No Apparent Leaves,existence,YES,YES,YES,True
+openai/gpt-4o-mini,key_plant_type,Wildflowers - No Apparent Leaves,agreement,YES,YES,YES,True
+openai/gpt-4o-mini,key_plant_type,Wildflowers - Alternate Leaves,agreement,INCONCLUSIVE,INCONCLUSIVE,YES,False
+openai/gpt-4o-mini,key_plant_type,Wildflowers - Opposite or Whorled Leaves,existence,INCONCLUSIVE,INCONCLUSIVE,YES,False
+openai/gpt-4o-mini,key_plant_type,Wildflowers - Opposite or Whorled Leaves,agreement,INCONCLUSIVE,INCONCLUSIVE,YES,False
+openai/gpt-4o-mini,key_plant_type,Wildflowers - Alternate Leaves,blind_mc,Wildflowers - Alternate Leaves,Wildflowers - Alternate Leaves,Wildflowers - Alternate Leaves,True
+openai/gpt-4o-mini,key_plant_type,Wildflowers - No Apparent Leaves,blind_mc,Wildflowers - No Apparent Leaves,Wildflowers - No Apparent Leaves,Wildflowers - No Apparent Leaves,True
+openai/gpt-4o-mini,key_plant_type,Wildflowers - Basal Leaves Only,agreement,INCONCLUSIVE,INCONCLUSIVE,YES,False
+openai/gpt-4o-mini,key_plant_type,Wildflowers - Basal Leaves Only,existence,INCONCLUSIVE,INCONCLUSIVE,YES,False
+openai/gpt-4o-mini,key_plant_type,Shrubs,existence,YES,YES,YES,True
+openai/gpt-4o-mini,key_plant_type,Wildflowers - Opposite or Whorled Leaves,blind_mc,Wildflowers - Opposite or Whorled Leaves,Wildflowers - Opposite or Whorled Leaves,Wildflowers - Opposite or Whorled Leaves,True
+openai/gpt-4o-mini,key_plant_type,Vines,existence,YES,YES,YES,True
+openai/gpt-4o-mini,key_plant_type,Vines,agreement,INCONCLUSIVE,INCONCLUSIVE,YES,False
+openai/gpt-4o-mini,key_plant_type,Shrubs,agreement,YES,YES,YES,True
+openai/gpt-4o-mini,key_plant_type,Wildflowers - Basal Leaves Only,blind_mc,Wildflowers - Basal Leaves Only,Wildflowers - Basal Leaves Only,Wildflowers - Basal Leaves Only,True
+openai/gpt-4o-mini,key_plant_type,Vines,blind_mc,Wildflowers - Alternate Leaves,Wildflowers - Alternate Leaves,Vines,False
+openai/gpt-4o-mini,key_leaf_type,Leaves Entire,existence,YES,YES,YES,True
+openai/gpt-4o-mini,key_leaf_type,No Apparent Leaves,agreement,YES,YES,YES,True
+openai/gpt-4o-mini,key_leaf_type,Leaves Entire,blind_mc,Leaves Entire,Leaves Entire,Leaves Entire,True
+openai/gpt-4o-mini,key_leaf_type,Leaves Toothed or Lobed,existence,YES,YES,YES,True
+openai/gpt-4o-mini,key_leaf_type,Leaves Entire,agreement,NO,NO,YES,False
+openai/gpt-4o-mini,key_leaf_type,No Apparent Leaves,existence,YES,YES,YES,True
+openai/gpt-4o-mini,key_leaf_type,No Apparent Leaves,blind_mc,No Apparent Leaves,No Apparent Leaves,No Apparent Leaves,True
+openai/gpt-4o-mini,key_leaf_type,Leaves Toothed or Lobed,agreement,INCONCLUSIVE,INCONCLUSIVE,YES,False
+openai/gpt-4o-mini,key_plant_type,Shrubs,blind_mc,Shrubs,Shrubs,Shrubs,True
+openai/gpt-4o-mini,key_leaf_type,Leaves Divided,existence,YES,YES,YES,True
+openai/gpt-4o-mini,key_leaf_type,Leaves Toothed or Lobed,blind_mc,Leaves Toothed or Lobed,Leaves Toothed or Lobed,Leaves Toothed or Lobed,True
+openai/gpt-4o-mini,key_leaf_type,Leaves Divided,agreement,YES,YES,YES,True
+openai/gpt-4o-mini,key_leaf_type,Leaves Divided,blind_mc,Leaves Divided,Leaves Divided,Leaves Divided,True
+openai/gpt-5-mini,key_flower_type,3 Regular Parts,agreement,YES,YES,YES,True
+openai/gpt-5-mini,key_flower_type,3 Regular Parts,blind_mc,None,INCONCLUSIVE,3 Regular Parts,False
+openai/gpt-5-mini,key_flower_type,4 Regular Parts,existence,None,NO,YES,False
+openai/gpt-5-mini,key_flower_type,3 Regular Parts,existence,None,NO,YES,False
+openai/gpt-5-mini,key_flower_type,5 Regular Parts,existence,None,NO,YES,False
+openai/gpt-5-mini,key_flower_type,4 Regular Parts,agreement,None,NO,YES,False
+openai/gpt-5-mini,key_flower_type,5 Regular Parts,blind_mc,4 Regular Parts,4 Regular Parts,5 Regular Parts,False
+openai/gpt-5-mini,key_flower_type,4 Regular Parts,blind_mc,None,INCONCLUSIVE,4 Regular Parts,False
+openai/gpt-5-mini,key_flower_type,5 Regular Parts,agreement,None,NO,YES,False
+openai/gpt-5-mini,key_flower_type,7 or More Regular Parts,existence,YES,YES,YES,True
+openai/gpt-5-mini,key_flower_type,6 Regular Parts,agreement,YES,YES,YES,True
+openai/gpt-5-mini,key_flower_type,6 Regular Parts,existence,None,NO,YES,False
+openai/gpt-5-mini,key_flower_type,6 Regular Parts,blind_mc,6 Regular Parts,6 Regular Parts,6 Regular Parts,True
+openai/gpt-5-mini,key_flower_type,Parts Indistinguishable,agreement,NO,NO,YES,False
+openai/gpt-5-mini,key_flower_type,7 or More Regular Parts,blind_mc,7 or More Regular Parts,7 or More Regular Parts,7 or More Regular Parts,True
+openai/gpt-5-mini,key_flower_type,Parts Indistinguishable,existence,YES,YES,YES,True
+openai/gpt-5-mini,key_flower_type,Irregular Flowers,existence,YES,YES,YES,True
+openai/gpt-5-mini,key_flower_type,Parts Indistinguishable,blind_mc,None,INCONCLUSIVE,Parts Indistinguishable,False
+openai/gpt-5-mini,key_flower_type,7 or More Regular Parts,agreement,YES,YES,YES,True
+openai/gpt-5-mini,key_flower_type,Irregular Flowers,agreement,YES,YES,YES,True
+openai/gpt-5-mini,key_plant_type,Wildflowers - Alternate Leaves,agreement,YES,YES,YES,True
+openai/gpt-5-mini,key_flower_type,Irregular Flowers,blind_mc,Irregular Flowers,Irregular Flowers,Irregular Flowers,True
+openai/gpt-5-mini,key_plant_type,Wildflowers - Alternate Leaves,blind_mc,Wildflowers - Alternate Leaves,Wildflowers - Alternate Leaves,Wildflowers - Alternate Leaves,True
+openai/gpt-5-mini,key_plant_type,Wildflowers - No Apparent Leaves,agreement,YES,YES,YES,True
+openai/gpt-5-mini,key_plant_type,Wildflowers - Alternate Leaves,existence,None,NO,YES,False
+openai/gpt-5-mini,key_plant_type,Wildflowers - No Apparent Leaves,blind_mc,Wildflowers - No Apparent Leaves,Wildflowers - No Apparent Leaves,Wildflowers - No Apparent Leaves,True
+openai/gpt-5-mini,key_plant_type,Wildflowers - Opposite or Whorled Leaves,existence,None,NO,YES,False
+openai/gpt-5-mini,key_plant_type,Wildflowers - No Apparent Leaves,existence,None,NO,YES,False
+openai/gpt-5-mini,key_plant_type,Wildflowers - Basal Leaves Only,existence,None,NO,YES,False
+openai/gpt-5-mini,key_plant_type,Wildflowers - Opposite or Whorled Leaves,agreement,None,NO,YES,False
+openai/gpt-5-mini,key_plant_type,Wildflowers - Basal Leaves Only,blind_mc,Wildflowers - Basal Leaves Only,Wildflowers - Basal Leaves Only,Wildflowers - Basal Leaves Only,True
+openai/gpt-5-mini,key_plant_type,Wildflowers - Opposite or Whorled Leaves,blind_mc,None,INCONCLUSIVE,Wildflowers - Opposite or Whorled Leaves,False
+openai/gpt-5-mini,key_plant_type,Wildflowers - Basal Leaves Only,agreement,YES,YES,YES,True
+openai/gpt-5-mini,key_plant_type,Vines,existence,None,NO,YES,False
+openai/gpt-5-mini,key_plant_type,Vines,blind_mc,Wildflowers - Alternate Leaves,Wildflowers - Alternate Leaves,Vines,False
+openai/gpt-5-mini,key_plant_type,Vines,agreement,NO,NO,YES,False
+openai/gpt-5-mini,key_plant_type,Shrubs,agreement,YES,YES,YES,True
+openai/gpt-5-mini,key_plant_type,Shrubs,existence,YES,YES,YES,True
+openai/gpt-5-mini,key_leaf_type,Leaves Entire,existence,YES,YES,YES,True
+openai/gpt-5-mini,key_leaf_type,No Apparent Leaves,agreement,YES,YES,YES,True
+openai/gpt-5-mini,key_plant_type,Shrubs,blind_mc,None,INCONCLUSIVE,Shrubs,False
+openai/gpt-5-mini,key_leaf_type,Leaves Entire,blind_mc,Leaves Toothed or Lobed,Leaves Toothed or Lobed,Leaves Entire,False
+openai/gpt-5-mini,key_leaf_type,No Apparent Leaves,blind_mc,No Apparent Leaves,No Apparent Leaves,No Apparent Leaves,True
+openai/gpt-5-mini,key_leaf_type,No Apparent Leaves,existence,None,NO,YES,False
+openai/gpt-5-mini,key_leaf_type,Leaves Entire,agreement,None,NO,YES,False
+openai/gpt-5-mini,key_leaf_type,Leaves Toothed or Lobed,agreement,YES,YES,YES,True
+openai/gpt-5-mini,key_leaf_type,Leaves Divided,existence,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_flower_type,3 Regular Parts,existence,YES,YES,YES,True
+openai/gpt-5-mini,key_leaf_type,Leaves Divided,blind_mc,Leaves Divided,Leaves Divided,Leaves Divided,True
+openai/gpt-5-mini,key_leaf_type,Leaves Toothed or Lobed,blind_mc,None,INCONCLUSIVE,Leaves Toothed or Lobed,False
+openai/gpt-5-mini,key_leaf_type,Leaves Divided,agreement,None,NO,YES,False
+google/gemini-3.1-pro-preview,key_flower_type,3 Regular Parts,agreement,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_flower_type,4 Regular Parts,agreement,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_flower_type,4 Regular Parts,existence,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_flower_type,3 Regular Parts,blind_mc,3 Regular Parts,3 Regular Parts,3 Regular Parts,True
+google/gemini-3.1-pro-preview,key_flower_type,4 Regular Parts,blind_mc,4 Regular Parts,4 Regular Parts,4 Regular Parts,True
+google/gemini-3.1-pro-preview,key_flower_type,5 Regular Parts,existence,YES,YES,YES,True
+openai/gpt-5-mini,key_leaf_type,Leaves Toothed or Lobed,existence,None,NO,YES,False
+google/gemini-3.1-pro-preview,key_flower_type,5 Regular Parts,agreement,"regular)?
+        *",INCONCLUSIVE,YES,False
+google/gemini-3.1-pro-preview,key_flower_type,6 Regular Parts,blind_mc,6 Regular Parts,6 Regular Parts,6 Regular Parts,True
+google/gemini-3.1-pro-preview,key_flower_type,7 or More Regular Parts,blind_mc,7 or More Regular Parts,7 or More Regular Parts,7 or More Regular Parts,True
+google/gemini-3.1-pro-preview,key_flower_type,5 Regular Parts,blind_mc,5 Regular Parts,5 Regular Parts,5 Regular Parts,True
+google/gemini-3.1-pro-preview,key_flower_type,6 Regular Parts,existence,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_flower_type,6 Regular Parts,agreement,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_flower_type,7 or More Regular Parts,existence,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_flower_type,7 or More Regular Parts,agreement,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_flower_type,Parts Indistinguishable,existence,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_flower_type,Parts Indistinguishable,agreement,NO,NO,YES,False
+google/gemini-3.1-pro-preview,key_flower_type,Irregular Flowers,existence,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_flower_type,Parts Indistinguishable,blind_mc,Parts Indistinguishable,Parts Indistinguishable,Parts Indistinguishable,True
+google/gemini-3.1-pro-preview,key_flower_type,Irregular Flowers,agreement,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_flower_type,Irregular Flowers,blind_mc,Irregular Flowers,Irregular Flowers,Irregular Flowers,True
+google/gemini-3.1-pro-preview,key_plant_type,Wildflowers - Alternate Leaves,agreement,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_plant_type,Wildflowers - Alternate Leaves,existence,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_plant_type,Wildflowers - No Apparent Leaves,existence,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_plant_type,Wildflowers - Alternate Leaves,blind_mc,Wildflowers - Alternate,INCONCLUSIVE,Wildflowers - Alternate Leaves,False
+google/gemini-3.1-pro-preview,key_plant_type,Wildflowers - No Apparent Leaves,agreement,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_plant_type,Wildflowers - No Apparent Leaves,blind_mc,Wildflowers - No Apparent Leaves,Wildflowers - No Apparent Leaves,Wildflowers - No Apparent Leaves,True
+google/gemini-3.1-pro-preview,key_plant_type,Wildflowers - Opposite or Whorled Leaves,existence,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_plant_type,Wildflowers - Opposite or Whorled Leaves,blind_mc,Wildflowers -,INCONCLUSIVE,Wildflowers - Opposite or Whorled Leaves,False
+google/gemini-3.1-pro-preview,key_plant_type,Wildflowers - Basal Leaves Only,agreement,NO,NO,YES,False
+google/gemini-3.1-pro-preview,key_plant_type,Wildflowers - Basal Leaves Only,blind_mc,Wildflowers - Basal Leaves Only,Wildflowers - Basal Leaves Only,Wildflowers - Basal Leaves Only,True
+google/gemini-3.1-pro-preview,key_plant_type,Wildflowers - Opposite or Whorled Leaves,agreement,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_plant_type,Vines,agreement,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_plant_type,Vines,existence,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_plant_type,Vines,blind_mc,Vines,Vines,Vines,True
+google/gemini-3.1-pro-preview,key_plant_type,Wildflowers - Basal Leaves Only,existence,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_plant_type,Shrubs,existence,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_plant_type,Shrubs,agreement,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_leaf_type,Leaves Entire,agreement,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_plant_type,Shrubs,blind_mc,Shrubs,Shrubs,Shrubs,True
+google/gemini-3.1-pro-preview,key_leaf_type,Leaves Entire,existence,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_leaf_type,No Apparent Leaves,existence,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_leaf_type,Leaves Entire,blind_mc,Leaves Entire,Leaves Entire,Leaves Entire,True
+google/gemini-3.1-pro-preview,key_leaf_type,No Apparent Leaves,agreement,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_leaf_type,No Apparent Leaves,blind_mc,No Apparent,INCONCLUSIVE,No Apparent Leaves,False
+google/gemini-3.1-pro-preview,key_leaf_type,Leaves Toothed or Lobed,existence,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_leaf_type,Leaves Toothed or Lobed,agreement,NO,NO,YES,False
+google/gemini-3-flash-preview,key_flower_type,3 Regular Parts,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_flower_type,3 Regular Parts,agreement,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_leaf_type,Leaves Toothed or Lobed,blind_mc,Leaves Entire,Leaves Entire,Leaves Toothed or Lobed,False
+google/gemini-3.1-pro-preview,key_leaf_type,Leaves Divided,agreement,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_leaf_type,Leaves Divided,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_flower_type,4 Regular Parts,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_flower_type,3 Regular Parts,blind_mc,3 Regular Parts,3 Regular Parts,3 Regular Parts,True
+google/gemini-3-flash-preview,key_flower_type,4 Regular Parts,agreement,YES,YES,YES,True
+google/gemini-3.1-pro-preview,key_leaf_type,Leaves Divided,blind_mc,Leaves Divided,Leaves Divided,Leaves Divided,True
+google/gemini-3-flash-preview,key_flower_type,5 Regular Parts,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_flower_type,4 Regular Parts,blind_mc,4 Regular Parts,4 Regular Parts,4 Regular Parts,True
+google/gemini-3-flash-preview,key_flower_type,5 Regular Parts,agreement,YES,YES,YES,True
+google/gemini-3-flash-preview,key_flower_type,5 Regular Parts,blind_mc,5 Regular Parts,5 Regular Parts,5 Regular Parts,True
+google/gemini-3-flash-preview,key_flower_type,6 Regular Parts,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_flower_type,6 Regular Parts,agreement,YES,YES,YES,True
+google/gemini-3-flash-preview,key_flower_type,7 or More Regular Parts,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_flower_type,7 or More Regular Parts,agreement,YES,YES,YES,True
+google/gemini-3-flash-preview,key_flower_type,7 or More Regular Parts,blind_mc,5. **7 or More Regular Parts**,7 or More Regular Parts,7 or More Regular Parts,True
+google/gemini-3-flash-preview,key_flower_type,Parts Indistinguishable,agreement,YES,YES,YES,True
+google/gemini-3-flash-preview,key_flower_type,Parts Indistinguishable,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_flower_type,Parts Indistinguishable,blind_mc,Parts Indistinguishable,Parts Indistinguishable,Parts Indistinguishable,True
+google/gemini-3-flash-preview,key_flower_type,Irregular Flowers,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_flower_type,Irregular Flowers,agreement,YES,YES,YES,True
+google/gemini-3-flash-preview,key_flower_type,Irregular Flowers,blind_mc,Irregular Flowers,Irregular Flowers,Irregular Flowers,True
+google/gemini-3-flash-preview,key_flower_type,6 Regular Parts,blind_mc,6 Regular Parts,6 Regular Parts,6 Regular Parts,True
+google/gemini-3-flash-preview,key_plant_type,Wildflowers - Alternate Leaves,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_plant_type,Wildflowers - Alternate Leaves,agreement,YES,YES,YES,True
+google/gemini-3-flash-preview,key_plant_type,Wildflowers - Alternate Leaves,blind_mc,Wildflowers - Alternate Leaves,Wildflowers - Alternate Leaves,Wildflowers - Alternate Leaves,True
+google/gemini-3-flash-preview,key_plant_type,Wildflowers - No Apparent Leaves,agreement,YES,YES,YES,True
+google/gemini-3-flash-preview,key_plant_type,Wildflowers - No Apparent Leaves,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_plant_type,Wildflowers - No Apparent Leaves,blind_mc,Wildflowers - No Apparent Leaves,Wildflowers - No Apparent Leaves,Wildflowers - No Apparent Leaves,True
+google/gemini-3-flash-preview,key_plant_type,Wildflowers - Opposite or Whorled Leaves,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_plant_type,Wildflowers - Opposite or Whorled Leaves,agreement,YES,YES,YES,True
+google/gemini-3-flash-preview,key_plant_type,Wildflowers - Opposite or Whorled Leaves,blind_mc,Wildflowers - Opposite or Whorled Leaves,Wildflowers - Opposite or Whorled Leaves,Wildflowers - Opposite or Whorled Leaves,True
+google/gemini-3-flash-preview,key_plant_type,Wildflowers - Basal Leaves Only,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_plant_type,Wildflowers - Basal Leaves Only,agreement,YES,YES,YES,True
+google/gemini-3-flash-preview,key_plant_type,Wildflowers - Basal Leaves Only,blind_mc,Wildflowers - Basal Leaves Only,Wildflowers - Basal Leaves Only,Wildflowers - Basal Leaves Only,True
+google/gemini-3-flash-preview,key_plant_type,Vines,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_plant_type,Shrubs,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_plant_type,Shrubs,blind_mc,Shrubs,Shrubs,Shrubs,True
+google/gemini-3-flash-preview,key_leaf_type,Leaves Entire,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_plant_type,Shrubs,agreement,YES,YES,YES,True
+google/gemini-3-flash-preview,key_plant_type,Vines,blind_mc,Wildflowers - Alternate Leaves,Wildflowers - Alternate Leaves,Vines,False
+google/gemini-3-flash-preview,key_leaf_type,Leaves Entire,agreement,YES,YES,YES,True
+google/gemini-3-flash-preview,key_leaf_type,Leaves Entire,blind_mc,Leaves Entire,Leaves Entire,Leaves Entire,True
+google/gemini-3-flash-preview,key_leaf_type,No Apparent Leaves,agreement,YES,YES,YES,True
+google/gemini-3-flash-preview,key_leaf_type,No Apparent Leaves,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_plant_type,Vines,agreement,YES,YES,YES,True
+google/gemini-3-flash-preview,key_leaf_type,Leaves Toothed or Lobed,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_leaf_type,Leaves Toothed or Lobed,agreement,YES,YES,YES,True
+google/gemini-3-flash-preview,key_leaf_type,Leaves Divided,existence,YES,YES,YES,True
+google/gemini-3-flash-preview,key_leaf_type,No Apparent Leaves,blind_mc,No Apparent Leaves,No Apparent Leaves,No Apparent Leaves,True
+google/gemini-3-flash-preview,key_leaf_type,Leaves Toothed or Lobed,blind_mc,Leaves Entire,Leaves Entire,Leaves Toothed or Lobed,False
+google/gemini-3-flash-preview,key_leaf_type,Leaves Divided,blind_mc,Leaves Divided,Leaves Divided,Leaves Divided,True
+google/gemini-3-flash-preview,key_leaf_type,Leaves Divided,agreement,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_flower_type,4 Regular Parts,blind_mc,**4 Regular Parts**,4 Regular Parts,4 Regular Parts,True
+anthropic/claude-sonnet-4-6,key_flower_type,4 Regular Parts,existence,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_flower_type,4 Regular Parts,agreement,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_flower_type,3 Regular Parts,agreement,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_flower_type,5 Regular Parts,agreement,NO,NO,YES,False
+anthropic/claude-sonnet-4-6,key_flower_type,3 Regular Parts,blind_mc,"Looking at the flower in the image, I can see yellow petals arranged around a central cluster of stamens. The flower appears to have 3 distinct petals - two lateral petals of similar size and one lower petal, with what appears to be a smaller upper portion. The petals are not all equal in size/arrangement, suggesting some irregularity, but counting the visible parts...
+
+The flower shows approximately 3 petal-like parts visible, and the reference photo for option 1 (3 Regular Parts) matches this exact image.
+
+**3 Regular Parts**",3 Regular Parts,3 Regular Parts,True
+anthropic/claude-sonnet-4-6,key_flower_type,5 Regular Parts,blind_mc,**Irregular Flowers**,Irregular Flowers,5 Regular Parts,False
+anthropic/claude-sonnet-4-6,key_flower_type,6 Regular Parts,existence,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_flower_type,5 Regular Parts,existence,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_flower_type,6 Regular Parts,agreement,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_flower_type,7 or More Regular Parts,existence,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_flower_type,3 Regular Parts,existence,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_flower_type,6 Regular Parts,blind_mc,**6 Regular Parts**,6 Regular Parts,6 Regular Parts,True
+anthropic/claude-sonnet-4-6,key_flower_type,7 or More Regular Parts,agreement,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_flower_type,7 or More Regular Parts,blind_mc,**7 or More Regular Parts**,7 or More Regular Parts,7 or More Regular Parts,True
+anthropic/claude-sonnet-4-6,key_flower_type,Parts Indistinguishable,existence,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_flower_type,Parts Indistinguishable,blind_mc,**Parts Indistinguishable**,Parts Indistinguishable,Parts Indistinguishable,True
+anthropic/claude-sonnet-4-6,key_flower_type,Irregular Flowers,blind_mc,**Irregular Flowers**,Irregular Flowers,Irregular Flowers,True
+anthropic/claude-sonnet-4-6,key_flower_type,Irregular Flowers,agreement,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_flower_type,Irregular Flowers,existence,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_plant_type,Wildflowers - Alternate Leaves,existence,INCONCLUSIVE,INCONCLUSIVE,YES,False
+anthropic/claude-sonnet-4-6,key_plant_type,Wildflowers - Alternate Leaves,agreement,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_plant_type,Wildflowers - No Apparent Leaves,existence,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_flower_type,Parts Indistinguishable,agreement,"The image shows a flower cluster with numerous elongated, thread-like or strap-like yellowish structures (likely stamens or ligulate florets) that are quite visible and distinguishable. The parts are clearly discernible — they appear as long, thin filaments radiating outward. This does not match the ""Parts Indistinguishable"" classification, as the flower parts are quite visible and their arrangement can be observed.
+
+NO",NO,YES,False
+anthropic/claude-sonnet-4-6,key_plant_type,Wildflowers - Alternate Leaves,blind_mc,Wildflowers - Alternate Leaves,Wildflowers - Alternate Leaves,Wildflowers - Alternate Leaves,True
+anthropic/claude-sonnet-4-6,key_plant_type,Wildflowers - No Apparent Leaves,agreement,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_plant_type,Wildflowers - No Apparent Leaves,blind_mc,**Wildflowers - No Apparent Leaves**,Wildflowers - No Apparent Leaves,Wildflowers - No Apparent Leaves,True
+anthropic/claude-sonnet-4-6,key_plant_type,Wildflowers - Opposite or Whorled Leaves,existence,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_plant_type,Wildflowers - Opposite or Whorled Leaves,blind_mc,**Wildflowers - Opposite or Whorled Leaves**,Wildflowers - Opposite or Whorled Leaves,Wildflowers - Opposite or Whorled Leaves,True
+anthropic/claude-sonnet-4-6,key_plant_type,Wildflowers - Basal Leaves Only,existence,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_plant_type,Wildflowers - Opposite or Whorled Leaves,agreement,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_plant_type,Wildflowers - Basal Leaves Only,agreement,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_plant_type,Vines,existence,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_plant_type,Wildflowers - Basal Leaves Only,blind_mc,**Wildflowers - Basal Leaves Only**,Wildflowers - Basal Leaves Only,Wildflowers - Basal Leaves Only,True
+anthropic/claude-sonnet-4-6,key_plant_type,Vines,agreement,INCONCLUSIVE,INCONCLUSIVE,YES,False
+anthropic/claude-sonnet-4-6,key_plant_type,Shrubs,agreement,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_plant_type,Shrubs,existence,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_plant_type,Vines,blind_mc,**Wildflowers - Alternate Leaves**,Wildflowers - Alternate Leaves,Vines,False
+anthropic/claude-sonnet-4-6,key_leaf_type,Leaves Entire,agreement,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_plant_type,Shrubs,blind_mc,Shrubs,Shrubs,Shrubs,True
+anthropic/claude-sonnet-4-6,key_leaf_type,Leaves Entire,existence,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_leaf_type,No Apparent Leaves,existence,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_leaf_type,Leaves Entire,blind_mc,Leaves Entire,Leaves Entire,Leaves Entire,True
+anthropic/claude-sonnet-4-6,key_leaf_type,No Apparent Leaves,agreement,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_leaf_type,Leaves Toothed or Lobed,existence,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_leaf_type,Leaves Toothed or Lobed,blind_mc,**Leaves Toothed or Lobed**,Leaves Toothed or Lobed,Leaves Toothed or Lobed,True
+anthropic/claude-sonnet-4-6,key_leaf_type,Leaves Toothed or Lobed,agreement,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_leaf_type,No Apparent Leaves,blind_mc,**No Apparent Leaves**,No Apparent Leaves,No Apparent Leaves,True
+anthropic/claude-sonnet-4-6,key_leaf_type,Leaves Divided,agreement,NO,NO,YES,False
+anthropic/claude-sonnet-4-6,key_leaf_type,Leaves Divided,existence,YES,YES,YES,True
+anthropic/claude-sonnet-4-6,key_leaf_type,Leaves Divided,blind_mc,**Leaves Toothed or Lobed**,Leaves Toothed or Lobed,Leaves Divided,False
+anthropic/claude-haiku-4-5,key_flower_type,3 Regular Parts,agreement,NO,NO,YES,False
+anthropic/claude-haiku-4-5,key_flower_type,3 Regular Parts,blind_mc,5 Regular Parts,5 Regular Parts,3 Regular Parts,False
+anthropic/claude-haiku-4-5,key_flower_type,4 Regular Parts,existence,"YES
+
+The image clearly shows small, delicate flowers with visible petals arranged along a green stem. The flower type is discernible - they appear to be small, star-shaped or four-petaled flowers characteristic of plants in the Saxifragaceae or similar family, though the specific botanical classification may vary. The floral structure, petal arrangement, and overall morphology are clearly visible and identifiable.",YES,YES,True
+anthropic/claude-haiku-4-5,key_flower_type,3 Regular Parts,existence,"YES
+
+The flower type is clearly discernible in this image. The flower displays distinctive characteristics of a St. John's Wort (Hypericum) flower, identifiable by its bright yellow petals arranged in a cross or star-like pattern, the prominent central stamens, and the overall morphology typical of this flower type.",YES,YES,True
+anthropic/claude-haiku-4-5,key_flower_type,4 Regular Parts,agreement,INCONCLUSIVE,INCONCLUSIVE,YES,False
+anthropic/claude-haiku-4-5,key_flower_type,5 Regular Parts,agreement,NO,NO,YES,False
+anthropic/claude-haiku-4-5,key_flower_type,5 Regular Parts,existence,"YES
+
+The flower type is clearly discernible in this image. The yellow flower with its distinctive petal arrangement, visible stamens with dark anthers, and overall morphology are characteristic features that allow identification of the flower type. The structure shows what appears to be a legume or similar flower family member with clearly visible floral components.",YES,YES,True
+anthropic/claude-haiku-4-5,key_flower_type,6 Regular Parts,existence,"YES
+
+The flower type is clearly discernible in this image. The flowers display a distinctive star-shaped or umbel-like structure with thin, delicate petals radiating outward from a central point. This characteristic morphology is typical of flowers in the Ericaceae family or similar small clustered flower types, and the flower structure is sufficiently visible to identify the flower type.",YES,YES,True
+anthropic/claude-haiku-4-5,key_flower_type,4 Regular Parts,blind_mc,"Looking at the flowers in the image, I can see small, pale yellowish-white flowers arranged along the stem. Each individual flower appears to have 4 distinct, regular petals arranged radially around the center. The petals are similar in size, shape, and color to each other, and the flowers display radial symmetry characteristic of regular flowers.
+
+**4 Regular Parts**",4 Regular Parts,4 Regular Parts,True
+anthropic/claude-haiku-4-5,key_flower_type,5 Regular Parts,blind_mc,Irregular Flowers,Irregular Flowers,5 Regular Parts,False
+anthropic/claude-haiku-4-5,key_flower_type,6 Regular Parts,agreement,YES,YES,YES,True
+anthropic/claude-haiku-4-5,key_flower_type,6 Regular Parts,blind_mc,7 or More Regular Parts,7 or More Regular Parts,6 Regular Parts,False
+anthropic/claude-haiku-4-5,key_flower_type,7 or More Regular Parts,agreement,YES,YES,YES,True
+anthropic/claude-haiku-4-5,key_flower_type,7 or More Regular Parts,existence,"YES
+
+The flower type is clearly discernible in this image. The flower displays characteristics of a daisy-like or composite flower, with yellow petals arranged radially around a central yellow disk floret. The petal structure, arrangement, and overall morphology are distinctly visible and identifiable.",YES,YES,True
+anthropic/claude-haiku-4-5,key_flower_type,Parts Indistinguishable,existence,"YES
+
+The flower type is clearly discernible in this image. The flowers display a distinctive spider-like or tubular morphology with elongated, thin, curled petals radiating outward from the center. This appears to be a type of spider flower or similar ornamental flowering plant with characteristic thin, wiry petals that are clearly visible and identifiable.",YES,YES,True
+anthropic/claude-haiku-4-5,key_flower_type,7 or More Regular Parts,blind_mc,7 or More Regular Parts,7 or More Regular Parts,7 or More Regular Parts,True
+anthropic/claude-haiku-4-5,key_flower_type,Parts Indistinguishable,agreement,NO,NO,YES,False
+anthropic/claude-haiku-4-5,key_flower_type,Irregular Flowers,agreement,YES,YES,YES,True
+anthropic/claude-haiku-4-5,key_flower_type,Irregular Flowers,existence,"YES
+
+The flower type is clearly discernible in this image. This is a legume flower, specifically appearing to be from the pea family (Fabaceae), characterized by its distinctive papilionaceous (butterfly-like) structure with a large upper petal (banner), two side petals (wings), and lower petals (keel). The pink/lavender coloring and the characteristic morphology make the flower type clearly identifiable.",YES,YES,True
+anthropic/claude-haiku-4-5,key_flower_type,Parts Indistinguishable,blind_mc,6. **Parts Indistinguishable**,Parts Indistinguishable,Parts Indistinguishable,True
+anthropic/claude-haiku-4-5,key_flower_type,Irregular Flowers,blind_mc,"**Irregular Flowers** — Irregular flowers are not radially symmetrical; that is, their petals or petal-like parts are not similar in size, shape or color. Usually, these flowers have upper and lower parts that are called lips.",Irregular Flowers,Irregular Flowers,True
+anthropic/claude-haiku-4-5,key_plant_type,Wildflowers - Alternate Leaves,agreement,YES,YES,YES,True
+anthropic/claude-haiku-4-5,key_plant_type,Wildflowers - Alternate Leaves,existence,"YES
+
+The plant type is clearly discernible in this image. The visible features include:
+- Elongated, oval-shaped leaves arranged alternately on the stem
+- Hairy/fuzzy stem texture
+- The overall growth pattern and leaf morphology
+
+These characteristics are consistent with a legume plant, likely a bean or pea plant variety, which is clearly identifiable from the visual features shown.",YES,YES,True
+anthropic/claude-haiku-4-5,key_plant_type,Wildflowers - No Apparent Leaves,agreement,NO,NO,YES,False
+anthropic/claude-haiku-4-5,key_plant_type,Wildflowers - Alternate Leaves,blind_mc,Wildflowers - Alternate Leaves,Wildflowers - Alternate Leaves,Wildflowers - Alternate Leaves,True
+anthropic/claude-haiku-4-5,key_plant_type,Wildflowers - Opposite or Whorled Leaves,existence,"YES
+
+The image clearly shows a plant being held in someone's hand. The plant type is discernible - it appears to be an herb or leafy green plant with characteristic narrow, elongated leaves arranged along a stem, consistent with plants like parsley, cilantro, or a similar culinary herb.",YES,YES,True
+anthropic/claude-haiku-4-5,key_plant_type,Wildflowers - No Apparent Leaves,existence,"YES
+
+The plant type is clearly discernible in this image. The distinctive characteristics visible are:
+
+1. **Red coloration** - The entire plant is bright red
+2. **Flower structure** - Small, densely packed flowers arranged in a vertical spike/raceme
+3. **Leafless stem** - The flowering stem appears to lack leaves
+4. **Growth pattern** - Tall, unbranched inflorescence
+
+These features are characteristic of an **Indian Paintbrush** (Castilleja) or similar **Scrophulariaceae family member**, identifiable by its distinctive red tubular flowers arranged in a dense spike formation.",YES,YES,True
+anthropic/claude-haiku-4-5,key_plant_type,Wildflowers - Opposite or Whorled Leaves,agreement,YES,YES,YES,True
+anthropic/claude-haiku-4-5,key_plant_type,Wildflowers - No Apparent Leaves,blind_mc,Wildflowers - No Apparent Leaves,Wildflowers - No Apparent Leaves,Wildflowers - No Apparent Leaves,True
+anthropic/claude-haiku-4-5,key_plant_type,Wildflowers - Opposite or Whorled Leaves,blind_mc,Wildflowers - Alternate Leaves,Wildflowers - Alternate Leaves,Wildflowers - Opposite or Whorled Leaves,False
+anthropic/claude-haiku-4-5,key_plant_type,Wildflowers - Basal Leaves Only,existence,"YES
+
+The image clearly shows a plant specimen with distinctive features visible through the magnifying glass/container. The plant type is discernible - it appears to be an orchid, identifiable by its characteristic spike-like inflorescence (flower stem) with small flowers arranged along it, and the broad basal leaves typical of orchids.",YES,YES,True
+anthropic/claude-haiku-4-5,key_plant_type,Wildflowers - Basal Leaves Only,agreement,YES,YES,YES,True
+anthropic/claude-haiku-4-5,key_plant_type,Wildflowers - Basal Leaves Only,blind_mc,Wildflowers - Basal Leaves Only,Wildflowers - Basal Leaves Only,Wildflowers - Basal Leaves Only,True
+anthropic/claude-haiku-4-5,key_plant_type,Vines,agreement,NO,NO,YES,False
+anthropic/claude-haiku-4-5,key_plant_type,Vines,existence,"YES
+
+The plant type is clearly discernible in this image. The distinctive features visible include:
+- Compound pinnate (feather-like) leaves arranged along the stem
+- Purple/magenta flowers with a characteristic pea-family structure
+- The overall morphology is consistent with a legume (Fabaceae family) plant, likely a vetch or similar species
+
+These characteristics make the plant type clearly identifiable.",YES,YES,True
+anthropic/claude-haiku-4-5,key_plant_type,Vines,blind_mc,Wildflowers - Alternate Leaves,Wildflowers - Alternate Leaves,Vines,False
+anthropic/claude-haiku-4-5,key_plant_type,Shrubs,agreement,YES,YES,YES,True
+anthropic/claude-haiku-4-5,key_plant_type,Shrubs,existence,"YES
+
+The plant type is clearly discernible in this image. The distinctive lobed leaves and growth pattern are characteristic of a grape vine or similar climbing/sprawling plant with palmate (hand-shaped) leaves. The leaf structure and overall morphology are clearly visible and identifiable.",YES,YES,True
+anthropic/claude-haiku-4-5,key_leaf_type,Leaves Entire,agreement,NO,NO,YES,False
+anthropic/claude-haiku-4-5,key_plant_type,Shrubs,blind_mc,Shrubs,Shrubs,Shrubs,True
+anthropic/claude-haiku-4-5,key_leaf_type,Leaves Entire,existence,"YES
+
+The leaf type is clearly discernible in this image. The leaves shown are simple, oval-shaped leaves with visible veining patterns and a hairy/fuzzy texture on their surface. The leaf morphology, arrangement, and characteristics are distinctly visible.",YES,YES,True
+anthropic/claude-haiku-4-5,key_leaf_type,Leaves Entire,blind_mc,Leaves Entire,Leaves Entire,Leaves Entire,True
+anthropic/claude-haiku-4-5,key_leaf_type,No Apparent Leaves,existence,"YES
+
+The image clearly shows a plant stem with no visible leaves - it appears to be a leafless red/burgundy colored flowering stem (possibly a wildflower or similar plant). The absence of leaves is itself a discernible leaf-type feature.",YES,YES,True
+anthropic/claude-haiku-4-5,key_leaf_type,No Apparent Leaves,agreement,NO,NO,YES,False
+anthropic/claude-haiku-4-5,key_leaf_type,Leaves Toothed or Lobed,agreement,YES,YES,YES,True
+anthropic/claude-haiku-4-5,key_leaf_type,Leaves Toothed or Lobed,existence,"YES
+
+The leaf type is clearly discernible in this image. The plant displays simple, broad leaves with visible serrated or toothed edges. The leaves appear to be ovate to elliptical in shape and are arranged alternately on the stems, which are characteristic features that allow for clear identification of the leaf type.",YES,YES,True
+anthropic/claude-haiku-4-5,key_leaf_type,Leaves Toothed or Lobed,blind_mc,Leaves Entire,Leaves Entire,Leaves Toothed or Lobed,False
+anthropic/claude-haiku-4-5,key_leaf_type,No Apparent Leaves,blind_mc,No Apparent Leaves,No Apparent Leaves,No Apparent Leaves,True
+anthropic/claude-haiku-4-5,key_leaf_type,Leaves Divided,agreement,NO,NO,YES,False
+anthropic/claude-haiku-4-5,key_leaf_type,Leaves Divided,existence,"YES
+
+The leaf type is clearly discernible in this image. The plant displays simple, heart-shaped or cordate leaves with visible veination, arranged alternately on reddish-brown stems. The leaves appear to be characteristic of a climbing or vining plant, possibly ivy or a similar species, with distinct leaf morphology that is easily identifiable.",YES,YES,True
+anthropic/claude-haiku-4-5,key_leaf_type,Leaves Divided,blind_mc,Leaves Entire,Leaves Entire,Leaves Divided,False

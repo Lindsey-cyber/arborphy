@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 from pathlib import Path
 
@@ -110,15 +111,21 @@ def load_inputs(image_set: str | None = None) -> dict[str, object]:
     }
 
     ref_mat = {}
+    include_illustrations = os.environ.get("EXPERIMENT_INCLUDE_REFERENCE_ILLUSTRATIONS", "1").strip().lower()
+    include_illustrations = include_illustrations not in {"0", "false", "no"}
     for _, row in refs.iterrows():
         feat = row["feature"]
         val = row["feature_value"]
+        img_path = row.get("reference_image_link", "")
+        if not isinstance(img_path, str):
+            img_path = ""
+        img_path = resolve_reference_image_path(img_path)
         illust_path = row.get("reference_illustration_path", "")
         if not isinstance(illust_path, str):
             illust_path = ""
-        illust_path = resolve_illustration_path(illust_path)
+        illust_path = resolve_illustration_path(illust_path) if include_illustrations else None
         ref_mat[(feat, val)] = {
-            "img_path": None,
+            "img_path": img_path,
             "illust_path": illust_path,
             "description": row.get("reference_description", "") or "",
         }
@@ -133,6 +140,24 @@ def load_inputs(image_set: str | None = None) -> dict[str, object]:
         "values_by_feature": values_by_feature,
         "ref_mat": ref_mat,
     }
+
+
+def resolve_reference_image_path(path_text: str) -> str | None:
+    path_text = path_text.strip()
+    if not path_text:
+        return None
+    if path_text.startswith(("http://", "https://", "data:")):
+        return path_text
+
+    path = Path(path_text).expanduser()
+    if path.exists():
+        return str(path)
+
+    repo_candidate = SOURCE_ROOT / "reference_images" / path.name
+    if path.name and repo_candidate.exists():
+        return str(repo_candidate)
+
+    return None
 
 
 def resolve_illustration_path(path_text: str) -> str | None:
@@ -161,6 +186,21 @@ def get_true_path(path_table: pd.DataFrame, species_inat: str) -> dict[str, str]
         for feature in FEATURE_DISPLAY
         if feature in row.index and isinstance(row[feature], str) and row[feature].strip()
     }
+
+
+def get_true_value(path_table: pd.DataFrame, sample_row: pd.Series, feature_col: str) -> str | None:
+    sample_value = sample_row.get(feature_col)
+    if isinstance(sample_value, str) and sample_value.strip():
+        return sample_value.strip()
+
+    for column in ("species_inat", "newcomb_species_name"):
+        species_name = sample_row.get(column)
+        if isinstance(species_name, str) and species_name.strip():
+            true_value = get_true_path(path_table, species_name.strip()).get(feature_col)
+            if true_value:
+                return true_value
+
+    return None
 
 
 def existence_parts(

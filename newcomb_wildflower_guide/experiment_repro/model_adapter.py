@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import os
 from pathlib import Path
+import sys
 from typing import Any
 
 
@@ -28,6 +29,8 @@ def call_model(model: str, parts: list[Any]) -> str:
         return _mock_response(parts)
     if mode == "command":
         return _command_response(model, parts)
+    if mode == "openrouter":
+        return _openrouter_response(model, parts)
     raise ModelAdapterError(f"Unsupported EXPERIMENT_MODEL_MODE: {mode}")
 
 
@@ -67,3 +70,13 @@ def _command_response(model: str, parts: list[Any]) -> str:
     if result.returncode != 0:
         raise ModelAdapterError(result.stderr.strip() or f"Command failed: {command}")
     return result.stdout.strip()
+
+
+def _openrouter_response(model: str, parts: list[Any]) -> str:
+    adapter_dir = Path(__file__).resolve().parents[2] / "scripts" / "adapters"
+    if str(adapter_dir) not in sys.path:
+        sys.path.insert(0, str(adapter_dir))
+
+    from openrouter_command_adapter import call_openrouter
+
+    return call_openrouter({"model": model, "parts": parts})

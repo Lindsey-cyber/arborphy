@@ -87,11 +87,12 @@ more raw trial CSVs. It writes:
 - `outcome_pairs.csv`
 - `metric_definitions.csv`
 
-Each row is assigned one primary outcome: `CORRECT`, `WRONG`, or
-`INCONCLUSIVE`. `outcome_by_true_value.csv` groups by model, feature, and true
-value to show `correct_count`, `wrong_count`, `inconclusive_count`,
-`correct_rate`, `wrong_rate`, `inconclusive_rate`, and
-`most_common_wrong_prediction`.
+Each row is assigned one primary outcome: `CORRECT`, `WRONG`, `INCONCLUSIVE`,
+or `NOT_APPLICABLE`. `NOT_APPLICABLE` means P1 did not parse as `YES`, so P2
+was skipped instead of being treated as a P2 inconclusive answer.
+`outcome_by_true_value.csv` groups by model, feature, and true value to show P1
+visibility counts plus `correct_count`, `wrong_count`, `inconclusive_count`,
+`not_applicable_count`, their rates, and `most_common_wrong_prediction`.
 
 Each metadata JSON records the trial setup:
 

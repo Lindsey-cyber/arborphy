@@ -217,8 +217,8 @@ uv run python scripts/analyze_stepwise_results.py \
 The analysis step writes three layers of views:
 
 - per-trial rows: `per_trial_rows.csv`, the raw CSV plus derived fields such as
-  `p1_sees_feature`, `p2_inconclusive`, `correct_value`, `wrong_value`, and
-  `predicted_value`, and `outcome`
+  `p1_sees_feature`, `p2_not_applicable`, `p2_inconclusive`,
+  `correct_value`, `wrong_value`, `predicted_value`, and `outcome`
 - per-feature/model summary: `summary_by_model_feature.csv`,
   `outcome_by_true_value.csv`, and `outcome_pairs.csv`
 - whole-experiment dashboard: `dashboard_whole_experiment.csv` and
@@ -226,13 +226,16 @@ The analysis step writes three layers of views:
 
 Each row has exactly one primary outcome:
 
-- `CORRECT`: `p2_parsed == true_value`
-- `WRONG`: `p2_parsed` is a concrete value and does not equal `true_value`
-- `INCONCLUSIVE`: `p2_parsed == INCONCLUSIVE`
+- `CORRECT`: P1 parsed as `YES`, and `p2_parsed == true_value`
+- `WRONG`: P1 parsed as `YES`, and P2 returned a concrete value that does not
+  equal `true_value`
+- `INCONCLUSIVE`: P1 parsed as `YES`, but P2 returned `INCONCLUSIVE`
+- `NOT_APPLICABLE`: P1 did not parse as `YES`, so P2 was skipped
 
 `outcome_by_true_value.csv` groups by `model`, `feature`, and `true_value`, then
-reports `correct_count`, `wrong_count`, `inconclusive_count`, `correct_rate`,
-`wrong_rate`, `inconclusive_rate`, and `most_common_wrong_prediction`.
+reports P1 visibility counts plus `correct_count`, `wrong_count`,
+`inconclusive_count`, `not_applicable_count`, their rates, and
+`most_common_wrong_prediction`.
 
 `metric_definitions.csv` records each metric's numerator, denominator, CSV
 columns, and signal caveat. In particular, `features_seen` is based on
@@ -246,6 +249,7 @@ The output CSV includes:
 - `true_value`: expected Newcomb key value from `newcomb_preprocessed.csv`
 - `p1_raw`, `p1_parsed`: raw and parsed visibility answer
 - `p2_raw`, `p2_parsed`: raw and parsed multiple-choice answer
+  (`NOT_APPLICABLE` when P1 did not pass the visibility gate)
 - `feature_correct`: `True` when the parsed answer matches the expected value
 - `committed`: `True` when the model committed to a concrete P2 value
 - `trial_id`: trial identifier used to link CSV rows to metadata

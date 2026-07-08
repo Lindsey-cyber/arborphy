@@ -18,7 +18,7 @@ from runner_common import (
     blind_mc_parts,
     build_options,
     existence_parts,
-    get_true_path,
+    get_true_value,
     load_inputs,
     load_prompt_set,
     parse_mc,
@@ -43,6 +43,8 @@ RUN_STARTED = datetime.now().astimezone()
 RUN_STARTED_AT = RUN_STARTED.isoformat(timespec="seconds")
 TRIAL_ID = os.environ.get("EXPERIMENT_TRIAL_ID", RUN_STARTED.strftime("trial-%Y%m%d-%H%M%S"))
 FEATURES_REQUESTED = ",".join(FEATURES)
+PROGRESS_INTERVAL = int(os.environ.get("EXPERIMENT_PROGRESS_INTERVAL", "25"))
+VERBOSE_TASKS = os.environ.get("EXPERIMENT_VERBOSE_TASKS", "").strip().lower() in {"1", "true", "yes"}
 
 ARTIFACT_DIR = Path(os.environ.get("EXPERIMENT_ARTIFACT_DIR", REPO_ROOT / "trials" / "artifacts")).expanduser()
 if not ARTIFACT_DIR.is_absolute():
@@ -124,16 +126,11 @@ def main() -> None:
     done_lock = threading.Lock()
     error_count = 0
 
-    def process_task(model: str, row: pd.Series, feature_col: str) -> None:
+    def process_task(model: str, row: dict, feature_col: str, true_value: str) -> None:
         obs_id = str(row["observation_id"])
         with done_lock:
             if (RUN_ID, model, obs_id, feature_col) in done:
                 return
-
-        true_path = get_true_path(path_table, row["species_inat"])
-        true_value = true_path.get(feature_col)
-        if true_value is None:
-            return
 
         p1_prompt_parts = existence_parts(feature_col, row["photo_url"], true_value, prompt_set)
         p1_raw = call_model(model, p1_prompt_parts)
@@ -150,12 +147,12 @@ def main() -> None:
         else:
             p2_prompt_parts = []
             p2_raw = ""
-            p2_parsed = "INCONCLUSIVE"
-            p2_parse_rule = "P2 skipped because P1 was not YES; parsed as INCONCLUSIVE"
+            p2_parsed = "NOT_APPLICABLE"
+            p2_parse_rule = f"P2 skipped because P1 was {p1_parsed}; parsed as NOT_APPLICABLE"
 
         if p2_parsed == true_value:
             feature_correct, committed = True, True
-        elif p2_parsed == "INCONCLUSIVE":
+        elif p2_parsed in {"INCONCLUSIVE", "NOT_APPLICABLE"}:
             feature_correct, committed = False, False
         else:
             feature_correct, committed = False, True
@@ -194,9 +191,11 @@ def main() -> None:
             ]).to_csv(OUT_FILE, mode="a", header=not OUT_FILE.exists(), index=False)
             done.add((RUN_ID, model, obs_id, feature_col))
 
-        status = "✓" if feature_correct else "✗"
-        print(f"  obs={obs_id} {feature_col} P1={p1_parsed} P2={p2_parsed} [{status}]")
+        if VERBOSE_TASKS:
+            status = "✓" if feature_correct else "✗"
+            print(f"  obs={obs_id} {feature_col} P1={p1_parsed} P2={p2_parsed} [{status}]")
 
+    sample_records = sample.to_dict("records")
     for model in MODELS:
         print(f"\n=== {model} ===")
         print(f"image set: {IMAGE_SET} ({sample_path})")
@@ -207,14 +206,49 @@ def main() -> None:
         print(f"run id: {RUN_ID}")
         print(f"workers: {NUM_WORKERS}")
         print(f"output: {OUT_FILE}")
-        tasks = [(model, row, feature_col) for _, row in sample.iterrows() for feature_col in FEATURES]
+
+        tasks = []
+        skipped_done = 0
+        skipped_missing_truth = 0
+        for row in sample_records:
+            obs_id = str(row["observation_id"])
+            for feature_col in FEATURES:
+                if (RUN_ID, model, obs_id, feature_col) in done:
+                    skipped_done += 1
+                    continue
+                true_value = get_true_value(path_table, row, feature_col)
+                if true_value is None:
+                    skipped_missing_truth += 1
+                    continue
+                tasks.append((model, row, feature_col, true_value))
+
+        print(f"pending feature tasks: {len(tasks)}")
+        print(f"expected model calls: {len(tasks)} to {len(tasks) * 2}")
+        if NUM_WORKERS <= 1 and len(tasks) > 20:
+            print("note: workers=1 is sequential; try 4-8 workers if rate limits allow.")
+        if skipped_done:
+            print(f"already completed tasks: {skipped_done}")
+        if skipped_missing_truth:
+            print(f"tasks without true value: {skipped_missing_truth}")
+
         with ThreadPoolExecutor(max_workers=NUM_WORKERS) as executor:
-            futures = [executor.submit(process_task, model_name, row, feature_col) for model_name, row, feature_col in tasks]
+            futures = [
+                executor.submit(process_task, model_name, row, feature_col, true_value)
+                for model_name, row, feature_col, true_value in tasks
+            ]
+            completed_tasks = 0
             for future in as_completed(futures):
+                completed_tasks += 1
                 exc = future.exception()
                 if exc:
                     error_count += 1
                     print(f"  [ERROR] {exc}")
+                if (
+                    completed_tasks == 1
+                    or completed_tasks % PROGRESS_INTERVAL == 0
+                    or completed_tasks == len(tasks)
+                ):
+                    print(f"completed feature tasks: {completed_tasks}/{len(tasks)}")
 
     if error_count:
         raise SystemExit(f"\nFailed: {error_count} task(s) raised errors.")

@@ -76,6 +76,24 @@ def split_features(features: str) -> list[str]:
     return feature_list
 
 
+def split_models(models: str) -> list[str]:
+    model_list = [model.strip() for model in models.split(",") if model.strip()]
+    if not model_list:
+        raise SystemExit("--model must include at least one model id")
+    return model_list
+
+
+def resolve_models(models: str, mode: str) -> list[str]:
+    model_list = split_models(models)
+    if mode != "command":
+        return model_list
+    return [resolve_model_alias(model, require_image=True) for model in model_list]
+
+
+def joined_models(models: list[str]) -> str:
+    return ",".join(models)
+
+
 def available_prompt_sets() -> list[str]:
     if not PROMPT_SET_DIR.exists():
         return []
@@ -233,6 +251,7 @@ def write_metadata(
     trial_id: str,
     raw_args: list[str],
     model: str,
+    models: list[str],
     args: argparse.Namespace,
     output_file: Path,
     sample_limit: str,
@@ -246,6 +265,7 @@ def write_metadata(
         "prompt_set": args.prompt_set,
         "run_id": args.run_id,
         "model": model,
+        "models": models,
         "sample_limit": metadata_sample_limit(sample_limit),
         "features": split_features(args.features),
         "temperature": args.temperature,
@@ -263,7 +283,11 @@ def main() -> int:
     load_dotenv(ROOT / ".env")
 
     parser = argparse.ArgumentParser(description="Run a JM stepwise trial with concise options.")
-    parser.add_argument("--model", default="openrouter/free", help="OpenRouter model id or local alias openrouter/free.")
+    parser.add_argument(
+        "--model",
+        default="openrouter/free",
+        help="OpenRouter model id, local alias, or comma-separated model ids.",
+    )
     parser.add_argument("--sample-limit", default="1", help="Number of sample rows to run, or 'all'.")
     parser.add_argument(
         "--image-set",
@@ -315,15 +339,14 @@ def main() -> int:
     sample_limit = normalize_sample_limit(args.sample_limit)
     validate_image_set_csv(args.image_set)
 
-    model = args.model
-    if args.mode == "command":
-        model = resolve_model_alias(model, require_image=True)
+    models = resolve_models(args.model, args.mode)
+    model = joined_models(models)
     trial_id = default_trial_id(args, model, sample_limit)
     out_file = output_path(args, trial_id)
     metadata_file = metadata_path_for(trial_id)
 
     env = os.environ.copy()
-    env["EXPERIMENT_MODEL_MODE"] = args.mode
+    env["EXPERIMENT_MODEL_MODE"] = "openrouter" if args.mode == "command" else args.mode
     env["EXPERIMENT_MODELS"] = model
     env["EXPERIMENT_SAMPLE_LIMIT"] = sample_limit
     env["EXPERIMENT_FEATURES"] = args.features
@@ -339,6 +362,7 @@ def main() -> int:
     env["OPENROUTER_TIMEOUT"] = args.timeout
     env["OPENROUTER_TEMPERATURE"] = str(args.temperature)
     env["OPENROUTER_MAX_TOKENS"] = str(args.max_tokens)
+    env["PYTHONUNBUFFERED"] = "1"
 
     uv = uv_executable()
     if args.mode == "command":
@@ -374,6 +398,7 @@ def main() -> int:
         trial_id=trial_id,
         raw_args=raw_args,
         model=model,
+        models=models,
         args=args,
         output_file=out_file,
         sample_limit=sample_limit,
