@@ -36,7 +36,19 @@ REQUIRED_SAMPLE_COLUMNS = [
 ]
 
 sys.path.insert(0, str(EXPERIMENT_DIR))
+sys.path.insert(0, str(ROOT / "scripts" / "adapters"))
 from model_adapter import call_model  # noqa: E402
+from openrouter_models import model_pricing_snapshot  # noqa: E402
+from openrouter_usage import (  # noqa: E402
+    DEFAULT_MODEL_COST_WARN_USD,
+    DEFAULT_REQUEST_COST_WARN_USD,
+    DEFAULT_TOKEN_WARN,
+    DEFAULT_TOTAL_COST_WARN_USD,
+    UsageLogMonitor,
+    aggregate_usage_log_full,
+    format_money,
+    format_tokens,
+)
 
 
 def load_dotenv(path: Path) -> None:
@@ -61,6 +73,26 @@ def load_dotenv(path: Path) -> None:
         if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
             value = value[1:-1]
         os.environ[key] = value
+
+
+def env_float(name: str, default: float) -> float:
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return default
+    try:
+        return float(raw)
+    except ValueError:
+        return default
+
+
+def env_int(name: str, default: int) -> int:
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return default
+    try:
+        return int(raw)
+    except ValueError:
+        return default
 
 
 def slug(value: str) -> str:
@@ -243,7 +275,11 @@ def write_metadata(
     raw_path: Path,
     summary_path: Path,
     candidate_species: list[str],
+    sample_row_count: int,
+    usage_log_file: Path,
+    price_snapshot: list[dict[str, object]],
 ) -> None:
+    usage = aggregate_usage_log_full(usage_log_file)
     metadata = {
         "trial_id": trial_id,
         "experiment": "direct_species_baseline",
@@ -259,6 +295,28 @@ def write_metadata(
         "output_file": str(raw_path),
         "summary_file": str(summary_path),
         "candidate_species": candidate_species,
+        "budget": {
+            "sample_rows": sample_row_count,
+            "model_count": len(models),
+            "runs": args.runs,
+            "expected_model_calls": sample_row_count * len(models) * args.runs,
+            "openrouter_usage_log": str(usage_log_file),
+            "openrouter_usage": usage["overall"],
+            "openrouter_usage_by_model": usage["by_model"],
+            "openrouter_price_snapshot": price_snapshot,
+            "openrouter_budget_alerts": {
+                "enabled": args.mode == "openrouter" and not args.no_budget_alerts,
+                "total_cost_interval_usd": args.budget_warn_usd,
+                "model_cost_interval_usd": args.model_budget_warn_usd,
+                "total_token_interval": args.token_warn,
+                "model_token_interval": args.model_token_warn,
+                "request_cost_warn_usd": args.request_cost_warn_usd,
+            },
+            "cost_note": (
+                "OpenRouter usage.cost is the credits charged to the account, treated here as "
+                "USD-equivalent for experiment budgeting. Response usage is authoritative."
+            ),
+        },
         "python": sys.version.split()[0],
     }
     metadata_path.write_text(json.dumps(metadata, indent=2) + "\n")
@@ -276,6 +334,41 @@ def main() -> int:
     parser.add_argument("--timeout", default="120", help="OpenRouter timeout seconds.")
     parser.add_argument("--temperature", type=float, default=0.0, help="OpenRouter temperature.")
     parser.add_argument("--max-tokens", type=int, default=120, help="OpenRouter max_tokens.")
+    parser.add_argument(
+        "--budget-warn-usd",
+        type=float,
+        default=env_float("OPENROUTER_BUDGET_WARN_USD", DEFAULT_TOTAL_COST_WARN_USD),
+        help="Print a running alert each time total OpenRouter cost crosses this many USD-equivalent credits.",
+    )
+    parser.add_argument(
+        "--model-budget-warn-usd",
+        type=float,
+        default=env_float("OPENROUTER_MODEL_BUDGET_WARN_USD", DEFAULT_MODEL_COST_WARN_USD),
+        help="Print a running alert each time any single model crosses this many USD-equivalent credits.",
+    )
+    parser.add_argument(
+        "--token-warn",
+        type=int,
+        default=env_int("OPENROUTER_TOKEN_WARN", DEFAULT_TOKEN_WARN),
+        help="Print a running alert each time total OpenRouter tokens cross this interval.",
+    )
+    parser.add_argument(
+        "--model-token-warn",
+        type=int,
+        default=env_int("OPENROUTER_MODEL_TOKEN_WARN", DEFAULT_TOKEN_WARN),
+        help="Print a running alert each time any single model crosses this token interval.",
+    )
+    parser.add_argument(
+        "--request-cost-warn-usd",
+        type=float,
+        default=env_float("OPENROUTER_REQUEST_COST_WARN_USD", DEFAULT_REQUEST_COST_WARN_USD),
+        help="Print a running alert for any single OpenRouter call at or above this USD-equivalent cost.",
+    )
+    parser.add_argument(
+        "--no-budget-alerts",
+        action="store_true",
+        help="Disable running OpenRouter budget/token alerts while keeping usage logging enabled.",
+    )
     parser.add_argument("--trial-id", default="", help="Stable trial id. Defaults to timestamp.")
     parser.add_argument("--out-file", default="", help="Optional raw output CSV filename under trials/artifacts.")
     args = parser.parse_args()
@@ -284,6 +377,12 @@ def main() -> int:
         raise SystemExit("--runs must be positive")
     if args.workers < 1:
         raise SystemExit("--workers must be positive")
+    for attr in ("budget_warn_usd", "model_budget_warn_usd", "request_cost_warn_usd"):
+        if getattr(args, attr) < 0:
+            raise SystemExit(f"--{attr.replace('_', '-')} must be zero or positive")
+    for attr in ("token_warn", "model_token_warn"):
+        if getattr(args, attr) < 0:
+            raise SystemExit(f"--{attr.replace('_', '-')} must be zero or positive")
 
     os.environ["EXPERIMENT_MODEL_MODE"] = args.mode
     os.environ["OPENROUTER_TIMEOUT"] = str(args.timeout)
@@ -299,6 +398,9 @@ def main() -> int:
     trial_id = args.trial_id or f"direct-species-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
     raw_path, summary_path, metadata_path = output_paths(trial_id, args.out_file)
     raw_path.parent.mkdir(parents=True, exist_ok=True)
+    usage_log_file = raw_path.with_name(f"{raw_path.stem}.openrouter_usage.jsonl")
+    os.environ["OPENROUTER_USAGE_LOG"] = str(usage_log_file)
+    price_snapshot = model_pricing_snapshot(models) if args.mode == "openrouter" else []
     done = existing_done(raw_path)
 
     fieldnames = [
@@ -337,6 +439,25 @@ def main() -> int:
     print(f"  models: {', '.join(models)}")
     print(f"  runs per image: {args.runs}")
     print(f"  pending calls: {len(tasks)}")
+    if args.mode == "openrouter":
+        print(
+            "  cost alerts: "
+            f"total every {format_money(args.budget_warn_usd) or '$0'}, "
+            f"per model every {format_money(args.model_budget_warn_usd) or '$0'}, "
+            f"tokens every {format_tokens(args.token_warn) or '0'}, "
+            f"single call at {format_money(args.request_cost_warn_usd) or '$0'}"
+        )
+        print("  OpenRouter prices:")
+        for row in price_snapshot:
+            if row.get("pricing_error"):
+                print(f"    {row.get('model')}: {row.get('pricing_error')}")
+            else:
+                print(
+                    f"    {row.get('model')}: "
+                    f"{format_money(row.get('prompt_usd_per_million')) or 'unknown'}/1M prompt, "
+                    f"{format_money(row.get('completion_usd_per_million')) or 'unknown'}/1M completion "
+                    f"({row.get('name') or row.get('openrouter_id') or row.get('model')})"
+                )
     print(f"  output: {raw_path}")
     print(f"  summary: {summary_path}")
     sys.stdout.flush()
@@ -370,15 +491,31 @@ def main() -> int:
             append_row(raw_path, output_row, fieldnames)
 
     error_count = 0
-    with ThreadPoolExecutor(max_workers=args.workers) as executor:
-        futures = [executor.submit(process_task, model, run_index, row) for model, run_index, row in tasks]
-        for index, future in enumerate(as_completed(futures), 1):
-            exc = future.exception()
-            if exc:
-                error_count += 1
-                print(f"  [ERROR] {exc}", flush=True)
-            elif index % 10 == 0 or index == len(futures):
-                print(f"  completed {index}/{len(futures)}", flush=True)
+    monitor = None
+    if args.mode == "openrouter" and not args.no_budget_alerts:
+        monitor = UsageLogMonitor(
+            usage_log_file,
+            total_cost_interval_usd=args.budget_warn_usd,
+            model_cost_interval_usd=args.model_budget_warn_usd,
+            total_token_interval=args.token_warn,
+            model_token_interval=args.model_token_warn,
+            request_cost_warn_usd=args.request_cost_warn_usd,
+            emit=lambda message: print(message, flush=True),
+        )
+        monitor.start()
+    try:
+        with ThreadPoolExecutor(max_workers=args.workers) as executor:
+            futures = [executor.submit(process_task, model, run_index, row) for model, run_index, row in tasks]
+            for index, future in enumerate(as_completed(futures), 1):
+                exc = future.exception()
+                if exc:
+                    error_count += 1
+                    print(f"  [ERROR] {exc}", flush=True)
+                elif index % 10 == 0 or index == len(futures):
+                    print(f"  completed {index}/{len(futures)}", flush=True)
+    finally:
+        if monitor is not None:
+            monitor.stop()
 
     if raw_path.exists():
         write_summary(raw_path, summary_path, models, args.runs)
@@ -391,6 +528,9 @@ def main() -> int:
         raw_path=raw_path,
         summary_path=summary_path,
         candidate_species=candidates,
+        sample_row_count=len(sample_rows),
+        usage_log_file=usage_log_file,
+        price_snapshot=price_snapshot,
     )
 
     if error_count:

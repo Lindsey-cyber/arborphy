@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import base64
+from datetime import datetime, timezone
 from functools import lru_cache
 import json
 import mimetypes
@@ -8,15 +9,20 @@ import os
 from pathlib import Path
 import re
 import sys
+import threading
 from typing import Any
 import urllib.error
 import urllib.request
 
 from openrouter_models import resolve_model_alias
+from openrouter_usage import usage_summary_from_record
 
 
 class AdapterError(RuntimeError):
     pass
+
+
+_USAGE_LOG_LOCK = threading.Lock()
 
 
 def main() -> None:
@@ -85,7 +91,29 @@ def call_openrouter(request: dict[str, Any]) -> str:
     except (KeyError, IndexError, TypeError) as exc:
         raise AdapterError(f"Unexpected OpenRouter response: {json.dumps(data)[:2000]}") from exc
 
+    record_usage(data, model)
     return normalize_content(content)
+
+
+def record_usage(data: dict[str, Any], requested_model: str) -> None:
+    usage_log = os.environ.get("OPENROUTER_USAGE_LOG", "").strip()
+    if not usage_log:
+        return
+
+    record = {
+        "usage_log_version": 2,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "id": data.get("id"),
+        "requested_model": requested_model,
+        "response_model": data.get("model"),
+        "usage": data.get("usage") if isinstance(data.get("usage"), dict) else {},
+    }
+    record["usage_summary"] = usage_summary_from_record(record)
+    path = Path(usage_log).expanduser()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with _USAGE_LOG_LOCK:
+        with path.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
 def parts_to_openrouter_content(parts: list[Any]) -> list[dict[str, Any]]:

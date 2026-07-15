@@ -1,0 +1,4 @@
+model,prompt_type,feature,n,correct_count,accuracy
+mock-local,blind_mc_no_reference_photos,key_flower_type,7,0,0.0
+mock-local,blind_mc_no_reference_photos,key_leaf_type,4,0,0.0
+mock-local,blind_mc_no_reference_photos,key_plant_type,6,0,0.0

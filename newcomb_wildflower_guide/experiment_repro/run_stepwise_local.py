@@ -16,7 +16,7 @@ from runner_common import (
     DEFAULT_PROMPT_SET_ID,
     PRIMARY_FEATURES,
     blind_mc_parts,
-    build_options,
+    build_options_from_values,
     existence_parts,
     get_true_value,
     load_inputs,
@@ -89,7 +89,6 @@ def apply_sample_limit(sample: pd.DataFrame) -> pd.DataFrame:
 
 def main() -> None:
     inputs = load_inputs(IMAGE_SET)
-    refs = inputs["refs"]
     ref_mat = inputs["ref_mat"]
     path_table = inputs["kg"]
     sample = inputs["sample"]
@@ -104,7 +103,10 @@ def main() -> None:
     sample = apply_sample_limit(sample)
 
     OUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    options_by_feature = {feature: build_options(refs, ref_mat, feature) for feature in refs["feature"].dropna().unique()}
+    options_by_feature = {
+        feature: build_options_from_values(values_by_feature, ref_mat, feature)
+        for feature in FEATURES
+    }
 
     done = set()
     if OUT_FILE.exists():

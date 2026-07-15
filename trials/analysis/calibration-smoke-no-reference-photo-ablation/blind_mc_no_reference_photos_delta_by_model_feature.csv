@@ -1,0 +1,4 @@
+model,feature,blind_mc_accuracy,no_reference_photos_accuracy,accuracy_delta
+mock-local,key_flower_type,0.0,0.0,0.0
+mock-local,key_leaf_type,0.0,0.0,0.0
+mock-local,key_plant_type,0.0,0.0,0.0

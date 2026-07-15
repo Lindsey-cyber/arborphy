@@ -1,0 +1,5 @@
+prompt_type,n,correct_count,accuracy
+agreement,17,0,0.0
+blind_mc,17,0,0.0
+blind_mc_no_reference_photos,17,0,0.0
+existence,17,0,0.0

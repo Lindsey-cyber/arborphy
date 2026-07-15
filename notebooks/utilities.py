@@ -4,6 +4,7 @@ import base64
 from html import escape
 from io import BytesIO
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -99,13 +100,30 @@ def run_trial_command(cmd: list[str]) -> None:
     assert process.stdout is not None
     for line in process.stdout:
         output_lines.append(line)
-        text = line.strip()
+        text = line.strip().lstrip("\a")
         if not text:
             continue
 
         if text.startswith("pending feature tasks:"):
             show_progress(text)
-        elif text.startswith(("expected model calls:", "already completed tasks:", "tasks without true value:")):
+        elif text.startswith(
+            (
+                "expected model calls:",
+                "expected completed rows:",
+                "model call budget:",
+                "cost alerts:",
+                "OpenRouter prices:",
+                "already completed tasks:",
+                "tasks without true value:",
+            )
+        ):
+            show_progress(text)
+        elif (
+            text.startswith(("[BUDGET ALERT]", "[TOKEN ALERT]"))
+            or "/1M prompt" in text
+            or "OpenRouter models" in text
+            or "model not found in OpenRouter" in text
+        ):
             show_progress(text)
         elif text.startswith("note:"):
             show_progress(text)
@@ -138,6 +156,20 @@ def percent_text(value: object) -> str:
     if value is None or pd.isna(value):
         return ""
     return f"{float(value):.1%}"
+
+
+def money_text(value: object) -> str:
+    if value is None or pd.isna(value):
+        return ""
+    try:
+        amount = float(value)
+    except (TypeError, ValueError):
+        return str(value)
+    if amount == 0:
+        return "$0"
+    if amount < 0.01:
+        return f"${amount:.4f}"
+    return f"${amount:.2f}"
 
 
 def ratio_text(count: object, denominator: object, rate: object) -> str:
@@ -412,6 +444,15 @@ def matplotlib_font(preferred: str, fallback: str = "DejaVu Sans") -> str:
     return preferred
 
 
+def ensure_matplotlib_config_dir() -> None:
+    config_dir = Path(os.environ.get("MPLCONFIGDIR", "/tmp/arborphy-matplotlib"))
+    cache_dir = Path(os.environ.get("XDG_CACHE_HOME", "/tmp/arborphy-cache"))
+    config_dir.mkdir(parents=True, exist_ok=True)
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    os.environ.setdefault("MPLCONFIGDIR", str(config_dir))
+    os.environ.setdefault("XDG_CACHE_HOME", str(cache_dir))
+
+
 def heatmap_matrix(kind: str, feature_rows: pd.DataFrame, model_order: list[str]) -> tuple[list[list[int]], int]:
     specs = heatmap_category_specs(kind)
     category_index = {name: index for index, (name, _, _) in enumerate(specs)}
@@ -431,6 +472,7 @@ def heatmap_matrix(kind: str, feature_rows: pd.DataFrame, model_order: list[str]
 
 
 def render_benchmark_heatmap_png(rows: pd.DataFrame, kind: str) -> str:
+    ensure_matplotlib_config_dir()
     try:
         import matplotlib.pyplot as plt
         from matplotlib.colors import ListedColormap
@@ -562,6 +604,206 @@ def display_benchmark_heatmap(rows: pd.DataFrame, images: dict[str, str] | None 
     display(HTML(f"<div>{benchmark_heatmap_html(images)}</div>"))
 
 
+def focus_key_columns(rows: pd.DataFrame) -> list[str]:
+    return [
+        column
+        for column in ["trial_id", "run_id", "prompt_set", "observation_id"]
+        if column in rows.columns
+    ] or ["__index__"]
+
+
+def focus_key(row: pd.Series, key_columns: list[str]) -> tuple[str, ...]:
+    if key_columns == ["__index__"]:
+        return (str(row.name),)
+    return tuple(str(row.get(column, "")) for column in key_columns)
+
+
+def focus_columns(model_rows: pd.DataFrame, key_columns: list[str]) -> list[tuple[str, ...]]:
+    if key_columns == ["__index__"]:
+        return [(str(index),) for index in model_rows.index]
+    key_frame = model_rows[key_columns].fillna("").astype(str).drop_duplicates()
+    return [tuple(values) for values in key_frame.sort_values(key_columns, kind="stable").to_numpy()]
+
+
+def focus_heatmap_matrix(
+    rows: pd.DataFrame,
+    *,
+    model: str,
+    kind: str,
+) -> tuple[list[list[int]], list[str], list[tuple[str, ...]]]:
+    model_rows = rows.loc[rows["model"].astype(str) == str(model)].copy()
+    features = heatmap_features(model_rows)
+    key_columns = focus_key_columns(model_rows)
+    task_columns = focus_columns(model_rows, key_columns)
+    specs = heatmap_category_specs(kind)
+    category_index = {name: index for index, (name, _, _) in enumerate(specs)}
+    blank_index = len(specs)
+    matrix = [[blank_index for _ in task_columns] for _ in features]
+    feature_index = {feature: index for index, feature in enumerate(features)}
+    task_index = {key: index for index, key in enumerate(task_columns)}
+
+    sort_columns = [column for column in key_columns if column in model_rows.columns]
+    if sort_columns:
+        model_rows = model_rows.sort_values(sort_columns + ["feature"], kind="stable")
+
+    for _, row in model_rows.iterrows():
+        feature = str(row.get("feature", ""))
+        key = focus_key(row, key_columns)
+        if feature not in feature_index or key not in task_index:
+            continue
+        matrix[feature_index[feature]][task_index[key]] = category_index.get(heatmap_category(kind, row), blank_index)
+    return matrix, features, task_columns
+
+
+def render_model_focus_heatmap_png(rows: pd.DataFrame, model: str, kind: str) -> str:
+    ensure_matplotlib_config_dir()
+    try:
+        import matplotlib.pyplot as plt
+        from matplotlib.colors import ListedColormap
+        from matplotlib.patches import Patch
+    except ImportError as exc:
+        raise RuntimeError("matplotlib is required to render the model focus heatmap") from exc
+
+    matrix, features, task_columns = focus_heatmap_matrix(rows, model=model, kind=kind)
+    if not features or not task_columns:
+        return ""
+
+    specs = heatmap_category_specs(kind)
+    colors = [color for _, _, color in specs] + [HEATMAP_COLORS["blank"]]
+    cmap = ListedColormap(colors)
+    title_font = "DejaVu Sans"
+    label_font = matplotlib_font("Arial")
+    fig_width = max(7.4, min(16, 2.4 + 0.055 * len(task_columns)))
+    fig_height = max(2.6, 1.55 + 0.42 * len(features))
+    fig, ax = plt.subplots(1, 1, figsize=(fig_width, fig_height), dpi=180)
+    fig.patch.set_facecolor("white")
+    ax.imshow(matrix, cmap=cmap, vmin=0, vmax=len(colors) - 1, aspect="auto", interpolation="nearest")
+    ax.set_title(
+        f"{compact_model_name(model)} - {'See Feature' if kind == 'see' else 'MC Feature Value'}",
+        fontfamily=title_font,
+        fontsize=13,
+        fontweight="bold",
+        pad=8,
+    )
+    ax.set_xticks([])
+    ax.set_yticks(range(len(features)))
+    ax.set_yticklabels([feature_title(feature) for feature in features], fontfamily=label_font, fontsize=8)
+    ax.tick_params(axis="both", length=0, pad=3)
+    if len(task_columns) <= 180:
+        ax.set_xticks([x - 0.5 for x in range(1, len(task_columns))], minor=True)
+        ax.grid(which="minor", axis="x", color="white", linewidth=0.18)
+    if len(features) <= 60:
+        ax.set_yticks([y - 0.5 for y in range(1, len(features))], minor=True)
+        ax.grid(which="minor", axis="y", color="white", linewidth=0.35)
+    for spine in ax.spines.values():
+        spine.set_linewidth(0.45)
+        spine.set_color("#1f2937")
+
+    handles = [Patch(facecolor=color, edgecolor="none", label=label) for _, label, color in specs]
+    fig.legend(
+        handles=handles,
+        loc="lower center",
+        ncol=len(handles),
+        frameon=False,
+        bbox_to_anchor=(0.5, 0.01),
+        prop={"family": label_font, "size": 6.5},
+        handlelength=1.4,
+        handleheight=0.75,
+        columnspacing=1.0,
+    )
+    fig.subplots_adjust(left=0.18, right=0.99, top=0.78, bottom=0.28)
+
+    buffer = BytesIO()
+    fig.savefig(buffer, format="png", dpi=180, facecolor="white")
+    plt.close(fig)
+    return "data:image/png;base64," + base64.b64encode(buffer.getvalue()).decode("ascii")
+
+
+def model_focus_heatmap_images(rows: pd.DataFrame) -> dict[str, dict[str, str]]:
+    if rows.empty:
+        return {}
+    return {
+        model: {
+            "see": render_model_focus_heatmap_png(rows, model, "see"),
+            "mc": render_model_focus_heatmap_png(rows, model, "mc"),
+        }
+        for model in heatmap_models(rows)
+    }
+
+
+def model_focus_summary_view(summary: pd.DataFrame) -> pd.DataFrame:
+    if summary.empty:
+        return summary
+    rows = []
+    group_columns = [column for column in ["model"] if column in summary.columns]
+    if not group_columns:
+        return pd.DataFrame()
+    for model, group in summary.groupby("model", dropna=False, sort=False):
+        feature_count = int(group["feature_count"].sum())
+        p2_applicable = int(group["p2_applicable_count"].sum())
+        committed = int(group["committed_count"].sum())
+        correct = int(group["correct_count"].sum())
+        wrong = int(group["wrong_count"].sum())
+        inconclusive = int(group["inconclusive_count"].sum())
+        not_applicable = int(group["not_applicable_count"].sum())
+        features_seen = int(group["features_seen"].sum())
+        rows.append(
+            {
+                "model": model,
+                "features": int_text(group["feature"].nunique()) if "feature" in group.columns else "",
+                "n": int_text(feature_count),
+                "p1_seen": ratio_text(features_seen, feature_count, features_seen / feature_count if feature_count else None),
+                "p2_correct": ratio_text(correct, p2_applicable, correct / p2_applicable if p2_applicable else None),
+                "p2_wrong": ratio_text(wrong, p2_applicable, wrong / p2_applicable if p2_applicable else None),
+                "p2_inconclusive": ratio_text(
+                    inconclusive,
+                    p2_applicable,
+                    inconclusive / p2_applicable if p2_applicable else None,
+                ),
+                "p2_na": ratio_text(
+                    not_applicable,
+                    feature_count,
+                    not_applicable / feature_count if feature_count else None,
+                ),
+                "accuracy_when_committed": ratio_text(
+                    correct,
+                    committed,
+                    correct / committed if committed else None,
+                ),
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def model_focus_heatmap_html(focus_images: dict[str, dict[str, str]]) -> str:
+    if not focus_images:
+        return ""
+    sections = []
+    for index, (model, images) in enumerate(focus_images.items()):
+        open_attr = " open" if index == 0 else ""
+        sections.append(
+            f"""
+            <details class="subpanel"{open_attr}>
+                <summary>{escape(compact_model_name(model))} <span>{escape(model)}</span></summary>
+                <div class="chart-grid focus-chart-grid">
+                    <figure class="chart-card">
+                        <img src="{images.get('see', '')}" alt="{escape(model)} see feature focus heatmap">
+                    </figure>
+                    <figure class="chart-card">
+                        <img src="{images.get('mc', '')}" alt="{escape(model)} MC feature value focus heatmap">
+                    </figure>
+                </div>
+            </details>
+            """
+        )
+    return "".join(sections)
+
+
+def display_model_focus_heatmaps(rows: pd.DataFrame, focus_images: dict[str, dict[str, str]] | None = None) -> None:
+    focus_images = focus_images if focus_images is not None else model_focus_heatmap_images(rows)
+    display(HTML(model_focus_heatmap_html(focus_images)))
+
+
 def experiment_scale_view(rows: pd.DataFrame) -> pd.DataFrame:
     if rows.empty:
         return pd.DataFrame()
@@ -585,7 +827,9 @@ def experiment_scale_view(rows: pd.DataFrame) -> pd.DataFrame:
     expected_rows = image_feature_tasks * max(config_count, 1)
     p2_call_count = int(rows["p2_applicable"].sum()) if "p2_applicable" in rows.columns else 0
     estimated_model_calls = completed_rows + p2_call_count
+    max_model_calls = expected_rows * 2
     completion_rate = completed_rows / expected_rows if expected_rows else None
+    call_budget_rate = estimated_model_calls / max_model_calls if max_model_calls else None
 
     records = [
         {
@@ -648,6 +892,16 @@ def experiment_scale_view(rows: pd.DataFrame) -> pd.DataFrame:
             "value": int_text(estimated_model_calls),
             "meaning": "P1 calls + P2 calls represented by completed rows",
         },
+        {
+            "metric": "max_model_calls_if_all_p2",
+            "value": int_text(max_model_calls),
+            "meaning": "upper bound if every full-grid row asks both P1 and P2",
+        },
+        {
+            "metric": "model_call_budget_used",
+            "value": ratio_text(estimated_model_calls, max_model_calls, call_budget_rate),
+            "meaning": "completed model calls / upper-bound full-grid model calls",
+        },
     ]
     return pd.DataFrame(records)
 
@@ -661,14 +915,106 @@ def scale_metric_value(scale_view: pd.DataFrame, metric: str) -> str:
     return str(matches.iloc[0])
 
 
-def compact_dashboard_view(dashboard: pd.DataFrame, scale_view: pd.DataFrame | None = None) -> pd.DataFrame:
+def metadata_budget(metadata: dict[str, object] | None) -> dict[str, object]:
+    if not isinstance(metadata, dict):
+        return {}
+    budget = metadata.get("budget")
+    return budget if isinstance(budget, dict) else {}
+
+
+def nested_dict(metadata: dict[str, object], key: str) -> dict[str, object]:
+    value = metadata.get(key)
+    return value if isinstance(value, dict) else {}
+
+
+def response_model_text(row: dict[str, object]) -> str:
+    response_models = row.get("response_models")
+    if not isinstance(response_models, list):
+        return ""
+    parts = []
+    for item in response_models:
+        if not isinstance(item, dict):
+            continue
+        model = str(item.get("model", "")).strip()
+        calls = int_text(item.get("calls"))
+        if model:
+            parts.append(f"{model} ({calls})" if calls else model)
+    return ", ".join(parts)
+
+
+def openrouter_usage_by_model_view(metadata: dict[str, object] | None) -> pd.DataFrame:
+    budget = metadata_budget(metadata)
+    rows = budget.get("openrouter_usage_by_model")
+    if not isinstance(rows, list):
+        return pd.DataFrame()
+    records = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        records.append(
+            {
+                "model": row.get("model", ""),
+                "response_models": response_model_text(row),
+                "calls": int_text(row.get("captured_calls")),
+                "prompt_tokens": int_text(row.get("prompt_tokens")),
+                "completion_tokens": int_text(row.get("completion_tokens")),
+                "reasoning_tokens": int_text(row.get("reasoning_tokens")),
+                "cached_tokens": int_text(row.get("cached_tokens")),
+                "cache_write_tokens": int_text(row.get("cache_write_tokens")),
+                "total_tokens": int_text(row.get("total_tokens")),
+                "cost": money_text(row.get("cost_usd")),
+                "avg_cost_call": money_text(row.get("avg_cost_per_call_usd")),
+                "cost_per_1k_tokens": money_text(row.get("cost_per_1k_tokens_usd")),
+            }
+        )
+    return pd.DataFrame(records)
+
+
+def openrouter_price_snapshot_view(metadata: dict[str, object] | None) -> pd.DataFrame:
+    budget = metadata_budget(metadata)
+    rows = budget.get("openrouter_price_snapshot")
+    if not isinstance(rows, list):
+        return pd.DataFrame()
+    records = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        records.append(
+            {
+                "model": row.get("model", ""),
+                "openrouter_id": row.get("openrouter_id", ""),
+                "name": row.get("name", ""),
+                "prompt_per_1m": money_text(row.get("prompt_usd_per_million")),
+                "completion_per_1m": money_text(row.get("completion_usd_per_million")),
+                "reasoning_per_1m": money_text(row.get("reasoning_usd_per_million")),
+                "cache_read_per_1m": money_text(row.get("cache_read_usd_per_million")),
+                "context_length": int_text(row.get("context_length")),
+                "pricing_error": row.get("pricing_error", ""),
+            }
+        )
+    return pd.DataFrame(records)
+
+
+def compact_dashboard_view(
+    dashboard: pd.DataFrame,
+    scale_view: pd.DataFrame | None = None,
+    metadata: dict[str, object] | None = None,
+) -> pd.DataFrame:
     if dashboard.empty:
         return dashboard
     scale_view = scale_view if scale_view is not None else pd.DataFrame()
+    budget = metadata_budget(metadata)
+    usage = nested_dict(budget, "openrouter_usage")
     row = dashboard.iloc[0]
     feature_count = row.get("feature_count")
     p2_applicable_count = row.get("p2_applicable_count")
     committed_count = row.get("committed_count")
+    completed_calls = budget.get("completed_model_calls") or scale_metric_value(scale_view, "estimated_model_calls_completed")
+    max_calls = budget.get("max_model_calls_full_grid") or scale_metric_value(scale_view, "max_model_calls_if_all_p2")
+    try:
+        call_budget_rate = float(completed_calls) / float(max_calls) if completed_calls and max_calls else None
+    except (TypeError, ValueError):
+        call_budget_rate = None
     records = [
         {"metric": "images", "value": scale_metric_value(scale_view, "images") or int_text(row.get("n_observations"))},
         {"metric": "features", "value": scale_metric_value(scale_view, "features") or int_text(row.get("feature_name_count"))},
@@ -684,7 +1030,23 @@ def compact_dashboard_view(dashboard: pd.DataFrame, scale_view: pd.DataFrame | N
         {"metric": "completed_rows", "value": scale_metric_value(scale_view, "completed_rows") or int_text(feature_count)},
         {
             "metric": "estimated_model_calls_completed",
-            "value": scale_metric_value(scale_view, "estimated_model_calls_completed"),
+            "value": int_text(completed_calls) or scale_metric_value(scale_view, "estimated_model_calls_completed"),
+        },
+        {
+            "metric": "model_call_budget",
+            "value": ratio_text(completed_calls, max_calls, call_budget_rate),
+        },
+        {
+            "metric": "captured_openrouter_calls",
+            "value": int_text(usage.get("captured_calls")) if usage.get("captured_calls") is not None else "not captured",
+        },
+        {
+            "metric": "captured_tokens",
+            "value": int_text(usage.get("total_tokens")) if usage.get("total_tokens") is not None else "not captured",
+        },
+        {
+            "metric": "captured_cost_usd",
+            "value": money_text(usage.get("cost_usd")) or "not captured",
         },
         {
             "metric": "features_seen",
@@ -859,7 +1221,7 @@ def dataframe_table_html(df: pd.DataFrame, table_id: str, max_rows: int | None =
 def table_section_html(title: str, df: pd.DataFrame, table_id: str, max_rows: int | None = None) -> str:
     count_note = f"{min(len(df), max_rows)}/{len(df)} rows" if max_rows is not None and len(df) > max_rows else f"{len(df)} rows"
     return f"""
-    <details class="panel" open>
+    <details class="panel">
         <summary>{escape(title)} <span>{escape(count_note)}</span></summary>
         <div class="table-tools">
             <input type="search" placeholder="Search this table" data-search-target="{escape(table_id)}">
@@ -874,12 +1236,28 @@ def table_section_html(title: str, df: pd.DataFrame, table_id: str, max_rows: in
 def dashboard_cards_html(dashboard_view: pd.DataFrame) -> str:
     if dashboard_view.empty:
         return ""
+    selected = [
+        ("completed_rows", "Rows"),
+        ("features_seen", "P1 seen"),
+        ("p2_correct", "P2 correct"),
+        ("p2_wrong", "P2 wrong"),
+        ("accuracy_when_committed", "Committed accuracy"),
+        ("captured_cost_usd", "Cost"),
+    ]
+    labels = dict(selected)
+    metric_order = {metric: index for index, (metric, _) in enumerate(selected)}
+    dashboard_view = dashboard_view.loc[dashboard_view["metric"].isin(labels)].copy()
+    if dashboard_view.empty:
+        return ""
+    dashboard_view["__order"] = dashboard_view["metric"].map(metric_order)
+    dashboard_view = dashboard_view.sort_values("__order", kind="stable")
     cards = []
     for _, row in dashboard_view.iterrows():
+        metric = str(row.get("metric", ""))
         cards.append(
             f"""
             <div class="metric-card">
-                <div class="metric-name">{escape(str(row.get("metric", "")))}</div>
+                <div class="metric-name">{escape(labels.get(metric, metric))}</div>
                 <div class="metric-value">{escape(str(row.get("value", "")))}</div>
             </div>
             """
@@ -890,6 +1268,10 @@ def dashboard_cards_html(dashboard_view: pd.DataFrame) -> str:
 def metadata_html(metadata: dict[str, object], output_file: Path) -> str:
     if not metadata:
         metadata = {}
+    budget = metadata_budget(metadata)
+    usage = nested_dict(budget, "openrouter_usage")
+    usage_by_model = openrouter_usage_by_model_view(metadata)
+    price_snapshot = openrouter_price_snapshot_view(metadata)
     rows = {
         "trial_id": metadata.get("trial_id", output_file.stem),
         "output_csv": output_file.name,
@@ -900,17 +1282,167 @@ def metadata_html(metadata: dict[str, object], output_file: Path) -> str:
         "features": ", ".join(metadata.get("features", [])) if isinstance(metadata.get("features"), list) else "",
         "prompt_set": metadata.get("prompt_set", ""),
         "run_id": metadata.get("run_id", ""),
+        "expected_completed_rows": budget.get("expected_completed_rows", ""),
+        "model_call_budget": (
+            f"{budget.get('min_model_calls_full_grid')} to {budget.get('max_model_calls_full_grid')}"
+            if budget.get("min_model_calls_full_grid") or budget.get("max_model_calls_full_grid")
+            else ""
+        ),
+        "completed_model_calls": budget.get("completed_model_calls", ""),
+        "captured_openrouter_calls": usage.get("captured_calls", ""),
+        "captured_prompt_tokens": usage.get("prompt_tokens", ""),
+        "captured_completion_tokens": usage.get("completion_tokens", ""),
+        "captured_reasoning_tokens": usage.get("reasoning_tokens", ""),
+        "captured_cached_tokens": usage.get("cached_tokens", ""),
+        "captured_tokens": usage.get("total_tokens", ""),
+        "captured_cost_usd": money_text(usage.get("cost_usd")) or "",
+        "avg_cost_per_call": money_text(usage.get("avg_cost_per_call_usd")) or "",
+        "cost_per_1k_tokens": money_text(usage.get("cost_per_1k_tokens_usd")) or "",
     }
     body = "".join(
         f"<tr><th>{escape(key)}</th><td>{escape(str(value))}</td></tr>"
         for key, value in rows.items()
         if str(value)
     )
+    usage_table = ""
+    if not usage_by_model.empty:
+        usage_table = f"""
+        <h3>OpenRouter Usage by Model</h3>
+        <div class="table-wrap">{dataframe_table_html(usage_by_model, "metadata-usage-by-model")}</div>
+        """
+    price_table = ""
+    if not price_snapshot.empty:
+        price_table = f"""
+        <h3>OpenRouter Price Snapshot</h3>
+        <div class="table-wrap">{dataframe_table_html(price_snapshot, "metadata-price-snapshot")}</div>
+        """
     return f"""
-    <details class="panel" open>
+    <details class="panel">
         <summary>Run Metadata</summary>
         <table class="metadata-table"><tbody>{body}</tbody></table>
+        {usage_table}
+        {price_table}
     </details>
+    """
+
+
+def dashboard_text(value: object) -> str:
+    if value is None:
+        return ""
+    try:
+        if pd.isna(value):
+            return ""
+    except (TypeError, ValueError):
+        pass
+    return str(value)
+
+
+def dashboard_bool(value: object) -> bool:
+    if value is None:
+        return False
+    try:
+        if pd.isna(value):
+            return False
+    except (TypeError, ValueError):
+        pass
+    if isinstance(value, str):
+        return value.strip().lower() in {"true", "1", "yes", "y"}
+    return bool(value)
+
+
+def dashboard_json(data: object) -> str:
+    return json.dumps(data, separators=(",", ":"), ensure_ascii=True, allow_nan=False).replace("</", "<\\/")
+
+
+def interactive_dashboard_payload(rows: pd.DataFrame) -> dict[str, object]:
+    if rows.empty:
+        return {"models": [], "features": [], "tasks": []}
+
+    models = [
+        {"id": model, "label": compact_model_name(model)}
+        for model in heatmap_models(rows)
+    ]
+    features = [
+        {"id": feature, "label": feature_title(feature)}
+        for feature in heatmap_features(rows)
+    ]
+    sort_columns = [
+        column
+        for column in ["feature", "model", "observation_id", "trial_id", "run_id"]
+        if column in rows.columns
+    ]
+    ordered = rows.sort_values(sort_columns, kind="stable") if sort_columns else rows.copy()
+    tasks = []
+    for index, (_, row) in enumerate(ordered.iterrows()):
+        feature = dashboard_text(row.get("feature"))
+        model = dashboard_text(row.get("model"))
+        species = dashboard_text(row.get("newcomb_species_name")) or dashboard_text(row.get("species_inat"))
+        outcome = dashboard_text(row.get("outcome")).upper() or "NOT_APPLICABLE"
+        p1 = dashboard_text(row.get("p1_parsed")).upper() or "INCONCLUSIVE"
+        tasks.append(
+            {
+                "id": index,
+                "model": model,
+                "modelLabel": compact_model_name(model),
+                "feature": feature,
+                "featureLabel": feature_title(feature),
+                "observationId": dashboard_text(row.get("observation_id")),
+                "photoId": dashboard_text(row.get("photo_id")),
+                "photoUrl": dashboard_text(row.get("photo_url")),
+                "species": species,
+                "trueValue": dashboard_text(row.get("true_value")),
+                "predictedValue": dashboard_text(row.get("predicted_value")) or dashboard_text(row.get("p2_parsed")),
+                "p1": p1,
+                "p2": dashboard_text(row.get("p2_parsed")),
+                "outcome": outcome,
+                "committed": dashboard_bool(row.get("committed_bool", row.get("committed"))),
+            }
+        )
+    return {"models": models, "features": features, "tasks": tasks}
+
+
+def interactive_dashboard_html(rows: pd.DataFrame) -> str:
+    payload = dashboard_json(interactive_dashboard_payload(rows))
+    return f"""
+    <section class="interactive-dashboard" aria-label="Interactive result explorer">
+        <div class="control-bar">
+            <label>Feature
+                <select id="dash-feature-filter"></select>
+            </label>
+            <label>Model
+                <select id="dash-model-filter"></select>
+            </label>
+            <div class="mode-switch" role="group" aria-label="Cell color mode">
+                <button type="button" class="mode-button is-active" data-mode="outcome" aria-pressed="true">P2 outcome</button>
+                <button type="button" class="mode-button" data-mode="visibility" aria-pressed="false">P1 visibility</button>
+            </div>
+        </div>
+        <div id="dash-live-stats" class="live-stats"></div>
+        <div class="viz-layout">
+            <section class="matrix-panel" aria-labelledby="dash-matrix-title">
+                <div class="section-heading">
+                    <h2 id="dash-matrix-title">Task matrix</h2>
+                    <div id="dash-legend" class="legend"></div>
+                </div>
+                <div id="dash-matrix" class="task-matrix"></div>
+            </section>
+            <aside class="selected-panel" aria-live="polite">
+                <h2>Selected task</h2>
+                <div id="dash-selected"></div>
+            </aside>
+        </div>
+        <div class="chart-pair">
+            <section class="mini-chart" aria-labelledby="dash-model-bars-title">
+                <h2 id="dash-model-bars-title">Model comparison</h2>
+                <div id="dash-model-bars"></div>
+            </section>
+            <section class="mini-chart" aria-labelledby="dash-true-bars-title">
+                <h2 id="dash-true-bars-title">True value breakdown</h2>
+                <div id="dash-true-bars"></div>
+            </section>
+        </div>
+        <script id="dash-data" type="application/json">{payload}</script>
+    </section>
     """
 
 
@@ -918,101 +1450,352 @@ def dashboard_css() -> str:
     return """
     :root {
         color-scheme: light;
-        --border: #d9dee7;
-        --soft: #f7f9fc;
-        --text: #111827;
-        --muted: #64748b;
-        --accent: #2563eb;
+        --bg: #f5f7fa;
+        --surface: #ffffff;
+        --surface-soft: #eef2f6;
+        --border: #d8dee7;
+        --text: #15202b;
+        --muted: #5f6f82;
+        --accent: #2f6f9f;
+        --correct: #248a45;
+        --wrong: #bf3d3a;
+        --inconclusive: #c88a1d;
+        --na: #9aa4b2;
+        --shadow: 0 14px 40px rgba(21, 32, 43, 0.08);
     }
     * { box-sizing: border-box; }
     body {
         margin: 0;
-        padding: 28px;
-        background: #ffffff;
+        padding: 24px;
+        background: var(--bg);
         color: var(--text);
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
         font-size: 14px;
+        line-height: 1.45;
     }
-    main { max-width: 1480px; margin: 0 auto; }
+    main { max-width: 1360px; margin: 0 auto; }
     header {
         display: flex;
         justify-content: space-between;
         gap: 18px;
-        align-items: flex-end;
-        border-bottom: 1px solid var(--border);
-        padding-bottom: 14px;
-        margin-bottom: 18px;
+        align-items: center;
+        margin-bottom: 16px;
+        padding: 0 2px;
+    }
+    header > div {
+        min-width: 0;
     }
     h1 {
         margin: 0;
-        font: 800 28px/1.15 "DejaVu Sans", Arial, sans-serif;
-        letter-spacing: 0;
+        font-size: 25px;
+        font-weight: 500;
     }
     .subtitle { color: var(--muted); margin-top: 6px; }
     .open-csv {
-        color: var(--accent);
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text);
+        border-radius: 8px;
+        padding: 8px 12px;
         text-decoration: none;
         white-space: nowrap;
-        font-weight: 700;
+        font-weight: 500;
     }
     .metric-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 10px;
         margin: 16px 0;
     }
     .metric-card {
         border: 1px solid var(--border);
-        background: var(--soft);
-        padding: 10px 12px;
+        background: var(--surface);
+        border-radius: 8px;
+        padding: 12px;
     }
     .metric-name {
         color: var(--muted);
-        font-size: 11px;
+        font-size: 12px;
         text-transform: uppercase;
-        letter-spacing: .04em;
     }
-    .metric-value { font-size: 18px; font-weight: 800; margin-top: 4px; }
-    .chart-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(420px, 1fr));
-        gap: 22px;
-        align-items: start;
-        overflow-x: auto;
-        margin: 18px 0;
-    }
-    .chart-card {
-        margin: 0;
-        background: #fff;
+    .metric-value { font-size: 19px; font-weight: 500; margin-top: 4px; }
+    .interactive-dashboard {
+        background: var(--surface);
         border: 1px solid var(--border);
-        padding: 10px;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+        padding: 14px;
+        margin: 16px 0;
     }
-    .chart-card img { display: block; width: 100%; height: auto; }
+    .control-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+    .control-bar label {
+        display: grid;
+        gap: 5px;
+        min-width: 190px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+    select,
+    input[type="search"] {
+        width: 100%;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text);
+        border-radius: 8px;
+        padding: 8px 10px;
+        font: inherit;
+    }
+    .mode-switch {
+        display: inline-flex;
+        border: 1px solid var(--border);
+        background: var(--surface-soft);
+        border-radius: 8px;
+        padding: 3px;
+        gap: 3px;
+    }
+    .mode-button {
+        appearance: none;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--muted);
+        padding: 8px 10px;
+        font: inherit;
+        cursor: pointer;
+    }
+    .mode-button.is-active {
+        background: var(--surface);
+        color: var(--text);
+        box-shadow: 0 1px 4px rgba(21, 32, 43, 0.12);
+    }
+    .live-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 8px;
+        margin: 10px 0 14px 0;
+    }
+    .live-stat {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 10px;
+        background: var(--surface-soft);
+    }
+    .live-stat span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+    }
+    .live-stat strong {
+        display: block;
+        margin-top: 3px;
+        font-size: 17px;
+        font-weight: 500;
+    }
+    .viz-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+        gap: 14px;
+        align-items: start;
+    }
+    .matrix-panel,
+    .selected-panel,
+    .mini-chart {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--surface);
+        padding: 12px;
+    }
+    .section-heading {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    h2 {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 500;
+    }
+    .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        color: var(--muted);
+        font-size: 12px;
+    }
+    .legend-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        white-space: nowrap;
+    }
+    .swatch {
+        width: 10px;
+        height: 10px;
+        border-radius: 2px;
+        display: inline-block;
+        border: 1px solid rgba(21, 32, 43, 0.16);
+    }
+    .feature-block + .feature-block {
+        margin-top: 16px;
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+    }
+    .feature-title {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 500;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+    }
+    .matrix-row {
+        display: grid;
+        grid-template-columns: minmax(120px, 170px) minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+        margin: 7px 0;
+    }
+    .matrix-model {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: var(--text);
+    }
+    .matrix-model small {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+    }
+    .cell-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3px;
+        min-height: 16px;
+    }
+    .task-cell {
+        appearance: none;
+        width: 13px;
+        height: 13px;
+        min-width: 13px;
+        border: 1px solid rgba(21, 32, 43, 0.12);
+        border-radius: 3px;
+        padding: 0;
+        cursor: pointer;
+    }
+    .task-cell.is-selected {
+        outline: 2px solid var(--accent);
+        outline-offset: 1px;
+    }
+    .status-correct,
+    .status-yes { background: var(--correct); }
+    .status-wrong,
+    .status-no { background: var(--wrong); }
+    .status-inconclusive { background: var(--inconclusive); }
+    .status-na { background: var(--na); }
+    .status-empty { background: var(--surface-soft); }
+    .selected-empty {
+        color: var(--muted);
+        margin: 0;
+    }
+    .selected-photo {
+        display: block;
+        width: 100%;
+        max-height: 210px;
+        object-fit: contain;
+        background: var(--surface-soft);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+    .selected-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+    }
+    .selected-list div {
+        display: grid;
+        gap: 2px;
+    }
+    .selected-list dt {
+        color: var(--muted);
+        font-size: 12px;
+    }
+    .selected-list dd {
+        margin: 0;
+        word-break: break-word;
+    }
+    .chart-pair {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 14px;
+    }
+    .bar-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .bar-row {
+        display: grid;
+        grid-template-columns: minmax(120px, 180px) minmax(0, 1fr) auto;
+        gap: 10px;
+        align-items: center;
+    }
+    .bar-label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .bar-track {
+        display: flex;
+        height: 16px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: var(--surface-soft);
+        border: 1px solid var(--border);
+    }
+    .bar-segment {
+        min-width: 0;
+    }
+    .bar-value {
+        color: var(--muted);
+        font-size: 12px;
+        white-space: nowrap;
+    }
     .panel {
         border: 1px solid var(--border);
-        background: #fff;
-        margin: 14px 0;
+        background: var(--surface);
+        border-radius: 8px;
+        margin: 12px 0;
+        overflow: hidden;
     }
     .panel > summary {
         cursor: pointer;
         padding: 11px 13px;
-        font-weight: 800;
-        background: var(--soft);
+        font-weight: 500;
+        background: var(--surface);
+    }
+    .panel[open] > summary {
         border-bottom: 1px solid var(--border);
+        background: var(--surface-soft);
     }
     .panel > summary span {
         color: var(--muted);
-        font-weight: 500;
+        font-weight: 400;
         margin-left: 8px;
         font-size: 12px;
     }
     .table-tools { padding: 10px 12px 0 12px; }
-    input[type="search"] {
-        width: min(420px, 100%);
-        border: 1px solid var(--border);
-        padding: 7px 9px;
-        font: 13px Arial, Helvetica, sans-serif;
-    }
     .table-wrap {
         overflow: auto;
         max-height: 620px;
@@ -1024,7 +1807,7 @@ def dashboard_css() -> str:
         font-size: 12px;
     }
     th, td {
-        border-bottom: 1px solid #e5e7eb;
+        border-bottom: 1px solid var(--border);
         padding: 7px 8px;
         text-align: left;
         vertical-align: top;
@@ -1032,17 +1815,54 @@ def dashboard_css() -> str:
     thead th {
         position: sticky;
         top: 0;
-        background: #eef2f7;
+        background: var(--surface-soft);
         z-index: 1;
     }
     code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-    .vertical-table th { width: 230px; background: var(--soft); }
-    .metadata-table th { width: 170px; background: var(--soft); }
+    .vertical-table th { width: 230px; background: var(--surface-soft); }
+    .metadata-table th { width: 170px; background: var(--surface-soft); }
     .empty-note { padding: 12px; color: var(--muted); }
+    @media (prefers-color-scheme: dark) {
+        :root {
+            color-scheme: dark;
+            --bg: #151a1f;
+            --surface: #20262d;
+            --surface-soft: #2a323b;
+            --border: #39434f;
+            --text: #edf2f7;
+            --muted: #a9b4c0;
+            --accent: #7cb7df;
+            --correct: #49a866;
+            --wrong: #d1605a;
+            --inconclusive: #d4a037;
+            --na: #788392;
+            --shadow: none;
+        }
+    }
+    @media (max-width: 1080px) {
+        .viz-layout,
+        .chart-pair {
+            grid-template-columns: 1fr;
+        }
+    }
     @media (max-width: 900px) {
         body { padding: 16px; }
         header { display: block; }
-        .chart-grid { grid-template-columns: 1fr; }
+        .open-csv {
+            display: inline-block;
+            margin-top: 12px;
+        }
+        .matrix-row,
+        .bar-row {
+            grid-template-columns: 1fr;
+        }
+        .matrix-model,
+        .bar-label {
+            white-space: normal;
+        }
+        .control-bar label {
+            min-width: min(100%, 260px);
+        }
     }
     """
 
@@ -1059,6 +1879,419 @@ def dashboard_script() -> str:
             });
         });
     });
+
+    (() => {
+        const dataElement = document.getElementById("dash-data");
+        if (!dataElement) return;
+        const data = JSON.parse(dataElement.textContent || "{}");
+        const tasks = Array.isArray(data.tasks) ? data.tasks : [];
+        const models = Array.isArray(data.models) ? data.models : [];
+        const features = Array.isArray(data.features) ? data.features : [];
+        const taskById = new Map(tasks.map((task) => [task.id, task]));
+        const state = {
+            feature: "__all__",
+            model: "__all__",
+            mode: "outcome",
+            selectedId: tasks.length ? tasks[0].id : null,
+        };
+        const els = {
+            featureFilter: document.getElementById("dash-feature-filter"),
+            modelFilter: document.getElementById("dash-model-filter"),
+            stats: document.getElementById("dash-live-stats"),
+            legend: document.getElementById("dash-legend"),
+            matrix: document.getElementById("dash-matrix"),
+            selected: document.getElementById("dash-selected"),
+            modelBars: document.getElementById("dash-model-bars"),
+            trueBars: document.getElementById("dash-true-bars"),
+        };
+
+        function addOption(select, value, label) {
+            if (!select) return;
+            const option = document.createElement("option");
+            option.value = value;
+            option.textContent = label;
+            select.appendChild(option);
+        }
+
+        addOption(els.featureFilter, "__all__", "All features");
+        features.forEach((feature) => addOption(els.featureFilter, feature.id, feature.label));
+        addOption(els.modelFilter, "__all__", "All models");
+        models.forEach((model) => addOption(els.modelFilter, model.id, model.label));
+
+        function filteredTasks(options = {}) {
+            const feature = options.feature === undefined ? state.feature : options.feature;
+            const model = options.model === undefined ? state.model : options.model;
+            return tasks.filter((task) => {
+                const featureOk = feature === "__all__" || task.feature === feature;
+                const modelOk = model === "__all__" || task.model === model;
+                return featureOk && modelOk;
+            });
+        }
+
+        function countsFor(items) {
+            const counts = {
+                n: items.length,
+                yes: 0,
+                no: 0,
+                visibilityInconclusive: 0,
+                correct: 0,
+                wrong: 0,
+                inconclusive: 0,
+                na: 0,
+            };
+            items.forEach((task) => {
+                if (task.p1 === "YES") counts.yes += 1;
+                else if (task.p1 === "NO") counts.no += 1;
+                else counts.visibilityInconclusive += 1;
+
+                if (task.outcome === "CORRECT") counts.correct += 1;
+                else if (task.outcome === "WRONG") counts.wrong += 1;
+                else if (task.outcome === "INCONCLUSIVE") counts.inconclusive += 1;
+                else counts.na += 1;
+            });
+            counts.applicable = counts.correct + counts.wrong + counts.inconclusive;
+            counts.committed = counts.correct + counts.wrong;
+            return counts;
+        }
+
+        function pct(count, total) {
+            if (!total) return "NA";
+            return `${Math.round((count / total) * 100)}%`;
+        }
+
+        function ratio(count, total) {
+            if (!total) return "NA";
+            return `${count}/${total} (${pct(count, total)})`;
+        }
+
+        function empty(container, text) {
+            if (!container) return;
+            container.textContent = "";
+            const p = document.createElement("p");
+            p.className = "selected-empty";
+            p.textContent = text;
+            container.appendChild(p);
+        }
+
+        function statusClass(task) {
+            if (state.mode === "visibility") {
+                if (task.p1 === "YES") return "status-yes";
+                if (task.p1 === "NO") return "status-no";
+                return "status-inconclusive";
+            }
+            if (task.outcome === "CORRECT") return "status-correct";
+            if (task.outcome === "WRONG") return "status-wrong";
+            if (task.outcome === "INCONCLUSIVE") return "status-inconclusive";
+            return "status-na";
+        }
+
+        function statusLabel(task) {
+            return state.mode === "visibility" ? task.p1 : task.outcome;
+        }
+
+        function legendItems() {
+            if (state.mode === "visibility") {
+                return [
+                    ["status-yes", "YES"],
+                    ["status-no", "NO"],
+                    ["status-inconclusive", "INCONCLUSIVE"],
+                ];
+            }
+            return [
+                ["status-correct", "CORRECT"],
+                ["status-wrong", "WRONG"],
+                ["status-inconclusive", "INCONCLUSIVE"],
+                ["status-na", "N/A"],
+            ];
+        }
+
+        function renderLegend() {
+            if (!els.legend) return;
+            els.legend.textContent = "";
+            legendItems().forEach(([klass, label]) => {
+                const item = document.createElement("span");
+                item.className = "legend-item";
+                const swatch = document.createElement("span");
+                swatch.className = `swatch ${klass}`;
+                item.appendChild(swatch);
+                item.appendChild(document.createTextNode(label));
+                els.legend.appendChild(item);
+            });
+        }
+
+        function renderStats() {
+            if (!els.stats) return;
+            const visible = filteredTasks();
+            const counts = countsFor(visible);
+            const statRows = [
+                ["Rows", String(counts.n)],
+                ["P1 YES", ratio(counts.yes, counts.n)],
+                ["P2 correct", ratio(counts.correct, counts.applicable)],
+                ["Wrong", ratio(counts.wrong, counts.applicable)],
+                ["Committed accuracy", ratio(counts.correct, counts.committed)],
+            ];
+            els.stats.textContent = "";
+            statRows.forEach(([label, value]) => {
+                const card = document.createElement("div");
+                card.className = "live-stat";
+                const name = document.createElement("span");
+                name.textContent = label;
+                const metric = document.createElement("strong");
+                metric.textContent = value;
+                card.append(name, metric);
+                els.stats.appendChild(card);
+            });
+        }
+
+        function renderMatrix() {
+            if (!els.matrix) return;
+            els.matrix.textContent = "";
+            const visible = filteredTasks();
+            if (!visible.length) {
+                empty(els.matrix, "No tasks match the current filters.");
+                return;
+            }
+            const featureList = features.filter((feature) => {
+                return (state.feature === "__all__" || state.feature === feature.id)
+                    && visible.some((task) => task.feature === feature.id);
+            });
+            const modelList = models.filter((model) => {
+                return (state.model === "__all__" || state.model === model.id)
+                    && visible.some((task) => task.model === model.id);
+            });
+            featureList.forEach((feature) => {
+                const block = document.createElement("section");
+                block.className = "feature-block";
+                const title = document.createElement("div");
+                title.className = "feature-title";
+                title.textContent = feature.label;
+                block.appendChild(title);
+                modelList.forEach((model) => {
+                    const rowTasks = visible.filter((task) => task.feature === feature.id && task.model === model.id);
+                    if (!rowTasks.length) return;
+                    const row = document.createElement("div");
+                    row.className = "matrix-row";
+                    const label = document.createElement("div");
+                    label.className = "matrix-model";
+                    label.textContent = model.label;
+                    const small = document.createElement("small");
+                    small.textContent = `${rowTasks.length} tasks`;
+                    label.appendChild(small);
+                    const strip = document.createElement("div");
+                    strip.className = "cell-strip";
+                    rowTasks.forEach((task) => {
+                        const button = document.createElement("button");
+                        button.type = "button";
+                        button.className = `task-cell ${statusClass(task)}`;
+                        if (task.id === state.selectedId) button.classList.add("is-selected");
+                        button.title = `${model.label} / ${feature.label}: ${statusLabel(task)}`;
+                        button.setAttribute(
+                            "aria-label",
+                            `${model.label}, ${feature.label}, observation ${task.observationId || "unknown"}, ${statusLabel(task)}`
+                        );
+                        button.addEventListener("click", () => {
+                            state.selectedId = task.id;
+                            refresh();
+                        });
+                        strip.appendChild(button);
+                    });
+                    row.append(label, strip);
+                    block.appendChild(row);
+                });
+                els.matrix.appendChild(block);
+            });
+        }
+
+        function segmentDefinitions(counts) {
+            if (state.mode === "visibility") {
+                return [
+                    ["yes", counts.yes, "status-yes", "YES"],
+                    ["no", counts.no, "status-no", "NO"],
+                    ["visibilityInconclusive", counts.visibilityInconclusive, "status-inconclusive", "INCONCLUSIVE"],
+                ];
+            }
+            return [
+                ["correct", counts.correct, "status-correct", "CORRECT"],
+                ["wrong", counts.wrong, "status-wrong", "WRONG"],
+                ["inconclusive", counts.inconclusive, "status-inconclusive", "INCONCLUSIVE"],
+                ["na", counts.na, "status-na", "N/A"],
+            ];
+        }
+
+        function appendStackedBar(container, labelText, items, valueText) {
+            const counts = countsFor(items);
+            const row = document.createElement("div");
+            row.className = "bar-row";
+            const label = document.createElement("div");
+            label.className = "bar-label";
+            label.title = labelText;
+            label.textContent = labelText;
+            const track = document.createElement("div");
+            track.className = "bar-track";
+            segmentDefinitions(counts).forEach(([, count, klass, segmentLabel]) => {
+                if (!count || !counts.n) return;
+                const segment = document.createElement("span");
+                segment.className = `bar-segment ${klass}`;
+                segment.style.width = `${(count / counts.n) * 100}%`;
+                segment.title = `${segmentLabel}: ${count}/${counts.n}`;
+                track.appendChild(segment);
+            });
+            const value = document.createElement("div");
+            value.className = "bar-value";
+            value.textContent = valueText(counts);
+            row.append(label, track, value);
+            container.appendChild(row);
+        }
+
+        function renderModelBars() {
+            if (!els.modelBars) return;
+            els.modelBars.textContent = "";
+            const list = document.createElement("div");
+            list.className = "bar-list";
+            const modelList = models.filter((model) => state.model === "__all__" || state.model === model.id);
+            const rows = modelList
+                .map((model) => ({
+                    model,
+                    items: filteredTasks({model: model.id}),
+                }))
+                .filter((row) => row.items.length)
+                .sort((a, b) => {
+                    const ac = countsFor(a.items);
+                    const bc = countsFor(b.items);
+                    const av = state.mode === "visibility" ? ac.yes / Math.max(ac.n, 1) : ac.correct / Math.max(ac.applicable, 1);
+                    const bv = state.mode === "visibility" ? bc.yes / Math.max(bc.n, 1) : bc.correct / Math.max(bc.applicable, 1);
+                    return bv - av;
+                });
+            if (!rows.length) {
+                empty(els.modelBars, "No model rows to compare.");
+                return;
+            }
+            rows.forEach(({model, items}) => {
+                appendStackedBar(
+                    list,
+                    model.label,
+                    items,
+                    (counts) => state.mode === "visibility"
+                        ? `YES ${pct(counts.yes, counts.n)}`
+                        : `P2 ${pct(counts.correct, counts.applicable)}`
+                );
+            });
+            els.modelBars.appendChild(list);
+        }
+
+        function renderTrueBars() {
+            if (!els.trueBars) return;
+            els.trueBars.textContent = "";
+            const visible = filteredTasks().filter((task) => task.trueValue);
+            if (!visible.length) {
+                empty(els.trueBars, "No true-value rows match the current filters.");
+                return;
+            }
+            const groups = new Map();
+            visible.forEach((task) => {
+                if (!groups.has(task.trueValue)) groups.set(task.trueValue, []);
+                groups.get(task.trueValue).push(task);
+            });
+            const rows = Array.from(groups.entries())
+                .sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]))
+                .slice(0, 12);
+            const list = document.createElement("div");
+            list.className = "bar-list";
+            rows.forEach(([trueValue, items]) => {
+                appendStackedBar(
+                    list,
+                    trueValue,
+                    items,
+                    (counts) => state.mode === "visibility"
+                        ? `${counts.n} rows`
+                        : `${counts.correct}/${Math.max(counts.applicable, 0)} correct`
+                );
+            });
+            els.trueBars.appendChild(list);
+        }
+
+        function renderSelected() {
+            if (!els.selected) return;
+            let selected = taskById.get(state.selectedId);
+            const visible = filteredTasks();
+            if (!selected || !visible.some((task) => task.id === selected.id)) {
+                selected = visible[0] || null;
+                state.selectedId = selected ? selected.id : null;
+            }
+            els.selected.textContent = "";
+            if (!selected) {
+                empty(els.selected, "Select a task cell to inspect it.");
+                return;
+            }
+            if (selected.photoUrl) {
+                const link = document.createElement("a");
+                link.href = selected.photoUrl;
+                link.target = "_blank";
+                link.rel = "noreferrer";
+                const img = document.createElement("img");
+                img.className = "selected-photo";
+                img.src = selected.photoUrl;
+                img.alt = selected.species || "Observation photo";
+                link.appendChild(img);
+                els.selected.appendChild(link);
+            }
+            const dl = document.createElement("dl");
+            dl.className = "selected-list";
+            [
+                ["Model", selected.modelLabel],
+                ["Feature", selected.featureLabel],
+                ["Species", selected.species || "unknown"],
+                ["Observation", selected.observationId || "unknown"],
+                ["True value", selected.trueValue || "empty"],
+                ["Prediction", selected.predictedValue || "empty"],
+                ["P1", selected.p1],
+                ["Outcome", selected.outcome],
+            ].forEach(([term, value]) => {
+                const group = document.createElement("div");
+                const dt = document.createElement("dt");
+                dt.textContent = term;
+                const dd = document.createElement("dd");
+                dd.textContent = value;
+                group.append(dt, dd);
+                dl.appendChild(group);
+            });
+            els.selected.appendChild(dl);
+        }
+
+        function refresh() {
+            renderLegend();
+            renderStats();
+            renderMatrix();
+            renderSelected();
+            renderModelBars();
+            renderTrueBars();
+        }
+
+        if (els.featureFilter) {
+            els.featureFilter.addEventListener("change", () => {
+                state.feature = els.featureFilter.value;
+                refresh();
+            });
+        }
+        if (els.modelFilter) {
+            els.modelFilter.addEventListener("change", () => {
+                state.model = els.modelFilter.value;
+                refresh();
+            });
+        }
+        document.querySelectorAll(".mode-button").forEach((button) => {
+            button.addEventListener("click", () => {
+                state.mode = button.dataset.mode || "outcome";
+                document.querySelectorAll(".mode-button").forEach((item) => {
+                    const active = item === button;
+                    item.classList.toggle("is-active", active);
+                    item.setAttribute("aria-pressed", active ? "true" : "false");
+                });
+                refresh();
+            });
+        });
+        refresh();
+    })();
     """
 
 
@@ -1066,6 +2299,7 @@ def dashboard_html_document(
     *,
     raw: pd.DataFrame,
     dashboard_view: pd.DataFrame,
+    focus_summary_view: pd.DataFrame,
     summary_view: pd.DataFrame,
     by_true_value_view: pd.DataFrame,
     pairs: pd.DataFrame,
@@ -1073,19 +2307,22 @@ def dashboard_html_document(
     definitions: pd.DataFrame,
     metadata: dict[str, object],
     output_file: Path,
-    heatmap_images: dict[str, str],
+    heatmap_images: dict[str, str] | None = None,
+    focus_images: dict[str, dict[str, str]] | None = None,
 ) -> str:
     trial_id = str(metadata.get("trial_id") or output_file.stem)
     csv_href = escape(output_file.name)
-    heatmap = benchmark_heatmap_html(heatmap_images)
+    rows = annotate_results(raw)
+    interactive = interactive_dashboard_html(rows)
     sections = [
         metadata_html(metadata, output_file),
         f"""
-        <details class="panel" open>
+        <details class="panel">
             <summary>Artifact CSV Row Example</summary>
             <div class="table-wrap">{artifact_row_example_html(raw)}</div>
         </details>
         """,
+        table_section_html("Model Summary", focus_summary_view, "focus-summary-table"),
         table_section_html("Per-Feature / Model Summary", summary_view, "summary-table"),
         table_section_html("Outcome by True Value", by_true_value_view, "true-value-table"),
         table_section_html("Outcome Pairs: True Value x Predicted Value", pairs, "pairs-table"),
@@ -1110,7 +2347,7 @@ def dashboard_html_document(
         <a class="open-csv" href="{csv_href}">Open CSV</a>
     </header>
     {dashboard_cards_html(dashboard_view)}
-    {heatmap}
+    {interactive}
     {''.join(sections)}
 </main>
 <script>{dashboard_script()}</script>
@@ -1127,6 +2364,7 @@ def write_dashboard_html(
     *,
     raw: pd.DataFrame,
     dashboard_view: pd.DataFrame,
+    focus_summary_view: pd.DataFrame,
     summary_view: pd.DataFrame,
     by_true_value_view: pd.DataFrame,
     pairs: pd.DataFrame,
@@ -1134,13 +2372,15 @@ def write_dashboard_html(
     definitions: pd.DataFrame,
     metadata: dict[str, object],
     output_file: Path,
-    heatmap_images: dict[str, str],
+    heatmap_images: dict[str, str] | None = None,
+    focus_images: dict[str, dict[str, str]] | None = None,
 ) -> Path:
     html_file = dashboard_html_path(output_file)
     html_file.write_text(
         dashboard_html_document(
             raw=raw,
             dashboard_view=dashboard_view,
+            focus_summary_view=focus_summary_view,
             summary_view=summary_view,
             by_true_value_view=by_true_value_view,
             pairs=pairs,
@@ -1149,6 +2389,7 @@ def write_dashboard_html(
             metadata=metadata,
             output_file=output_file,
             heatmap_images=heatmap_images,
+            focus_images=focus_images,
         ),
         encoding="utf-8",
     )
@@ -1167,16 +2408,17 @@ def dashboard_from_csv(csv_path: str | Path) -> Path:
     pairs = outcome_pairs(rows)
     definitions = metric_definitions()
     scale_view = experiment_scale_view(rows)
-    dashboard_view = compact_dashboard_view(dashboard, scale_view)
+    metadata_file = output_file.with_suffix(".metadata.json")
+    metadata = json.loads(metadata_file.read_text()) if metadata_file.exists() else {"trial_id": output_file.stem}
+    dashboard_view = compact_dashboard_view(dashboard, scale_view, metadata)
+    focus_summary_view = model_focus_summary_view(summary)
     summary_view = compact_summary_view(summary)
     by_true_value_view = compact_outcome_by_true_value_view(by_true_value)
     rows_view = compact_rows_view(rows)
-    metadata_file = output_file.with_suffix(".metadata.json")
-    metadata = json.loads(metadata_file.read_text()) if metadata_file.exists() else {"trial_id": output_file.stem}
-    heatmap_images = benchmark_heatmap_images(rows)
     return write_dashboard_html(
         raw=raw,
         dashboard_view=dashboard_view,
+        focus_summary_view=focus_summary_view,
         summary_view=summary_view,
         by_true_value_view=by_true_value_view,
         pairs=pairs,
@@ -1184,7 +2426,6 @@ def dashboard_from_csv(csv_path: str | Path) -> Path:
         definitions=definitions,
         metadata=metadata,
         output_file=output_file,
-        heatmap_images=heatmap_images,
     )
 
 
@@ -1257,14 +2498,18 @@ def run_stepwise_notebook_trial(
     pairs = outcome_pairs(rows)
     definitions = metric_definitions()
     scale_view = experiment_scale_view(rows)
-    dashboard_view = compact_dashboard_view(dashboard, scale_view)
+    dashboard_view = compact_dashboard_view(dashboard, scale_view, metadata)
+    focus_summary_view = model_focus_summary_view(summary)
     summary_view = compact_summary_view(summary)
     by_true_value_view = compact_outcome_by_true_value_view(by_true_value)
     rows_view = compact_rows_view(rows)
+    usage_model_view = openrouter_usage_by_model_view(metadata)
     heatmap_images = benchmark_heatmap_images(rows)
+    focus_images = model_focus_heatmap_images(rows)
     html_file = write_dashboard_html(
         raw=raw,
         dashboard_view=dashboard_view,
+        focus_summary_view=focus_summary_view,
         summary_view=summary_view,
         by_true_value_view=by_true_value_view,
         pairs=pairs,
@@ -1273,6 +2518,7 @@ def run_stepwise_notebook_trial(
         metadata=metadata,
         output_file=output_file,
         heatmap_images=heatmap_images,
+        focus_images=focus_images,
     )
 
     display(Markdown(f"### Trial saved to `{path_text(output_file)}`"))
@@ -1283,6 +2529,12 @@ def run_stepwise_notebook_trial(
     display(Markdown("### Whole-Experiment Dashboard"))
     display_benchmark_heatmap(rows, heatmap_images)
     display(dashboard_view)
+    if not usage_model_view.empty:
+        display(Markdown("### OpenRouter Usage by Model"))
+        display(usage_model_view)
+    display(Markdown("### Model Focus View"))
+    display(focus_summary_view)
+    display_model_focus_heatmaps(rows, focus_images)
     display(Markdown("### Per-Feature / Model Summary (Compact)"))
     display(summary_view)
     display(Markdown("### Outcome by True Value"))
@@ -1302,6 +2554,8 @@ def run_stepwise_notebook_trial(
         "metric_definitions": definitions,
         "scale_view": scale_view,
         "rows_view": rows_view,
+        "usage_model_view": usage_model_view,
+        "focus_summary_view": focus_summary_view,
         "summary_view": summary_view,
         "dashboard_view": dashboard_view,
         "outcome_by_true_value_view": by_true_value_view,

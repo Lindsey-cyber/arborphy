@@ -106,7 +106,7 @@ def load_inputs(image_set: str | None = None) -> dict[str, object]:
     illustration_paths = json.loads((OUTPUT_DIR / "illustration_paths.json").read_text())
 
     values_by_feature = {
-        feat: fv.loc[fv["feature"] == feat, "value"].dropna().tolist()
+        feat: sorted(fv.loc[fv["feature"] == feat, "value"].dropna().tolist())
         for feat in fv["feature"].dropna().unique()
     }
 
@@ -215,8 +215,8 @@ def existence_parts(
     if feature_col == "key_leaf_type" and "no apparent" in true_value.lower():
         extra = prompt_set["leaf_absence_note"]
     return [
-        prompt_set["p1_visibility"].format(feature_display=fname, leaf_absence_note=extra),
         {"image": image_path_or_url},
+        prompt_set["p1_visibility"].format(feature_display=fname, leaf_absence_note=extra),
     ]
 
 
@@ -224,13 +224,13 @@ def agreement_parts(feature_col: str, true_value: str, description: str, image_p
     fname = FEATURE_DISPLAY.get(feature_col, feature_col)
     desc_clause = f" — {description}" if description else ""
     return [
+        {"image": image_path_or_url},
         (
             f"A botanical expert has classified the '{fname}' of the plant in this image "
             f"as '{true_value}'{desc_clause}.\n"
             f"Is this classification consistent with what you can observe in the image?\n"
             f"Reply with exactly one word: YES, NO, or INCONCLUSIVE."
         ),
-        {"image": image_path_or_url},
     ]
 
 
@@ -239,13 +239,16 @@ def blind_mc_parts(
     options: list[dict],
     image_path_or_url: str,
     prompt_set: dict[str, str] | None = None,
+    prompt_context: str = "stepwise",
+    include_reference_photos: bool = True,
+    include_reference_illustrations: bool = True,
 ) -> list:
     prompt_set = prompt_set or load_prompt_set()
     fname = FEATURE_DISPLAY.get(feature_col, feature_col)
+    intro_template = prompt_set.get(f"p2_intro_{prompt_context}", prompt_set["p2_intro"])
     parts = [
-        prompt_set["p2_intro"].format(feature_display=fname),
-        "Plant image to classify:",
         {"image": image_path_or_url},
+        intro_template.format(feature_display=fname),
     ]
     for i, opt in enumerate(options, 1):
         desc = f" — {opt['description']}" if opt["description"] else ""
@@ -256,10 +259,10 @@ def blind_mc_parts(
                 description_clause=desc,
             )
         )
-        if opt.get("img_path"):
+        if include_reference_photos and opt.get("img_path"):
             parts.append(prompt_set["p2_reference_photo_label"].format(index=i))
             parts.append({"image": opt["img_path"]})
-        if opt.get("illust_path"):
+        if include_reference_illustrations and opt.get("illust_path"):
             parts.append(prompt_set["p2_reference_illustration_label"].format(index=i))
             parts.append({"image": opt["illust_path"]})
     parts.append(prompt_set["p2_uncertain_option"].format(index=len(options) + 1))
@@ -314,6 +317,21 @@ def build_options(refs: pd.DataFrame, ref_mat: dict, feature_col: str) -> list[d
         options.append(
             {
                 "value": row["feature_value"],
+                "img_path": mat.get("img_path"),
+                "illust_path": mat.get("illust_path"),
+                "description": mat.get("description", ""),
+            }
+        )
+    return options
+
+
+def build_options_from_values(values_by_feature: dict[str, list[str]], ref_mat: dict, feature_col: str) -> list[dict]:
+    options = []
+    for value in values_by_feature.get(feature_col, []):
+        mat = ref_mat.get((feature_col, value), {})
+        options.append(
+            {
+                "value": value,
                 "img_path": mat.get("img_path"),
                 "illust_path": mat.get("illust_path"),
                 "description": mat.get("description", ""),

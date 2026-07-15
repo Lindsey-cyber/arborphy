@@ -71,6 +71,34 @@ uv run python run_calibration_local.py
 uv run python run_stepwise_local.py
 ```
 
+Calibration currently supports four prompt types:
+
+- `existence`
+- `agreement`
+- `blind_mc`
+- `blind_mc_no_reference_photos`
+
+`blind_mc_no_reference_photos` is the blind multiple-choice ablation that keeps
+the test image, option labels, option descriptions, and botanical illustrations,
+but removes the option reference photos. This avoids turning calibration into a
+direct reference-photo matching task.
+
+Run only that ablation:
+
+```bash
+EXPERIMENT_CALIBRATION_PROMPT_TYPES=blind_mc_no_reference_photos \
+EXPERIMENT_OUT_FILE=calibration-blind-mc-no-reference-photos.csv \
+uv run python run_calibration_local.py
+```
+
+Summarize calibration outputs from the repo root:
+
+```bash
+uv run python scripts/analyze_calibration_results.py \
+  --input newcomb_wildflower_guide/experiment_repro/output/calibration-blind-mc-no-reference-photos.csv \
+  --out-dir trials/analysis/calibration-blind-mc-no-reference-photos
+```
+
 Use a real adapter command:
 
 ```bash
@@ -119,6 +147,29 @@ root `.env` file if it is not already set in the shell. The included
 `../../scripts/adapters/openrouter_command_adapter.py` reads the runner payload
 from stdin, calls OpenRouter chat completions, and prints the model response to
 stdout.
+
+The wrapper also writes `trials/artifacts/<trial>.openrouter_usage.jsonl` and
+summarizes it in the run metadata. OpenRouter now returns usage details on each
+response, including prompt/completion/reasoning/cache tokens and account cost,
+so the metadata includes both total usage and `openrouter_usage_by_model`.
+Running alerts are enabled by default for OpenRouter runs:
+
+- total cost: every `$1.00`
+- per-model cost: every `$1.00`
+- total tokens: every `1,000,000`
+- per-model tokens: every `1,000,000`
+- single request: `$0.05` or more
+
+These defaults are intentionally conservative for this experiment scale: cheap
+models such as GPT-5 Mini and Gemini Flash should only alert on meaningful
+batches, while Claude-class models surface quickly because their per-token
+prices and observed prompt-token use make them dominate multi-model runs. Use
+`--budget-warn-usd`, `--model-budget-warn-usd`, `--token-warn`,
+`--model-token-warn`, `--request-cost-warn-usd`, or `--no-budget-alerts` to
+override them. The same environment variable names are also honored:
+`OPENROUTER_BUDGET_WARN_USD`, `OPENROUTER_MODEL_BUDGET_WARN_USD`,
+`OPENROUTER_TOKEN_WARN`, `OPENROUTER_MODEL_TOKEN_WARN`, and
+`OPENROUTER_REQUEST_COST_WARN_USD`.
 
 Small text-only adapter smoke test:
 

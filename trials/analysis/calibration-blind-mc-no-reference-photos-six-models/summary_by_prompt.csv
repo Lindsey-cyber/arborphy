@@ -1,0 +1,5 @@
+prompt_type,n,correct_count,accuracy
+agreement,102,71,0.696078431372549
+blind_mc,102,85,0.8333333333333334
+blind_mc_no_reference_photos,102,58,0.5686274509803921
+existence,102,98,0.9607843137254902

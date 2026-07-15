@@ -26,6 +26,24 @@ NUM_WORKERS = int(os.environ.get("EXPERIMENT_NUM_WORKERS", "1"))
 OUT_FILE = Path(os.environ.get("EXPERIMENT_OUT_FILE", OUTPUT_DIR / "calibration_results_local.csv")).expanduser()
 if not OUT_FILE.is_absolute():
     OUT_FILE = OUTPUT_DIR / OUT_FILE
+DEFAULT_PROMPT_TYPES = [
+    "existence",
+    "agreement",
+    "blind_mc",
+    "blind_mc_no_reference_photos",
+]
+
+
+def selected_prompt_types() -> set[str]:
+    raw = os.environ.get("EXPERIMENT_CALIBRATION_PROMPT_TYPES", "").strip()
+    if not raw:
+        return set(DEFAULT_PROMPT_TYPES)
+    selected = {value.strip() for value in raw.split(",") if value.strip()}
+    unknown = selected.difference(DEFAULT_PROMPT_TYPES)
+    if unknown:
+        allowed = ", ".join(DEFAULT_PROMPT_TYPES)
+        raise SystemExit(f"Unknown calibration prompt type(s): {', '.join(sorted(unknown))}. Allowed: {allowed}")
+    return selected
 
 
 def main() -> None:
@@ -38,6 +56,7 @@ def main() -> None:
         refs["feature"].isin(PRIMARY_FEATURES) & refs["reference_image_link"].fillna("").ne("")
     ].copy()
     options_by_feature = {feature: build_options(refs, ref_mat, feature) for feature in refs["feature"].dropna().unique()}
+    prompt_types = selected_prompt_types()
 
     done = set()
     if OUT_FILE.exists():
@@ -58,45 +77,68 @@ def main() -> None:
                 continue
             options = options_by_feature.get(feature_col, [])
 
-            tasks.append(
-                (
-                    model,
-                    true_value,
-                    "existence",
-                    feature_col,
-                    "YES",
-                    existence_parts(feature_col, ref_img, true_value),
-                    "ync",
-                    [],
+            if "existence" in prompt_types:
+                tasks.append(
+                    (
+                        model,
+                        true_value,
+                        "existence",
+                        feature_col,
+                        "YES",
+                        existence_parts(feature_col, ref_img, true_value),
+                        "ync",
+                        [],
+                    )
                 )
-            )
-            tasks.append(
-                (
-                    model,
-                    true_value,
-                    "agreement",
-                    feature_col,
-                    "YES",
-                    agreement_parts(feature_col, true_value, description, ref_img),
-                    "ync",
-                    [],
+            if "agreement" in prompt_types:
+                tasks.append(
+                    (
+                        model,
+                        true_value,
+                        "agreement",
+                        feature_col,
+                        "YES",
+                        agreement_parts(feature_col, true_value, description, ref_img),
+                        "ync",
+                        [],
+                    )
                 )
-            )
-            tasks.append(
-                (
-                    model,
-                    true_value,
-                    "blind_mc",
-                    feature_col,
-                    true_value,
-                    blind_mc_parts(feature_col, options, ref_img),
-                    "mc",
-                    [o["value"] for o in options],
+            if "blind_mc" in prompt_types:
+                tasks.append(
+                    (
+                        model,
+                        true_value,
+                        "blind_mc",
+                        feature_col,
+                        true_value,
+                        blind_mc_parts(feature_col, options, ref_img, prompt_context="calibration"),
+                        "mc",
+                        [o["value"] for o in options],
+                    )
                 )
-            )
+            if "blind_mc_no_reference_photos" in prompt_types:
+                tasks.append(
+                    (
+                        model,
+                        true_value,
+                        "blind_mc_no_reference_photos",
+                        feature_col,
+                        true_value,
+                        blind_mc_parts(
+                            feature_col,
+                            options,
+                            ref_img,
+                            prompt_context="calibration",
+                            include_reference_photos=False,
+                        ),
+                        "mc",
+                        [o["value"] for o in options],
+                    )
+                )
 
     pending = [task for task in tasks if (task[0], task[3], task[1], task[2]) not in done]
     print(f"\nPrimary reference exemplars: {len(primary_refs)}")
+    print(f"Prompt types: {', '.join(prompt_type for prompt_type in DEFAULT_PROMPT_TYPES if prompt_type in prompt_types)}")
     print(f"Total prompt tasks: {len(tasks)}")
     print(f"Pending prompt tasks: {len(pending)}")
     print(f"Workers: {NUM_WORKERS}")

@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample 10 Manual Audit</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f5f0;
+      --panel: #ffffff;
+      --panel-soft: #fbfbf8;
+      --border: #d8d8d2;
+      --ink: #1f2522;
+      --muted: #5f6862;
+      --accent: #0f6b5f;
+      --accent-soft: #e6f2ef;
+      --warn: #9b5c00;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--border);
+      background: rgba(245, 245, 240, 0.97);
+      padding: 14px 18px;
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 650;
+      letter-spacing: 0;
+    }
+
+    .subhead,
+    .status {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    button,
+    .file-button {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--panel);
+      color: var(--ink);
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
+      padding: 7px 10px;
+    }
+
+    button.primary {
+      border-color: #0c5e53;
+      background: var(--accent);
+      color: white;
+    }
+
+    button:hover,
+    .file-button:hover {
+      border-color: var(--accent);
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    main {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .note {
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      background: var(--panel-soft);
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .sample {
+      display: grid;
+      grid-template-columns: minmax(300px, 43%) minmax(420px, 1fr);
+      gap: 16px;
+      margin-bottom: 18px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 12px;
+    }
+
+    .image-wrap {
+      min-height: 300px;
+      background: #ecece6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      max-height: 560px;
+      object-fit: contain;
+    }
+
+    .meta {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+      min-width: 0;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 650;
+      letter-spacing: 0;
+    }
+
+    .ids {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    code,
+    .feature {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border);
+      padding: 7px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f0f2ee;
+      font-weight: 650;
+    }
+
+    select,
+    input[type="text"],
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+      font-size: 13px;
+      padding: 6px 7px;
+    }
+
+    textarea {
+      min-height: 38px;
+      resize: vertical;
+    }
+
+    .true-value {
+      min-width: 148px;
+      font-weight: 550;
+    }
+
+    .field-label {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .audit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(110px, 1fr));
+      gap: 6px;
+    }
+
+    .notes-cell {
+      min-width: 180px;
+    }
+
+    .complete {
+      background: var(--accent-soft);
+    }
+
+    .warning {
+      color: var(--warn);
+    }
+
+    @media (max-width: 980px) {
+      .sample {
+        grid-template-columns: 1fr;
+      }
+
+      .audit-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sample 10 Manual Audit</h1>
+    <div class="subhead">Fill labels here. On localhost, changes write directly to the CSV; otherwise they are saved in this browser and can be exported.</div>
+    <div class="toolbar">
+      <button class="primary" id="downloadCsv" type="button">Download CSV</button>
+      <button id="chooseSaveTarget" type="button">Choose CSV Save Target</button>
+      <button id="copyCsv" type="button">Copy CSV</button>
+      <label class="file-button" for="importCsv">Import CSV</label>
+      <input id="importCsv" type="file" accept=".csv,text/csv">
+      <button id="clearDraft" type="button">Clear Local Draft</button>
+      <span class="status" id="status">Ready.</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="note">
+      For direct CSV writes, run <code>python3 manual_audit/review_server.py</code> and open the localhost URL.
+      If you open this HTML directly, use <strong>Download CSV</strong>, or in Chrome/Edge use
+      <strong>Choose CSV Save Target</strong> once to write updates to a chosen file during this session.
+    </div>
+    <div id="samples"></div>
+  </main>
+
+  <script>
+    const STORAGE_KEY = "arborphy.sample10.manualAudit.v1";
+    const CSV_COLUMNS = [
+      "photo_id",
+      "photo_url",
+      "species_inat",
+      "newcomb_species_name",
+      "feature",
+      "species_level_true_value",
+      "human_visible",
+      "human_can_assign_value",
+      "human_value_if_assignable",
+      "matches_species_level_true_value",
+      "difficulty",
+      "notes",
+    ];
+
+    const INITIAL_ROWS = [
+      {"photo_id":"89166741","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/89166741/original.jpg","species_inat":"Lactuca serriola","newcomb_species_name":"Lactuca scariola","feature":"key_flower_type","species_level_true_value":"7 or More Regular Parts","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"89166741","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/89166741/original.jpg","species_inat":"Lactuca serriola","newcomb_species_name":"Lactuca scariola","feature":"key_plant_type","species_level_true_value":"Wildflowers - Alternate Leaves","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"89166741","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/89166741/original.jpg","species_inat":"Lactuca serriola","newcomb_species_name":"Lactuca scariola","feature":"key_leaf_type","species_level_true_value":"Leaves Toothed or Lobed","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"76460834","photo_url":"https://static.inaturalist.org/photos/76460834/original.jpg","species_inat":"Cornus sericea","newcomb_species_name":"Cornus stolonifera","feature":"key_flower_type","species_level_true_value":"4 Regular Parts","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"76460834","photo_url":"https://static.inaturalist.org/photos/76460834/original.jpg","species_inat":"Cornus sericea","newcomb_species_name":"Cornus stolonifera","feature":"key_plant_type","species_level_true_value":"Shrubs","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"76460834","photo_url":"https://static.inaturalist.org/photos/76460834/original.jpg","species_inat":"Cornus sericea","newcomb_species_name":"Cornus stolonifera","feature":"key_leaf_type","species_level_true_value":"Leaves Entire","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"213925309","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/213925309/original.jpg","species_inat":"Hieracium umbellatum","newcomb_species_name":"Hieracium canadense","feature":"key_flower_type","species_level_true_value":"7 or More Regular Parts","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"213925309","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/213925309/original.jpg","species_inat":"Hieracium umbellatum","newcomb_species_name":"Hieracium canadense","feature":"key_plant_type","species_level_true_value":"Wildflowers - Alternate Leaves","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"213925309","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/213925309/original.jpg","species_inat":"Hieracium umbellatum","newcomb_species_name":"Hieracium canadense","feature":"key_leaf_type","species_level_true_value":"Leaves Toothed or Lobed","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"71302942","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/71302942/original.jpeg","species_inat":"Triodanis perfoliata","newcomb_species_name":"Specularia perfoliata","feature":"key_flower_type","species_level_true_value":"5 Regular Parts","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"71302942","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/71302942/original.jpeg","species_inat":"Triodanis perfoliata","newcomb_species_name":"Specularia perfoliata","feature":"key_plant_type","species_level_true_value":"Wildflowers - Alternate Leaves","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"71302942","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/71302942/original.jpeg","species_inat":"Triodanis perfoliata","newcomb_species_name":"Specularia perfoliata","feature":"key_leaf_type","species_level_true_value":"Leaves Toothed or Lobed","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"416888165","photo_url":"https://static.inaturalist.org/photos/416888165/original.jpeg","species_inat":"Prosartes lanuginosa","newcomb_species_name":"Disporum lanuginosum","feature":"key_flower_type","species_level_true_value":"6 Regular Parts","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"416888165","photo_url":"https://static.inaturalist.org/photos/416888165/original.jpeg","species_inat":"Prosartes lanuginosa","newcomb_species_name":"Disporum lanuginosum","feature":"key_plant_type","species_level_true_value":"Wildflowers - Alternate Leaves","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"416888165","photo_url":"https://static.inaturalist.org/photos/416888165/original.jpeg","species_inat":"Prosartes lanuginosa","newcomb_species_name":"Disporum lanuginosum","feature":"key_leaf_type","species_level_true_value":"Leaves Entire","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"239106401","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/239106401/original.jpg","species_inat":"Centaurea stoebe","newcomb_species_name":"Centaurea maculosa","feature":"key_flower_type","species_level_true_value":"5 Regular Parts","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"239106401","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/239106401/original.jpg","species_inat":"Centaurea stoebe","newcomb_species_name":"Centaurea maculosa","feature":"key_plant_type","species_level_true_value":"Wildflowers - Alternate Leaves","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"239106401","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/239106401/original.jpg","species_inat":"Centaurea stoebe","newcomb_species_name":"Centaurea maculosa","feature":"key_leaf_type","species_level_true_value":"Leaves Divided","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"5380876","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/5380876/original.jpg","species_inat":"Persicaria hydropiper","newcomb_species_name":"Polygonum hydropiper","feature":"key_flower_type","species_level_true_value":"4 Regular Parts","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"5380876","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/5380876/original.jpg","species_inat":"Persicaria hydropiper","newcomb_species_name":"Polygonum hydropiper","feature":"key_plant_type","species_level_true_value":"Wildflowers - Alternate Leaves","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"5380876","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/5380876/original.jpg","species_inat":"Persicaria hydropiper","newcomb_species_name":"Polygonum hydropiper","feature":"key_leaf_type","species_level_true_value":"Leaves Entire","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"589206756","photo_url":"https://static.inaturalist.org/photos/589206756/original.jpg","species_inat":"Persicaria pensylvanica","newcomb_species_name":"Polygonum pensylvanicum","feature":"key_flower_type","species_level_true_value":"5 Regular Parts","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"589206756","photo_url":"https://static.inaturalist.org/photos/589206756/original.jpg","species_inat":"Persicaria pensylvanica","newcomb_species_name":"Polygonum pensylvanicum","feature":"key_plant_type","species_level_true_value":"Wildflowers - Alternate Leaves","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"589206756","photo_url":"https://static.inaturalist.org/photos/589206756/original.jpg","species_inat":"Persicaria pensylvanica","newcomb_species_name":"Polygonum pensylvanicum","feature":"key_leaf_type","species_level_true_value":"Leaves Entire","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"291303849","photo_url":"https://static.inaturalist.org/photos/291303849/original.jpeg","species_inat":"Rosa rubiginosa","newcomb_species_name":"Rosa eglanteria","feature":"key_flower_type","species_level_true_value":"5 Regular Parts","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"291303849","photo_url":"https://static.inaturalist.org/photos/291303849/original.jpeg","species_inat":"Rosa rubiginosa","newcomb_species_name":"Rosa eglanteria","feature":"key_plant_type","species_level_true_value":"Shrubs","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"291303849","photo_url":"https://static.inaturalist.org/photos/291303849/original.jpeg","species_inat":"Rosa rubiginosa","newcomb_species_name":"Rosa eglanteria","feature":"key_leaf_type","species_level_true_value":"Leaves Divided","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"560170508","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/560170508/original.jpg","species_inat":"Rumex britannica","newcomb_species_name":"Rumex orbiculatus","feature":"key_flower_type","species_level_true_value":"Parts Indistinguishable","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"560170508","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/560170508/original.jpg","species_inat":"Rumex britannica","newcomb_species_name":"Rumex orbiculatus","feature":"key_plant_type","species_level_true_value":"Wildflowers - Alternate Leaves","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
+      {"photo_id":"560170508","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/560170508/original.jpg","species_inat":"Rumex britannica","newcomb_species_name":"Rumex orbiculatus","feature":"key_leaf_type","species_level_true_value":"Leaves Entire","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""}
+    ];
+
+    let rows = loadRows();
+    let fileHandle = null;
+    let writeTimer = null;
+    let serverSaveTimer = null;
+    const SERVER_MODE = ["127.0.0.1", "localhost"].includes(window.location.hostname);
+
+    const samplesEl = document.querySelector("#samples");
+    const statusEl = document.querySelector("#status");
+
+    function loadRows() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return structuredClone(INITIAL_ROWS);
+      try {
+        const parsed = JSON.parse(saved);
+        if (!Array.isArray(parsed) || parsed.length !== INITIAL_ROWS.length) {
+          return structuredClone(INITIAL_ROWS);
+        }
+        return parsed.map((row, index) => ({ ...INITIAL_ROWS[index], ...row }));
+      } catch {
+        return structuredClone(INITIAL_ROWS);
+      }
+    }
+
+    function setStatus(message, isWarning = false) {
+      statusEl.textContent = message;
+      statusEl.classList.toggle("warning", isWarning);
+    }
+
+    async function bootstrap() {
+      render();
+      if (!SERVER_MODE) {
+        setStatus("Ready. Changes are saved as a local draft.");
+        return;
+      }
+      try {
+        const response = await fetch("/api/load", { cache: "no-store" });
+        if (!response.ok) throw new Error(`load failed: ${response.status}`);
+        rows = importRowsFromCsvText(await response.text());
+        saveDraft();
+        render();
+        setStatus("Connected to local CSV. Changes write to file automatically.");
+      } catch {
+        setStatus("Could not load CSV from localhost. Local draft is still usable.", true);
+      }
+    }
+
+    function groupByPhoto() {
+      const groups = [];
+      for (const row of rows) {
+        let group = groups.find((item) => item.photo_id === row.photo_id);
+        if (!group) {
+          group = {
+            photo_id: row.photo_id,
+            photo_url: row.photo_url,
+            species_inat: row.species_inat,
+            newcomb_species_name: row.newcomb_species_name,
+            rows: [],
+          };
+          groups.push(group);
+        }
+        group.rows.push(row);
+      }
+      return groups;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function rowIndex(row) {
+      return rows.indexOf(row);
+    }
+
+    function selectField(index, field, options) {
+      const current = rows[index][field] || "";
+      return `
+        <select data-index="${index}" data-field="${field}">
+          ${options.map((option) => `<option value="${escapeHtml(option)}"${option === current ? " selected" : ""}>${escapeHtml(option)}</option>`).join("")}
+        </select>
+      `;
+    }
+
+    function render() {
+      samplesEl.innerHTML = groupByPhoto().map((sample, sampleIndex) => `
+        <section class="sample" id="photo-${escapeHtml(sample.photo_id)}">
+          <div class="image-wrap">
+            <img src="${escapeHtml(sample.photo_url)}" alt="${escapeHtml(sample.species_inat)} sample photo ${escapeHtml(sample.photo_id)}">
+          </div>
+          <div class="meta">
+            <h2>${sampleIndex + 1}. ${escapeHtml(sample.species_inat)}</h2>
+            <div class="ids">
+              Newcomb: <em>${escapeHtml(sample.newcomb_species_name)}</em> ·
+              photo_id: ${escapeHtml(sample.photo_id)} ·
+              <a href="${escapeHtml(sample.photo_url)}" target="_blank" rel="noreferrer">open image</a>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Species-level true value</th>
+                  <th>Audit fields</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${sample.rows.map((row) => {
+                  const index = rowIndex(row);
+                  const isComplete = row.human_visible && row.human_can_assign_value && row.difficulty;
+                  return `
+                    <tr class="${isComplete ? "complete" : ""}">
+                      <td class="feature">${escapeHtml(row.feature)}</td>
+                      <td class="true-value">${escapeHtml(row.species_level_true_value)}</td>
+                      <td>
+                        <div class="audit-grid">
+                          <label>
+                            <span class="field-label">human_visible</span>
+                            ${selectField(index, "human_visible", ["", "YES", "NO", "UNCLEAR"])}
+                          </label>
+                          <label>
+                            <span class="field-label">human_can_assign_value</span>
+                            ${selectField(index, "human_can_assign_value", ["", "YES", "NO", "UNCLEAR"])}
+                          </label>
+                          <label>
+                            <span class="field-label">matches_species_level_true_value</span>
+                            ${selectField(index, "matches_species_level_true_value", ["", "YES", "NO", "PARTIAL", "UNCLEAR"])}
+                          </label>
+                          <label>
+                            <span class="field-label">human_value_if_assignable</span>
+                            <input type="text" data-index="${index}" data-field="human_value_if_assignable" value="${escapeHtml(row.human_value_if_assignable)}">
+                          </label>
+                          <label>
+                            <span class="field-label">difficulty</span>
+                            ${selectField(index, "difficulty", ["", "easy", "medium", "hard"])}
+                          </label>
+                        </div>
+                      </td>
+                      <td class="notes-cell">
+                        <label>
+                          <span class="field-label">notes</span>
+                          <textarea data-index="${index}" data-field="notes">${escapeHtml(row.notes)}</textarea>
+                        </label>
+                      </td>
+                    </tr>
+                  `;
+                }).join("")}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      `).join("");
+    }
+
+    function saveDraft() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(rows));
+    }
+
+    function csvEscape(value) {
+      const text = String(value ?? "");
+      if (/[",\n\r]/.test(text)) {
+        return `"${text.replaceAll('"', '""')}"`;
+      }
+      return text;
+    }
+
+    function toCsv() {
+      const lines = [CSV_COLUMNS.join(",")];
+      for (const row of rows) {
+        lines.push(CSV_COLUMNS.map((column) => csvEscape(row[column])).join(","));
+      }
+      return `${lines.join("\n")}\n`;
+    }
+
+    function downloadCsv() {
+      const blob = new Blob([toCsv()], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "sample_10_manual_audit.csv";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+      setStatus("Downloaded CSV.");
+    }
+
+    async function copyCsv() {
+      try {
+        await navigator.clipboard.writeText(toCsv());
+        setStatus("Copied CSV to clipboard.");
+      } catch {
+        setStatus("Clipboard copy failed. Use Download CSV instead.", true);
+      }
+    }
+
+    async function chooseSaveTarget() {
+      if (!window.showSaveFilePicker) {
+        setStatus("Direct file save is not supported here. Use Download CSV.", true);
+        return;
+      }
+      try {
+        fileHandle = await window.showSaveFilePicker({
+          suggestedName: "sample_10_manual_audit.csv",
+          types: [{
+            description: "CSV file",
+            accept: { "text/csv": [".csv"] },
+          }],
+        });
+        await writeCsvToFile();
+        setStatus("Save target selected. Changes will write to that CSV during this session.");
+      } catch (error) {
+        if (error && error.name === "AbortError") {
+          setStatus("Save target selection canceled.");
+        } else {
+          setStatus("Could not select save target. Use Download CSV.", true);
+        }
+      }
+    }
+
+    async function writeCsvToFile() {
+      if (!fileHandle) return;
+      const writable = await fileHandle.createWritable();
+      await writable.write(toCsv());
+      await writable.close();
+    }
+
+    function scheduleFileWrite() {
+      if (!fileHandle) return;
+      clearTimeout(writeTimer);
+      writeTimer = setTimeout(async () => {
+        try {
+          await writeCsvToFile();
+          setStatus("Saved draft and wrote CSV file.");
+        } catch {
+          setStatus("Local draft saved, but file write failed. Use Download CSV.", true);
+        }
+      }, 600);
+    }
+
+    async function writeCsvToServer() {
+      if (!SERVER_MODE) return;
+      const response = await fetch("/api/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ csv: toCsv() }),
+      });
+      if (!response.ok) {
+        let message = `server save failed: ${response.status}`;
+        try {
+          const payload = await response.json();
+          if (payload && payload.error) message = payload.error;
+        } catch {
+          // Keep the HTTP status message.
+        }
+        throw new Error(message);
+      }
+    }
+
+    function scheduleServerWrite() {
+      if (!SERVER_MODE) return;
+      clearTimeout(serverSaveTimer);
+      serverSaveTimer = setTimeout(async () => {
+        try {
+          await writeCsvToServer();
+          setStatus("Saved draft and wrote CSV file.");
+        } catch (error) {
+          setStatus(`Local draft saved, but CSV write failed: ${error.message}`, true);
+        }
+      }, 600);
+    }
+
+    function scheduleSaves() {
+      scheduleServerWrite();
+      scheduleFileWrite();
+    }
+
+    function parseCsv(text) {
+      const result = [];
+      let row = [];
+      let field = "";
+      let inQuotes = false;
+      for (let i = 0; i < text.length; i += 1) {
+        const char = text[i];
+        const next = text[i + 1];
+        if (char === '"' && inQuotes && next === '"') {
+          field += '"';
+          i += 1;
+        } else if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === "," && !inQuotes) {
+          row.push(field);
+          field = "";
+        } else if ((char === "\n" || char === "\r") && !inQuotes) {
+          if (char === "\r" && next === "\n") i += 1;
+          row.push(field);
+          if (row.some((cell) => cell !== "")) result.push(row);
+          row = [];
+          field = "";
+        } else {
+          field += char;
+        }
+      }
+      row.push(field);
+      if (row.some((cell) => cell !== "")) result.push(row);
+      return result;
+    }
+
+    function importRowsFromCsvText(text) {
+      const parsed = parseCsv(text);
+      const headers = parsed[0] || [];
+      const missingColumns = CSV_COLUMNS.filter((column) => !headers.includes(column));
+      if (missingColumns.length) {
+        throw new Error(`Missing columns: ${missingColumns.join(", ")}`);
+      }
+      const importedRows = parsed.slice(1).map((values) => {
+        const row = {};
+        headers.forEach((header, index) => {
+          row[header] = values[index] || "";
+        });
+        return row;
+      });
+      if (importedRows.length !== rows.length) {
+        throw new Error(`Import has ${importedRows.length} rows, expected ${rows.length}`);
+      }
+      return importedRows.map((row, index) => ({ ...INITIAL_ROWS[index], ...row }));
+    }
+
+    async function importCsv(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      try {
+        rows = importRowsFromCsvText(await file.text());
+        saveDraft();
+        render();
+        scheduleSaves();
+        setStatus("Imported CSV and updated the page.");
+      } catch (error) {
+        setStatus(`${error.message}. Import skipped.`, true);
+      }
+      event.target.value = "";
+    }
+
+    function clearDraft() {
+      const ok = window.confirm("Clear the local draft and reset all human audit fields on this page?");
+      if (!ok) return;
+      rows = structuredClone(INITIAL_ROWS);
+      localStorage.removeItem(STORAGE_KEY);
+      render();
+      scheduleSaves();
+      setStatus("Local draft cleared.");
+    }
+
+    function updateRowFromEvent(event) {
+      const target = event.target;
+      const index = Number(target.dataset.index);
+      const field = target.dataset.field;
+      if (!Number.isInteger(index) || !field) return;
+      rows[index][field] = target.value;
+      saveDraft();
+      scheduleSaves();
+      if (SERVER_MODE) {
+        setStatus("Saved draft. Writing CSV...");
+      } else {
+        setStatus(fileHandle ? "Saved draft. Writing CSV..." : "Saved local draft.");
+      }
+    }
+
+    samplesEl.addEventListener("input", updateRowFromEvent);
+    samplesEl.addEventListener("change", updateRowFromEvent);
+
+    document.querySelector("#downloadCsv").addEventListener("click", downloadCsv);
+    document.querySelector("#chooseSaveTarget").addEventListener("click", chooseSaveTarget);
+    document.querySelector("#copyCsv").addEventListener("click", copyCsv);
+    document.querySelector("#importCsv").addEventListener("change", importCsv);
+    document.querySelector("#clearDraft").addEventListener("click", clearDraft);
+
+    bootstrap();
+  </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+model,prompt_type,n,correct_count,accuracy
+mock-local,agreement,17,0,0.0
+mock-local,blind_mc,17,0,0.0
+mock-local,blind_mc_no_reference_photos,17,0,0.0
+mock-local,existence,17,0,0.0
