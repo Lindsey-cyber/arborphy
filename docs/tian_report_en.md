@@ -1,4 +1,4 @@
-# Tian Report Summary: John/Newcomb Benchmark Reproduction
+# Progress Report: John/Newcomb Benchmark Reproduction
 
 ## 1. Current Goal
 
@@ -59,7 +59,7 @@ The current framework supports:
 
 `references.csv` currently has 67 reference entries:
 
-- 17 primary feature-value reference examples
+- 17 primary feature-value reference examples (key_flower_type, key_plant_type, key_leaf_type)
 - 50 subgroup reference entries for later fine-grained feature/KG work
 
 The 17 primary examples cover:
@@ -82,9 +82,9 @@ Important limitation: `sample.csv` is not a photo-level visibility label dataset
 
 ### Key Difference
 
-| Dataset | Image | Label | Best Use | Main Limitation |
+| Dataset | Image | Label | Best Use | visibility |
 |---|---|---|---|---|
-| `references.csv` | reference image + illustration | feature / feature_value | calibration | not a sample-photo visibility label |
+| `references.csv` | reference image + illustration | feature / feature_value | calibration | photo-level human visibility ground truth = True |
 | `sample.csv` | iNaturalist full photo | species-level Newcomb values | full-photo benchmark | no photo-level human visibility ground truth |
 
 ## 4. John Benchmark Reproduction and Ablation
