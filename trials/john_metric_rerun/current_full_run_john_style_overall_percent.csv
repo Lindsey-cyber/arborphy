@@ -1,0 +1,7 @@
+model,model_display,n,sees_feature_count,sees_feature_rate,mc_correct_count,mc_correct_rate,mc_inc_count,mc_inc_rate,mc_wrong_count,mc_wrong_rate,committed_count,committed_rate,committed_accuracy
+gpt-4o-mini,gpt-4o-mini,270,182,67.4%,61,22.6%,176,65.2%,33,12.2%,94,34.8%,64.9%
+gpt-5-mini,gpt-5-mini,270,74,27.4%,46,17.0%,213,78.9%,11,4.1%,57,21.1%,80.7%
+gemini-3.1-pro-preview,gemini-3.1-pro,270,224,83.0%,148,54.8%,96,35.6%,26,9.6%,174,64.4%,85.1%
+gemini-3-flash-preview,gemini-3-flash,270,250,92.6%,191,70.7%,41,15.2%,38,14.1%,229,84.8%,83.4%
+claude-sonnet-4-6,claude-sonnet-4-6,270,226,83.7%,163,60.4%,50,18.5%,57,21.1%,220,81.5%,74.1%
+claude-haiku-4-5,claude-haiku-4-5,270,246,91.1%,108,40.0%,59,21.9%,103,38.1%,211,78.1%,51.2%

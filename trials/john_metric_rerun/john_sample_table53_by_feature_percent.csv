@@ -1,0 +1,19 @@
+feature,feature_display,model,model_display,n,sees_feature_count,sees_feature_rate,mc_correct_count,mc_correct_rate,mc_inc_count,mc_inc_rate,mc_wrong_count,mc_wrong_rate,committed_count,committed_rate,committed_accuracy
+key_flower_type,flower type,gpt-4o-mini,gpt-4o-mini,90,60,66.7%,6,6.7%,78,86.7%,6,6.7%,12,13.3%,50.0%
+key_flower_type,flower type,gpt-5-mini,gpt-5-mini,90,56,62.2%,33,36.7%,39,43.3%,18,20.0%,51,56.7%,64.7%
+key_flower_type,flower type,gemini-3.1-pro-preview,gemini-3.1-pro,83,55,66.3%,37,44.6%,32,38.6%,14,16.9%,51,61.4%,72.5%
+key_flower_type,flower type,gemini-3-flash-preview,gemini-3-flash,90,70,77.8%,50,55.6%,27,30.0%,13,14.4%,63,70.0%,79.4%
+key_flower_type,flower type,claude-sonnet-4-6,claude-sonnet-4-6,90,56,62.2%,42,46.7%,39,43.3%,9,10.0%,51,56.7%,82.4%
+key_flower_type,flower type,claude-haiku-4-5,claude-haiku-4-5,90,65,72.2%,25,27.8%,43,47.8%,22,24.4%,47,52.2%,53.2%
+key_plant_type,plant type,gpt-4o-mini,gpt-4o-mini,90,73,81.1%,29,32.2%,43,47.8%,18,20.0%,47,52.2%,61.7%
+key_plant_type,plant type,gpt-5-mini,gpt-5-mini,90,85,94.4%,46,51.1%,19,21.1%,25,27.8%,71,78.9%,64.8%
+key_plant_type,plant type,gemini-3.1-pro-preview,gemini-3.1-pro,82,81,98.8%,63,76.8%,11,13.4%,8,9.8%,71,86.6%,88.7%
+key_plant_type,plant type,gemini-3-flash-preview,gemini-3-flash,90,90,100.0%,73,81.1%,7,7.8%,10,11.1%,83,92.2%,88.0%
+key_plant_type,plant type,claude-sonnet-4-6,claude-sonnet-4-6,90,89,98.9%,54,60.0%,5,5.6%,31,34.4%,85,94.4%,63.5%
+key_plant_type,plant type,claude-haiku-4-5,claude-haiku-4-5,90,90,100.0%,36,40.0%,1,1.1%,53,58.9%,89,98.9%,40.4%
+key_leaf_type,leaf type,gpt-4o-mini,gpt-4o-mini,90,62,68.9%,19,21.1%,62,68.9%,9,10.0%,28,31.1%,67.9%
+key_leaf_type,leaf type,gpt-5-mini,gpt-5-mini,90,77,85.6%,59,65.6%,15,16.7%,16,17.8%,75,83.3%,78.7%
+key_leaf_type,leaf type,gemini-3.1-pro-preview,gemini-3.1-pro,83,66,79.5%,51,61.4%,20,24.1%,12,14.5%,63,75.9%,81.0%
+key_leaf_type,leaf type,gemini-3-flash-preview,gemini-3-flash,90,82,91.1%,67,74.4%,13,14.4%,10,11.1%,77,85.6%,87.0%
+key_leaf_type,leaf type,claude-sonnet-4-6,claude-sonnet-4-6,90,64,71.1%,52,57.8%,28,31.1%,10,11.1%,62,68.9%,83.9%
+key_leaf_type,leaf type,claude-haiku-4-5,claude-haiku-4-5,90,84,93.3%,33,36.7%,29,32.2%,28,31.1%,61,67.8%,54.1%

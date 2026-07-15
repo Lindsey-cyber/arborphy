@@ -9,6 +9,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUT_DIR = ROOT / "trials" / "analysis" / "calibration"
 REQUIRED_COLUMNS = ["model", "feature", "feature_value", "prompt_type", "expected", "correct"]
+MODEL_PREFIXES = ("openai/", "google/", "anthropic/")
 
 
 def resolve_path(path_text: str) -> Path:
@@ -24,6 +25,14 @@ def source_label(path: Path) -> str:
         return str(resolved)
 
 
+def canonical_model(model: str) -> str:
+    model = str(model)
+    for prefix in MODEL_PREFIXES:
+        if model.startswith(prefix):
+            return model.removeprefix(prefix)
+    return model
+
+
 def read_results(paths: list[Path]) -> pd.DataFrame:
     frames = []
     for path in paths:
@@ -36,6 +45,8 @@ def read_results(paths: list[Path]) -> pd.DataFrame:
     if not frames:
         raise ValueError("At least one input CSV is required")
     result = pd.concat(frames, ignore_index=True)
+    result["model_raw"] = result["model"]
+    result["model"] = result["model"].map(canonical_model)
     result["correct_bool"] = result["correct"].astype(str).str.lower().isin({"true", "1", "yes"})
     return result
 

@@ -1,0 +1,97 @@
+table,feature,model,metric,actual,expected,delta,matches_rounded_0.1pct
+5.2 calibration,,gpt-4o-mini,sees,0.9411764705882353,0.9411764705882353,0.0,True
+5.2 calibration,,gpt-4o-mini,mc_correct,0.8235294117647058,0.8235294117647058,0.0,True
+5.2 calibration,,gpt-4o-mini,mc_inc,0.058823529411764705,0.058823529411764705,0.0,True
+5.2 calibration,,gpt-4o-mini,mc_wrong,0.11764705882352941,0.11764705882352941,0.0,True
+5.2 calibration,,gpt-5-mini,sees,0.9411764705882353,0.9411764705882353,0.0,True
+5.2 calibration,,gpt-5-mini,mc_correct,0.8823529411764706,0.8823529411764706,0.0,True
+5.2 calibration,,gpt-5-mini,mc_inc,0.0,0.0,0.0,True
+5.2 calibration,,gpt-5-mini,mc_wrong,0.11764705882352941,0.11764705882352941,0.0,True
+5.2 calibration,,gemini-3.1-pro,sees,0.9411764705882353,0.9411764705882353,0.0,True
+5.2 calibration,,gemini-3.1-pro,mc_correct,0.8823529411764706,0.8823529411764706,0.0,True
+5.2 calibration,,gemini-3.1-pro,mc_inc,0.0,0.0,0.0,True
+5.2 calibration,,gemini-3.1-pro,mc_wrong,0.11764705882352941,0.11764705882352941,0.0,True
+5.2 calibration,,gemini-3-flash,sees,1.0,1.0,0.0,True
+5.2 calibration,,gemini-3-flash,mc_correct,1.0,1.0,0.0,True
+5.2 calibration,,gemini-3-flash,mc_inc,0.0,0.0,0.0,True
+5.2 calibration,,gemini-3-flash,mc_wrong,0.0,0.0,0.0,True
+5.2 calibration,,claude-sonnet-4-6,sees,0.9411764705882353,0.9411764705882353,0.0,True
+5.2 calibration,,claude-sonnet-4-6,mc_correct,0.8235294117647058,0.8235294117647058,0.0,True
+5.2 calibration,,claude-sonnet-4-6,mc_inc,0.0,0.0,0.0,True
+5.2 calibration,,claude-sonnet-4-6,mc_wrong,0.17647058823529413,0.17647058823529413,0.0,True
+5.2 calibration,,claude-haiku-4-5,sees,1.0,1.0,0.0,True
+5.2 calibration,,claude-haiku-4-5,mc_correct,0.5882352941176471,0.5882352941176471,0.0,True
+5.2 calibration,,claude-haiku-4-5,mc_inc,0.0,0.0,0.0,True
+5.2 calibration,,claude-haiku-4-5,mc_wrong,0.4117647058823529,0.4117647058823529,0.0,True
+5.3 sample,flower type,gpt-4o-mini,sees,0.6666666666666666,0.667,-0.00033333333333340764,True
+5.3 sample,flower type,gpt-4o-mini,mc_correct,0.06666666666666667,0.067,-0.00033333333333333826,True
+5.3 sample,flower type,gpt-4o-mini,mc_inc,0.8666666666666667,0.867,-0.0003333333333332966,True
+5.3 sample,flower type,gpt-4o-mini,mc_wrong,0.06666666666666667,0.067,-0.00033333333333333826,True
+5.3 sample,flower type,gpt-5-mini,sees,0.6222222222222222,0.622,0.00022222222222223476,True
+5.3 sample,flower type,gpt-5-mini,mc_correct,0.36666666666666664,0.367,-0.00033333333333335213,True
+5.3 sample,flower type,gpt-5-mini,mc_inc,0.43333333333333335,0.433,0.00033333333333335213,True
+5.3 sample,flower type,gpt-5-mini,mc_wrong,0.2,0.2,0.0,True
+5.3 sample,flower type,gemini-3.1-pro,sees,0.6626506024096386,0.663,-0.00034939759036145546,True
+5.3 sample,flower type,gemini-3.1-pro,mc_correct,0.4457831325301205,0.446,-0.00021686746987953365,True
+5.3 sample,flower type,gemini-3.1-pro,mc_inc,0.3855421686746988,0.386,-0.0004578313253011945,True
+5.3 sample,flower type,gemini-3.1-pro,mc_wrong,0.1686746987951807,0.169,-0.00032530120481930047,True
+5.3 sample,flower type,gemini-3-flash,sees,0.7777777777777778,0.778,-0.00022222222222223476,True
+5.3 sample,flower type,gemini-3-flash,mc_correct,0.5555555555555556,0.556,-0.0004444444444444695,True
+5.3 sample,flower type,gemini-3-flash,mc_inc,0.3,0.3,0.0,True
+5.3 sample,flower type,gemini-3-flash,mc_wrong,0.14444444444444443,0.144,0.00044444444444444176,True
+5.3 sample,flower type,claude-sonnet-4-6,sees,0.6222222222222222,0.622,0.00022222222222223476,True
+5.3 sample,flower type,claude-sonnet-4-6,mc_correct,0.4666666666666667,0.467,-0.00033333333333335213,True
+5.3 sample,flower type,claude-sonnet-4-6,mc_inc,0.43333333333333335,0.433,0.00033333333333335213,True
+5.3 sample,flower type,claude-sonnet-4-6,mc_wrong,0.1,0.1,0.0,True
+5.3 sample,flower type,claude-haiku-4-5,sees,0.7222222222222222,0.722,0.00022222222222223476,True
+5.3 sample,flower type,claude-haiku-4-5,mc_correct,0.2777777777777778,0.278,-0.00022222222222223476,True
+5.3 sample,flower type,claude-haiku-4-5,mc_inc,0.4777777777777778,0.478,-0.00022222222222217924,True
+5.3 sample,flower type,claude-haiku-4-5,mc_wrong,0.24444444444444444,0.244,0.00044444444444444176,True
+5.3 sample,plant type,gpt-4o-mini,sees,0.8111111111111111,0.811,0.00011111111111106187,True
+5.3 sample,plant type,gpt-4o-mini,mc_correct,0.32222222222222224,0.322,0.00022222222222223476,True
+5.3 sample,plant type,gpt-4o-mini,mc_inc,0.4777777777777778,0.478,-0.00022222222222217924,True
+5.3 sample,plant type,gpt-4o-mini,mc_wrong,0.2,0.2,0.0,True
+5.3 sample,plant type,gpt-5-mini,sees,0.9444444444444444,0.944,0.0004444444444444695,True
+5.3 sample,plant type,gpt-5-mini,mc_correct,0.5111111111111111,0.511,0.00011111111111106187,True
+5.3 sample,plant type,gpt-5-mini,mc_inc,0.2111111111111111,0.211,0.00011111111111111738,True
+5.3 sample,plant type,gpt-5-mini,mc_wrong,0.2777777777777778,0.278,-0.00022222222222223476,True
+5.3 sample,plant type,gemini-3.1-pro,sees,0.9878048780487805,0.988,-0.00019512195121951237,True
+5.3 sample,plant type,gemini-3.1-pro,mc_correct,0.7682926829268293,0.768,0.00029268292682926855,True
+5.3 sample,plant type,gemini-3.1-pro,mc_inc,0.13414634146341464,0.134,0.00014634146341463428,True
+5.3 sample,plant type,gemini-3.1-pro,mc_wrong,0.0975609756097561,0.098,-0.00043902439024390283,True
+5.3 sample,plant type,gemini-3-flash,sees,1.0,1.0,0.0,True
+5.3 sample,plant type,gemini-3-flash,mc_correct,0.8111111111111111,0.811,0.00011111111111106187,True
+5.3 sample,plant type,gemini-3-flash,mc_inc,0.07777777777777778,0.078,-0.00022222222222222088,True
+5.3 sample,plant type,gemini-3-flash,mc_wrong,0.1111111111111111,0.111,0.0001111111111111035,True
+5.3 sample,plant type,claude-sonnet-4-6,sees,0.9888888888888889,0.989,-0.00011111111111106187,True
+5.3 sample,plant type,claude-sonnet-4-6,mc_correct,0.6,0.6,0.0,True
+5.3 sample,plant type,claude-sonnet-4-6,mc_inc,0.05555555555555555,0.056,-0.0004444444444444487,True
+5.3 sample,plant type,claude-sonnet-4-6,mc_wrong,0.34444444444444444,0.344,0.0004444444444444695,True
+5.3 sample,plant type,claude-haiku-4-5,sees,1.0,1.0,0.0,True
+5.3 sample,plant type,claude-haiku-4-5,mc_correct,0.4,0.4,0.0,True
+5.3 sample,plant type,claude-haiku-4-5,mc_inc,0.011111111111111112,0.011,0.00011111111111111217,True
+5.3 sample,plant type,claude-haiku-4-5,mc_wrong,0.5888888888888889,0.589,-0.00011111111111106187,True
+5.3 sample,leaf type,gpt-4o-mini,sees,0.6888888888888889,0.689,-0.00011111111111106187,True
+5.3 sample,leaf type,gpt-4o-mini,mc_correct,0.2111111111111111,0.211,0.00011111111111111738,True
+5.3 sample,leaf type,gpt-4o-mini,mc_inc,0.6888888888888889,0.689,-0.00011111111111106187,True
+5.3 sample,leaf type,gpt-4o-mini,mc_wrong,0.1,0.1,0.0,True
+5.3 sample,leaf type,gpt-5-mini,sees,0.8555555555555555,0.856,-0.0004444444444444695,True
+5.3 sample,leaf type,gpt-5-mini,mc_correct,0.6555555555555556,0.656,-0.0004444444444444695,True
+5.3 sample,leaf type,gpt-5-mini,mc_inc,0.16666666666666666,0.167,-0.00033333333333335213,True
+5.3 sample,leaf type,gpt-5-mini,mc_wrong,0.17777777777777778,0.178,-0.000222222222222207,True
+5.3 sample,leaf type,gemini-3.1-pro,sees,0.7951807228915663,0.795,0.00018072289156623178,True
+5.3 sample,leaf type,gemini-3.1-pro,mc_correct,0.6144578313253012,0.614,0.0004578313253011945,True
+5.3 sample,leaf type,gemini-3.1-pro,mc_inc,0.24096385542168675,0.241,-3.6144578313246356e-05,True
+5.3 sample,leaf type,gemini-3.1-pro,mc_wrong,0.14457831325301204,0.145,-0.00042168674698794817,True
+5.3 sample,leaf type,gemini-3-flash,sees,0.9111111111111111,0.911,0.00011111111111106187,True
+5.3 sample,leaf type,gemini-3-flash,mc_correct,0.7444444444444445,0.744,0.0004444444444444695,True
+5.3 sample,leaf type,gemini-3-flash,mc_inc,0.14444444444444443,0.144,0.00044444444444444176,True
+5.3 sample,leaf type,gemini-3-flash,mc_wrong,0.1111111111111111,0.111,0.0001111111111111035,True
+5.3 sample,leaf type,claude-sonnet-4-6,sees,0.7111111111111111,0.711,0.00011111111111117289,True
+5.3 sample,leaf type,claude-sonnet-4-6,mc_correct,0.5777777777777777,0.578,-0.00022222222222223476,True
+5.3 sample,leaf type,claude-sonnet-4-6,mc_inc,0.3111111111111111,0.311,0.00011111111111111738,True
+5.3 sample,leaf type,claude-sonnet-4-6,mc_wrong,0.1111111111111111,0.111,0.0001111111111111035,True
+5.3 sample,leaf type,claude-haiku-4-5,sees,0.9333333333333333,0.933,0.0003333333333332966,True
+5.3 sample,leaf type,claude-haiku-4-5,mc_correct,0.36666666666666664,0.367,-0.00033333333333335213,True
+5.3 sample,leaf type,claude-haiku-4-5,mc_inc,0.32222222222222224,0.322,0.00022222222222223476,True
+5.3 sample,leaf type,claude-haiku-4-5,mc_wrong,0.3111111111111111,0.311,0.00011111111111111738,True

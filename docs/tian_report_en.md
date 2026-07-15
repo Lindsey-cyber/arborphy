@@ -97,16 +97,48 @@ Therefore, `sample.csv` can test full-photo behavior, but it cannot directly eva
 
 ## 4. Prompt / Input Ablation
 
-Because `references.csv` contains reference images, illustrations, and text descriptions, it functions as both visual reference material and label/context material.
+Because calibration `blind_mc` gives the model the test image together with option reference material, we need to separate feature/value understanding from reference-image matching.
 
-The next step is to run prompt/input ablations to test whether the benchmark is sensitive to input format, for example:
+The first ablation removed option reference photos while keeping option text / description / illustration.
 
-- text only
-- text + reference image
-- text + illustration
-- text + reference image + illustration
+Comparison sources:
 
-The goal is not only to compare accuracy, but also to test whether models are learning the abstract visual pattern rather than depending on one specific reference image or prompt wording.
+- Original result: `blind_mc` rows in `JM_Assets_2/calibration_results.csv`
+- New experiment: `trials/artifacts/calibration-blind-mc-no-reference-photos-six-models.csv`
+- Summary table: `trials/analysis/calibration-blind-mc-no-reference-photos-six-models/summary_by_prompt.csv`
+- Model delta table: `trials/analysis/calibration-blind-mc-no-reference-photos-six-models/blind_mc_no_reference_photos_delta_by_model.csv`
+
+Main result:
+
+| Prompt | Correct | Accuracy |
+|---|---:|---:|
+| original `blind_mc` | 85/102 | 83.3% |
+| `blind_mc_no_reference_photos` | 58/102 | 56.9% |
+
+After removing option reference photos, accuracy dropped from 83.3% to 56.9%, a 26.5 percentage-point decrease. GPT-4o mini and GPT-5 mini dropped the most; leaf type was relatively more stable, while flower type and plant type dropped more.
+
+By model:
+
+| Model | Original | No Ref Photos | Drop |
+|---|---:|---:|---:|
+| Gemini Flash | 100.0% | 76.5% | -23.5 |
+| Claude Sonnet | 82.4% | 64.7% | -17.6 |
+| Gemini 3.1 Pro | 88.2% | 58.8% | -29.4 |
+| Claude Haiku | 58.8% | 52.9% | -5.9 |
+| GPT-4o mini | 82.4% | 41.2% | -41.2 |
+| GPT-5 mini | 88.2% | 47.1% | -41.2 |
+
+By feature:
+
+| Feature | Original | No Ref Photos | Drop |
+|---|---:|---:|---:|
+| `key_flower_type` | 83.3% | 52.4% | -31.0 |
+| `key_plant_type` | 83.3% | 52.8% | -30.6 |
+| `key_leaf_type` | 83.3% | 70.8% | -12.5 |
+
+More precise interpretation: this experiment mainly shows that **identical reference photos in calibration are very helpful**. In the original `blind_mc`, the correct option reference photo may be the same reference exemplar as the test image, so the model may partly be doing identical-image matching.
+
+This does not mean all reference photos are unhelpful, and it does not test whether non-identical reference exemplars would help. The next step should be to add more reference exemplars, especially multiple non-identical representative images per feature value, and then run held-out / non-identical reference ablations.
 
 ## 5. John Benchmark Reproduction
 

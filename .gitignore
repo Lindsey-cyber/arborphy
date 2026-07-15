@@ -9,3 +9,4 @@ trials/artifacts/*
 !trials/artifacts/.gitkeep
 !trials/artifacts/notebook-20260701-085321.csv
 !trials/artifacts/notebook-20260701-085321.metadata.json
+docs/tian_report_zh.md

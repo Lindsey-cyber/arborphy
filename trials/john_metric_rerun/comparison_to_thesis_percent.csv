@@ -1,0 +1,97 @@
+table,feature,model,metric,actual,expected,delta,matches_rounded_0.1pct
+5.2 calibration,,gpt-4o-mini,sees,94.1%,94.1%,0.0%,True
+5.2 calibration,,gpt-4o-mini,mc_correct,82.4%,82.4%,0.0%,True
+5.2 calibration,,gpt-4o-mini,mc_inc,5.9%,5.9%,0.0%,True
+5.2 calibration,,gpt-4o-mini,mc_wrong,11.8%,11.8%,0.0%,True
+5.2 calibration,,gpt-5-mini,sees,94.1%,94.1%,0.0%,True
+5.2 calibration,,gpt-5-mini,mc_correct,88.2%,88.2%,0.0%,True
+5.2 calibration,,gpt-5-mini,mc_inc,0.0%,0.0%,0.0%,True
+5.2 calibration,,gpt-5-mini,mc_wrong,11.8%,11.8%,0.0%,True
+5.2 calibration,,gemini-3.1-pro,sees,94.1%,94.1%,0.0%,True
+5.2 calibration,,gemini-3.1-pro,mc_correct,88.2%,88.2%,0.0%,True
+5.2 calibration,,gemini-3.1-pro,mc_inc,0.0%,0.0%,0.0%,True
+5.2 calibration,,gemini-3.1-pro,mc_wrong,11.8%,11.8%,0.0%,True
+5.2 calibration,,gemini-3-flash,sees,100.0%,100.0%,0.0%,True
+5.2 calibration,,gemini-3-flash,mc_correct,100.0%,100.0%,0.0%,True
+5.2 calibration,,gemini-3-flash,mc_inc,0.0%,0.0%,0.0%,True
+5.2 calibration,,gemini-3-flash,mc_wrong,0.0%,0.0%,0.0%,True
+5.2 calibration,,claude-sonnet-4-6,sees,94.1%,94.1%,0.0%,True
+5.2 calibration,,claude-sonnet-4-6,mc_correct,82.4%,82.4%,0.0%,True
+5.2 calibration,,claude-sonnet-4-6,mc_inc,0.0%,0.0%,0.0%,True
+5.2 calibration,,claude-sonnet-4-6,mc_wrong,17.6%,17.6%,0.0%,True
+5.2 calibration,,claude-haiku-4-5,sees,100.0%,100.0%,0.0%,True
+5.2 calibration,,claude-haiku-4-5,mc_correct,58.8%,58.8%,0.0%,True
+5.2 calibration,,claude-haiku-4-5,mc_inc,0.0%,0.0%,0.0%,True
+5.2 calibration,,claude-haiku-4-5,mc_wrong,41.2%,41.2%,0.0%,True
+5.3 sample,flower type,gpt-4o-mini,sees,66.7%,66.7%,-0.0%,True
+5.3 sample,flower type,gpt-4o-mini,mc_correct,6.7%,6.7%,-0.0%,True
+5.3 sample,flower type,gpt-4o-mini,mc_inc,86.7%,86.7%,-0.0%,True
+5.3 sample,flower type,gpt-4o-mini,mc_wrong,6.7%,6.7%,-0.0%,True
+5.3 sample,flower type,gpt-5-mini,sees,62.2%,62.2%,0.0%,True
+5.3 sample,flower type,gpt-5-mini,mc_correct,36.7%,36.7%,-0.0%,True
+5.3 sample,flower type,gpt-5-mini,mc_inc,43.3%,43.3%,0.0%,True
+5.3 sample,flower type,gpt-5-mini,mc_wrong,20.0%,20.0%,0.0%,True
+5.3 sample,flower type,gemini-3.1-pro,sees,66.3%,66.3%,-0.0%,True
+5.3 sample,flower type,gemini-3.1-pro,mc_correct,44.6%,44.6%,-0.0%,True
+5.3 sample,flower type,gemini-3.1-pro,mc_inc,38.6%,38.6%,-0.0%,True
+5.3 sample,flower type,gemini-3.1-pro,mc_wrong,16.9%,16.9%,-0.0%,True
+5.3 sample,flower type,gemini-3-flash,sees,77.8%,77.8%,-0.0%,True
+5.3 sample,flower type,gemini-3-flash,mc_correct,55.6%,55.6%,-0.0%,True
+5.3 sample,flower type,gemini-3-flash,mc_inc,30.0%,30.0%,0.0%,True
+5.3 sample,flower type,gemini-3-flash,mc_wrong,14.4%,14.4%,0.0%,True
+5.3 sample,flower type,claude-sonnet-4-6,sees,62.2%,62.2%,0.0%,True
+5.3 sample,flower type,claude-sonnet-4-6,mc_correct,46.7%,46.7%,-0.0%,True
+5.3 sample,flower type,claude-sonnet-4-6,mc_inc,43.3%,43.3%,0.0%,True
+5.3 sample,flower type,claude-sonnet-4-6,mc_wrong,10.0%,10.0%,0.0%,True
+5.3 sample,flower type,claude-haiku-4-5,sees,72.2%,72.2%,0.0%,True
+5.3 sample,flower type,claude-haiku-4-5,mc_correct,27.8%,27.8%,-0.0%,True
+5.3 sample,flower type,claude-haiku-4-5,mc_inc,47.8%,47.8%,-0.0%,True
+5.3 sample,flower type,claude-haiku-4-5,mc_wrong,24.4%,24.4%,0.0%,True
+5.3 sample,plant type,gpt-4o-mini,sees,81.1%,81.1%,0.0%,True
+5.3 sample,plant type,gpt-4o-mini,mc_correct,32.2%,32.2%,0.0%,True
+5.3 sample,plant type,gpt-4o-mini,mc_inc,47.8%,47.8%,-0.0%,True
+5.3 sample,plant type,gpt-4o-mini,mc_wrong,20.0%,20.0%,0.0%,True
+5.3 sample,plant type,gpt-5-mini,sees,94.4%,94.4%,0.0%,True
+5.3 sample,plant type,gpt-5-mini,mc_correct,51.1%,51.1%,0.0%,True
+5.3 sample,plant type,gpt-5-mini,mc_inc,21.1%,21.1%,0.0%,True
+5.3 sample,plant type,gpt-5-mini,mc_wrong,27.8%,27.8%,-0.0%,True
+5.3 sample,plant type,gemini-3.1-pro,sees,98.8%,98.8%,-0.0%,True
+5.3 sample,plant type,gemini-3.1-pro,mc_correct,76.8%,76.8%,0.0%,True
+5.3 sample,plant type,gemini-3.1-pro,mc_inc,13.4%,13.4%,0.0%,True
+5.3 sample,plant type,gemini-3.1-pro,mc_wrong,9.8%,9.8%,-0.0%,True
+5.3 sample,plant type,gemini-3-flash,sees,100.0%,100.0%,0.0%,True
+5.3 sample,plant type,gemini-3-flash,mc_correct,81.1%,81.1%,0.0%,True
+5.3 sample,plant type,gemini-3-flash,mc_inc,7.8%,7.8%,-0.0%,True
+5.3 sample,plant type,gemini-3-flash,mc_wrong,11.1%,11.1%,0.0%,True
+5.3 sample,plant type,claude-sonnet-4-6,sees,98.9%,98.9%,-0.0%,True
+5.3 sample,plant type,claude-sonnet-4-6,mc_correct,60.0%,60.0%,0.0%,True
+5.3 sample,plant type,claude-sonnet-4-6,mc_inc,5.6%,5.6%,-0.0%,True
+5.3 sample,plant type,claude-sonnet-4-6,mc_wrong,34.4%,34.4%,0.0%,True
+5.3 sample,plant type,claude-haiku-4-5,sees,100.0%,100.0%,0.0%,True
+5.3 sample,plant type,claude-haiku-4-5,mc_correct,40.0%,40.0%,0.0%,True
+5.3 sample,plant type,claude-haiku-4-5,mc_inc,1.1%,1.1%,0.0%,True
+5.3 sample,plant type,claude-haiku-4-5,mc_wrong,58.9%,58.9%,-0.0%,True
+5.3 sample,leaf type,gpt-4o-mini,sees,68.9%,68.9%,-0.0%,True
+5.3 sample,leaf type,gpt-4o-mini,mc_correct,21.1%,21.1%,0.0%,True
+5.3 sample,leaf type,gpt-4o-mini,mc_inc,68.9%,68.9%,-0.0%,True
+5.3 sample,leaf type,gpt-4o-mini,mc_wrong,10.0%,10.0%,0.0%,True
+5.3 sample,leaf type,gpt-5-mini,sees,85.6%,85.6%,-0.0%,True
+5.3 sample,leaf type,gpt-5-mini,mc_correct,65.6%,65.6%,-0.0%,True
+5.3 sample,leaf type,gpt-5-mini,mc_inc,16.7%,16.7%,-0.0%,True
+5.3 sample,leaf type,gpt-5-mini,mc_wrong,17.8%,17.8%,-0.0%,True
+5.3 sample,leaf type,gemini-3.1-pro,sees,79.5%,79.5%,0.0%,True
+5.3 sample,leaf type,gemini-3.1-pro,mc_correct,61.4%,61.4%,0.0%,True
+5.3 sample,leaf type,gemini-3.1-pro,mc_inc,24.1%,24.1%,-0.0%,True
+5.3 sample,leaf type,gemini-3.1-pro,mc_wrong,14.5%,14.5%,-0.0%,True
+5.3 sample,leaf type,gemini-3-flash,sees,91.1%,91.1%,0.0%,True
+5.3 sample,leaf type,gemini-3-flash,mc_correct,74.4%,74.4%,0.0%,True
+5.3 sample,leaf type,gemini-3-flash,mc_inc,14.4%,14.4%,0.0%,True
+5.3 sample,leaf type,gemini-3-flash,mc_wrong,11.1%,11.1%,0.0%,True
+5.3 sample,leaf type,claude-sonnet-4-6,sees,71.1%,71.1%,0.0%,True
+5.3 sample,leaf type,claude-sonnet-4-6,mc_correct,57.8%,57.8%,-0.0%,True
+5.3 sample,leaf type,claude-sonnet-4-6,mc_inc,31.1%,31.1%,0.0%,True
+5.3 sample,leaf type,claude-sonnet-4-6,mc_wrong,11.1%,11.1%,0.0%,True
+5.3 sample,leaf type,claude-haiku-4-5,sees,93.3%,93.3%,0.0%,True
+5.3 sample,leaf type,claude-haiku-4-5,mc_correct,36.7%,36.7%,-0.0%,True
+5.3 sample,leaf type,claude-haiku-4-5,mc_inc,32.2%,32.2%,0.0%,True
+5.3 sample,leaf type,claude-haiku-4-5,mc_wrong,31.1%,31.1%,0.0%,True
