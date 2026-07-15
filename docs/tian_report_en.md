@@ -224,9 +224,9 @@ The next benchmark design should include separable experiments to avoid mixing d
 
 Suggested experiment routes:
 
-1. Direct image + AI -> species
-2. Direct image + AI -> feature values
-3. Predicted feature values -> KG -> species
+1. Direct image + AI + No KG -> species
+2. Direct image + AI + No KG-> feature values
+3. No Direct Image + Predicted feature values + AI + KG -> species
 4. Human feature values -> KG -> species
 5. Image + KG candidates -> species
 6. Image + random/wrong KG candidates -> species
