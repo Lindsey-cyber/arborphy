@@ -1,10 +1,10 @@
-# Project Update for Tian — Concise English Version
+# Project Update — Concise English Version
 
 ## 0. Summary and current limitations
 
 The current pipeline first localizes the flower, leaf, or plant; extracts local shape evidence; matches Newcomb reference images; and finally uses the knowledge graph to filter candidate taxa. The pipeline, human benchmark, metrics, and step-by-step visualizations are operational.
 
-Two limitations should be stated at the beginning of the presentation:
+Two limitations:
 
 1. **Organ localization still produces false positives.** In some photos where no judgeable flower is present, Grounding DINO labels leaves, green plant structures, or background regions as flowers. It can also label a flower as a leaf.
 2. **The reference photos are not yet sufficiently representative.** Each primary feature value currently has roughly one reference photo, and some references contain distracting backgrounds, multiple organs, or weak examples of the target feature. The calibration query can also be identical to the correct option reference, so the current reference set is not yet a strong formal benchmark.
