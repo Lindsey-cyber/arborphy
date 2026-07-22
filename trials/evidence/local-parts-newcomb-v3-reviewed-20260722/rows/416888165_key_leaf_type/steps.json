@@ -1,0 +1,291 @@
+{
+  "dataset": "benchmark_10",
+  "row_id": "416888165_key_leaf_type",
+  "image": "https://static.inaturalist.org/photos/416888165/original.jpeg",
+  "photo_id": "416888165",
+  "feature": "key_leaf_type",
+  "expected_p1": "YES",
+  "expected_p2": "Leaves Entire",
+  "true_species": "Disporum lanuginosum",
+  "recorded_p1": "YES",
+  "recorded_p2": "Leaves Entire",
+  "step_0_input": {
+    "source": "https://static.inaturalist.org/photos/416888165/original.jpeg",
+    "image_size": [
+      1536,
+      2048
+    ],
+    "saved_image": "rows/416888165_key_leaf_type/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_leaf_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "leaf leaves leaflet",
+      "score": 0.377855,
+      "box": [
+        662.0,
+        738.36,
+        1178.07,
+        1393.16
+      ],
+      "area_ratio": 0.107424
+    },
+    "detections": [
+      {
+        "label": "leaves",
+        "score": 0.497095,
+        "box": [
+          5.58,
+          5.74,
+          1529.78,
+          1981.13
+        ],
+        "area_ratio": 0.957135
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.377855,
+        "box": [
+          662.0,
+          738.36,
+          1178.07,
+          1393.16
+        ],
+        "area_ratio": 0.107424
+      },
+      {
+        "label": "leaf leaflet",
+        "score": 0.342802,
+        "box": [
+          1057.94,
+          1099.74,
+          1532.54,
+          1980.43
+        ],
+        "area_ratio": 0.13287
+      },
+      {
+        "label": "leaf leaflet",
+        "score": 0.342457,
+        "box": [
+          84.99,
+          1013.93,
+          649.81,
+          1726.41
+        ],
+        "area_ratio": 0.127926
+      },
+      {
+        "label": "leaf leaflet",
+        "score": 0.330109,
+        "box": [
+          814.12,
+          201.19,
+          1248.69,
+          814.14
+        ],
+        "area_ratio": 0.084677
+      },
+      {
+        "label": "leaf leaflet",
+        "score": 0.313817,
+        "box": [
+          198.95,
+          488.02,
+          738.48,
+          1122.81
+        ],
+        "area_ratio": 0.108876
+      },
+      {
+        "label": "leaf leaf",
+        "score": 0.297226,
+        "box": [
+          2.47,
+          1.33,
+          444.75,
+          1217.69
+        ],
+        "area_ratio": 0.171016
+      },
+      {
+        "label": "leaf leaflet",
+        "score": 0.296439,
+        "box": [
+          1064.5,
+          153.5,
+          1488.53,
+          599.77
+        ],
+        "area_ratio": 0.060155
+      },
+      {
+        "label": "leaf leaflet",
+        "score": 0.281749,
+        "box": [
+          525.18,
+          -0.32,
+          885.42,
+          691.78
+        ],
+        "area_ratio": 0.079257
+      },
+      {
+        "label": "leaf leaflet",
+        "score": 0.277059,
+        "box": [
+          1381.18,
+          640.57,
+          1533.45,
+          1143.21
+        ],
+        "area_ratio": 0.02433
+      }
+    ],
+    "output_image": "rows/416888165_key_leaf_type/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "leaf leaves leaflet",
+      "score": 0.377855,
+      "box": [
+        662.0,
+        738.36,
+        1178.07,
+        1393.16
+      ],
+      "area_ratio": 0.107424
+    },
+    "output_image": "rows/416888165_key_leaf_type/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "input_box": [
+      662.0,
+      738.36,
+      1178.07,
+      1393.16
+    ],
+    "predicted_iou": 0.982781,
+    "metrics": {
+      "mask_area_pixels": 200372.5,
+      "mask_area_box_ratio": 0.592954,
+      "perimeter_pixels": 1855.388,
+      "circularity": 0.73144,
+      "solidity": 0.980735,
+      "contour_complexity": 1.367167,
+      "aspect_ratio": 0.783489,
+      "extent": 0.62049,
+      "mean_rgb": [
+        126.82,
+        152.388,
+        122.32
+      ]
+    },
+    "output_image": "rows/416888165_key_leaf_type/03_sam_edge_mask.jpg"
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Leaves Entire",
+    "ranking": [
+      {
+        "value": "Leaves Entire",
+        "score": 0.257825
+      },
+      {
+        "value": "Leaves Divided",
+        "score": 0.233242
+      },
+      {
+        "value": "Leaves Toothed or Lobed",
+        "score": 0.11767
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/139502186",
+    "reference_evidence": {
+      "Leaves Divided": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/127978485",
+          "cosine": 0.233242,
+          "weighted": 0.233242
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_divided.png",
+          "cosine": -0.041859,
+          "weighted": -0.03558
+        }
+      ],
+      "Leaves Entire": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/139502186",
+          "cosine": 0.257825,
+          "weighted": 0.257825
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_entire.png",
+          "cosine": 0.102666,
+          "weighted": 0.087266
+        }
+      ],
+      "Leaves Toothed or Lobed": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307213903",
+          "cosine": 0.11767,
+          "weighted": 0.11767
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_toothed.png",
+          "cosine": 0.017934,
+          "weighted": 0.015244
+        }
+      ]
+    },
+    "output_image": "rows/416888165_key_leaf_type/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_flower_type": "Irregular Flowers",
+      "key_plant_type": "Wildflowers - Alternate Leaves",
+      "key_leaf_type": "Leaves Entire"
+    },
+    "base_taxa": 387,
+    "candidate_count": 23,
+    "candidate_reduction": 0.940568,
+    "true_species": "Disporum lanuginosum",
+    "true_species_retained": false,
+    "candidates": [
+      "Chaenorrhinum minus",
+      "Cleistes divaricata",
+      "Cypripedium calceolus var. parviflorum",
+      "Cypripedium calceolus var. pubescens",
+      "Habenaria blephariglottis",
+      "Habenaria ciliaris",
+      "Habenaria clavellata",
+      "Habenaria cristata",
+      "Habenaria dilatata",
+      "Habenaria fimbriata",
+      "Habenaria flava",
+      "Habenaria hyperborea",
+      "Habenaria integra",
+      "Habenaria lacera",
+      "Habenaria leucophaea",
+      "Habenaria nivea",
+      "Habenaria peramoena",
+      "Habenaria psycodes",
+      "Habenaria viridis var. bracteata",
+      "Hybanthus concolor",
+      "Linaria canadensis",
+      "Polygala paucifolia",
+      "Triphora trianthophora"
+    ],
+    "output_image": "rows/416888165_key_leaf_type/05_graph_filtering.png"
+  }
+}

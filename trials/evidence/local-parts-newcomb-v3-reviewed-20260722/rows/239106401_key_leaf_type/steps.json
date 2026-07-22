@@ -1,0 +1,290 @@
+{
+  "dataset": "benchmark_10",
+  "row_id": "239106401_key_leaf_type",
+  "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/239106401/original.jpg",
+  "photo_id": "239106401",
+  "feature": "key_leaf_type",
+  "expected_p1": "NO",
+  "expected_p2": "",
+  "true_species": "Centaurea maculosa",
+  "recorded_p1": "YES",
+  "recorded_p2": "Leaves Entire",
+  "step_0_input": {
+    "source": "https://inaturalist-open-data.s3.amazonaws.com/photos/239106401/original.jpg",
+    "image_size": [
+      1536,
+      2048
+    ],
+    "saved_image": "rows/239106401_key_leaf_type/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_leaf_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "leaves leaflet",
+      "score": 0.280949,
+      "box": [
+        789.48,
+        1401.08,
+        1098.56,
+        1739.51
+      ],
+      "area_ratio": 0.033252
+    },
+    "detections": [
+      {
+        "label": "leaves",
+        "score": 0.393782,
+        "box": [
+          6.86,
+          4.52,
+          1529.97,
+          2040.64
+        ],
+        "area_ratio": 0.985855
+      },
+      {
+        "label": "leaves leaflet",
+        "score": 0.280949,
+        "box": [
+          789.48,
+          1401.08,
+          1098.56,
+          1739.51
+        ],
+        "area_ratio": 0.033252
+      },
+      {
+        "label": "leaves leaflet",
+        "score": 0.266501,
+        "box": [
+          276.04,
+          547.98,
+          799.54,
+          1020.08
+        ],
+        "area_ratio": 0.078566
+      },
+      {
+        "label": "leaf leaflet",
+        "score": 0.25963,
+        "box": [
+          905.74,
+          68.66,
+          1277.3,
+          457.19
+        ],
+        "area_ratio": 0.045891
+      },
+      {
+        "label": "leaf leaflet",
+        "score": 0.230811,
+        "box": [
+          396.48,
+          237.0,
+          721.41,
+          579.32
+        ],
+        "area_ratio": 0.035359
+      },
+      {
+        "label": "leaf leaflet",
+        "score": 0.226944,
+        "box": [
+          788.31,
+          1400.77,
+          1098.11,
+          1739.3
+        ],
+        "area_ratio": 0.03334
+      },
+      {
+        "label": "leaf leaflet",
+        "score": 0.217171,
+        "box": [
+          688.49,
+          401.65,
+          1057.27,
+          776.06
+        ],
+        "area_ratio": 0.043893
+      },
+      {
+        "label": "leaf leaflet",
+        "score": 0.215467,
+        "box": [
+          276.23,
+          547.94,
+          798.32,
+          1015.8
+        ],
+        "area_ratio": 0.077649
+      },
+      {
+        "label": "leaflet",
+        "score": 0.213109,
+        "box": [
+          688.06,
+          401.04,
+          1056.99,
+          776.78
+        ],
+        "area_ratio": 0.044065
+      },
+      {
+        "label": "leaflet",
+        "score": 0.19461,
+        "box": [
+          124.83,
+          1099.75,
+          254.25,
+          1188.6
+        ],
+        "area_ratio": 0.003655
+      }
+    ],
+    "output_image": "rows/239106401_key_leaf_type/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "leaves leaflet",
+      "score": 0.280949,
+      "box": [
+        789.48,
+        1401.08,
+        1098.56,
+        1739.51
+      ],
+      "area_ratio": 0.033252
+    },
+    "output_image": "rows/239106401_key_leaf_type/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "input_box": [
+      789.48,
+      1401.08,
+      1098.56,
+      1739.51
+    ],
+    "predicted_iou": 0.926353,
+    "metrics": {
+      "mask_area_pixels": 48335.0,
+      "mask_area_box_ratio": 0.462085,
+      "perimeter_pixels": 1493.45,
+      "circularity": 0.272327,
+      "solidity": 0.722437,
+      "contour_complexity": 3.67206,
+      "aspect_ratio": 0.936102,
+      "extent": 0.527048,
+      "mean_rgb": [
+        193.172,
+        158.15,
+        115.131
+      ]
+    },
+    "output_image": "rows/239106401_key_leaf_type/03_sam_edge_mask.jpg"
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Leaves Entire",
+    "ranking": [
+      {
+        "value": "Leaves Entire",
+        "score": 0.095475
+      },
+      {
+        "value": "Leaves Divided",
+        "score": 0.073895
+      },
+      {
+        "value": "Leaves Toothed or Lobed",
+        "score": 0.06785
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/139502186",
+    "reference_evidence": {
+      "Leaves Divided": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/127978485",
+          "cosine": 0.058701,
+          "weighted": 0.058701
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_divided.png",
+          "cosine": 0.086935,
+          "weighted": 0.073895
+        }
+      ],
+      "Leaves Entire": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/139502186",
+          "cosine": 0.095475,
+          "weighted": 0.095475
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_entire.png",
+          "cosine": 0.037385,
+          "weighted": 0.031777
+        }
+      ],
+      "Leaves Toothed or Lobed": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307213903",
+          "cosine": -0.014321,
+          "weighted": -0.014321
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_toothed.png",
+          "cosine": 0.079824,
+          "weighted": 0.06785
+        }
+      ]
+    },
+    "output_image": "rows/239106401_key_leaf_type/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_flower_type": "Parts Indistinguishable",
+      "key_leaf_type": "Leaves Entire"
+    },
+    "base_taxa": 387,
+    "candidate_count": 23,
+    "candidate_reduction": 0.940568,
+    "true_species": "Centaurea maculosa",
+    "true_species_retained": false,
+    "candidates": [
+      "Acnida cannabina",
+      "Amaranthus graecizans",
+      "Antennaria canadensis",
+      "Antennaria neodioica",
+      "Antennaria parlinii",
+      "Atriplex arenaria",
+      "Atriplex patula",
+      "Cacalia tuberosa",
+      "Eupatorium hyssopifolium",
+      "Euphorbia esula",
+      "Euphorbia maculata",
+      "Gnaphalium macounii",
+      "Gnaphalium obtusifolium",
+      "Lechea villosa",
+      "Liatris borealis",
+      "Liatris graminifolia",
+      "Polygonum arifolium",
+      "Polygonum sagittatum",
+      "Rumex maritimus",
+      "Rumex orbiculatus",
+      "Salsola kali",
+      "Solidago sempervirens",
+      "Typha glauca"
+    ],
+    "output_image": "rows/239106401_key_leaf_type/05_graph_filtering.png"
+  }
+}

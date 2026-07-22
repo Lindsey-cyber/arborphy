@@ -1,0 +1,350 @@
+{
+  "dataset": "benchmark_10",
+  "row_id": "589206756_key_leaf_type",
+  "image": "https://static.inaturalist.org/photos/589206756/original.jpg",
+  "photo_id": "589206756",
+  "feature": "key_leaf_type",
+  "expected_p1": "YES",
+  "expected_p2": "Leaves Entire",
+  "true_species": "Polygonum pensylvanicum",
+  "recorded_p1": "YES",
+  "recorded_p2": "Leaves Entire",
+  "step_0_input": {
+    "source": "https://static.inaturalist.org/photos/589206756/original.jpg",
+    "image_size": [
+      1542,
+      2048
+    ],
+    "saved_image": "rows/589206756_key_leaf_type/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_leaf_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "leaf leaves leaf",
+      "score": 0.483403,
+      "box": [
+        872.47,
+        891.53,
+        1252.16,
+        1014.87
+      ],
+      "area_ratio": 0.014829
+    },
+    "detections": [
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.483403,
+        "box": [
+          872.47,
+          891.53,
+          1252.16,
+          1014.87
+        ],
+        "area_ratio": 0.014829
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.445237,
+        "box": [
+          730.44,
+          256.81,
+          1023.89,
+          363.08
+        ],
+        "area_ratio": 0.009875
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.399447,
+        "box": [
+          603.07,
+          1181.28,
+          877.12,
+          1522.32
+        ],
+        "area_ratio": 0.029596
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.388694,
+        "box": [
+          1228.07,
+          845.31,
+          1532.62,
+          1011.9
+        ],
+        "area_ratio": 0.016066
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.368862,
+        "box": [
+          1178.21,
+          1066.18,
+          1341.8,
+          1248.43
+        ],
+        "area_ratio": 0.009441
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.367657,
+        "box": [
+          872.76,
+          891.64,
+          1251.51,
+          1014.82
+        ],
+        "area_ratio": 0.014774
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.356722,
+        "box": [
+          570.18,
+          1096.08,
+          733.07,
+          1231.26
+        ],
+        "area_ratio": 0.006973
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.343508,
+        "box": [
+          1248.71,
+          135.83,
+          1539.62,
+          253.94
+        ],
+        "area_ratio": 0.01088
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.342588,
+        "box": [
+          730.68,
+          256.88,
+          1024.2,
+          363.22
+        ],
+        "area_ratio": 0.009884
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.323982,
+        "box": [
+          600.5,
+          695.01,
+          814.14,
+          824.48
+        ],
+        "area_ratio": 0.008759
+      }
+    ],
+    "output_image": "rows/589206756_key_leaf_type/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "leaf leaves leaf",
+      "score": 0.483403,
+      "box": [
+        872.47,
+        891.53,
+        1252.16,
+        1014.87
+      ],
+      "area_ratio": 0.014829
+    },
+    "output_image": "rows/589206756_key_leaf_type/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "input_box": [
+      872.47,
+      891.53,
+      1252.16,
+      1014.87
+    ],
+    "predicted_iou": 0.972413,
+    "metrics": {
+      "mask_area_pixels": 24868.5,
+      "mask_area_box_ratio": 0.531027,
+      "perimeter_pixels": 875.512,
+      "circularity": 0.407695,
+      "solidity": 0.899729,
+      "contour_complexity": 2.452813,
+      "aspect_ratio": 3.205128,
+      "extent": 0.566803,
+      "mean_rgb": [
+        97.361,
+        142.65,
+        127.234
+      ]
+    },
+    "output_image": "rows/589206756_key_leaf_type/03_sam_edge_mask.jpg"
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Leaves Entire",
+    "ranking": [
+      {
+        "value": "Leaves Entire",
+        "score": 0.396048
+      },
+      {
+        "value": "Leaves Divided",
+        "score": 0.21495
+      },
+      {
+        "value": "Leaves Toothed or Lobed",
+        "score": 0.214853
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/139502186",
+    "reference_evidence": {
+      "Leaves Divided": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/127978485",
+          "cosine": 0.21495,
+          "weighted": 0.21495
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_divided.png",
+          "cosine": 0.139963,
+          "weighted": 0.118968
+        }
+      ],
+      "Leaves Entire": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/139502186",
+          "cosine": 0.396048,
+          "weighted": 0.396048
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_entire.png",
+          "cosine": 0.256571,
+          "weighted": 0.218085
+        }
+      ],
+      "Leaves Toothed or Lobed": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307213903",
+          "cosine": 0.214853,
+          "weighted": 0.214853
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_toothed.png",
+          "cosine": 0.105962,
+          "weighted": 0.090068
+        }
+      ]
+    },
+    "output_image": "rows/589206756_key_leaf_type/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_plant_type": "Wildflowers - Alternate Leaves",
+      "key_leaf_type": "Leaves Entire"
+    },
+    "base_taxa": 387,
+    "candidate_count": 83,
+    "candidate_reduction": 0.78553,
+    "true_species": "Polygonum pensylvanicum",
+    "true_species_retained": true,
+    "candidates": [
+      "Acnida cannabina",
+      "Amaranthus graecizans",
+      "Antennaria canadensis",
+      "Antennaria neodioica",
+      "Antennaria parlinii",
+      "Asclepias tuberosa",
+      "Atriplex arenaria",
+      "Atriplex patula",
+      "Belamcanda chinensis",
+      "Cacalia tuberosa",
+      "Campanula rotundifolia",
+      "Cassiope hypnoides",
+      "Chaenorrhinum minus",
+      "Chrysopsis falcata",
+      "Cleistes divaricata",
+      "Convolvulus spithamaeus",
+      "Cynoglossum virginianum",
+      "Cypripedium calceolus var. parviflorum",
+      "Cypripedium calceolus var. pubescens",
+      "Disporum lanuginosum",
+      "Epilobium angustifolium",
+      "Euphorbia esula",
+      "Fagopyrum sagittatum",
+      "Gnaphalium macounii",
+      "Gnaphalium obtusifolium",
+      "Habenaria blephariglottis",
+      "Habenaria ciliaris",
+      "Habenaria clavellata",
+      "Habenaria cristata",
+      "Habenaria dilatata",
+      "Habenaria fimbriata",
+      "Habenaria flava",
+      "Habenaria hyperborea",
+      "Habenaria integra",
+      "Habenaria lacera",
+      "Habenaria leucophaea",
+      "Habenaria nivea",
+      "Habenaria peramoena",
+      "Habenaria psycodes",
+      "Habenaria viridis var. bracteata",
+      "Helenium tenuifolium",
+      "Helianthemum canadense",
+      "Hybanthus concolor",
+      "Lappula echinata",
+      "Lechea villosa",
+      "Liatris borealis",
+      "Liatris graminifolia",
+      "Lilium tigrinum",
+      "Linaria canadensis",
+      "Lithospermum arvense",
+      "Lophiola americana",
+      "Lycopsis arvensis",
+      "Marshallia grandiflora",
+      "Onosmodium virginianum",
+      "Polygala paucifolia",
+      "Polygonatum biflorum",
+      "Polygonum amphibium",
+      "Polygonum arifolium",
+      "Polygonum aviculare",
+      "Polygonum careyi",
+      "Polygonum cuspidatum",
+      "Polygonum hydropiper",
+      "Polygonum hydropiperoides",
+      "Polygonum lapathifolium",
+      "Polygonum orientale",
+      "Polygonum pensylvanicum",
+      "Polygonum persicaria",
+      "Polygonum sagittatum",
+      "Polygonum viviparum",
+      "Rumex maritimus",
+      "Rumex orbiculatus",
+      "Salsola kali",
+      "Smilacina racemosa",
+      "Smilacina stellata",
+      "Smilacina trifolia",
+      "Solidago sempervirens",
+      "Streptopus amplexifolius",
+      "Streptopus roseus",
+      "Tofieldia glutinosa",
+      "Tovara virginiana",
+      "Triphora trianthophora",
+      "Typha glauca",
+      "Uvularia pudica"
+    ],
+    "output_image": "rows/589206756_key_leaf_type/05_graph_filtering.png"
+  }
+}

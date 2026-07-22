@@ -1,0 +1,378 @@
+{
+  "dataset": "calibration",
+  "row_id": "key_plant_type_wildflowers---opposite-or-whorled-leaves",
+  "image": "https://www.inaturalist.org/photos/421678053",
+  "photo_id": "421678053",
+  "feature": "key_plant_type",
+  "expected_p1": "YES",
+  "expected_p2": "Wildflowers - Opposite or Whorled Leaves",
+  "true_species": "",
+  "recorded_p1": "YES",
+  "recorded_p2": "Wildflowers - Opposite or Whorled Leaves",
+  "step_0_input": {
+    "source": "https://www.inaturalist.org/photos/421678053",
+    "image_size": [
+      500,
+      281
+    ],
+    "saved_image": "rows/key_plant_type_wildflowers---opposite-or-whorled-leaves/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_plant_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "plant shrub vine",
+      "score": 0.48531,
+      "box": [
+        3.66,
+        1.42,
+        497.48,
+        279.43
+      ],
+      "area_ratio": 0.977097
+    },
+    "detections": [
+      {
+        "label": "plant shrub vine",
+        "score": 0.48531,
+        "box": [
+          3.66,
+          1.42,
+          497.48,
+          279.43
+        ],
+        "area_ratio": 0.977097
+      },
+      {
+        "label": "plant vine",
+        "score": 0.306061,
+        "box": [
+          4.12,
+          1.68,
+          496.73,
+          279.51
+        ],
+        "area_ratio": 0.974135
+      },
+      {
+        "label": "stem branch vine",
+        "score": 0.296559,
+        "box": [
+          5.66,
+          33.08,
+          364.37,
+          278.14
+        ],
+        "area_ratio": 0.625672
+      },
+      {
+        "label": "stem branch",
+        "score": 0.295821,
+        "box": [
+          367.98,
+          144.28,
+          499.15,
+          201.03
+        ],
+        "area_ratio": 0.052986
+      },
+      {
+        "label": "shrub",
+        "score": 0.253263,
+        "box": [
+          338.58,
+          2.02,
+          498.45,
+          278.91
+        ],
+        "area_ratio": 0.315061
+      },
+      {
+        "label": "stem branch",
+        "score": 0.211658,
+        "box": [
+          6.52,
+          37.24,
+          321.25,
+          278.5
+        ],
+        "area_ratio": 0.540422
+      },
+      {
+        "label": "branch",
+        "score": 0.193783,
+        "box": [
+          5.31,
+          2.72,
+          373.4,
+          278.83
+        ],
+        "area_ratio": 0.723352
+      },
+      {
+        "label": "branch",
+        "score": 0.181242,
+        "box": [
+          91.31,
+          33.96,
+          363.99,
+          241.24
+        ],
+        "area_ratio": 0.402268
+      },
+      {
+        "label": "vine",
+        "score": 0.178744,
+        "box": [
+          4.78,
+          1.96,
+          376.12,
+          279.24
+        ],
+        "area_ratio": 0.732822
+      },
+      {
+        "label": "shrub",
+        "score": 0.174885,
+        "box": [
+          368.88,
+          4.62,
+          498.54,
+          277.0
+        ],
+        "area_ratio": 0.251367
+      }
+    ],
+    "output_image": "rows/key_plant_type_wildflowers---opposite-or-whorled-leaves/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "plant shrub vine",
+      "score": 0.48531,
+      "box": [
+        3.66,
+        1.42,
+        497.48,
+        279.43
+      ],
+      "area_ratio": 0.977097
+    },
+    "output_image": "rows/key_plant_type_wildflowers---opposite-or-whorled-leaves/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "status": "not_applicable",
+    "reason": "whole-image plant context",
+    "output_image": ""
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Wildflowers - Opposite or Whorled Leaves",
+    "ranking": [
+      {
+        "value": "Wildflowers - Opposite or Whorled Leaves",
+        "score": 1.0
+      },
+      {
+        "value": "Vines",
+        "score": 0.301251
+      },
+      {
+        "value": "Wildflowers - Basal Leaves Only",
+        "score": 0.24918
+      },
+      {
+        "value": "Shrubs",
+        "score": 0.15999
+      },
+      {
+        "value": "Wildflowers - Alternate Leaves",
+        "score": 0.131879
+      },
+      {
+        "value": "Wildflowers - No Apparent Leaves",
+        "score": 0.052197
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/421678053",
+    "reference_evidence": {
+      "Wildflowers - Alternate Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307163812",
+          "cosine": 0.131879,
+          "weighted": 0.131879
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/alternate_leaves.png",
+          "cosine": 0.109679,
+          "weighted": 0.093228
+        }
+      ],
+      "Wildflowers - No Apparent Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/50286623",
+          "cosine": 0.052197,
+          "weighted": 0.052197
+        }
+      ],
+      "Wildflowers - Opposite or Whorled Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/421678053",
+          "cosine": 1.0,
+          "weighted": 1.0
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/opposite_leaves.png",
+          "cosine": 0.136016,
+          "weighted": 0.115614
+        }
+      ],
+      "Wildflowers - Basal Leaves Only": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/396753070",
+          "cosine": 0.24918,
+          "weighted": 0.24918
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/basal_leaves.png",
+          "cosine": 0.098628,
+          "weighted": 0.083834
+        }
+      ],
+      "Vines": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/116667850",
+          "cosine": 0.301251,
+          "weighted": 0.301251
+        }
+      ],
+      "Shrubs": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/392514942",
+          "cosine": 0.15999,
+          "weighted": 0.15999
+        }
+      ]
+    },
+    "output_image": "rows/key_plant_type_wildflowers---opposite-or-whorled-leaves/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_plant_type": "Wildflowers - Opposite or Whorled Leaves"
+    },
+    "base_taxa": 387,
+    "candidate_count": 96,
+    "candidate_reduction": 0.751938,
+    "true_species": "",
+    "true_species_retained": null,
+    "candidates": [
+      "Agastache scrophulariaefolia",
+      "Anagallis arvensis",
+      "Anemone canadensis",
+      "Anemone lancifolia",
+      "Anemone quinquefolia",
+      "Anemone riparia",
+      "Anemonella thalictroides",
+      "Apocynum cannabinum",
+      "Apocynum medium",
+      "Arenaria caroliniana",
+      "Arenaria groenlandica",
+      "Arenaria lateriflora",
+      "Arenaria peploides",
+      "Arenaria serpyllifolia",
+      "Arenaria stricta",
+      "Arnica mollis",
+      "Asarum canadense",
+      "Ascyrum hypericoides",
+      "Ascyrum stans",
+      "Bidens coronata",
+      "Centaurium umbellatum",
+      "Cerastium arvense",
+      "Cerastium vulgatum",
+      "Cuphea petiolata",
+      "Dentaria diphylla",
+      "Dentaria heterophylla",
+      "Dentaria laciniata",
+      "Dentaria multifida",
+      "Desmodium glutinosum",
+      "Diodia teres",
+      "Dipsacus sylvestris",
+      "Epilobium glandulosum",
+      "Epilobium strictum",
+      "Eupatorium album",
+      "Eupatorium aromaticum",
+      "Eupatorium coelestinum",
+      "Eupatorium dubium",
+      "Eupatorium fistulosum",
+      "Eupatorium hyssopifolium",
+      "Eupatorium maculatum",
+      "Eupatorium pubescens",
+      "Eupatorium purpureum",
+      "Eupatorium rugosum",
+      "Euphorbia maculata",
+      "Euphrasia americana",
+      "Galeopsis tetrahit",
+      "Galinsoga ciliata",
+      "Galium aparine",
+      "Gentiana crinita",
+      "Gentiana procera",
+      "Gentiana puberula",
+      "Gentiana quinquefolia",
+      "Gerardia flava",
+      "Gerardia laevigata",
+      "Gerardia maritima",
+      "Gerardia paupercula",
+      "Gerardia pedicularia",
+      "Gerardia tenuifolia",
+      "Gerardia virginica",
+      "Glaux maritima",
+      "Gratiola aurea",
+      "Helianthus laetiflorus",
+      "Houstonia longifolia",
+      "Hypericum pyramidatum",
+      "Hypericum virginicum",
+      "Isanthus brachiatus",
+      "Listera australis",
+      "Listera convallarioides",
+      "Listera cordata",
+      "Lychnis alba",
+      "Lychnis chalcedonica",
+      "Lychnis dioica",
+      "Lychnis flos-cuculi",
+      "Megalodonta beckii",
+      "Mentha arvensis",
+      "Mentha piperita",
+      "Monarda fistulosa",
+      "Monarda media",
+      "Oxalis europaea",
+      "Polygala cruciata",
+      "Polygala verticillata",
+      "Polymnia uvedalia",
+      "Pycnanthemum pilosum",
+      "Rhinanthus crista-galli",
+      "Satureja vulgaris",
+      "Scutellaria epilobiifolia",
+      "Silene cucubalus",
+      "Silphium trifoliatum",
+      "Stachys hyssopifolia",
+      "Stachys tenuifolia",
+      "Stellaria pubera",
+      "Swertia carolinensis",
+      "Thymus serpyllum",
+      "Trientalis borealis",
+      "Urtica procera",
+      "Valerianella olitoria"
+    ],
+    "output_image": "rows/key_plant_type_wildflowers---opposite-or-whorled-leaves/05_graph_filtering.png"
+  }
+}

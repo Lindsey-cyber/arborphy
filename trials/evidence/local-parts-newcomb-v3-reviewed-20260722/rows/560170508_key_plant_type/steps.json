@@ -1,0 +1,287 @@
+{
+  "dataset": "benchmark_10",
+  "row_id": "560170508_key_plant_type",
+  "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/560170508/original.jpg",
+  "photo_id": "560170508",
+  "feature": "key_plant_type",
+  "expected_p1": "YES",
+  "expected_p2": "",
+  "true_species": "Rumex orbiculatus",
+  "recorded_p1": "YES",
+  "recorded_p2": "Wildflowers - Basal Leaves Only",
+  "step_0_input": {
+    "source": "https://inaturalist-open-data.s3.amazonaws.com/photos/560170508/original.jpg",
+    "image_size": [
+      1536,
+      2048
+    ],
+    "saved_image": "rows/560170508_key_plant_type/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_plant_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "branch vine",
+      "score": 0.361233,
+      "box": [
+        468.27,
+        132.52,
+        996.99,
+        2039.82
+      ],
+      "area_ratio": 0.32057
+    },
+    "detections": [
+      {
+        "label": "branch vine",
+        "score": 0.361233,
+        "box": [
+          468.27,
+          132.52,
+          996.99,
+          2039.82
+        ],
+        "area_ratio": 0.32057
+      },
+      {
+        "label": "branch vine",
+        "score": 0.306607,
+        "box": [
+          384.9,
+          127.17,
+          1079.42,
+          2041.44
+        ],
+        "area_ratio": 0.422637
+      },
+      {
+        "label": "plant stem shrub",
+        "score": 0.26751,
+        "box": [
+          992.34,
+          1815.96,
+          1074.44,
+          2043.67
+        ],
+        "area_ratio": 0.005943
+      },
+      {
+        "label": "plant stem branch shrub vine",
+        "score": 0.264032,
+        "box": [
+          387.15,
+          1544.17,
+          498.53,
+          2042.58
+        ],
+        "area_ratio": 0.017647
+      },
+      {
+        "label": "stem",
+        "score": 0.252218,
+        "box": [
+          832.77,
+          1768.27,
+          996.2,
+          1897.63
+        ],
+        "area_ratio": 0.00672
+      },
+      {
+        "label": "stem",
+        "score": 0.189402,
+        "box": [
+          556.32,
+          1531.09,
+          724.96,
+          1662.76
+        ],
+        "area_ratio": 0.007059
+      },
+      {
+        "label": "shrub",
+        "score": 0.185362,
+        "box": [
+          4.26,
+          205.03,
+          1531.83,
+          545.75
+        ],
+        "area_ratio": 0.165451
+      },
+      {
+        "label": "branch",
+        "score": 0.15126,
+        "box": [
+          464.96,
+          131.24,
+          989.86,
+          1206.96
+        ],
+        "area_ratio": 0.179496
+      },
+      {
+        "label": "",
+        "score": 0.149572,
+        "box": [
+          466.96,
+          137.92,
+          989.98,
+          1570.18
+        ],
+        "area_ratio": 0.238134
+      },
+      {
+        "label": "",
+        "score": 0.148429,
+        "box": [
+          557.42,
+          1534.62,
+          689.5,
+          1661.97
+        ],
+        "area_ratio": 0.005347
+      }
+    ],
+    "output_image": "rows/560170508_key_plant_type/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "branch vine",
+      "score": 0.361233,
+      "box": [
+        468.27,
+        132.52,
+        996.99,
+        2039.82
+      ],
+      "area_ratio": 0.32057
+    },
+    "output_image": "rows/560170508_key_plant_type/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "status": "not_applicable",
+    "reason": "whole-image plant context",
+    "output_image": ""
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Wildflowers - Basal Leaves Only",
+    "ranking": [
+      {
+        "value": "Wildflowers - Basal Leaves Only",
+        "score": 0.382405
+      },
+      {
+        "value": "Wildflowers - No Apparent Leaves",
+        "score": 0.24811
+      },
+      {
+        "value": "Wildflowers - Opposite or Whorled Leaves",
+        "score": 0.177419
+      },
+      {
+        "value": "Shrubs",
+        "score": 0.08834
+      },
+      {
+        "value": "Wildflowers - Alternate Leaves",
+        "score": 0.081861
+      },
+      {
+        "value": "Vines",
+        "score": -0.008462
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/396753070",
+    "reference_evidence": {
+      "Shrubs": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/392514942",
+          "cosine": 0.08834,
+          "weighted": 0.08834
+        }
+      ],
+      "Vines": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/116667850",
+          "cosine": -0.008462,
+          "weighted": -0.008462
+        }
+      ],
+      "Wildflowers - Alternate Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307163812",
+          "cosine": 0.081861,
+          "weighted": 0.081861
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/alternate_leaves.png",
+          "cosine": 0.068841,
+          "weighted": 0.058515
+        }
+      ],
+      "Wildflowers - Basal Leaves Only": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/396753070",
+          "cosine": 0.382405,
+          "weighted": 0.382405
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/basal_leaves.png",
+          "cosine": 0.226845,
+          "weighted": 0.192818
+        }
+      ],
+      "Wildflowers - No Apparent Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/50286623",
+          "cosine": 0.24811,
+          "weighted": 0.24811
+        }
+      ],
+      "Wildflowers - Opposite or Whorled Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/421678053",
+          "cosine": 0.131028,
+          "weighted": 0.131028
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/opposite_leaves.png",
+          "cosine": 0.208728,
+          "weighted": 0.177419
+        }
+      ]
+    },
+    "output_image": "rows/560170508_key_plant_type/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_flower_type": "5 Regular Parts",
+      "key_plant_type": "Wildflowers - Basal Leaves Only",
+      "key_leaf_type": "Leaves Divided"
+    },
+    "base_taxa": 387,
+    "candidate_count": 3,
+    "candidate_reduction": 0.992248,
+    "true_species": "Rumex orbiculatus",
+    "true_species_retained": false,
+    "candidates": [
+      "Coptis groenlandica",
+      "Dalibarda repens",
+      "Potentilla anserina"
+    ],
+    "output_image": "rows/560170508_key_plant_type/05_graph_filtering.png"
+  }
+}

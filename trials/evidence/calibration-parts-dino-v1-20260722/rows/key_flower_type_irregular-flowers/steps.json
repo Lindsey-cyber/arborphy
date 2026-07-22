@@ -1,0 +1,415 @@
+{
+  "dataset": "calibration",
+  "row_id": "key_flower_type_irregular-flowers",
+  "image": "https://www.inaturalist.org/photos/196377999",
+  "photo_id": "196377999",
+  "feature": "key_flower_type",
+  "expected_p1": "YES",
+  "expected_p2": "Irregular Flowers",
+  "true_species": "",
+  "recorded_p1": "YES",
+  "recorded_p2": "Irregular Flowers",
+  "step_0_input": {
+    "source": "https://www.inaturalist.org/photos/196377999",
+    "image_size": [
+      335,
+      500
+    ],
+    "saved_image": "rows/key_flower_type_irregular-flowers/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_flower_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "flower head blossom",
+      "score": 0.539248,
+      "box": [
+        87.81,
+        128.76,
+        246.3,
+        330.61
+      ],
+      "area_ratio": 0.19099
+    },
+    "detections": [
+      {
+        "label": "flower head blossom",
+        "score": 0.539248,
+        "box": [
+          87.81,
+          128.76,
+          246.3,
+          330.61
+        ],
+        "area_ratio": 0.19099
+      },
+      {
+        "label": "flower head blossom petals",
+        "score": 0.430075,
+        "box": [
+          258.0,
+          352.55,
+          334.31,
+          412.65
+        ],
+        "area_ratio": 0.027383
+      },
+      {
+        "label": "flower",
+        "score": 0.41014,
+        "box": [
+          1.32,
+          128.35,
+          333.65,
+          414.33
+        ],
+        "area_ratio": 0.567403
+      },
+      {
+        "label": "flower",
+        "score": 0.361482,
+        "box": [
+          1.23,
+          128.41,
+          247.62,
+          345.8
+        ],
+        "area_ratio": 0.31978
+      },
+      {
+        "label": "flower",
+        "score": 0.280925,
+        "box": [
+          87.56,
+          128.8,
+          246.48,
+          330.32
+        ],
+        "area_ratio": 0.191209
+      },
+      {
+        "label": "flower head petals",
+        "score": 0.260937,
+        "box": [
+          0.43,
+          303.02,
+          51.97,
+          345.29
+        ],
+        "area_ratio": 0.013004
+      },
+      {
+        "label": "flower flower head blossom petals",
+        "score": 0.242894,
+        "box": [
+          87.59,
+          128.87,
+          246.32,
+          330.47
+        ],
+        "area_ratio": 0.191045
+      },
+      {
+        "label": "flower head petals",
+        "score": 0.237592,
+        "box": [
+          88.47,
+          128.94,
+          245.83,
+          255.52
+        ],
+        "area_ratio": 0.118918
+      },
+      {
+        "label": "petals",
+        "score": 0.209768,
+        "box": [
+          157.3,
+          233.46,
+          209.94,
+          296.81
+        ],
+        "area_ratio": 0.019904
+      },
+      {
+        "label": "petals",
+        "score": 0.204622,
+        "box": [
+          147.98,
+          263.8,
+          191.54,
+          329.77
+        ],
+        "area_ratio": 0.017161
+      }
+    ],
+    "output_image": "rows/key_flower_type_irregular-flowers/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "flower head blossom",
+      "score": 0.539248,
+      "box": [
+        87.81,
+        128.76,
+        246.3,
+        330.61
+      ],
+      "area_ratio": 0.19099
+    },
+    "output_image": "rows/key_flower_type_irregular-flowers/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "input_box": [
+      87.81,
+      128.76,
+      246.3,
+      330.61
+    ],
+    "predicted_iou": 0.987375,
+    "metrics": {
+      "mask_area_pixels": 18030.5,
+      "mask_area_box_ratio": 0.563608,
+      "perimeter_pixels": 628.884,
+      "circularity": 0.572896,
+      "solidity": 0.887459,
+      "contour_complexity": 1.745516,
+      "aspect_ratio": 0.791878,
+      "extent": 0.586701,
+      "mean_rgb": [
+        209.798,
+        177.601,
+        207.603
+      ]
+    },
+    "output_image": "rows/key_flower_type_irregular-flowers/03_sam_edge_mask.jpg"
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Irregular Flowers",
+    "ranking": [
+      {
+        "value": "Irregular Flowers",
+        "score": 0.938961
+      },
+      {
+        "value": "5 Regular Parts",
+        "score": 0.213772
+      },
+      {
+        "value": "4 Regular Parts",
+        "score": 0.192453
+      },
+      {
+        "value": "6 Regular Parts",
+        "score": 0.081195
+      },
+      {
+        "value": "3 Regular Parts",
+        "score": 0.076501
+      },
+      {
+        "value": "Parts Indistinguishable",
+        "score": -0.027928
+      },
+      {
+        "value": "7 or More Regular Parts",
+        "score": -0.049897
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/196377999",
+    "reference_evidence": {
+      "3 Regular Parts": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/57834500",
+          "cosine": 0.076501,
+          "weighted": 0.076501
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/regular_flowers.png",
+          "cosine": -0.058703,
+          "weighted": -0.049897
+        }
+      ],
+      "4 Regular Parts": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/310472154",
+          "cosine": 0.192453,
+          "weighted": 0.192453
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/regular_flowers.png",
+          "cosine": -0.058703,
+          "weighted": -0.049897
+        }
+      ],
+      "5 Regular Parts": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/424459597",
+          "cosine": 0.213772,
+          "weighted": 0.213772
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/regular_flowers.png",
+          "cosine": -0.058703,
+          "weighted": -0.049897
+        }
+      ],
+      "6 Regular Parts": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/80342041",
+          "cosine": 0.081195,
+          "weighted": 0.081195
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/regular_flowers.png",
+          "cosine": -0.058703,
+          "weighted": -0.049897
+        }
+      ],
+      "7 or More Regular Parts": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/222876592",
+          "cosine": -0.070353,
+          "weighted": -0.070353
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/regular_flowers.png",
+          "cosine": -0.058703,
+          "weighted": -0.049897
+        }
+      ],
+      "Parts Indistinguishable": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/52243420",
+          "cosine": -0.027928,
+          "weighted": -0.027928
+        }
+      ],
+      "Irregular Flowers": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/196377999",
+          "cosine": 0.938961,
+          "weighted": 0.938961
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/irregular_flowers.png",
+          "cosine": 0.083101,
+          "weighted": 0.070636
+        }
+      ]
+    },
+    "output_image": "rows/key_flower_type_irregular-flowers/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_flower_type": "Irregular Flowers"
+    },
+    "base_taxa": 387,
+    "candidate_count": 83,
+    "candidate_reduction": 0.78553,
+    "true_species": "",
+    "true_species_retained": null,
+    "candidates": [
+      " Baptisa tinctoria",
+      "Agastache scrophulariaefolia",
+      "Amphicarpa bracteata",
+      "Arisaema atrorubens",
+      "Arisaema triphyllum",
+      "Baptisia alba",
+      "Calopogon pulchellus",
+      "Chaenorrhinum minus",
+      "Cleistes divaricata",
+      "Coronilla varia",
+      "Corydalis sempervirens",
+      "Cuphea petiolata",
+      "Cypripedium calceolus var. parviflorum",
+      "Cypripedium calceolus var. pubescens",
+      "Desmodium glutinosum",
+      "Desmodium nudiflorum",
+      "Euphrasia americana",
+      "Galactia regularis",
+      "Galeopsis tetrahit",
+      "Gratiola aurea",
+      "Habenaria blephariglottis",
+      "Habenaria ciliaris",
+      "Habenaria clavellata",
+      "Habenaria cristata",
+      "Habenaria dilatata",
+      "Habenaria fimbriata",
+      "Habenaria flava",
+      "Habenaria hookeri",
+      "Habenaria hyperborea",
+      "Habenaria integra",
+      "Habenaria lacera",
+      "Habenaria leucophaea",
+      "Habenaria macrophylla",
+      "Habenaria nivea",
+      "Habenaria obtusata",
+      "Habenaria peramoena",
+      "Habenaria psycodes",
+      "Habenaria viridis var. bracteata",
+      "Hybanthus concolor",
+      "Lathyrus japonicus",
+      "Lespedeza intermedia",
+      "Lespedeza violacea",
+      "Linaria canadensis",
+      "Liparis lilifolia",
+      "Listera australis",
+      "Listera convallarioides",
+      "Listera cordata",
+      "Melilotus alba",
+      "Mentha arvensis",
+      "Mentha piperita",
+      "Monarda fistulosa",
+      "Monarda media",
+      "Orchis rotundifolia",
+      "Orchis spectabilis",
+      "Polygala cruciata",
+      "Polygala paucifolia",
+      "Polygala verticillata",
+      "Pycnanthemum pilosum",
+      "Rhinanthus crista-galli",
+      "Satureja vulgaris",
+      "Scutellaria epilobiifolia",
+      "Spiranthes cernua",
+      "Spiranthes gracilis",
+      "Stachys hyssopifolia",
+      "Stachys tenuifolia",
+      "Thymus serpyllum",
+      "Trifolium agrarium",
+      "Trifolium procumbens",
+      "Triphora trianthophora",
+      "Utricularia gibba",
+      "Utricularia inflata",
+      "Utricularia vulgaris",
+      "Vicia angustifolia",
+      "Vicia sativa",
+      "Vicia villosa",
+      "Viola conspersa",
+      "Viola kitaibeliana",
+      "Viola pallens",
+      "Viola palmata",
+      "Viola papilionacea",
+      "Viola pensylvanica",
+      "Viola sororia",
+      "Viola triloba"
+    ],
+    "output_image": "rows/key_flower_type_irregular-flowers/05_graph_filtering.png"
+  }
+}

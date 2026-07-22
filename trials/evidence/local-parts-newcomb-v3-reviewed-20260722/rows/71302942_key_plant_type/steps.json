@@ -1,0 +1,343 @@
+{
+  "dataset": "benchmark_10",
+  "row_id": "71302942_key_plant_type",
+  "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/71302942/original.jpeg",
+  "photo_id": "71302942",
+  "feature": "key_plant_type",
+  "expected_p1": "YES",
+  "expected_p2": "Wildflowers - Alternate Leaves",
+  "true_species": "Specularia perfoliata",
+  "recorded_p1": "YES",
+  "recorded_p2": "Wildflowers - Alternate Leaves",
+  "step_0_input": {
+    "source": "https://inaturalist-open-data.s3.amazonaws.com/photos/71302942/original.jpeg",
+    "image_size": [
+      2048,
+      1536
+    ],
+    "saved_image": "rows/71302942_key_plant_type/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_plant_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "plant shrub",
+      "score": 0.471616,
+      "box": [
+        16.15,
+        6.01,
+        2032.49,
+        1529.25
+      ],
+      "area_ratio": 0.976361
+    },
+    "detections": [
+      {
+        "label": "plant shrub",
+        "score": 0.471616,
+        "box": [
+          16.15,
+          6.01,
+          2032.49,
+          1529.25
+        ],
+        "area_ratio": 0.976361
+      },
+      {
+        "label": "stem branch vine",
+        "score": 0.349086,
+        "box": [
+          489.16,
+          379.03,
+          1439.83,
+          1239.43
+        ],
+        "area_ratio": 0.260024
+      },
+      {
+        "label": "stem branch shrub vine",
+        "score": 0.344477,
+        "box": [
+          1333.53,
+          7.06,
+          2008.16,
+          1525.17
+        ],
+        "area_ratio": 0.325574
+      },
+      {
+        "label": "stem branch shrub",
+        "score": 0.238664,
+        "box": [
+          1334.97,
+          4.56,
+          2008.25,
+          1525.59
+        ],
+        "area_ratio": 0.325547
+      },
+      {
+        "label": "branch vine",
+        "score": 0.237318,
+        "box": [
+          485.12,
+          378.04,
+          1440.08,
+          1240.63
+        ],
+        "area_ratio": 0.261859
+      },
+      {
+        "label": "vine",
+        "score": 0.194612,
+        "box": [
+          14.59,
+          6.95,
+          2031.49,
+          1528.94
+        ],
+        "area_ratio": 0.975831
+      },
+      {
+        "label": "stem",
+        "score": 0.174813,
+        "box": [
+          1503.74,
+          417.46,
+          1772.49,
+          1152.73
+        ],
+        "area_ratio": 0.062818
+      },
+      {
+        "label": "shrub",
+        "score": 0.163389,
+        "box": [
+          63.58,
+          6.56,
+          877.77,
+          1527.02
+        ],
+        "area_ratio": 0.393537
+      },
+      {
+        "label": "",
+        "score": 0.135916,
+        "box": [
+          92.58,
+          4.47,
+          606.04,
+          960.91
+        ],
+        "area_ratio": 0.156114
+      },
+      {
+        "label": "",
+        "score": 0.1301,
+        "box": [
+          387.3,
+          540.99,
+          706.46,
+          1453.0
+        ],
+        "area_ratio": 0.092531
+      }
+    ],
+    "output_image": "rows/71302942_key_plant_type/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "plant shrub",
+      "score": 0.471616,
+      "box": [
+        16.15,
+        6.01,
+        2032.49,
+        1529.25
+      ],
+      "area_ratio": 0.976361
+    },
+    "output_image": "rows/71302942_key_plant_type/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "status": "not_applicable",
+    "reason": "whole-image plant context",
+    "output_image": ""
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Wildflowers - Alternate Leaves",
+    "ranking": [
+      {
+        "value": "Wildflowers - Alternate Leaves",
+        "score": 0.178208
+      },
+      {
+        "value": "Wildflowers - Basal Leaves Only",
+        "score": 0.101923
+      },
+      {
+        "value": "Wildflowers - Opposite or Whorled Leaves",
+        "score": 0.100478
+      },
+      {
+        "value": "Vines",
+        "score": 0.06346
+      },
+      {
+        "value": "Shrubs",
+        "score": 0.03534
+      },
+      {
+        "value": "Wildflowers - No Apparent Leaves",
+        "score": -0.042038
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/307163812",
+    "reference_evidence": {
+      "Shrubs": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/392514942",
+          "cosine": 0.03534,
+          "weighted": 0.03534
+        }
+      ],
+      "Vines": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/116667850",
+          "cosine": 0.06346,
+          "weighted": 0.06346
+        }
+      ],
+      "Wildflowers - Alternate Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307163812",
+          "cosine": 0.178208,
+          "weighted": 0.178208
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/alternate_leaves.png",
+          "cosine": 0.088396,
+          "weighted": 0.075137
+        }
+      ],
+      "Wildflowers - Basal Leaves Only": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/396753070",
+          "cosine": 0.101923,
+          "weighted": 0.101923
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/basal_leaves.png",
+          "cosine": 0.002289,
+          "weighted": 0.001946
+        }
+      ],
+      "Wildflowers - No Apparent Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/50286623",
+          "cosine": -0.042038,
+          "weighted": -0.042038
+        }
+      ],
+      "Wildflowers - Opposite or Whorled Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/421678053",
+          "cosine": 0.100478,
+          "weighted": 0.100478
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/opposite_leaves.png",
+          "cosine": -0.020959,
+          "weighted": -0.017815
+        }
+      ]
+    },
+    "output_image": "rows/71302942_key_plant_type/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_plant_type": "Wildflowers - Alternate Leaves",
+      "key_leaf_type": "Leaves Toothed or Lobed"
+    },
+    "base_taxa": 387,
+    "candidate_count": 60,
+    "candidate_reduction": 0.844961,
+    "true_species": "Specularia perfoliata",
+    "true_species_retained": true,
+    "candidates": [
+      "Actinomeris alternifolia",
+      "Alliaria officinalis",
+      "Arabis canadensis",
+      "Arabis glabra",
+      "Arabis hirsuta",
+      "Armoracia lapathifolia",
+      "Cacalia atriplicifolia",
+      "Cacalia muhlenbergii",
+      "Cacalia suaveolens",
+      "Campanula americana",
+      "Campanula aparinoides",
+      "Chenopodium album",
+      "Chenopodium ambrosioides",
+      "Chenopodium botrys",
+      "Chenopodium capitatum",
+      "Chenopodium glaucum",
+      "Chenopodium hybridum",
+      "Chenopodium rubrum",
+      "Chrysanthemum leucanthemum",
+      "Chrysanthemum parthenium",
+      "Erechtites hieracifolia",
+      "Erigeron strigosus",
+      "Gaura biennis",
+      "Helenium nudiflorum",
+      "Hibiscus militaris",
+      "Hibiscus palustris",
+      "Hieracium canadense",
+      "Hieracium vulgatum",
+      "Kosteletzkya virginica",
+      "Kuhnia eupatorioides",
+      "Lactuca scariola",
+      "Matricaria maritima",
+      "Oenothera biennis",
+      "Oenothera cruciata",
+      "Oenothera laciniata",
+      "Physalis subglabrata",
+      "Pluchea purpurascens",
+      "Prenanthes alba",
+      "Prenanthes altissima",
+      "Prenanthes boottii",
+      "Prenanthes serpentaria",
+      "Prenanthes trifoliata",
+      "Rudbeckia fulgida",
+      "Rudbeckia serotina",
+      "Rudbeckia speciosa",
+      "Sedum purpureum",
+      "Sedum rosea",
+      "Sedum telephioides",
+      "Senecio aureus",
+      "Senecio jacobaea",
+      "Senecio obovatus",
+      "Senecio pauperculus",
+      "Senecio robbinsii",
+      "Sericocarpus Aster pilosusoides",
+      "Specularia perfoliata",
+      "Vernonia altissima",
+      "Viola conspersa",
+      "Viola kitaibeliana",
+      "Viola pensylvanica",
+      "Xanthium echinatum"
+    ],
+    "output_image": "rows/71302942_key_plant_type/05_graph_filtering.png"
+  }
+}

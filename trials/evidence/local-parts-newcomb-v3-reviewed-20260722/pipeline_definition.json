@@ -1,0 +1,14 @@
+{
+  "dataset": "benchmark",
+  "trace": "trials/artifacts/local-parts-newcomb-v3-reviewed-20260722.local_parts_trace.jsonl",
+  "results": "trials/artifacts/local-parts-newcomb-v3-reviewed-20260722.csv",
+  "stages": [
+    "input",
+    "Grounding DINO organ localization",
+    "localized query crop",
+    "SAM2 mask, edge, and shape/color metrics",
+    "DINOv2 image-to-image reference matching",
+    "deterministic Newcomb graph filtering"
+  ],
+  "row_count": 30
+}

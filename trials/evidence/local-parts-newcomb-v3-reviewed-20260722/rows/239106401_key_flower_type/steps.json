@@ -1,0 +1,356 @@
+{
+  "dataset": "benchmark_10",
+  "row_id": "239106401_key_flower_type",
+  "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/239106401/original.jpg",
+  "photo_id": "239106401",
+  "feature": "key_flower_type",
+  "expected_p1": "NO",
+  "expected_p2": "",
+  "true_species": "Centaurea maculosa",
+  "recorded_p1": "YES",
+  "recorded_p2": "Parts Indistinguishable",
+  "step_0_input": {
+    "source": "https://inaturalist-open-data.s3.amazonaws.com/photos/239106401/original.jpg",
+    "image_size": [
+      1536,
+      2048
+    ],
+    "saved_image": "rows/239106401_key_flower_type/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_flower_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "flower head",
+      "score": 0.447873,
+      "box": [
+        277.23,
+        550.2,
+        794.89,
+        1021.29
+      ],
+      "area_ratio": 0.077522
+    },
+    "detections": [
+      {
+        "label": "flower head",
+        "score": 0.447873,
+        "box": [
+          277.23,
+          550.2,
+          794.89,
+          1021.29
+        ],
+        "area_ratio": 0.077522
+      },
+      {
+        "label": "flower head",
+        "score": 0.37046,
+        "box": [
+          894.93,
+          68.71,
+          1277.58,
+          456.52
+        ],
+        "area_ratio": 0.047173
+      },
+      {
+        "label": "flower head petals",
+        "score": 0.318162,
+        "box": [
+          687.42,
+          402.36,
+          1057.08,
+          776.92
+        ],
+        "area_ratio": 0.044016
+      },
+      {
+        "label": "blossom petals",
+        "score": 0.317334,
+        "box": [
+          276.89,
+          550.76,
+          796.03,
+          1023.69
+        ],
+        "area_ratio": 0.078048
+      },
+      {
+        "label": "flower head",
+        "score": 0.314409,
+        "box": [
+          396.11,
+          238.01,
+          721.81,
+          582.58
+        ],
+        "area_ratio": 0.035675
+      },
+      {
+        "label": "petals",
+        "score": 0.302212,
+        "box": [
+          3.34,
+          1263.48,
+          808.84,
+          2043.44
+        ],
+        "area_ratio": 0.199719
+      },
+      {
+        "label": "flower head blossom",
+        "score": 0.28377,
+        "box": [
+          124.92,
+          1099.35,
+          252.62,
+          1188.16
+        ],
+        "area_ratio": 0.003605
+      },
+      {
+        "label": "blossom petals",
+        "score": 0.264273,
+        "box": [
+          894.51,
+          68.41,
+          1277.46,
+          458.04
+        ],
+        "area_ratio": 0.047431
+      },
+      {
+        "label": "flower",
+        "score": 0.259558,
+        "box": [
+          263.04,
+          78.81,
+          1273.12,
+          1735.56
+        ],
+        "area_ratio": 0.531974
+      },
+      {
+        "label": "flower",
+        "score": 0.252873,
+        "box": [
+          7.84,
+          7.96,
+          1522.44,
+          2036.16
+        ],
+        "area_ratio": 0.976542
+      }
+    ],
+    "output_image": "rows/239106401_key_flower_type/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "flower head",
+      "score": 0.447873,
+      "box": [
+        277.23,
+        550.2,
+        794.89,
+        1021.29
+      ],
+      "area_ratio": 0.077522
+    },
+    "output_image": "rows/239106401_key_flower_type/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "input_box": [
+      277.23,
+      550.2,
+      794.89,
+      1021.29
+    ],
+    "predicted_iou": 0.924186,
+    "metrics": {
+      "mask_area_pixels": 113550.5,
+      "mask_area_box_ratio": 0.46563,
+      "perimeter_pixels": 3333.216,
+      "circularity": 0.128432,
+      "solidity": 0.683156,
+      "contour_complexity": 7.786242,
+      "aspect_ratio": 1.119101,
+      "extent": 0.512389,
+      "mean_rgb": [
+        206.951,
+        174.426,
+        127.864
+      ]
+    },
+    "output_image": "rows/239106401_key_flower_type/03_sam_edge_mask.jpg"
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Parts Indistinguishable",
+    "ranking": [
+      {
+        "value": "Parts Indistinguishable",
+        "score": 0.355552
+      },
+      {
+        "value": "3 Regular Parts",
+        "score": 0.217855
+      },
+      {
+        "value": "7 or More Regular Parts",
+        "score": 0.079735
+      },
+      {
+        "value": "4 Regular Parts",
+        "score": 0.072433
+      },
+      {
+        "value": "5 Regular Parts",
+        "score": 0.072433
+      },
+      {
+        "value": "6 Regular Parts",
+        "score": 0.072433
+      },
+      {
+        "value": "Irregular Flowers",
+        "score": -0.007461
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/52243420",
+    "reference_evidence": {
+      "3 Regular Parts": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/57834500",
+          "cosine": 0.217855,
+          "weighted": 0.217855
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/regular_flowers.png",
+          "cosine": 0.085215,
+          "weighted": 0.072433
+        }
+      ],
+      "4 Regular Parts": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/310472154",
+          "cosine": 0.065133,
+          "weighted": 0.065133
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/regular_flowers.png",
+          "cosine": 0.085215,
+          "weighted": 0.072433
+        }
+      ],
+      "5 Regular Parts": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/424459597",
+          "cosine": -0.049634,
+          "weighted": -0.049634
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/regular_flowers.png",
+          "cosine": 0.085215,
+          "weighted": 0.072433
+        }
+      ],
+      "6 Regular Parts": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/80342041",
+          "cosine": 0.038029,
+          "weighted": 0.038029
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/regular_flowers.png",
+          "cosine": 0.085215,
+          "weighted": 0.072433
+        }
+      ],
+      "7 or More Regular Parts": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/222876592",
+          "cosine": 0.079735,
+          "weighted": 0.079735
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/regular_flowers.png",
+          "cosine": 0.085215,
+          "weighted": 0.072433
+        }
+      ],
+      "Irregular Flowers": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/196377999",
+          "cosine": -0.171593,
+          "weighted": -0.171593
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/irregular_flowers.png",
+          "cosine": -0.008777,
+          "weighted": -0.007461
+        }
+      ],
+      "Parts Indistinguishable": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/52243420",
+          "cosine": 0.355552,
+          "weighted": 0.355552
+        }
+      ]
+    },
+    "output_image": "rows/239106401_key_flower_type/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_flower_type": "Parts Indistinguishable",
+      "key_leaf_type": "Leaves Entire"
+    },
+    "base_taxa": 387,
+    "candidate_count": 23,
+    "candidate_reduction": 0.940568,
+    "true_species": "Centaurea maculosa",
+    "true_species_retained": false,
+    "candidates": [
+      "Acnida cannabina",
+      "Amaranthus graecizans",
+      "Antennaria canadensis",
+      "Antennaria neodioica",
+      "Antennaria parlinii",
+      "Atriplex arenaria",
+      "Atriplex patula",
+      "Cacalia tuberosa",
+      "Eupatorium hyssopifolium",
+      "Euphorbia esula",
+      "Euphorbia maculata",
+      "Gnaphalium macounii",
+      "Gnaphalium obtusifolium",
+      "Lechea villosa",
+      "Liatris borealis",
+      "Liatris graminifolia",
+      "Polygonum arifolium",
+      "Polygonum sagittatum",
+      "Rumex maritimus",
+      "Rumex orbiculatus",
+      "Salsola kali",
+      "Solidago sempervirens",
+      "Typha glauca"
+    ],
+    "output_image": "rows/239106401_key_flower_type/05_graph_filtering.png"
+  }
+}

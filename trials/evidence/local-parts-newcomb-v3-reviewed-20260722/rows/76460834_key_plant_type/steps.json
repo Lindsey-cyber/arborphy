@@ -1,0 +1,294 @@
+{
+  "dataset": "benchmark_10",
+  "row_id": "76460834_key_plant_type",
+  "image": "https://static.inaturalist.org/photos/76460834/original.jpg",
+  "photo_id": "76460834",
+  "feature": "key_plant_type",
+  "expected_p1": "YES",
+  "expected_p2": "Shrubs",
+  "true_species": "Cornus stolonifera",
+  "recorded_p1": "YES",
+  "recorded_p2": "Wildflowers - Alternate Leaves",
+  "step_0_input": {
+    "source": "https://static.inaturalist.org/photos/76460834/original.jpg",
+    "image_size": [
+      1536,
+      2048
+    ],
+    "saved_image": "rows/76460834_key_plant_type/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_plant_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "plant shrub",
+      "score": 0.50097,
+      "box": [
+        4.95,
+        5.58,
+        1531.08,
+        2040.96
+      ],
+      "area_ratio": 0.987451
+    },
+    "detections": [
+      {
+        "label": "plant shrub",
+        "score": 0.50097,
+        "box": [
+          4.95,
+          5.58,
+          1531.08,
+          2040.96
+        ],
+        "area_ratio": 0.987451
+      },
+      {
+        "label": "branch",
+        "score": 0.206109,
+        "box": [
+          796.28,
+          535.76,
+          1224.34,
+          701.3
+        ],
+        "area_ratio": 0.022526
+      },
+      {
+        "label": "branch",
+        "score": 0.204545,
+        "box": [
+          659.99,
+          3.11,
+          1183.04,
+          696.53
+        ],
+        "area_ratio": 0.115299
+      },
+      {
+        "label": "stem",
+        "score": 0.193072,
+        "box": [
+          553.19,
+          2.73,
+          604.26,
+          364.37
+        ],
+        "area_ratio": 0.005871
+      },
+      {
+        "label": "vine",
+        "score": 0.184558,
+        "box": [
+          5.62,
+          5.96,
+          1530.62,
+          2038.93
+        ],
+        "area_ratio": 0.985557
+      },
+      {
+        "label": "stem branch",
+        "score": 0.181238,
+        "box": [
+          798.1,
+          536.93,
+          1118.55,
+          688.9
+        ],
+        "area_ratio": 0.015481
+      },
+      {
+        "label": "branch",
+        "score": 0.16357,
+        "box": [
+          610.31,
+          523.06,
+          1215.34,
+          702.28
+        ],
+        "area_ratio": 0.034471
+      },
+      {
+        "label": "branch",
+        "score": 0.163272,
+        "box": [
+          794.62,
+          531.76,
+          1462.31,
+          701.56
+        ],
+        "area_ratio": 0.036039
+      },
+      {
+        "label": "vine",
+        "score": 0.160082,
+        "box": [
+          12.01,
+          8.36,
+          1523.15,
+          774.0
+        ],
+        "area_ratio": 0.367794
+      },
+      {
+        "label": "vine",
+        "score": 0.151182,
+        "box": [
+          10.64,
+          12.47,
+          1520.71,
+          1229.83
+        ],
+        "area_ratio": 0.584377
+      }
+    ],
+    "output_image": "rows/76460834_key_plant_type/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "plant shrub",
+      "score": 0.50097,
+      "box": [
+        4.95,
+        5.58,
+        1531.08,
+        2040.96
+      ],
+      "area_ratio": 0.987451
+    },
+    "output_image": "rows/76460834_key_plant_type/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "status": "not_applicable",
+    "reason": "whole-image plant context",
+    "output_image": ""
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Wildflowers - Alternate Leaves",
+    "ranking": [
+      {
+        "value": "Wildflowers - Alternate Leaves",
+        "score": 0.276296
+      },
+      {
+        "value": "Shrubs",
+        "score": 0.161196
+      },
+      {
+        "value": "Wildflowers - Basal Leaves Only",
+        "score": 0.134079
+      },
+      {
+        "value": "Wildflowers - Opposite or Whorled Leaves",
+        "score": 0.097063
+      },
+      {
+        "value": "Wildflowers - No Apparent Leaves",
+        "score": 0.05613
+      },
+      {
+        "value": "Vines",
+        "score": -0.032525
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/307163812",
+    "reference_evidence": {
+      "Shrubs": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/392514942",
+          "cosine": 0.161196,
+          "weighted": 0.161196
+        }
+      ],
+      "Vines": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/116667850",
+          "cosine": -0.032525,
+          "weighted": -0.032525
+        }
+      ],
+      "Wildflowers - Alternate Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307163812",
+          "cosine": 0.276296,
+          "weighted": 0.276296
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/alternate_leaves.png",
+          "cosine": 0.184861,
+          "weighted": 0.157132
+        }
+      ],
+      "Wildflowers - Basal Leaves Only": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/396753070",
+          "cosine": 0.134079,
+          "weighted": 0.134079
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/basal_leaves.png",
+          "cosine": 0.058847,
+          "weighted": 0.05002
+        }
+      ],
+      "Wildflowers - No Apparent Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/50286623",
+          "cosine": 0.05613,
+          "weighted": 0.05613
+        }
+      ],
+      "Wildflowers - Opposite or Whorled Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/421678053",
+          "cosine": 0.097063,
+          "weighted": 0.097063
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/opposite_leaves.png",
+          "cosine": 0.026452,
+          "weighted": 0.022484
+        }
+      ]
+    },
+    "output_image": "rows/76460834_key_plant_type/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_flower_type": "4 Regular Parts",
+      "key_plant_type": "Wildflowers - Alternate Leaves",
+      "key_leaf_type": "Leaves Toothed or Lobed"
+    },
+    "base_taxa": 387,
+    "candidate_count": 10,
+    "candidate_reduction": 0.97416,
+    "true_species": "Cornus stolonifera",
+    "true_species_retained": false,
+    "candidates": [
+      "Alliaria officinalis",
+      "Arabis canadensis",
+      "Arabis glabra",
+      "Arabis hirsuta",
+      "Armoracia lapathifolia",
+      "Gaura biennis",
+      "Oenothera biennis",
+      "Oenothera cruciata",
+      "Oenothera laciniata",
+      "Sedum rosea"
+    ],
+    "output_image": "rows/76460834_key_plant_type/05_graph_filtering.png"
+  }
+}

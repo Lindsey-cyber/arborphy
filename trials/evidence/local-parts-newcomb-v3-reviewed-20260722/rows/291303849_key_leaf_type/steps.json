@@ -1,0 +1,278 @@
+{
+  "dataset": "benchmark_10",
+  "row_id": "291303849_key_leaf_type",
+  "image": "https://static.inaturalist.org/photos/291303849/original.jpeg",
+  "photo_id": "291303849",
+  "feature": "key_leaf_type",
+  "expected_p1": "YES",
+  "expected_p2": "Leaves Divided",
+  "true_species": "Rosa eglanteria",
+  "recorded_p1": "YES",
+  "recorded_p2": "Leaves Entire",
+  "step_0_input": {
+    "source": "https://static.inaturalist.org/photos/291303849/original.jpeg",
+    "image_size": [
+      1536,
+      2048
+    ],
+    "saved_image": "rows/291303849_key_leaf_type/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_leaf_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "leaf leaf",
+      "score": 0.457007,
+      "box": [
+        587.9,
+        1111.42,
+        868.1,
+        1245.96
+      ],
+      "area_ratio": 0.011983
+    },
+    "detections": [
+      {
+        "label": "leaf leaf",
+        "score": 0.457007,
+        "box": [
+          587.9,
+          1111.42,
+          868.1,
+          1245.96
+        ],
+        "area_ratio": 0.011983
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.430278,
+        "box": [
+          1069.37,
+          834.12,
+          1324.81,
+          1158.84
+        ],
+        "area_ratio": 0.026367
+      },
+      {
+        "label": "leaf leaf",
+        "score": 0.416971,
+        "box": [
+          930.98,
+          894.15,
+          1116.17,
+          1134.45
+        ],
+        "area_ratio": 0.014146
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.403376,
+        "box": [
+          1068.61,
+          833.94,
+          1325.37,
+          1158.87
+        ],
+        "area_ratio": 0.026521
+      },
+      {
+        "label": "leaf leaf",
+        "score": 0.384435,
+        "box": [
+          612.36,
+          1745.85,
+          824.78,
+          1911.44
+        ],
+        "area_ratio": 0.011182
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.355857,
+        "box": [
+          822.13,
+          1788.01,
+          995.19,
+          1983.39
+        ],
+        "area_ratio": 0.010749
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.347341,
+        "box": [
+          861.81,
+          1174.25,
+          1034.27,
+          1397.73
+        ],
+        "area_ratio": 0.012252
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.346308,
+        "box": [
+          612.31,
+          1746.17,
+          825.06,
+          1911.45
+        ],
+        "area_ratio": 0.011178
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.339665,
+        "box": [
+          824.1,
+          1239.27,
+          980.99,
+          1460.57
+        ],
+        "area_ratio": 0.011037
+      },
+      {
+        "label": "leaves",
+        "score": 0.336537,
+        "box": [
+          578.98,
+          829.78,
+          1532.35,
+          2043.19
+        ],
+        "area_ratio": 0.367747
+      }
+    ],
+    "output_image": "rows/291303849_key_leaf_type/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "leaf leaf",
+      "score": 0.457007,
+      "box": [
+        587.9,
+        1111.42,
+        868.1,
+        1245.96
+      ],
+      "area_ratio": 0.011983
+    },
+    "output_image": "rows/291303849_key_leaf_type/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "input_box": [
+      587.9,
+      1111.42,
+      868.1,
+      1245.96
+    ],
+    "predicted_iou": 0.984042,
+    "metrics": {
+      "mask_area_pixels": 23215.5,
+      "mask_area_box_ratio": 0.615827,
+      "perimeter_pixels": 680.399,
+      "circularity": 0.630174,
+      "solidity": 0.971644,
+      "contour_complexity": 1.586863,
+      "aspect_ratio": 2.131783,
+      "extent": 0.654419,
+      "mean_rgb": [
+        204.589,
+        229.814,
+        84.947
+      ]
+    },
+    "output_image": "rows/291303849_key_leaf_type/03_sam_edge_mask.jpg"
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Leaves Entire",
+    "ranking": [
+      {
+        "value": "Leaves Entire",
+        "score": 0.350639
+      },
+      {
+        "value": "Leaves Toothed or Lobed",
+        "score": 0.210451
+      },
+      {
+        "value": "Leaves Divided",
+        "score": 0.166749
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/139502186",
+    "reference_evidence": {
+      "Leaves Divided": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/127978485",
+          "cosine": 0.128822,
+          "weighted": 0.128822
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_divided.png",
+          "cosine": 0.196176,
+          "weighted": 0.166749
+        }
+      ],
+      "Leaves Entire": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/139502186",
+          "cosine": 0.350639,
+          "weighted": 0.350639
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_entire.png",
+          "cosine": 0.260767,
+          "weighted": 0.221652
+        }
+      ],
+      "Leaves Toothed or Lobed": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307213903",
+          "cosine": 0.210451,
+          "weighted": 0.210451
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_toothed.png",
+          "cosine": 0.196084,
+          "weighted": 0.166672
+        }
+      ]
+    },
+    "output_image": "rows/291303849_key_leaf_type/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_flower_type": "4 Regular Parts",
+      "key_plant_type": "Wildflowers - Opposite or Whorled Leaves",
+      "key_leaf_type": "Leaves Entire"
+    },
+    "base_taxa": 387,
+    "candidate_count": 10,
+    "candidate_reduction": 0.97416,
+    "true_species": "Rosa eglanteria",
+    "true_species_retained": false,
+    "candidates": [
+      "Asarum canadense",
+      "Ascyrum hypericoides",
+      "Ascyrum stans",
+      "Diodia teres",
+      "Epilobium strictum",
+      "Galium aparine",
+      "Gentiana crinita",
+      "Gentiana procera",
+      "Houstonia longifolia",
+      "Swertia carolinensis"
+    ],
+    "output_image": "rows/291303849_key_leaf_type/05_graph_filtering.png"
+  }
+}

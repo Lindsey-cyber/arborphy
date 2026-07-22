@@ -1,0 +1,283 @@
+{
+  "dataset": "benchmark_10",
+  "row_id": "89166741_key_plant_type",
+  "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/89166741/original.jpg",
+  "photo_id": "89166741",
+  "feature": "key_plant_type",
+  "expected_p1": "YES",
+  "expected_p2": "Wildflowers - Alternate Leaves",
+  "true_species": "Lactuca scariola",
+  "recorded_p1": "YES",
+  "recorded_p2": "Wildflowers - Opposite or Whorled Leaves",
+  "step_0_input": {
+    "source": "https://inaturalist-open-data.s3.amazonaws.com/photos/89166741/original.jpg",
+    "image_size": [
+      1857,
+      1874
+    ],
+    "saved_image": "rows/89166741_key_plant_type/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_plant_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "plant shrub",
+      "score": 0.414053,
+      "box": [
+        5.49,
+        5.77,
+        1851.91,
+        1866.96
+      ],
+      "area_ratio": 0.987506
+    },
+    "detections": [
+      {
+        "label": "plant shrub",
+        "score": 0.414053,
+        "box": [
+          5.49,
+          5.77,
+          1851.91,
+          1866.96
+        ],
+        "area_ratio": 0.987506
+      },
+      {
+        "label": "stem branch",
+        "score": 0.317346,
+        "box": [
+          163.27,
+          2.45,
+          1013.03,
+          576.18
+        ],
+        "area_ratio": 0.140095
+      },
+      {
+        "label": "stem branch vine",
+        "score": 0.313817,
+        "box": [
+          36.11,
+          1.03,
+          1017.04,
+          744.92
+        ],
+        "area_ratio": 0.209681
+      },
+      {
+        "label": "branch vine",
+        "score": 0.257371,
+        "box": [
+          7.0,
+          3.99,
+          1016.48,
+          1411.33
+        ],
+        "area_ratio": 0.408239
+      },
+      {
+        "label": "vine",
+        "score": 0.248726,
+        "box": [
+          765.6,
+          746.35,
+          1150.35,
+          1114.66
+        ],
+        "area_ratio": 0.04072
+      },
+      {
+        "label": "vine",
+        "score": 0.234265,
+        "box": [
+          5.8,
+          3.45,
+          1017.14,
+          1412.84
+        ],
+        "area_ratio": 0.409587
+      },
+      {
+        "label": "stem branch",
+        "score": 0.230746,
+        "box": [
+          2.56,
+          487.53,
+          524.1,
+          1413.0
+        ],
+        "area_ratio": 0.1387
+      },
+      {
+        "label": "stem branch",
+        "score": 0.22524,
+        "box": [
+          1071.66,
+          1019.92,
+          1854.61,
+          1166.59
+        ],
+        "area_ratio": 0.033
+      },
+      {
+        "label": "stem",
+        "score": 0.222687,
+        "box": [
+          3.42,
+          488.75,
+          367.13,
+          1200.9
+        ],
+        "area_ratio": 0.074428
+      },
+      {
+        "label": "shrub",
+        "score": 0.20462,
+        "box": [
+          993.85,
+          6.12,
+          1852.93,
+          1866.71
+        ],
+        "area_ratio": 0.459306
+      }
+    ],
+    "output_image": "rows/89166741_key_plant_type/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "plant shrub",
+      "score": 0.414053,
+      "box": [
+        5.49,
+        5.77,
+        1851.91,
+        1866.96
+      ],
+      "area_ratio": 0.987506
+    },
+    "output_image": "rows/89166741_key_plant_type/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "status": "not_applicable",
+    "reason": "whole-image plant context",
+    "output_image": ""
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Wildflowers - Opposite or Whorled Leaves",
+    "ranking": [
+      {
+        "value": "Wildflowers - Opposite or Whorled Leaves",
+        "score": 0.171048
+      },
+      {
+        "value": "Wildflowers - Alternate Leaves",
+        "score": 0.098656
+      },
+      {
+        "value": "Wildflowers - Basal Leaves Only",
+        "score": 0.09682
+      },
+      {
+        "value": "Wildflowers - No Apparent Leaves",
+        "score": 0.069704
+      },
+      {
+        "value": "Vines",
+        "score": 0.06041
+      },
+      {
+        "value": "Shrubs",
+        "score": 0.013578
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/421678053",
+    "reference_evidence": {
+      "Shrubs": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/392514942",
+          "cosine": 0.013578,
+          "weighted": 0.013578
+        }
+      ],
+      "Vines": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/116667850",
+          "cosine": 0.06041,
+          "weighted": 0.06041
+        }
+      ],
+      "Wildflowers - Alternate Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307163812",
+          "cosine": 0.091279,
+          "weighted": 0.091279
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/alternate_leaves.png",
+          "cosine": 0.116065,
+          "weighted": 0.098656
+        }
+      ],
+      "Wildflowers - Basal Leaves Only": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/396753070",
+          "cosine": 0.09682,
+          "weighted": 0.09682
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/basal_leaves.png",
+          "cosine": 0.042948,
+          "weighted": 0.036506
+        }
+      ],
+      "Wildflowers - No Apparent Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/50286623",
+          "cosine": 0.069704,
+          "weighted": 0.069704
+        }
+      ],
+      "Wildflowers - Opposite or Whorled Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/421678053",
+          "cosine": 0.171048,
+          "weighted": 0.171048
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/opposite_leaves.png",
+          "cosine": 0.029356,
+          "weighted": 0.024952
+        }
+      ]
+    },
+    "output_image": "rows/89166741_key_plant_type/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_flower_type": "3 Regular Parts",
+      "key_plant_type": "Wildflowers - Opposite or Whorled Leaves",
+      "key_leaf_type": "Leaves Toothed or Lobed"
+    },
+    "base_taxa": 387,
+    "candidate_count": 0,
+    "candidate_reduction": 1.0,
+    "true_species": "Lactuca scariola",
+    "true_species_retained": false,
+    "candidates": [],
+    "output_image": "rows/89166741_key_plant_type/05_graph_filtering.png"
+  }
+}

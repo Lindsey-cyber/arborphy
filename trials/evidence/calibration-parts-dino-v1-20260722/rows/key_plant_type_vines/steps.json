@@ -1,0 +1,296 @@
+{
+  "dataset": "calibration",
+  "row_id": "key_plant_type_vines",
+  "image": "https://www.inaturalist.org/photos/116667850",
+  "photo_id": "116667850",
+  "feature": "key_plant_type",
+  "expected_p1": "YES",
+  "expected_p2": "Vines",
+  "true_species": "",
+  "recorded_p1": "YES",
+  "recorded_p2": "Vines",
+  "step_0_input": {
+    "source": "https://www.inaturalist.org/photos/116667850",
+    "image_size": [
+      410,
+      500
+    ],
+    "saved_image": "rows/key_plant_type_vines/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_plant_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "plant shrub vine",
+      "score": 0.374117,
+      "box": [
+        0.78,
+        66.61,
+        409.47,
+        499.13
+      ],
+      "area_ratio": 0.86227
+    },
+    "detections": [
+      {
+        "label": "plant shrub vine",
+        "score": 0.374117,
+        "box": [
+          0.78,
+          66.61,
+          409.47,
+          499.13
+        ],
+        "area_ratio": 0.86227
+      },
+      {
+        "label": "plant shrub vine",
+        "score": 0.23507,
+        "box": [
+          0.58,
+          1.65,
+          409.61,
+          499.05
+        ],
+        "area_ratio": 0.992454
+      },
+      {
+        "label": "stem branch",
+        "score": 0.232633,
+        "box": [
+          54.62,
+          0.67,
+          122.8,
+          498.57
+        ],
+        "area_ratio": 0.165587
+      },
+      {
+        "label": "stem branch",
+        "score": 0.219775,
+        "box": [
+          50.08,
+          0.91,
+          123.93,
+          498.11
+        ],
+        "area_ratio": 0.179115
+      },
+      {
+        "label": "stem",
+        "score": 0.208651,
+        "box": [
+          164.06,
+          249.0,
+          232.77,
+          428.71
+        ],
+        "area_ratio": 0.060234
+      },
+      {
+        "label": "stem branch",
+        "score": 0.183411,
+        "box": [
+          0.38,
+          323.39,
+          116.93,
+          397.69
+        ],
+        "area_ratio": 0.042242
+      },
+      {
+        "label": "stem",
+        "score": 0.174699,
+        "box": [
+          130.93,
+          247.06,
+          235.43,
+          499.04
+        ],
+        "area_ratio": 0.128443
+      },
+      {
+        "label": "stem",
+        "score": 0.168006,
+        "box": [
+          186.21,
+          250.98,
+          228.95,
+          323.1
+        ],
+        "area_ratio": 0.015033
+      },
+      {
+        "label": "branch",
+        "score": 0.163531,
+        "box": [
+          188.82,
+          409.51,
+          409.9,
+          432.11
+        ],
+        "area_ratio": 0.024376
+      },
+      {
+        "label": "stem",
+        "score": 0.158716,
+        "box": [
+          165.7,
+          331.69,
+          192.43,
+          428.73
+        ],
+        "area_ratio": 0.012653
+      }
+    ],
+    "output_image": "rows/key_plant_type_vines/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "plant shrub vine",
+      "score": 0.374117,
+      "box": [
+        0.78,
+        66.61,
+        409.47,
+        499.13
+      ],
+      "area_ratio": 0.86227
+    },
+    "output_image": "rows/key_plant_type_vines/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "status": "not_applicable",
+    "reason": "whole-image plant context",
+    "output_image": ""
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Vines",
+    "ranking": [
+      {
+        "value": "Vines",
+        "score": 1.0
+      },
+      {
+        "value": "Wildflowers - Opposite or Whorled Leaves",
+        "score": 0.301251
+      },
+      {
+        "value": "Wildflowers - No Apparent Leaves",
+        "score": 0.078417
+      },
+      {
+        "value": "Wildflowers - Alternate Leaves",
+        "score": 0.074183
+      },
+      {
+        "value": "Shrubs",
+        "score": 0.025755
+      },
+      {
+        "value": "Wildflowers - Basal Leaves Only",
+        "score": 0.01044
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/116667850",
+    "reference_evidence": {
+      "Wildflowers - Alternate Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307163812",
+          "cosine": -0.086489,
+          "weighted": -0.086489
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/alternate_leaves.png",
+          "cosine": 0.087274,
+          "weighted": 0.074183
+        }
+      ],
+      "Wildflowers - No Apparent Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/50286623",
+          "cosine": 0.078417,
+          "weighted": 0.078417
+        }
+      ],
+      "Wildflowers - Opposite or Whorled Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/421678053",
+          "cosine": 0.301251,
+          "weighted": 0.301251
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/opposite_leaves.png",
+          "cosine": 0.172201,
+          "weighted": 0.146371
+        }
+      ],
+      "Wildflowers - Basal Leaves Only": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/396753070",
+          "cosine": -0.018628,
+          "weighted": -0.018628
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/basal_leaves.png",
+          "cosine": 0.012283,
+          "weighted": 0.01044
+        }
+      ],
+      "Vines": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/116667850",
+          "cosine": 1.0,
+          "weighted": 1.0
+        }
+      ],
+      "Shrubs": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/392514942",
+          "cosine": 0.025755,
+          "weighted": 0.025755
+        }
+      ]
+    },
+    "output_image": "rows/key_plant_type_vines/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_plant_type": "Vines"
+    },
+    "base_taxa": 387,
+    "candidate_count": 14,
+    "candidate_reduction": 0.963824,
+    "true_species": "",
+    "true_species_retained": null,
+    "candidates": [
+      "Amphicarpa bracteata",
+      "Clematis verticillaris",
+      "Convolvulus sepium",
+      "Cynanchum nigrum",
+      "Galactia regularis",
+      "Humulus lupulus",
+      "Lathyrus japonicus",
+      "Polygonum cilinode",
+      "Polygonum convolvulus",
+      "Polygonum scandens",
+      "Vicia angustifolia",
+      "Vicia sativa",
+      "Vicia villosa",
+      "Xanthoxylum americanum"
+    ],
+    "output_image": "rows/key_plant_type_vines/05_graph_filtering.png"
+  }
+}

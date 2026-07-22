@@ -1,0 +1,290 @@
+{
+  "dataset": "benchmark_10",
+  "row_id": "213925309_key_leaf_type",
+  "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/213925309/original.jpg",
+  "photo_id": "213925309",
+  "feature": "key_leaf_type",
+  "expected_p1": "YES",
+  "expected_p2": "Leaves Toothed or Lobed",
+  "true_species": "Hieracium canadense",
+  "recorded_p1": "YES",
+  "recorded_p2": "Leaves Entire",
+  "step_0_input": {
+    "source": "https://inaturalist-open-data.s3.amazonaws.com/photos/213925309/original.jpg",
+    "image_size": [
+      1536,
+      2048
+    ],
+    "saved_image": "rows/213925309_key_leaf_type/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_leaf_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "leaf leaves leaf",
+      "score": 0.349435,
+      "box": [
+        109.32,
+        519.79,
+        402.76,
+        950.01
+      ],
+      "area_ratio": 0.040132
+    },
+    "detections": [
+      {
+        "label": "leaves",
+        "score": 0.401816,
+        "box": [
+          4.29,
+          4.33,
+          1531.25,
+          2044.3
+        ],
+        "area_ratio": 0.990216
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.349435,
+        "box": [
+          109.32,
+          519.79,
+          402.76,
+          950.01
+        ],
+        "area_ratio": 0.040132
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.335754,
+        "box": [
+          1.66,
+          1382.11,
+          436.78,
+          1768.59
+        ],
+        "area_ratio": 0.053458
+      },
+      {
+        "label": "leaflet",
+        "score": 0.234192,
+        "box": [
+          1105.75,
+          245.56,
+          1460.09,
+          637.52
+        ],
+        "area_ratio": 0.044152
+      },
+      {
+        "label": "leaflet",
+        "score": 0.196403,
+        "box": [
+          1093.95,
+          245.23,
+          1462.91,
+          721.02
+        ],
+        "area_ratio": 0.055806
+      },
+      {
+        "label": "leaf leaf",
+        "score": 0.178216,
+        "box": [
+          17.67,
+          72.76,
+          365.89,
+          443.3
+        ],
+        "area_ratio": 0.041018
+      },
+      {
+        "label": "leaflet",
+        "score": 0.168401,
+        "box": [
+          1109.33,
+          248.17,
+          1433.83,
+          563.37
+        ],
+        "area_ratio": 0.032515
+      },
+      {
+        "label": "leaf",
+        "score": 0.164547,
+        "box": [
+          418.95,
+          233.12,
+          682.06,
+          430.2
+        ],
+        "area_ratio": 0.016484
+      },
+      {
+        "label": "leaf",
+        "score": 0.161222,
+        "box": [
+          2.03,
+          1378.6,
+          436.96,
+          1824.79
+        ],
+        "area_ratio": 0.061691
+      },
+      {
+        "label": "",
+        "score": 0.14887,
+        "box": [
+          357.85,
+          1737.6,
+          487.82,
+          1858.56
+        ],
+        "area_ratio": 0.004997
+      }
+    ],
+    "output_image": "rows/213925309_key_leaf_type/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "leaf leaves leaf",
+      "score": 0.349435,
+      "box": [
+        109.32,
+        519.79,
+        402.76,
+        950.01
+      ],
+      "area_ratio": 0.040132
+    },
+    "output_image": "rows/213925309_key_leaf_type/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "input_box": [
+      109.32,
+      519.79,
+      402.76,
+      950.01
+    ],
+    "predicted_iou": 0.960005,
+    "metrics": {
+      "mask_area_pixels": 25439.5,
+      "mask_area_box_ratio": 0.201511,
+      "perimeter_pixels": 718.423,
+      "circularity": 0.61938,
+      "solidity": 0.969124,
+      "contour_complexity": 1.614517,
+      "aspect_ratio": 0.57554,
+      "extent": 0.571931,
+      "mean_rgb": [
+        89.801,
+        120.409,
+        111.15
+      ]
+    },
+    "output_image": "rows/213925309_key_leaf_type/03_sam_edge_mask.jpg"
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Leaves Entire",
+    "ranking": [
+      {
+        "value": "Leaves Entire",
+        "score": 0.249559
+      },
+      {
+        "value": "Leaves Toothed or Lobed",
+        "score": 0.197321
+      },
+      {
+        "value": "Leaves Divided",
+        "score": 0.059279
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/139502186",
+    "reference_evidence": {
+      "Leaves Divided": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/127978485",
+          "cosine": 0.026489,
+          "weighted": 0.026489
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_divided.png",
+          "cosine": 0.06974,
+          "weighted": 0.059279
+        }
+      ],
+      "Leaves Entire": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/139502186",
+          "cosine": 0.249559,
+          "weighted": 0.249559
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_entire.png",
+          "cosine": 0.032456,
+          "weighted": 0.027588
+        }
+      ],
+      "Leaves Toothed or Lobed": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307213903",
+          "cosine": 0.197321,
+          "weighted": 0.197321
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_toothed.png",
+          "cosine": 0.046685,
+          "weighted": 0.039682
+        }
+      ]
+    },
+    "output_image": "rows/213925309_key_leaf_type/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_flower_type": "Parts Indistinguishable",
+      "key_leaf_type": "Leaves Entire"
+    },
+    "base_taxa": 387,
+    "candidate_count": 23,
+    "candidate_reduction": 0.940568,
+    "true_species": "Hieracium canadense",
+    "true_species_retained": false,
+    "candidates": [
+      "Acnida cannabina",
+      "Amaranthus graecizans",
+      "Antennaria canadensis",
+      "Antennaria neodioica",
+      "Antennaria parlinii",
+      "Atriplex arenaria",
+      "Atriplex patula",
+      "Cacalia tuberosa",
+      "Eupatorium hyssopifolium",
+      "Euphorbia esula",
+      "Euphorbia maculata",
+      "Gnaphalium macounii",
+      "Gnaphalium obtusifolium",
+      "Lechea villosa",
+      "Liatris borealis",
+      "Liatris graminifolia",
+      "Polygonum arifolium",
+      "Polygonum sagittatum",
+      "Rumex maritimus",
+      "Rumex orbiculatus",
+      "Salsola kali",
+      "Solidago sempervirens",
+      "Typha glauca"
+    ],
+    "output_image": "rows/213925309_key_leaf_type/05_graph_filtering.png"
+  }
+}

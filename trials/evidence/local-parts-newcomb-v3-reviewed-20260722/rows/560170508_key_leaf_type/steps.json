@@ -1,0 +1,271 @@
+{
+  "dataset": "benchmark_10",
+  "row_id": "560170508_key_leaf_type",
+  "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/560170508/original.jpg",
+  "photo_id": "560170508",
+  "feature": "key_leaf_type",
+  "expected_p1": "YES",
+  "expected_p2": "",
+  "true_species": "Rumex orbiculatus",
+  "recorded_p1": "YES",
+  "recorded_p2": "Leaves Divided",
+  "step_0_input": {
+    "source": "https://inaturalist-open-data.s3.amazonaws.com/photos/560170508/original.jpg",
+    "image_size": [
+      1536,
+      2048
+    ],
+    "saved_image": "rows/560170508_key_leaf_type/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_leaf_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "leaf leaves leaflet",
+      "score": 0.436698,
+      "box": [
+        466.35,
+        134.82,
+        995.18,
+        2041.83
+      ],
+      "area_ratio": 0.320589
+    },
+    "detections": [
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.436698,
+        "box": [
+          466.35,
+          134.82,
+          995.18,
+          2041.83
+        ],
+        "area_ratio": 0.320589
+      },
+      {
+        "label": "leaves leaflet",
+        "score": 0.368337,
+        "box": [
+          389.25,
+          1545.33,
+          497.29,
+          2043.8
+        ],
+        "area_ratio": 0.017119
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.357822,
+        "box": [
+          835.39,
+          1772.4,
+          994.86,
+          1896.58
+        ],
+        "area_ratio": 0.006295
+      },
+      {
+        "label": "leaves leaflet",
+        "score": 0.335866,
+        "box": [
+          993.02,
+          1816.25,
+          1073.19,
+          2043.98
+        ],
+        "area_ratio": 0.005804
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.317724,
+        "box": [
+          558.09,
+          1536.44,
+          691.9,
+          1660.33
+        ],
+        "area_ratio": 0.00527
+      },
+      {
+        "label": "leaf leaf",
+        "score": 0.250436,
+        "box": [
+          557.26,
+          1528.85,
+          727.96,
+          1661.18
+        ],
+        "area_ratio": 0.007181
+      },
+      {
+        "label": "leaves",
+        "score": 0.197634,
+        "box": [
+          394.36,
+          128.9,
+          1080.28,
+          2040.52
+        ],
+        "area_ratio": 0.41683
+      },
+      {
+        "label": "leaves leaflet",
+        "score": 0.180603,
+        "box": [
+          516.69,
+          954.78,
+          676.68,
+          1432.9
+        ],
+        "area_ratio": 0.024316
+      },
+      {
+        "label": "leaves",
+        "score": 0.15918,
+        "box": [
+          466.72,
+          135.44,
+          994.23,
+          2039.49
+        ],
+        "area_ratio": 0.319288
+      },
+      {
+        "label": "leaves leaf",
+        "score": 0.155109,
+        "box": [
+          497.07,
+          591.85,
+          755.04,
+          953.0
+        ],
+        "area_ratio": 0.029616
+      }
+    ],
+    "output_image": "rows/560170508_key_leaf_type/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "leaf leaves leaflet",
+      "score": 0.436698,
+      "box": [
+        466.35,
+        134.82,
+        995.18,
+        2041.83
+      ],
+      "area_ratio": 0.320589
+    },
+    "output_image": "rows/560170508_key_leaf_type/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "input_box": [
+      466.35,
+      134.82,
+      995.18,
+      2041.83
+    ],
+    "predicted_iou": 0.95481,
+    "metrics": {
+      "mask_area_pixels": 382842.0,
+      "mask_area_box_ratio": 0.379621,
+      "perimeter_pixels": 8631.916,
+      "circularity": 0.064568,
+      "solidity": 0.548891,
+      "contour_complexity": 15.487629,
+      "aspect_ratio": 0.264921,
+      "extent": 0.396128,
+      "mean_rgb": [
+        59.493,
+        75.87,
+        60.864
+      ]
+    },
+    "output_image": "rows/560170508_key_leaf_type/03_sam_edge_mask.jpg"
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Leaves Divided",
+    "ranking": [
+      {
+        "value": "Leaves Divided",
+        "score": 0.138396
+      },
+      {
+        "value": "Leaves Toothed or Lobed",
+        "score": 0.080446
+      },
+      {
+        "value": "Leaves Entire",
+        "score": 0.053911
+      }
+    ],
+    "top_reference_source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_divided.png",
+    "reference_evidence": {
+      "Leaves Divided": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/127978485",
+          "cosine": -0.013976,
+          "weighted": -0.013976
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_divided.png",
+          "cosine": 0.162819,
+          "weighted": 0.138396
+        }
+      ],
+      "Leaves Entire": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/139502186",
+          "cosine": 0.053911,
+          "weighted": 0.053911
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_entire.png",
+          "cosine": 0.061119,
+          "weighted": 0.051951
+        }
+      ],
+      "Leaves Toothed or Lobed": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307213903",
+          "cosine": -0.065407,
+          "weighted": -0.065407
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_toothed.png",
+          "cosine": 0.094642,
+          "weighted": 0.080446
+        }
+      ]
+    },
+    "output_image": "rows/560170508_key_leaf_type/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_flower_type": "5 Regular Parts",
+      "key_plant_type": "Wildflowers - Basal Leaves Only",
+      "key_leaf_type": "Leaves Divided"
+    },
+    "base_taxa": 387,
+    "candidate_count": 3,
+    "candidate_reduction": 0.992248,
+    "true_species": "Rumex orbiculatus",
+    "true_species_retained": false,
+    "candidates": [
+      "Coptis groenlandica",
+      "Dalibarda repens",
+      "Potentilla anserina"
+    ],
+    "output_image": "rows/560170508_key_leaf_type/05_graph_filtering.png"
+  }
+}

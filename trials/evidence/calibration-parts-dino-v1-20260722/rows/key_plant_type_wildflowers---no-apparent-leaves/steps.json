@@ -1,0 +1,293 @@
+{
+  "dataset": "calibration",
+  "row_id": "key_plant_type_wildflowers---no-apparent-leaves",
+  "image": "https://www.inaturalist.org/photos/50286623",
+  "photo_id": "50286623",
+  "feature": "key_plant_type",
+  "expected_p1": "YES",
+  "expected_p2": "Wildflowers - No Apparent Leaves",
+  "true_species": "",
+  "recorded_p1": "YES",
+  "recorded_p2": "Wildflowers - No Apparent Leaves",
+  "step_0_input": {
+    "source": "https://www.inaturalist.org/photos/50286623",
+    "image_size": [
+      375,
+      500
+    ],
+    "saved_image": "rows/key_plant_type_wildflowers---no-apparent-leaves/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_plant_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "vine",
+      "score": 0.464902,
+      "box": [
+        140.34,
+        43.06,
+        239.18,
+        499.68
+      ],
+      "area_ratio": 0.240724
+    },
+    "detections": [
+      {
+        "label": "vine",
+        "score": 0.464902,
+        "box": [
+          140.34,
+          43.06,
+          239.18,
+          499.68
+        ],
+        "area_ratio": 0.240724
+      },
+      {
+        "label": "branch",
+        "score": 0.273991,
+        "box": [
+          225.18,
+          219.75,
+          374.49,
+          274.03
+        ],
+        "area_ratio": 0.043227
+      },
+      {
+        "label": "branch",
+        "score": 0.265617,
+        "box": [
+          225.52,
+          231.73,
+          374.34,
+          273.6
+        ],
+        "area_ratio": 0.033226
+      },
+      {
+        "label": "stem",
+        "score": 0.238091,
+        "box": [
+          173.19,
+          335.4,
+          205.57,
+          500.2
+        ],
+        "area_ratio": 0.028457
+      },
+      {
+        "label": "branch",
+        "score": 0.199268,
+        "box": [
+          23.47,
+          378.31,
+          127.66,
+          459.42
+        ],
+        "area_ratio": 0.045066
+      },
+      {
+        "label": "branch",
+        "score": 0.188269,
+        "box": [
+          234.51,
+          296.45,
+          373.61,
+          412.57
+        ],
+        "area_ratio": 0.08614
+      },
+      {
+        "label": "stem shrub",
+        "score": 0.184363,
+        "box": [
+          140.24,
+          43.36,
+          239.31,
+          499.79
+        ],
+        "area_ratio": 0.241152
+      },
+      {
+        "label": "stem",
+        "score": 0.176315,
+        "box": [
+          57.18,
+          0.05,
+          97.21,
+          113.69
+        ],
+        "area_ratio": 0.024264
+      },
+      {
+        "label": "branch",
+        "score": 0.175932,
+        "box": [
+          235.9,
+          296.88,
+          355.0,
+          376.33
+        ],
+        "area_ratio": 0.050465
+      },
+      {
+        "label": "branch",
+        "score": 0.164216,
+        "box": [
+          293.76,
+          59.83,
+          374.96,
+          71.26
+        ],
+        "area_ratio": 0.004949
+      }
+    ],
+    "output_image": "rows/key_plant_type_wildflowers---no-apparent-leaves/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "vine",
+      "score": 0.464902,
+      "box": [
+        140.34,
+        43.06,
+        239.18,
+        499.68
+      ],
+      "area_ratio": 0.240724
+    },
+    "output_image": "rows/key_plant_type_wildflowers---no-apparent-leaves/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "status": "not_applicable",
+    "reason": "whole-image plant context",
+    "output_image": ""
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Wildflowers - No Apparent Leaves",
+    "ranking": [
+      {
+        "value": "Wildflowers - No Apparent Leaves",
+        "score": 1.0
+      },
+      {
+        "value": "Wildflowers - Basal Leaves Only",
+        "score": 0.414856
+      },
+      {
+        "value": "Wildflowers - Opposite or Whorled Leaves",
+        "score": 0.180584
+      },
+      {
+        "value": "Vines",
+        "score": 0.078417
+      },
+      {
+        "value": "Wildflowers - Alternate Leaves",
+        "score": 0.066687
+      },
+      {
+        "value": "Shrubs",
+        "score": 0.012102
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/50286623",
+    "reference_evidence": {
+      "Wildflowers - Alternate Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307163812",
+          "cosine": 0.039699,
+          "weighted": 0.039699
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/alternate_leaves.png",
+          "cosine": 0.078455,
+          "weighted": 0.066687
+        }
+      ],
+      "Wildflowers - No Apparent Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/50286623",
+          "cosine": 1.0,
+          "weighted": 1.0
+        }
+      ],
+      "Wildflowers - Opposite or Whorled Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/421678053",
+          "cosine": 0.052197,
+          "weighted": 0.052197
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/opposite_leaves.png",
+          "cosine": 0.212452,
+          "weighted": 0.180584
+        }
+      ],
+      "Wildflowers - Basal Leaves Only": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/396753070",
+          "cosine": 0.414856,
+          "weighted": 0.414856
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/basal_leaves.png",
+          "cosine": 0.15988,
+          "weighted": 0.135898
+        }
+      ],
+      "Vines": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/116667850",
+          "cosine": 0.078417,
+          "weighted": 0.078417
+        }
+      ],
+      "Shrubs": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/392514942",
+          "cosine": 0.012102,
+          "weighted": 0.012102
+        }
+      ]
+    },
+    "output_image": "rows/key_plant_type_wildflowers---no-apparent-leaves/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_plant_type": "Wildflowers - No Apparent Leaves"
+    },
+    "base_taxa": 387,
+    "candidate_count": 11,
+    "candidate_reduction": 0.971576,
+    "true_species": "",
+    "true_species_retained": null,
+    "candidates": [
+      "Acorus calamus",
+      "Eriocaulon septangulare",
+      "Monotropa hypopithys",
+      "Orobanche uniflora",
+      "Plantago juncoides",
+      "Plantago major",
+      "Salicornia europaea",
+      "Salicornia virginica",
+      "Utricularia gibba",
+      "Utricularia inflata",
+      "Utricularia vulgaris"
+    ],
+    "output_image": "rows/key_plant_type_wildflowers---no-apparent-leaves/05_graph_filtering.png"
+  }
+}

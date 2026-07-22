@@ -1,0 +1,278 @@
+{
+  "dataset": "benchmark_10",
+  "row_id": "76460834_key_leaf_type",
+  "image": "https://static.inaturalist.org/photos/76460834/original.jpg",
+  "photo_id": "76460834",
+  "feature": "key_leaf_type",
+  "expected_p1": "YES",
+  "expected_p2": "Leaves Entire",
+  "true_species": "Cornus stolonifera",
+  "recorded_p1": "YES",
+  "recorded_p2": "Leaves Toothed or Lobed",
+  "step_0_input": {
+    "source": "https://static.inaturalist.org/photos/76460834/original.jpg",
+    "image_size": [
+      1536,
+      2048
+    ],
+    "saved_image": "rows/76460834_key_leaf_type/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_leaf_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "leaf leaves leaf",
+      "score": 0.332547,
+      "box": [
+        715.51,
+        600.47,
+        886.51,
+        844.76
+      ],
+      "area_ratio": 0.013279
+    },
+    "detections": [
+      {
+        "label": "leaves",
+        "score": 0.355486,
+        "box": [
+          5.11,
+          6.22,
+          1531.57,
+          2038.77
+        ],
+        "area_ratio": 0.986291
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.332547,
+        "box": [
+          715.51,
+          600.47,
+          886.51,
+          844.76
+        ],
+        "area_ratio": 0.013279
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.326963,
+        "box": [
+          170.78,
+          674.9,
+          371.11,
+          840.76
+        ],
+        "area_ratio": 0.010562
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.324575,
+        "box": [
+          202.24,
+          835.17,
+          491.6,
+          1040.32
+        ],
+        "area_ratio": 0.018872
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.319002,
+        "box": [
+          1.05,
+          1020.61,
+          242.15,
+          1250.12
+        ],
+        "area_ratio": 0.01759
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.297825,
+        "box": [
+          1253.76,
+          406.84,
+          1499.59,
+          544.76
+        ],
+        "area_ratio": 0.010778
+      },
+      {
+        "label": "leaf leaf",
+        "score": 0.291822,
+        "box": [
+          548.04,
+          955.66,
+          764.78,
+          1109.6
+        ],
+        "area_ratio": 0.010606
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.278014,
+        "box": [
+          177.53,
+          1244.35,
+          1117.19,
+          1854.27
+        ],
+        "area_ratio": 0.182191
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.27417,
+        "box": [
+          1192.52,
+          106.81,
+          1420.33,
+          259.88
+        ],
+        "area_ratio": 0.011085
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.260437,
+        "box": [
+          1267.54,
+          605.63,
+          1527.54,
+          776.81
+        ],
+        "area_ratio": 0.014148
+      }
+    ],
+    "output_image": "rows/76460834_key_leaf_type/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "leaf leaves leaf",
+      "score": 0.332547,
+      "box": [
+        715.51,
+        600.47,
+        886.51,
+        844.76
+      ],
+      "area_ratio": 0.013279
+    },
+    "output_image": "rows/76460834_key_leaf_type/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "input_box": [
+      715.51,
+      600.47,
+      886.51,
+      844.76
+    ],
+    "predicted_iou": 0.959144,
+    "metrics": {
+      "mask_area_pixels": 19811.5,
+      "mask_area_box_ratio": 0.474259,
+      "perimeter_pixels": 744.365,
+      "circularity": 0.44932,
+      "solidity": 0.858886,
+      "contour_complexity": 2.225585,
+      "aspect_ratio": 0.649789,
+      "extent": 0.542811,
+      "mean_rgb": [
+        81.701,
+        119.485,
+        83.67
+      ]
+    },
+    "output_image": "rows/76460834_key_leaf_type/03_sam_edge_mask.jpg"
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Leaves Toothed or Lobed",
+    "ranking": [
+      {
+        "value": "Leaves Toothed or Lobed",
+        "score": 0.495752
+      },
+      {
+        "value": "Leaves Entire",
+        "score": 0.249837
+      },
+      {
+        "value": "Leaves Divided",
+        "score": 0.143695
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/307213903",
+    "reference_evidence": {
+      "Leaves Divided": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/127978485",
+          "cosine": 0.143695,
+          "weighted": 0.143695
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_divided.png",
+          "cosine": -0.031845,
+          "weighted": -0.027068
+        }
+      ],
+      "Leaves Entire": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/139502186",
+          "cosine": 0.249837,
+          "weighted": 0.249837
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_entire.png",
+          "cosine": 0.166115,
+          "weighted": 0.141197
+        }
+      ],
+      "Leaves Toothed or Lobed": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307213903",
+          "cosine": 0.495752,
+          "weighted": 0.495752
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_toothed.png",
+          "cosine": 0.029343,
+          "weighted": 0.024942
+        }
+      ]
+    },
+    "output_image": "rows/76460834_key_leaf_type/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_flower_type": "4 Regular Parts",
+      "key_plant_type": "Wildflowers - Alternate Leaves",
+      "key_leaf_type": "Leaves Toothed or Lobed"
+    },
+    "base_taxa": 387,
+    "candidate_count": 10,
+    "candidate_reduction": 0.97416,
+    "true_species": "Cornus stolonifera",
+    "true_species_retained": false,
+    "candidates": [
+      "Alliaria officinalis",
+      "Arabis canadensis",
+      "Arabis glabra",
+      "Arabis hirsuta",
+      "Armoracia lapathifolia",
+      "Gaura biennis",
+      "Oenothera biennis",
+      "Oenothera cruciata",
+      "Oenothera laciniata",
+      "Sedum rosea"
+    ],
+    "output_image": "rows/76460834_key_leaf_type/05_graph_filtering.png"
+  }
+}

@@ -1,0 +1,389 @@
+{
+  "dataset": "calibration",
+  "row_id": "key_leaf_type_leaves-toothed-or-lobed",
+  "image": "https://www.inaturalist.org/photos/307213903",
+  "photo_id": "307213903",
+  "feature": "key_leaf_type",
+  "expected_p1": "YES",
+  "expected_p2": "Leaves Toothed or Lobed",
+  "true_species": "",
+  "recorded_p1": "YES",
+  "recorded_p2": "Leaves Toothed or Lobed",
+  "step_0_input": {
+    "source": "https://www.inaturalist.org/photos/307213903",
+    "image_size": [
+      500,
+      333
+    ],
+    "saved_image": "rows/key_leaf_type_leaves-toothed-or-lobed/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_leaf_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "leaf leaves leaflet",
+      "score": 0.479681,
+      "box": [
+        55.33,
+        106.87,
+        208.98,
+        312.6
+      ],
+      "area_ratio": 0.189841
+    },
+    "detections": [
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.479681,
+        "box": [
+          55.33,
+          106.87,
+          208.98,
+          312.6
+        ],
+        "area_ratio": 0.189841
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.386031,
+        "box": [
+          0.2,
+          0.86,
+          157.53,
+          102.78
+        ],
+        "area_ratio": 0.096311
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.379139,
+        "box": [
+          284.02,
+          208.95,
+          443.53,
+          318.65
+        ],
+        "area_ratio": 0.105095
+      },
+      {
+        "label": "leaves leaflet",
+        "score": 0.332845,
+        "box": [
+          55.4,
+          106.71,
+          208.94,
+          312.42
+        ],
+        "area_ratio": 0.189696
+      },
+      {
+        "label": "leaves",
+        "score": 0.331544,
+        "box": [
+          1.14,
+          1.25,
+          497.44,
+          331.87
+        ],
+        "area_ratio": 0.98551
+      },
+      {
+        "label": "leaves",
+        "score": 0.283367,
+        "box": [
+          0.68,
+          1.88,
+          448.2,
+          331.66
+        ],
+        "area_ratio": 0.886394
+      },
+      {
+        "label": "leaves leaflet",
+        "score": 0.279344,
+        "box": [
+          0.12,
+          0.87,
+          157.77,
+          102.93
+        ],
+        "area_ratio": 0.096638
+      },
+      {
+        "label": "leaves leaflet",
+        "score": 0.258376,
+        "box": [
+          283.71,
+          208.63,
+          444.51,
+          318.51
+        ],
+        "area_ratio": 0.106126
+      },
+      {
+        "label": "leaf leaf",
+        "score": 0.25166,
+        "box": [
+          0.17,
+          241.79,
+          51.23,
+          332.91
+        ],
+        "area_ratio": 0.027946
+      },
+      {
+        "label": "leaf leaflet",
+        "score": 0.25066,
+        "box": [
+          248.47,
+          199.67,
+          286.36,
+          231.45
+        ],
+        "area_ratio": 0.007232
+      }
+    ],
+    "output_image": "rows/key_leaf_type_leaves-toothed-or-lobed/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "leaf leaves leaflet",
+      "score": 0.479681,
+      "box": [
+        55.33,
+        106.87,
+        208.98,
+        312.6
+      ],
+      "area_ratio": 0.189841
+    },
+    "output_image": "rows/key_leaf_type_leaves-toothed-or-lobed/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "input_box": [
+      55.33,
+      106.87,
+      208.98,
+      312.6
+    ],
+    "predicted_iou": 0.984642,
+    "metrics": {
+      "mask_area_pixels": 17528.0,
+      "mask_area_box_ratio": 0.554501,
+      "perimeter_pixels": 624.441,
+      "circularity": 0.564885,
+      "solidity": 0.910758,
+      "contour_complexity": 1.770273,
+      "aspect_ratio": 0.758794,
+      "extent": 0.583314,
+      "mean_rgb": [
+        108.755,
+        155.437,
+        95.613
+      ]
+    },
+    "output_image": "rows/key_leaf_type_leaves-toothed-or-lobed/03_sam_edge_mask.jpg"
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Leaves Toothed or Lobed",
+    "ranking": [
+      {
+        "value": "Leaves Toothed or Lobed",
+        "score": 0.370167
+      },
+      {
+        "value": "Leaves Entire",
+        "score": 0.321584
+      },
+      {
+        "value": "Leaves Divided",
+        "score": 0.302511
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/307213903",
+    "reference_evidence": {
+      "Leaves Entire": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/139502186",
+          "cosine": 0.321584,
+          "weighted": 0.321584
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_entire.png",
+          "cosine": 0.189904,
+          "weighted": 0.161418
+        }
+      ],
+      "Leaves Toothed or Lobed": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307213903",
+          "cosine": 0.370167,
+          "weighted": 0.370167
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_toothed.png",
+          "cosine": 0.133886,
+          "weighted": 0.113803
+        }
+      ],
+      "Leaves Divided": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/127978485",
+          "cosine": 0.302511,
+          "weighted": 0.302511
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_divided.png",
+          "cosine": 0.107204,
+          "weighted": 0.091123
+        }
+      ]
+    },
+    "output_image": "rows/key_leaf_type_leaves-toothed-or-lobed/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_leaf_type": "Leaves Toothed or Lobed"
+    },
+    "base_taxa": 387,
+    "candidate_count": 123,
+    "candidate_reduction": 0.682171,
+    "true_species": "",
+    "true_species_retained": null,
+    "candidates": [
+      "Actinomeris alternifolia",
+      "Agastache scrophulariaefolia",
+      "Alliaria officinalis",
+      "Anemone canadensis",
+      "Anemonella thalictroides",
+      "Arabis canadensis",
+      "Arabis glabra",
+      "Arabis hirsuta",
+      "Armoracia lapathifolia",
+      "Arnica mollis",
+      "Cacalia atriplicifolia",
+      "Cacalia muhlenbergii",
+      "Cacalia suaveolens",
+      "Campanula americana",
+      "Campanula aparinoides",
+      "Chenopodium album",
+      "Chenopodium ambrosioides",
+      "Chenopodium botrys",
+      "Chenopodium capitatum",
+      "Chenopodium glaucum",
+      "Chenopodium hybridum",
+      "Chenopodium rubrum",
+      "Chrysanthemum leucanthemum",
+      "Chrysanthemum parthenium",
+      "Cynanchum nigrum",
+      "Desmodium glutinosum",
+      "Dipsacus sylvestris",
+      "Epilobium glandulosum",
+      "Erechtites hieracifolia",
+      "Erigeron strigosus",
+      "Eupatorium album",
+      "Eupatorium aromaticum",
+      "Eupatorium coelestinum",
+      "Eupatorium dubium",
+      "Eupatorium fistulosum",
+      "Eupatorium maculatum",
+      "Eupatorium pubescens",
+      "Eupatorium purpureum",
+      "Eupatorium rugosum",
+      "Euphrasia americana",
+      "Galax aphylla",
+      "Galeopsis tetrahit",
+      "Galinsoga ciliata",
+      "Gaura biennis",
+      "Gerardia flava",
+      "Gerardia laevigata",
+      "Gerardia virginica",
+      "Helenium nudiflorum",
+      "Helianthus laetiflorus",
+      "Hibiscus militaris",
+      "Hibiscus palustris",
+      "Hieracium canadense",
+      "Hieracium vulgatum",
+      "Humulus lupulus",
+      "Hypochoeris radicata",
+      "Kosteletzkya virginica",
+      "Kuhnia eupatorioides",
+      "Lactuca scariola",
+      "Leontodon autumnalis",
+      "Leucothoe racemosa",
+      "Matricaria maritima",
+      "Mentha arvensis",
+      "Mentha piperita",
+      "Monarda fistulosa",
+      "Monarda media",
+      "Nemopanthus mucronata",
+      "Oenothera biennis",
+      "Oenothera cruciata",
+      "Oenothera laciniata",
+      "Physalis subglabrata",
+      "Pluchea purpurascens",
+      "Polymnia uvedalia",
+      "Prenanthes alba",
+      "Prenanthes altissima",
+      "Prenanthes boottii",
+      "Prenanthes serpentaria",
+      "Prenanthes trifoliata",
+      "Prunus depressa",
+      "Pyrola rotundifolia",
+      "Pyrola secunda",
+      "Pyrola virens",
+      "Pyrus arbutifolia",
+      "Pyrus floribunda",
+      "Pyrus melanocarpa",
+      "Ranunculus cymbalaria",
+      "Ranunculus ficaria",
+      "Rhinanthus crista-galli",
+      "Ribes sativum",
+      "Rudbeckia fulgida",
+      "Rudbeckia serotina",
+      "Rudbeckia speciosa",
+      "Saxifraga micranthidifolia",
+      "Saxifraga pensylvanica",
+      "Saxifraga virginiensis",
+      "Scutellaria epilobiifolia",
+      "Sedum purpureum",
+      "Sedum rosea",
+      "Sedum telephioides",
+      "Senecio aureus",
+      "Senecio jacobaea",
+      "Senecio obovatus",
+      "Senecio pauperculus",
+      "Senecio robbinsii",
+      "Sericocarpus Aster pilosusoides",
+      "Silphium trifoliatum",
+      "Specularia perfoliata",
+      "Spiraea alba",
+      "Stachys tenuifolia",
+      "Urtica procera",
+      "Vaccinium vacillans",
+      "Valerianella olitoria",
+      "Vernonia altissima",
+      "Viburnum alnifolium",
+      "Viburnum rafinesquianum",
+      "Viola conspersa",
+      "Viola kitaibeliana",
+      "Viola pallens",
+      "Viola palmata",
+      "Viola papilionacea",
+      "Viola pensylvanica",
+      "Viola sororia",
+      "Viola triloba",
+      "Xanthium echinatum"
+    ],
+    "output_image": "rows/key_leaf_type_leaves-toothed-or-lobed/05_graph_filtering.png"
+  }
+}

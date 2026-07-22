@@ -1,0 +1,327 @@
+{
+  "dataset": "benchmark_10",
+  "row_id": "71302942_key_leaf_type",
+  "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/71302942/original.jpeg",
+  "photo_id": "71302942",
+  "feature": "key_leaf_type",
+  "expected_p1": "YES",
+  "expected_p2": "Leaves Toothed or Lobed",
+  "true_species": "Specularia perfoliata",
+  "recorded_p1": "YES",
+  "recorded_p2": "Leaves Toothed or Lobed",
+  "step_0_input": {
+    "source": "https://inaturalist-open-data.s3.amazonaws.com/photos/71302942/original.jpeg",
+    "image_size": [
+      2048,
+      1536
+    ],
+    "saved_image": "rows/71302942_key_leaf_type/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_leaf_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "leaves leaflet",
+      "score": 0.355971,
+      "box": [
+        491.06,
+        380.27,
+        1440.36,
+        1238.13
+      ],
+      "area_ratio": 0.258878
+    },
+    "detections": [
+      {
+        "label": "leaves leaflet",
+        "score": 0.355971,
+        "box": [
+          491.06,
+          380.27,
+          1440.36,
+          1238.13
+        ],
+        "area_ratio": 0.258878
+      },
+      {
+        "label": "leaves",
+        "score": 0.351959,
+        "box": [
+          16.04,
+          4.24,
+          2035.1,
+          1530.61
+        ],
+        "area_ratio": 0.97969
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.342159,
+        "box": [
+          491.01,
+          380.96,
+          1440.05,
+          1238.08
+        ],
+        "area_ratio": 0.258588
+      },
+      {
+        "label": "leaf",
+        "score": 0.334927,
+        "box": [
+          90.01,
+          514.26,
+          558.82,
+          918.99
+        ],
+        "area_ratio": 0.060317
+      },
+      {
+        "label": "leaf leaf",
+        "score": 0.334889,
+        "box": [
+          90.37,
+          514.92,
+          490.67,
+          908.36
+        ],
+        "area_ratio": 0.050066
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.317699,
+        "box": [
+          89.65,
+          513.7,
+          559.42,
+          920.94
+        ],
+        "area_ratio": 0.060815
+      },
+      {
+        "label": "leaves leaflet",
+        "score": 0.273629,
+        "box": [
+          88.25,
+          514.94,
+          489.09,
+          906.67
+        ],
+        "area_ratio": 0.049915
+      },
+      {
+        "label": "leaf leaf",
+        "score": 0.200069,
+        "box": [
+          1511.45,
+          544.81,
+          1882.46,
+          1145.38
+        ],
+        "area_ratio": 0.070833
+      },
+      {
+        "label": "leaf",
+        "score": 0.193877,
+        "box": [
+          342.68,
+          1284.88,
+          642.73,
+          1531.14
+        ],
+        "area_ratio": 0.02349
+      },
+      {
+        "label": "leaf",
+        "score": 0.189587,
+        "box": [
+          90.02,
+          516.78,
+          372.49,
+          822.28
+        ],
+        "area_ratio": 0.027433
+      }
+    ],
+    "output_image": "rows/71302942_key_leaf_type/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "leaves leaflet",
+      "score": 0.355971,
+      "box": [
+        491.06,
+        380.27,
+        1440.36,
+        1238.13
+      ],
+      "area_ratio": 0.258878
+    },
+    "output_image": "rows/71302942_key_leaf_type/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "input_box": [
+      491.06,
+      380.27,
+      1440.36,
+      1238.13
+    ],
+    "predicted_iou": 0.965882,
+    "metrics": {
+      "mask_area_pixels": 323734.5,
+      "mask_area_box_ratio": 0.397529,
+      "perimeter_pixels": 4278.994,
+      "circularity": 0.222185,
+      "solidity": 0.605924,
+      "contour_complexity": 4.500747,
+      "aspect_ratio": 1.110583,
+      "extent": 0.412141,
+      "mean_rgb": [
+        162.225,
+        132.615,
+        170.61
+      ]
+    },
+    "output_image": "rows/71302942_key_leaf_type/03_sam_edge_mask.jpg"
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Leaves Toothed or Lobed",
+    "ranking": [
+      {
+        "value": "Leaves Toothed or Lobed",
+        "score": 0.269147
+      },
+      {
+        "value": "Leaves Entire",
+        "score": 0.232498
+      },
+      {
+        "value": "Leaves Divided",
+        "score": 0.078211
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/307213903",
+    "reference_evidence": {
+      "Leaves Divided": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/127978485",
+          "cosine": 0.078211,
+          "weighted": 0.078211
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_divided.png",
+          "cosine": 0.047214,
+          "weighted": 0.040132
+        }
+      ],
+      "Leaves Entire": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/139502186",
+          "cosine": 0.232498,
+          "weighted": 0.232498
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_entire.png",
+          "cosine": -0.003002,
+          "weighted": -0.002552
+        }
+      ],
+      "Leaves Toothed or Lobed": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307213903",
+          "cosine": 0.269147,
+          "weighted": 0.269147
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_toothed.png",
+          "cosine": -0.039706,
+          "weighted": -0.03375
+        }
+      ]
+    },
+    "output_image": "rows/71302942_key_leaf_type/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_plant_type": "Wildflowers - Alternate Leaves",
+      "key_leaf_type": "Leaves Toothed or Lobed"
+    },
+    "base_taxa": 387,
+    "candidate_count": 60,
+    "candidate_reduction": 0.844961,
+    "true_species": "Specularia perfoliata",
+    "true_species_retained": true,
+    "candidates": [
+      "Actinomeris alternifolia",
+      "Alliaria officinalis",
+      "Arabis canadensis",
+      "Arabis glabra",
+      "Arabis hirsuta",
+      "Armoracia lapathifolia",
+      "Cacalia atriplicifolia",
+      "Cacalia muhlenbergii",
+      "Cacalia suaveolens",
+      "Campanula americana",
+      "Campanula aparinoides",
+      "Chenopodium album",
+      "Chenopodium ambrosioides",
+      "Chenopodium botrys",
+      "Chenopodium capitatum",
+      "Chenopodium glaucum",
+      "Chenopodium hybridum",
+      "Chenopodium rubrum",
+      "Chrysanthemum leucanthemum",
+      "Chrysanthemum parthenium",
+      "Erechtites hieracifolia",
+      "Erigeron strigosus",
+      "Gaura biennis",
+      "Helenium nudiflorum",
+      "Hibiscus militaris",
+      "Hibiscus palustris",
+      "Hieracium canadense",
+      "Hieracium vulgatum",
+      "Kosteletzkya virginica",
+      "Kuhnia eupatorioides",
+      "Lactuca scariola",
+      "Matricaria maritima",
+      "Oenothera biennis",
+      "Oenothera cruciata",
+      "Oenothera laciniata",
+      "Physalis subglabrata",
+      "Pluchea purpurascens",
+      "Prenanthes alba",
+      "Prenanthes altissima",
+      "Prenanthes boottii",
+      "Prenanthes serpentaria",
+      "Prenanthes trifoliata",
+      "Rudbeckia fulgida",
+      "Rudbeckia serotina",
+      "Rudbeckia speciosa",
+      "Sedum purpureum",
+      "Sedum rosea",
+      "Sedum telephioides",
+      "Senecio aureus",
+      "Senecio jacobaea",
+      "Senecio obovatus",
+      "Senecio pauperculus",
+      "Senecio robbinsii",
+      "Sericocarpus Aster pilosusoides",
+      "Specularia perfoliata",
+      "Vernonia altissima",
+      "Viola conspersa",
+      "Viola kitaibeliana",
+      "Viola pensylvanica",
+      "Xanthium echinatum"
+    ],
+    "output_image": "rows/71302942_key_leaf_type/05_graph_filtering.png"
+  }
+}

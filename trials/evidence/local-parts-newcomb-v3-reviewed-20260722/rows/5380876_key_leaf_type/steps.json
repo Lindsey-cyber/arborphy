@@ -1,0 +1,283 @@
+{
+  "dataset": "benchmark_10",
+  "row_id": "5380876_key_leaf_type",
+  "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/5380876/original.jpg",
+  "photo_id": "5380876",
+  "feature": "key_leaf_type",
+  "expected_p1": "YES",
+  "expected_p2": "Leaves Entire",
+  "true_species": "Polygonum hydropiper",
+  "recorded_p1": "YES",
+  "recorded_p2": "INCONCLUSIVE",
+  "step_0_input": {
+    "source": "https://inaturalist-open-data.s3.amazonaws.com/photos/5380876/original.jpg",
+    "image_size": [
+      2048,
+      1796
+    ],
+    "saved_image": "rows/5380876_key_leaf_type/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_leaf_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "leaf leaflet",
+      "score": 0.356527,
+      "box": [
+        1368.28,
+        1272.97,
+        1449.65,
+        1394.76
+      ],
+      "area_ratio": 0.002694
+    },
+    "detections": [
+      {
+        "label": "leaves",
+        "score": 0.506015,
+        "box": [
+          5.44,
+          13.09,
+          2041.02,
+          1786.6
+        ],
+        "area_ratio": 0.981493
+      },
+      {
+        "label": "leaf leaflet",
+        "score": 0.356527,
+        "box": [
+          1368.28,
+          1272.97,
+          1449.65,
+          1394.76
+        ],
+        "area_ratio": 0.002694
+      },
+      {
+        "label": "leaf leaflet",
+        "score": 0.315153,
+        "box": [
+          1716.88,
+          266.75,
+          1875.29,
+          352.28
+        ],
+        "area_ratio": 0.003684
+      },
+      {
+        "label": "leaf leaflet",
+        "score": 0.307023,
+        "box": [
+          1602.26,
+          1551.57,
+          1747.08,
+          1742.2
+        ],
+        "area_ratio": 0.007505
+      },
+      {
+        "label": "leaf leaf",
+        "score": 0.274515,
+        "box": [
+          1933.76,
+          1252.31,
+          2043.67,
+          1476.98
+        ],
+        "area_ratio": 0.006714
+      },
+      {
+        "label": "leaf leaf",
+        "score": 0.26023,
+        "box": [
+          1774.37,
+          1026.68,
+          1855.38,
+          1216.39
+        ],
+        "area_ratio": 0.004178
+      },
+      {
+        "label": "leaflet",
+        "score": 0.257225,
+        "box": [
+          1367.54,
+          1272.57,
+          1450.02,
+          1395.17
+        ],
+        "area_ratio": 0.002749
+      },
+      {
+        "label": "leaflet",
+        "score": 0.250304,
+        "box": [
+          1601.78,
+          1551.22,
+          1747.33,
+          1742.49
+        ],
+        "area_ratio": 0.007569
+      },
+      {
+        "label": "leaflet",
+        "score": 0.227861,
+        "box": [
+          1716.02,
+          266.66,
+          1875.75,
+          352.85
+        ],
+        "area_ratio": 0.003743
+      },
+      {
+        "label": "leaf leaf",
+        "score": 0.21865,
+        "box": [
+          1219.75,
+          423.87,
+          1461.64,
+          637.23
+        ],
+        "area_ratio": 0.014031
+      }
+    ],
+    "output_image": "rows/5380876_key_leaf_type/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "leaf leaflet",
+      "score": 0.356527,
+      "box": [
+        1368.28,
+        1272.97,
+        1449.65,
+        1394.76
+      ],
+      "area_ratio": 0.002694
+    },
+    "output_image": "rows/5380876_key_leaf_type/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "input_box": [
+      1368.28,
+      1272.97,
+      1449.65,
+      1394.76
+    ],
+    "predicted_iou": 0.967242,
+    "metrics": {
+      "mask_area_pixels": 4317.0,
+      "mask_area_box_ratio": 0.435618,
+      "perimeter_pixels": 317.362,
+      "circularity": 0.538618,
+      "solidity": 0.95151,
+      "contour_complexity": 1.856604,
+      "aspect_ratio": 0.655462,
+      "extent": 0.465094,
+      "mean_rgb": [
+        157.327,
+        183.885,
+        97.331
+      ]
+    },
+    "output_image": "rows/5380876_key_leaf_type/03_sam_edge_mask.jpg"
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Cannot determine from this image",
+    "ranking": [
+      {
+        "value": "Leaves Divided",
+        "score": 0.263139
+      },
+      {
+        "value": "Leaves Entire",
+        "score": 0.258525
+      },
+      {
+        "value": "Leaves Toothed or Lobed",
+        "score": 0.154334
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/127978485",
+    "reference_evidence": {
+      "Leaves Divided": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/127978485",
+          "cosine": 0.263139,
+          "weighted": 0.263139
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_divided.png",
+          "cosine": 0.085871,
+          "weighted": 0.072991
+        }
+      ],
+      "Leaves Entire": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/139502186",
+          "cosine": 0.258525,
+          "weighted": 0.258525
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_entire.png",
+          "cosine": 0.178616,
+          "weighted": 0.151823
+        }
+      ],
+      "Leaves Toothed or Lobed": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307213903",
+          "cosine": 0.154334,
+          "weighted": 0.154334
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_toothed.png",
+          "cosine": 0.112304,
+          "weighted": 0.095458
+        }
+      ]
+    },
+    "output_image": "rows/5380876_key_leaf_type/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_flower_type": "4 Regular Parts",
+      "key_plant_type": "Wildflowers - Opposite or Whorled Leaves"
+    },
+    "base_taxa": 387,
+    "candidate_count": 16,
+    "candidate_reduction": 0.958656,
+    "true_species": "Polygonum hydropiper",
+    "true_species_retained": false,
+    "candidates": [
+      "Asarum canadense",
+      "Ascyrum hypericoides",
+      "Ascyrum stans",
+      "Dentaria diphylla",
+      "Dentaria heterophylla",
+      "Dentaria laciniata",
+      "Dentaria multifida",
+      "Diodia teres",
+      "Dipsacus sylvestris",
+      "Epilobium glandulosum",
+      "Epilobium strictum",
+      "Galium aparine",
+      "Gentiana crinita",
+      "Gentiana procera",
+      "Houstonia longifolia",
+      "Swertia carolinensis"
+    ],
+    "output_image": "rows/5380876_key_leaf_type/05_graph_filtering.png"
+  }
+}

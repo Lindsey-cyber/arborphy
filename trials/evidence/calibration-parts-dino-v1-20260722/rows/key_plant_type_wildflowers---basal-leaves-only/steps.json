@@ -1,0 +1,332 @@
+{
+  "dataset": "calibration",
+  "row_id": "key_plant_type_wildflowers---basal-leaves-only",
+  "image": "https://www.inaturalist.org/photos/396753070",
+  "photo_id": "396753070",
+  "feature": "key_plant_type",
+  "expected_p1": "YES",
+  "expected_p2": "Wildflowers - Basal Leaves Only",
+  "true_species": "",
+  "recorded_p1": "YES",
+  "recorded_p2": "Wildflowers - Basal Leaves Only",
+  "step_0_input": {
+    "source": "https://www.inaturalist.org/photos/396753070",
+    "image_size": [
+      375,
+      500
+    ],
+    "saved_image": "rows/key_plant_type_wildflowers---basal-leaves-only/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_plant_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "branch vine",
+      "score": 0.549208,
+      "box": [
+        185.94,
+        103.02,
+        236.37,
+        410.72
+      ],
+      "area_ratio": 0.08276
+    },
+    "detections": [
+      {
+        "label": "branch vine",
+        "score": 0.549208,
+        "box": [
+          185.94,
+          103.02,
+          236.37,
+          410.72
+        ],
+        "area_ratio": 0.08276
+      },
+      {
+        "label": "stem branch vine",
+        "score": 0.361327,
+        "box": [
+          186.14,
+          103.1,
+          236.17,
+          410.85
+        ],
+        "area_ratio": 0.082112
+      },
+      {
+        "label": "plant shrub",
+        "score": 0.306491,
+        "box": [
+          21.84,
+          19.73,
+          358.03,
+          497.61
+        ],
+        "area_ratio": 0.856853
+      },
+      {
+        "label": "plant shrub",
+        "score": 0.256512,
+        "box": [
+          78.92,
+          99.25,
+          349.48,
+          495.36
+        ],
+        "area_ratio": 0.571605
+      },
+      {
+        "label": "plant shrub",
+        "score": 0.252383,
+        "box": [
+          24.6,
+          23.72,
+          353.21,
+          385.07
+        ],
+        "area_ratio": 0.633315
+      },
+      {
+        "label": "stem branch",
+        "score": 0.241017,
+        "box": [
+          185.97,
+          103.32,
+          236.32,
+          410.68
+        ],
+        "area_ratio": 0.082522
+      },
+      {
+        "label": "shrub",
+        "score": 0.198709,
+        "box": [
+          79.59,
+          344.15,
+          350.36,
+          494.06
+        ],
+        "area_ratio": 0.216479
+      },
+      {
+        "label": "plant shrub",
+        "score": 0.189109,
+        "box": [
+          1.85,
+          4.12,
+          373.57,
+          499.98
+        ],
+        "area_ratio": 0.983044
+      },
+      {
+        "label": "shrub",
+        "score": 0.184425,
+        "box": [
+          23.83,
+          22.6,
+          356.17,
+          446.03
+        ],
+        "area_ratio": 0.750507
+      },
+      {
+        "label": "shrub",
+        "score": 0.180134,
+        "box": [
+          50.71,
+          60.08,
+          320.22,
+          377.48
+        ],
+        "area_ratio": 0.456229
+      }
+    ],
+    "output_image": "rows/key_plant_type_wildflowers---basal-leaves-only/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "branch vine",
+      "score": 0.549208,
+      "box": [
+        185.94,
+        103.02,
+        236.37,
+        410.72
+      ],
+      "area_ratio": 0.08276
+    },
+    "output_image": "rows/key_plant_type_wildflowers---basal-leaves-only/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "status": "not_applicable",
+    "reason": "whole-image plant context",
+    "output_image": ""
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Wildflowers - Basal Leaves Only",
+    "ranking": [
+      {
+        "value": "Wildflowers - Basal Leaves Only",
+        "score": 1.0
+      },
+      {
+        "value": "Wildflowers - No Apparent Leaves",
+        "score": 0.414856
+      },
+      {
+        "value": "Wildflowers - Opposite or Whorled Leaves",
+        "score": 0.24918
+      },
+      {
+        "value": "Wildflowers - Alternate Leaves",
+        "score": 0.213602
+      },
+      {
+        "value": "Shrubs",
+        "score": 0.055644
+      },
+      {
+        "value": "Vines",
+        "score": -0.018628
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/396753070",
+    "reference_evidence": {
+      "Wildflowers - Alternate Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307163812",
+          "cosine": 0.213602,
+          "weighted": 0.213602
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/alternate_leaves.png",
+          "cosine": 0.130528,
+          "weighted": 0.110949
+        }
+      ],
+      "Wildflowers - No Apparent Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/50286623",
+          "cosine": 0.414856,
+          "weighted": 0.414856
+        }
+      ],
+      "Wildflowers - Opposite or Whorled Leaves": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/421678053",
+          "cosine": 0.24918,
+          "weighted": 0.24918
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/opposite_leaves.png",
+          "cosine": 0.285788,
+          "weighted": 0.24292
+        }
+      ],
+      "Wildflowers - Basal Leaves Only": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/396753070",
+          "cosine": 1.0,
+          "weighted": 1.0
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/basal_leaves.png",
+          "cosine": 0.32715,
+          "weighted": 0.278078
+        }
+      ],
+      "Vines": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/116667850",
+          "cosine": -0.018628,
+          "weighted": -0.018628
+        }
+      ],
+      "Shrubs": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/392514942",
+          "cosine": 0.055644,
+          "weighted": 0.055644
+        }
+      ]
+    },
+    "output_image": "rows/key_plant_type_wildflowers---basal-leaves-only/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_plant_type": "Wildflowers - Basal Leaves Only"
+    },
+    "base_taxa": 387,
+    "candidate_count": 50,
+    "candidate_reduction": 0.870801,
+    "true_species": "",
+    "true_species_retained": null,
+    "candidates": [
+      "Amianthium muscaetoxicum",
+      "Arisaema atrorubens",
+      "Arisaema triphyllum",
+      "Calopogon pulchellus",
+      "Coptis groenlandica",
+      "Dalibarda repens",
+      "Desmodium nudiflorum",
+      "Dodecatheon amethystinum",
+      "Dodecatheon meadia",
+      "Galax aphylla",
+      "Habenaria hookeri",
+      "Habenaria macrophylla",
+      "Habenaria obtusata",
+      "Hieracium aurantiacum",
+      "Hieracium flagellare",
+      "Hieracium florentinum",
+      "Hieracium floribundum",
+      "Hieracium pilosella",
+      "Hieracium pratense",
+      "Hypochoeris radicata",
+      "Leontodon autumnalis",
+      "Limonium carolinianum",
+      "Limosella subulata",
+      "Liparis lilifolia",
+      "Nuphar microphyllum",
+      "Nuphar variegatum",
+      "Nymphaea odorata",
+      "Nymphaea tuberosa",
+      "Opuntia humifusa",
+      "Orchis rotundifolia",
+      "Orchis spectabilis",
+      "Petasites palmatus",
+      "Potentilla anserina",
+      "Pyrola rotundifolia",
+      "Pyrola secunda",
+      "Pyrola virens",
+      "Ranunculus cymbalaria",
+      "Ranunculus ficaria",
+      "Saxifraga micranthidifolia",
+      "Saxifraga pensylvanica",
+      "Saxifraga virginiensis",
+      "Spiranthes cernua",
+      "Spiranthes gracilis",
+      "Talinum teretifolium",
+      "Viola pallens",
+      "Viola palmata",
+      "Viola papilionacea",
+      "Viola sororia",
+      "Viola triloba",
+      "Xyris caroliniana"
+    ],
+    "output_image": "rows/key_plant_type_wildflowers---basal-leaves-only/05_graph_filtering.png"
+  }
+}

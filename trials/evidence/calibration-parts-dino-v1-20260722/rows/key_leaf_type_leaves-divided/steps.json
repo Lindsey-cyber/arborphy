@@ -1,0 +1,339 @@
+{
+  "dataset": "calibration",
+  "row_id": "key_leaf_type_leaves-divided",
+  "image": "https://www.inaturalist.org/photos/127978485",
+  "photo_id": "127978485",
+  "feature": "key_leaf_type",
+  "expected_p1": "YES",
+  "expected_p2": "Leaves Divided",
+  "true_species": "",
+  "recorded_p1": "YES",
+  "recorded_p2": "Leaves Divided",
+  "step_0_input": {
+    "source": "https://www.inaturalist.org/photos/127978485",
+    "image_size": [
+      375,
+      500
+    ],
+    "saved_image": "rows/key_leaf_type_leaves-divided/00_input.jpg"
+  },
+  "step_1_organ_localization": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "input_query": "key_leaf_type",
+    "answer": "YES",
+    "best_detection": {
+      "label": "leaf leaves leaf",
+      "score": 0.466199,
+      "box": [
+        243.63,
+        174.09,
+        367.78,
+        285.53
+      ],
+      "area_ratio": 0.073788
+    },
+    "detections": [
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.466199,
+        "box": [
+          243.63,
+          174.09,
+          367.78,
+          285.53
+        ],
+        "area_ratio": 0.073788
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.450884,
+        "box": [
+          0.04,
+          138.07,
+          97.2,
+          201.15
+        ],
+        "area_ratio": 0.032687
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.435232,
+        "box": [
+          105.06,
+          114.14,
+          188.83,
+          207.81
+        ],
+        "area_ratio": 0.04185
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.43407,
+        "box": [
+          95.23,
+          424.41,
+          150.52,
+          495.64
+        ],
+        "area_ratio": 0.021004
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.401931,
+        "box": [
+          95.15,
+          424.5,
+          150.57,
+          495.66
+        ],
+        "area_ratio": 0.021036
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.367552,
+        "box": [
+          239.16,
+          282.41,
+          374.91,
+          383.11
+        ],
+        "area_ratio": 0.072907
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.36165,
+        "box": [
+          158.01,
+          394.27,
+          216.44,
+          454.45
+        ],
+        "area_ratio": 0.018758
+      },
+      {
+        "label": "leaf leaves leaflet",
+        "score": 0.35258,
+        "box": [
+          0.09,
+          138.1,
+          97.2,
+          201.33
+        ],
+        "area_ratio": 0.032749
+      },
+      {
+        "label": "leaves",
+        "score": 0.343524,
+        "box": [
+          0.72,
+          115.5,
+          374.07,
+          498.85
+        ],
+        "area_ratio": 0.763326
+      },
+      {
+        "label": "leaf leaves leaf",
+        "score": 0.330982,
+        "box": [
+          239.24,
+          307.24,
+          316.88,
+          383.24
+        ],
+        "area_ratio": 0.031472
+      }
+    ],
+    "output_image": "rows/key_leaf_type_leaves-divided/01_localization.jpg"
+  },
+  "step_2_localized_crop": {
+    "input_detection": {
+      "label": "leaf leaves leaf",
+      "score": 0.466199,
+      "box": [
+        243.63,
+        174.09,
+        367.78,
+        285.53
+      ],
+      "area_ratio": 0.073788
+    },
+    "output_image": "rows/key_leaf_type_leaves-divided/02_query_crop.jpg"
+  },
+  "step_3_segmentation_and_shape": {
+    "model": "facebook/sam2.1-hiera-tiny",
+    "input_box": [
+      243.63,
+      174.09,
+      367.78,
+      285.53
+    ],
+    "predicted_iou": 0.978265,
+    "metrics": {
+      "mask_area_pixels": 7623.5,
+      "mask_area_box_ratio": 0.551019,
+      "perimeter_pixels": 422.174,
+      "circularity": 0.537504,
+      "solidity": 0.871506,
+      "contour_complexity": 1.86045,
+      "aspect_ratio": 1.110092,
+      "extent": 0.57802,
+      "mean_rgb": [
+        173.611,
+        212.322,
+        144.732
+      ]
+    },
+    "output_image": "rows/key_leaf_type_leaves-divided/03_sam_edge_mask.jpg"
+  },
+  "step_4_reference_matching": {
+    "model": "facebook/dinov2-small",
+    "answer": "Leaves Divided",
+    "ranking": [
+      {
+        "value": "Leaves Divided",
+        "score": 0.89575
+      },
+      {
+        "value": "Leaves Entire",
+        "score": 0.191342
+      },
+      {
+        "value": "Leaves Toothed or Lobed",
+        "score": 0.190342
+      }
+    ],
+    "top_reference_source": "https://www.inaturalist.org/photos/127978485",
+    "reference_evidence": {
+      "Leaves Entire": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/139502186",
+          "cosine": 0.191342,
+          "weighted": 0.191342
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_entire.png",
+          "cosine": 0.095462,
+          "weighted": 0.081142
+        }
+      ],
+      "Leaves Toothed or Lobed": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/307213903",
+          "cosine": 0.04266,
+          "weighted": 0.04266
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_toothed.png",
+          "cosine": 0.223931,
+          "weighted": 0.190342
+        }
+      ],
+      "Leaves Divided": [
+        {
+          "kind": "photo",
+          "source": "https://www.inaturalist.org/photos/127978485",
+          "cosine": 0.89575,
+          "weighted": 0.89575
+        },
+        {
+          "kind": "illustration",
+          "source": "/Users/lindseyma/Documents/GitHub/arborphy/newcomb_wildflower_guide/illustrations/leaves_divided.png",
+          "cosine": 0.184842,
+          "weighted": 0.157115
+        }
+      ]
+    },
+    "output_image": "rows/key_leaf_type_leaves-divided/04_reference_match.jpg"
+  },
+  "step_5_graph_filtering": {
+    "input_features": {
+      "key_leaf_type": "Leaves Divided"
+    },
+    "base_taxa": 387,
+    "candidate_count": 73,
+    "candidate_reduction": 0.81137,
+    "true_species": "",
+    "true_species_retained": null,
+    "candidates": [
+      " Baptisa tinctoria",
+      "Amphicarpa bracteata",
+      "Anemone lancifolia",
+      "Anemone quinquefolia",
+      "Anemone riparia",
+      "Arabis laevigata",
+      "Arabis lyrata",
+      "Arisaema atrorubens",
+      "Arisaema triphyllum",
+      "Armoracia aquatica",
+      "Artemisia caudata",
+      "Baptisia alba",
+      "Bidens coronata",
+      "Brassica kaber",
+      "Brassica nigra",
+      "Cardamine pratensis",
+      "Cassia fasciculata",
+      "Cassia hebecarpa",
+      "Cassia marilandica",
+      "Cassia nictitans",
+      "Centaurea maculosa",
+      "Cimicifuga americana",
+      "Cimicifuga racemosa",
+      "Clematis verticillaris",
+      "Coptis groenlandica",
+      "Coronilla varia",
+      "Corydalis sempervirens",
+      "Dalibarda repens",
+      "Dentaria diphylla",
+      "Dentaria heterophylla",
+      "Dentaria laciniata",
+      "Dentaria maxima",
+      "Dentaria multifida",
+      "Desmodium nudiflorum",
+      "Duchesnea indica",
+      "Galactia regularis",
+      "Gerardia pedicularia",
+      "Isopyrum biternatum",
+      "Lachnanthes tinctoria",
+      "Lathyrus japonicus",
+      "Lespedeza intermedia",
+      "Lespedeza violacea",
+      "Matricaria matricarioides",
+      "Megalodonta beckii",
+      "Melilotus alba",
+      "Polanisia graveolens",
+      "Polemonium van-bruntiae",
+      "Potentilla anserina",
+      "Potentilla arguta",
+      "Potentilla fruticosa",
+      "Potentilla palustris",
+      "Potentilla tridentata",
+      "Pyrus americana",
+      "Ranunculus hispidus",
+      "Ranunculus septentrionalis",
+      "Rhus copallina",
+      "Rhus radicans",
+      "Rhus vernix",
+      "Rorippa islandica",
+      "Rosa eglanteria",
+      "Rubus idaeus",
+      "Sambucus pubens",
+      "Sanicula gregaria",
+      "Thalictrum polygamum",
+      "Thalictrum revolutum",
+      "Thaspium barbinode",
+      "Trifolium agrarium",
+      "Trifolium procumbens",
+      "Vicia angustifolia",
+      "Vicia sativa",
+      "Vicia villosa",
+      "Xanthorrhiza simplicissima",
+      "Xanthoxylum americanum"
+    ],
+    "output_image": "rows/key_leaf_type_leaves-divided/05_graph_filtering.png"
+  }
+}
