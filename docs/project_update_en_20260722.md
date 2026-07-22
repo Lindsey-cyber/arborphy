@@ -1,4 +1,4 @@
-# Project Update — Concise English Version
+# Project Update Jul 22
 
 ## 0. Summary and current limitations
 
