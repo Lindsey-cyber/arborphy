@@ -23,6 +23,12 @@ OUTCOME_WRONG = "WRONG"
 OUTCOME_INCONCLUSIVE = "INCONCLUSIVE"
 OUTCOME_NOT_APPLICABLE = "NOT_APPLICABLE"
 NOT_APPLICABLE_VALUES = {"NA", "N/A", "SKIPPED", OUTCOME_NOT_APPLICABLE}
+HUMAN_AUDIT_COLUMNS = {
+    "human_visible",
+    "human_can_assign_value",
+    "human_value_if_assignable",
+    "review_status",
+}
 
 
 def normalize_text(series: pd.Series) -> pd.Series:
@@ -86,6 +92,43 @@ def annotate_results(df: pd.DataFrame) -> pd.DataFrame:
     annotated.loc[correct, "outcome"] = OUTCOME_CORRECT
     annotated.loc[wrong, "outcome"] = OUTCOME_WRONG
     annotated.loc[inconclusive, "outcome"] = OUTCOME_INCONCLUSIVE
+
+    if HUMAN_AUDIT_COLUMNS.issubset(annotated.columns):
+        human_visible = normalize_text(annotated["human_visible"]).str.upper()
+        human_assignable = normalize_text(annotated["human_can_assign_value"]).str.upper()
+        human_value = normalize_text(annotated["human_value_if_assignable"])
+        review_status = normalize_text(annotated["review_status"]).str.upper()
+        gold_p1_evaluable = review_status.eq("APPROVED") & human_visible.isin({"YES", "NO"})
+        gold_p2_evaluable = (
+            gold_p1_evaluable
+            & human_visible.eq("YES")
+            & human_assignable.eq("YES")
+            & human_value.ne("")
+        )
+        gold_p1_correct = gold_p1_evaluable & (
+            (human_visible.eq("YES") & p1_yes) | (human_visible.eq("NO") & p1_no)
+        )
+        gold_p1_model_inconclusive = gold_p1_evaluable & (p1_inconclusive | p1_other)
+        gold_p1_false_visible = gold_p1_evaluable & human_visible.eq("NO") & p1_yes
+        gold_p1_missed_visible = gold_p1_evaluable & human_visible.eq("YES") & p1_no
+        gold_p2_concrete = gold_p2_evaluable & concrete
+        gold_p2_correct = gold_p2_concrete & p2.str.casefold().eq(human_value.str.casefold())
+        gold_p2_wrong = gold_p2_concrete & ~gold_p2_correct
+        gold_p2_inconclusive = gold_p2_evaluable & p1_yes & inconclusive
+        gold_p2_not_applicable = gold_p2_evaluable & not_applicable
+
+        annotated["gold_p1_evaluable"] = gold_p1_evaluable
+        annotated["gold_p1_correct"] = gold_p1_correct
+        annotated["gold_p1_model_inconclusive"] = gold_p1_model_inconclusive
+        annotated["gold_p1_false_visible"] = gold_p1_false_visible
+        annotated["gold_p1_missed_visible"] = gold_p1_missed_visible
+        annotated["gold_p2_evaluable"] = gold_p2_evaluable
+        annotated["gold_p2_concrete"] = gold_p2_concrete
+        annotated["gold_p2_correct"] = gold_p2_correct
+        annotated["gold_p2_wrong"] = gold_p2_wrong
+        annotated["gold_p2_inconclusive"] = gold_p2_inconclusive
+        annotated["gold_p2_not_applicable"] = gold_p2_not_applicable
+        annotated["gold_true_value"] = human_value.where(gold_p2_evaluable, "")
     return annotated
 
 
@@ -141,6 +184,53 @@ def summarize_group(group: pd.DataFrame, source_file: str | None = None) -> dict
         "p2_inconclusive_rate": rate(inconclusive_count, p2_applicable_count),
         "committed_accuracy": rate(correct_count, committed_count),
     }
+    for column in ("p1_latency_seconds", "p2_latency_seconds", "total_latency_seconds"):
+        if column in annotated.columns:
+            numeric = pd.to_numeric(annotated[column], errors="coerce")
+            summary[f"mean_{column}"] = float(numeric.mean()) if numeric.notna().any() else None
+            summary[f"sum_{column}"] = float(numeric.sum()) if numeric.notna().any() else None
+    if "gold_p1_evaluable" in annotated.columns:
+        p1_gold_count = int(annotated["gold_p1_evaluable"].sum())
+        p1_gold_correct = int(annotated["gold_p1_correct"].sum())
+        p1_gold_inconclusive = int(annotated["gold_p1_model_inconclusive"].sum())
+        human_no_count = int(
+            (annotated["gold_p1_evaluable"] & normalize_text(annotated["human_visible"]).str.upper().eq("NO")).sum()
+        )
+        human_yes_count = int(
+            (annotated["gold_p1_evaluable"] & normalize_text(annotated["human_visible"]).str.upper().eq("YES")).sum()
+        )
+        p1_false_visible = int(annotated["gold_p1_false_visible"].sum())
+        p1_missed_visible = int(annotated["gold_p1_missed_visible"].sum())
+        p2_gold_count = int(annotated["gold_p2_evaluable"].sum())
+        p2_gold_concrete = int(annotated["gold_p2_concrete"].sum())
+        p2_gold_correct = int(annotated["gold_p2_correct"].sum())
+        p2_gold_wrong = int(annotated["gold_p2_wrong"].sum())
+        p2_gold_inconclusive = int(annotated["gold_p2_inconclusive"].sum())
+        p2_gold_not_applicable = int(annotated["gold_p2_not_applicable"].sum())
+        summary.update(
+            {
+                "p1_gold_evaluable_count": p1_gold_count,
+                "p1_gold_correct_count": p1_gold_correct,
+                "p1_gold_accuracy": rate(p1_gold_correct, p1_gold_count),
+                "p1_gold_inconclusive_count": p1_gold_inconclusive,
+                "p1_gold_inconclusive_rate": rate(p1_gold_inconclusive, p1_gold_count),
+                "p1_false_visible_count": p1_false_visible,
+                "p1_false_visible_rate": rate(p1_false_visible, human_no_count),
+                "p1_missed_visible_count": p1_missed_visible,
+                "p1_missed_visible_rate": rate(p1_missed_visible, human_yes_count),
+                "p2_gold_evaluable_count": p2_gold_count,
+                "p2_gold_concrete_count": p2_gold_concrete,
+                "p2_gold_coverage": rate(p2_gold_concrete, p2_gold_count),
+                "p2_gold_correct_count": p2_gold_correct,
+                "p2_gold_wrong_count": p2_gold_wrong,
+                "p2_gold_accuracy": rate(p2_gold_correct, p2_gold_count),
+                "p2_gold_selective_accuracy": rate(p2_gold_correct, p2_gold_concrete),
+                "p2_gold_inconclusive_count": p2_gold_inconclusive,
+                "p2_gold_inconclusive_rate": rate(p2_gold_inconclusive, p2_gold_count),
+                "p2_gold_not_applicable_count": p2_gold_not_applicable,
+                "p2_gold_not_applicable_rate": rate(p2_gold_not_applicable, p2_gold_count),
+            }
+        )
     if source_file is not None:
         summary = {"source_file": source_file, **summary}
     return summary
@@ -207,6 +297,41 @@ def outcome_pairs(df: pd.DataFrame) -> pd.DataFrame:
 
 def metric_definitions() -> pd.DataFrame:
     rows = [
+        {
+            "metric": "p1_gold_accuracy",
+            "numerator": "count(model P1 YES/NO equals approved human_visible YES/NO)",
+            "denominator": "p1_gold_evaluable_count",
+            "csv_formula": "review_status == APPROVED and human_visible in {YES, NO}",
+            "useful_signal": "Canonical P1 benchmark metric; model INCONCLUSIVE is not correct.",
+        },
+        {
+            "metric": "p2_gold_accuracy",
+            "numerator": "count(concrete P2 equals human_value_if_assignable)",
+            "denominator": "p2_gold_evaluable_count",
+            "csv_formula": "approved, visible, assignable photo-feature rows",
+            "useful_signal": "Canonical end-to-end P2 success metric; skipped and inconclusive are not correct.",
+        },
+        {
+            "metric": "p2_gold_coverage",
+            "numerator": "p2_gold_concrete_count",
+            "denominator": "p2_gold_evaluable_count",
+            "csv_formula": "gold_p2_concrete",
+            "useful_signal": "How often the model reaches and commits to P2 on human-assignable items.",
+        },
+        {
+            "metric": "p2_gold_selective_accuracy",
+            "numerator": "p2_gold_correct_count",
+            "denominator": "p2_gold_concrete_count",
+            "csv_formula": "gold_p2_correct / gold_p2_concrete",
+            "useful_signal": "Accuracy when the model commits; always report with coverage.",
+        },
+        {
+            "metric": "mean_total_latency_seconds",
+            "numerator": "sum(total_latency_seconds)",
+            "denominator": "feature_count",
+            "csv_formula": "wall-clock P1 plus conditional P2 latency per task",
+            "useful_signal": "Efficiency metric; compare on the same hardware and worker count.",
+        },
         {
             "metric": "feature_count",
             "numerator": "count(rows)",
@@ -282,7 +407,7 @@ def metric_definitions() -> pd.DataFrame:
             "numerator": "correct_count",
             "denominator": "feature_count",
             "csv_formula": "outcome == 'CORRECT'",
-            "useful_signal": "Best single end-to-end success rate when INCONCLUSIVE should count as not solved.",
+            "useful_signal": "Exploratory species-level success rate; not a formal photo-level benchmark metric.",
         },
         {
             "metric": "wrong_rate",

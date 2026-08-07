@@ -46,11 +46,12 @@ Prompt versions live as JSON files in
 `newcomb_wildflower_guide/experiment_repro/prompt_sets/`; `--prompt-set`
 selects one of those files and changes the actual P1/P2 prompt text sent to the
 model. `--image-set` is a CSV filename under
-`newcomb_wildflower_guide/experiment_repro/output/`; the default `sample.csv`
-resolves to `newcomb_wildflower_guide/experiment_repro/output/sample.csv`.
+`newcomb_wildflower_guide/experiment_repro/output/` or
+`manual_audit/generated/`; the default `sample.csv` resolves to the former.
 `--sample-limit` controls how many rows are taken from that CSV: use a positive
 integer for the first N rows or `all` for the full CSV. `--data-split`
-currently supports only `all`.
+supports `all`, `easy`, `core`, and `challenging`; tiers require a reviewed
+manifest with a `benchmark_tier` column.
 
 If `--out-file` is omitted, the wrapper creates an auto-generated `trial_id`
 using the run time, model, sample limit, and feature list, then writes matching
@@ -87,12 +88,43 @@ more raw trial CSVs. It writes:
 - `outcome_pairs.csv`
 - `metric_definitions.csv`
 
+Attach human photo-level labels for canonical P1/P2 metrics:
+
+```bash
+uv run python scripts/analyze_stepwise_results.py \
+  --input trials/artifacts/example.csv \
+  --audit-csv manual_audit/sample_10_manual_audit.csv \
+  --out-dir trials/analysis/example
+```
+
+Without approved audit rows, `true_value` accuracy is species-level exploratory
+analysis, not a formal photo-level benchmark result.
+
 Each row is assigned one primary outcome: `CORRECT`, `WRONG`, `INCONCLUSIVE`,
 or `NOT_APPLICABLE`. `NOT_APPLICABLE` means P1 did not parse as `YES`, so P2
 was skipped instead of being treated as a P2 inconclusive answer.
 `outcome_by_true_value.csv` groups by model, feature, and true value to show P1
 visibility counts plus `correct_count`, `wrong_count`, `inconclusive_count`,
 `not_applicable_count`, their rates, and `most_common_wrong_prediction`.
+
+## Local CLIP baseline
+
+Install once with `uv sync --extra local-cv`, then run:
+
+```bash
+uv run python scripts/run_stepwise_trial.py \
+  --mode local-clip \
+  --model openai/clip-vit-base-patch32 \
+  --image-set sample.csv \
+  --sample-limit 1 \
+  --features key_leaf_type \
+  --timeout 600 \
+  --trial-id local-clip-smoke
+```
+
+The first run downloads model weights. Inference is local after that, although
+remote image URLs still need to be fetched. This is a zero-shot screening
+baseline, not a botanical specialist model.
 
 Each metadata JSON records the trial setup:
 

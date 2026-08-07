@@ -17,27 +17,21 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 
+try:
+    from .audit_schema import AUDIT_COLUMNS
+except ImportError:  # direct script execution
+    from audit_schema import AUDIT_COLUMNS
+
 
 HERE = Path(__file__).resolve().parent
 CSV_PATH = HERE / "sample_10_manual_audit.csv"
+ROOT_CSV_PATH = HERE.parent / "sample_10_manual_audit.csv"
 HTML_PATH = HERE / "sample_10_review.html"
+ILLUSTRATION_DIR = HERE.parent / "newcomb_wildflower_guide" / "illustrations"
 HOST = "127.0.0.1"
 PORT = 8765
 
-EXPECTED_COLUMNS = [
-    "photo_id",
-    "photo_url",
-    "species_inat",
-    "newcomb_species_name",
-    "feature",
-    "species_level_true_value",
-    "human_visible",
-    "human_can_assign_value",
-    "human_value_if_assignable",
-    "matches_species_level_true_value",
-    "difficulty",
-    "notes",
-]
+EXPECTED_COLUMNS = AUDIT_COLUMNS
 
 
 def validate_csv_text(text: str) -> tuple[bool, str]:
@@ -49,8 +43,8 @@ def validate_csv_text(text: str) -> tuple[bool, str]:
         return False, "CSV is empty"
     if rows[0] != EXPECTED_COLUMNS:
         return False, "CSV header does not match the audit schema"
-    if len(rows) != 31:
-        return False, f"Expected 30 data rows, got {len(rows) - 1}"
+    if len(rows) < 2:
+        return False, "CSV has no audit rows"
     for row_number, row in enumerate(rows[1:], start=2):
         if len(row) != len(EXPECTED_COLUMNS):
             return False, f"Row {row_number} has {len(row)} columns"
@@ -58,10 +52,13 @@ def validate_csv_text(text: str) -> tuple[bool, str]:
 
 
 def write_csv_atomically(text: str) -> None:
-    with NamedTemporaryFile("w", encoding="utf-8", newline="", dir=HERE, delete=False) as tmp:
-        tmp.write(text)
-        tmp_path = Path(tmp.name)
-    os.replace(tmp_path, CSV_PATH)
+    for destination in (CSV_PATH, ROOT_CSV_PATH):
+        with NamedTemporaryFile(
+            "w", encoding="utf-8", newline="", dir=destination.parent, delete=False
+        ) as tmp:
+            tmp.write(text)
+            tmp_path = Path(tmp.name)
+        os.replace(tmp_path, destination)
 
 
 class AuditHandler(SimpleHTTPRequestHandler):
@@ -79,6 +76,20 @@ class AuditHandler(SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "text/csv; charset=utf-8")
             self.end_headers()
             self.wfile.write(CSV_PATH.read_bytes())
+            return
+        illustration_prefix = "/newcomb_wildflower_guide/illustrations/"
+        if self.path.startswith(illustration_prefix):
+            filename = Path(self.path.removeprefix(illustration_prefix)).name
+            asset = ILLUSTRATION_DIR / filename
+            if not filename or not asset.is_file():
+                self.send_error(HTTPStatus.NOT_FOUND)
+                return
+            body = asset.read_bytes()
+            self.send_response(HTTPStatus.OK)
+            self.send_header("Content-Type", "image/png")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
             return
         super().do_GET()
 

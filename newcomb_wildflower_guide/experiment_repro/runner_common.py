@@ -11,6 +11,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parent
 SOURCE_ROOT = ROOT.parent
 OUTPUT_DIR = ROOT / "output"
+BENCHMARK_SET_DIR = ROOT.parents[1] / "manual_audit" / "generated"
 PROMPT_SET_DIR = ROOT / "prompt_sets"
 REPO_ILLUSTRATIONS_DIR = SOURCE_ROOT / "illustrations"
 DEFAULT_PROMPT_SET_ID = "stepwise-v1"
@@ -82,10 +83,12 @@ def resolve_image_set_path(image_set: str | None = None) -> Path:
     if image_set_path.suffix.lower() != ".csv":
         raise ValueError(f"Invalid image_set {image_set!r}. image_set must be a CSV filename.")
 
-    sample_path = OUTPUT_DIR / image_set
-    if not sample_path.exists():
-        raise FileNotFoundError(f"image_set CSV does not exist: {sample_path}")
-    return sample_path
+    candidates = [OUTPUT_DIR / image_set, BENCHMARK_SET_DIR / image_set]
+    for sample_path in candidates:
+        if sample_path.exists():
+            return sample_path
+    locations = ", ".join(str(path.parent) for path in candidates)
+    raise FileNotFoundError(f"image_set CSV {image_set!r} does not exist in: {locations}")
 
 
 def validate_sample_columns(sample: pd.DataFrame, sample_path: Path) -> None:
@@ -189,6 +192,10 @@ def get_true_path(path_table: pd.DataFrame, species_inat: str) -> dict[str, str]
 
 
 def get_true_value(path_table: pd.DataFrame, sample_row: pd.Series, feature_col: str) -> str | None:
+    human_value = sample_row.get(f"human_value__{feature_col}")
+    if isinstance(human_value, str) and human_value.strip():
+        return human_value.strip()
+
     sample_value = sample_row.get(feature_col)
     if isinstance(sample_value, str) and sample_value.strip():
         return sample_value.strip()

@@ -71,17 +71,32 @@ uv run python run_calibration_local.py
 uv run python run_stepwise_local.py
 ```
 
-Calibration currently supports four prompt types:
+Calibration currently supports five prompt types:
 
 - `existence`
 - `agreement`
 - `blind_mc`
 - `blind_mc_no_reference_photos`
+- `blind_mc_text_only`
 
 `blind_mc_no_reference_photos` is the blind multiple-choice ablation that keeps
 the test image, option labels, option descriptions, and botanical illustrations,
 but removes the option reference photos. This avoids turning calibration into a
 direct reference-photo matching task.
+
+`blind_mc_text_only` keeps the single query/test image and supplies each option
+using only its label and botanical text description. It sends no option
+reference photos and no option reference illustrations. This is the clean
+calibration mode for measuring whether textual definitions help interpret the
+query image.
+
+Run only the text-description calibration:
+
+```bash
+EXPERIMENT_CALIBRATION_PROMPT_TYPES=blind_mc_text_only \
+EXPERIMENT_OUT_FILE=calibration-blind-mc-text-only.csv \
+uv run python run_calibration_local.py
+```
 
 Run only that ablation:
 
@@ -131,12 +146,14 @@ timestamp, model, sample limit, and feature list. Use `--trial-id` to force a
 stable trial id and, when `--out-file` is omitted, a stable CSV filename too.
 
 Use `--prompt-set` to select a JSON prompt version from `prompt_sets/`. Use
-`--image-set` to select a CSV filename under `output/`; the default
-`sample.csv` resolves to `output/sample.csv`. Use `--sample-limit` to select
+`--image-set` to select a CSV filename under `output/` or
+`../../manual_audit/generated/`; the default `sample.csv` resolves to
+`output/sample.csv`. Use `--sample-limit` to select
 the first N rows from that CSV, or `--sample-limit all` to run the full CSV.
 The image-set CSV must include `newcomb_species_name`, `species_inat`,
 `taxon_id`, `observation_id`, `photo_id`, and `photo_url`. `--data-split`
-currently supports only `all`.
+supports `all`, `easy`, `core`, and `challenging`; tier selection requires a
+generated benchmark CSV with `benchmark_tier`.
 
 `openrouter/free` is a local convenience alias. It resolves to a current free
 OpenRouter model that supports image input. To force a specific free model, set

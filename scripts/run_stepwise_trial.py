@@ -16,6 +16,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 EXPERIMENT_DIR = ROOT / "newcomb_wildflower_guide" / "experiment_repro"
 EXPERIMENT_OUTPUT_DIR = EXPERIMENT_DIR / "output"
+BENCHMARK_SET_DIR = ROOT / "manual_audit" / "generated"
 ARTIFACT_DIR = ROOT / "trials" / "artifacts"
 PROMPT_SET_DIR = EXPERIMENT_DIR / "prompt_sets"
 DEFAULT_PROMPT_SET_ID = "stepwise-v1"
@@ -124,10 +125,9 @@ def normalize_prompt_set(prompt_set: str) -> str:
 
 
 def available_image_sets() -> list[str]:
-    if not EXPERIMENT_OUTPUT_DIR.exists():
-        return []
     available = []
-    for path in sorted(EXPERIMENT_OUTPUT_DIR.glob("*.csv")):
+    candidates = list(EXPERIMENT_OUTPUT_DIR.glob("*.csv")) + list(BENCHMARK_SET_DIR.glob("*.csv"))
+    for path in sorted(candidates):
         try:
             with path.open(newline="") as f:
                 header = next(csv.reader(f))
@@ -156,7 +156,12 @@ def normalize_image_set(image_set: str) -> str:
 
 
 def image_set_path(image_set: str) -> Path:
-    return EXPERIMENT_OUTPUT_DIR / normalize_image_set(image_set)
+    image_set = normalize_image_set(image_set)
+    for directory in (EXPERIMENT_OUTPUT_DIR, BENCHMARK_SET_DIR):
+        path = directory / image_set
+        if path.exists():
+            return path
+    return EXPERIMENT_OUTPUT_DIR / image_set
 
 
 def validate_image_set_csv(image_set: str) -> None:
@@ -303,9 +308,23 @@ def print_price_snapshot(price_snapshot: list[dict[str, object]]) -> None:
         print(f"    {model}: {prompt}/1M prompt, {completion}/1M completion ({name})")
 
 
-def selected_sample_row_count(image_set: str, sample_limit: str) -> int:
+def selected_sample_row_count(image_set: str, sample_limit: str, data_split: str = "all") -> int:
     with image_set_path(image_set).open(newline="") as f:
-        row_count = sum(1 for _ in csv.DictReader(f))
+        rows = list(csv.DictReader(f))
+    if data_split != "all":
+        feature_tier_columns = [f"benchmark_tier__{feature}" for feature in PRIMARY_FEATURES]
+        if rows and any(column in rows[0] for column in feature_tier_columns):
+            rows = [
+                row for row in rows
+                if any(str(row.get(column, "")).strip().lower() == data_split for column in feature_tier_columns)
+            ]
+        elif rows and "benchmark_tier" in rows[0]:
+            rows = [row for row in rows if str(row.get("benchmark_tier", "")).strip().lower() == data_split]
+        else:
+            raise SystemExit(f"--data-split {data_split} requires an image set with benchmark_tier")
+        if not rows:
+            raise SystemExit(f"No rows in {image_set} have benchmark_tier={data_split}")
+    row_count = len(rows)
     if sample_limit.lower() == "all":
         return row_count
     return min(row_count, int(sample_limit))
@@ -414,9 +433,9 @@ def main() -> int:
     )
     parser.add_argument(
         "--data-split",
-        choices=["all"],
+        choices=["all", "easy", "core", "challenging"],
         default="all",
-        help="Data split to run. Only 'all' is currently implemented until split manifests exist.",
+        help="Benchmark tier to run. Non-'all' values require an image set with benchmark_tier.",
     )
     parser.add_argument(
         "--features",
@@ -468,7 +487,12 @@ def main() -> int:
     parser.add_argument("--run-id", default="run-001", help="Independent run label for repeated-run experiments.")
     parser.add_argument("--workers", default="1", help="Thread worker count.")
     parser.add_argument("--timeout", default="75", help="Seconds before one model call is treated as timed out.")
-    parser.add_argument("--mode", choices=["command", "mock"], default="command", help="Model adapter mode.")
+    parser.add_argument(
+        "--mode",
+        choices=["command", "mock", "local-clip", "local-parts"],
+        default="command",
+        help="Model adapter mode: OpenRouter, mock, whole-image CLIP, or localized part-reference matching.",
+    )
     parser.add_argument(
         "--out-file",
         default="",
@@ -504,12 +528,20 @@ def main() -> int:
     out_file = output_path(args, trial_id)
     metadata_file = metadata_path_for(trial_id)
     usage_log_file = ARTIFACT_DIR / f"{slug(trial_id)}.openrouter_usage.jsonl"
-    sample_rows = selected_sample_row_count(args.image_set, sample_limit)
+    sample_rows = selected_sample_row_count(args.image_set, sample_limit, args.data_split)
     expected_completed_rows = sample_rows * len(split_features(args.features)) * len(models)
     price_snapshot = model_pricing_snapshot(models) if args.mode == "command" else []
 
     env = os.environ.copy()
-    env["EXPERIMENT_MODEL_MODE"] = "openrouter" if args.mode == "command" else args.mode
+    env["EXPERIMENT_MODEL_MODE"] = (
+        "hf_clip"
+        if args.mode == "local-clip"
+        else "local_parts"
+        if args.mode == "local-parts"
+        else "openrouter"
+        if args.mode == "command"
+        else args.mode
+    )
     env["EXPERIMENT_MODELS"] = model
     env["EXPERIMENT_SAMPLE_LIMIT"] = sample_limit
     env["EXPERIMENT_FEATURES"] = args.features
@@ -527,6 +559,8 @@ def main() -> int:
     env["OPENROUTER_MAX_TOKENS"] = str(args.max_tokens)
     env["OPENROUTER_USAGE_LOG"] = str(usage_log_file)
     env["PYTHONUNBUFFERED"] = "1"
+    if args.mode == "local-parts":
+        env["LOCAL_PARTS_TRACE_PATH"] = str(ARTIFACT_DIR / f"{slug(trial_id)}.local_parts_trace.jsonl")
 
     uv = uv_executable()
     if args.mode == "command":
@@ -575,8 +609,12 @@ def main() -> int:
         )
         monitor.start()
     try:
+        run_command = [uv, "run"]
+        if args.mode in {"local-clip", "local-parts"}:
+            run_command.extend(["--extra", "local-cv"])
+        run_command.extend(["python", "run_stepwise_local.py"])
         result = subprocess.run(
-            [uv, "run", "python", "run_stepwise_local.py"],
+            run_command,
             cwd=EXPERIMENT_DIR,
             env=env,
             check=False,

@@ -168,8 +168,9 @@ integer for the first N rows, or `all` to run the full CSV. The image-set CSV
 must include these columns: `newcomb_species_name`, `species_inat`, `taxon_id`,
 `observation_id`, `photo_id`, and `photo_url`.
 
-`--data-split` currently accepts only `all`; train/validation/test split
-manifests have not been implemented.
+`--data-split` accepts `all`, `easy`, `core`, and `challenging`. The tiered
+values use manifests produced by `scripts/build_benchmark_sets.py`; they are
+difficulty tiers, not train/validation/test partitions.
 
 ## Model Adapter
 
@@ -193,6 +194,10 @@ Adapter contract:
   `{"image": "https://..."}`.
 - Adapter converts this to OpenRouter chat-completions message content.
 - Adapter prints the model's text response to stdout.
+
+The same contract has a local zero-shot CLIP adapter at
+`scripts/adapters/hf_clip_adapter.py`. Install it with
+`uv sync --extra local-cv`, then select `--mode local-clip`.
 
 OpenRouter request settings:
 
@@ -255,6 +260,11 @@ The output CSV includes:
 - `trial_id`: trial identifier used to link CSV rows to metadata
 - `run_id`: repeated-run label used by resume logic, so the same
   model/observation/feature can be run again under a different run id
+
+Human-reviewed manifests also propagate `review_status`, `human_visible`,
+`human_can_assign_value`, `human_value_if_assignable`, `difficulty`,
+`benchmark_tier`, and `true_value_source`. Formal metrics use these fields or
+attach the audit with `--audit-csv` during analysis.
 
 ## Common Errors
 

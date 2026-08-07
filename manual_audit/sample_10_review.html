@@ -16,6 +16,8 @@
       --accent: #0f6b5f;
       --accent-soft: #e6f2ef;
       --warn: #9b5c00;
+      --danger: #a33b32;
+      --danger-soft: #f8e9e7;
     }
 
     * {
@@ -51,6 +53,10 @@
     .status {
       color: var(--muted);
       font-size: 13px;
+    }
+
+    .selection-summary {
+      font-weight: 600;
     }
 
     .toolbar {
@@ -111,6 +117,44 @@
       border: 1px solid var(--border);
       background: var(--panel);
       padding: 12px;
+    }
+
+    .sample.selection-keep {
+      border-left: 5px solid var(--accent);
+    }
+
+    .sample.selection-pending {
+      border-left: 5px solid #c69a43;
+    }
+
+    .sample.selection-exclude {
+      border-left: 5px solid var(--danger);
+      background: #faf6f5;
+      opacity: 0.76;
+    }
+
+    .photo-selection-bar {
+      display: grid;
+      grid-template-columns: minmax(180px, 260px) 1fr;
+      gap: 10px;
+      align-items: end;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--panel-soft);
+      padding: 9px 10px;
+    }
+
+    .photo-selection-help {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .feature-audit > summary {
+      cursor: pointer;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 650;
+      padding: 4px 0;
     }
 
     .image-wrap {
@@ -220,12 +264,30 @@
       min-width: 180px;
     }
 
+    .reference {
+      border-left: 3px solid var(--accent);
+      background: var(--accent-soft);
+      padding: 8px 10px;
+      font-size: 12px;
+    }
+
+    .reference img {
+      width: auto;
+      max-width: 180px;
+      max-height: 120px;
+      margin-top: 6px;
+    }
+
     .complete {
       background: var(--accent-soft);
     }
 
     .warning {
       color: var(--warn);
+    }
+
+    .danger {
+      color: var(--danger);
     }
 
     @media (max-width: 980px) {
@@ -236,13 +298,17 @@
       .audit-grid {
         grid-template-columns: 1fr;
       }
+
+      .photo-selection-bar {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Sample 10 Manual Audit</h1>
-    <div class="subhead">Fill labels here. On localhost, changes write directly to the CSV; otherwise they are saved in this browser and can be exported.</div>
+    <h1>Core 10 Candidate Review</h1>
+    <div class="subhead">Compare three photos per species, keep exactly ten, then finish the photo-level feature labels.</div>
     <div class="toolbar">
       <button class="primary" id="downloadCsv" type="button">Download CSV</button>
       <button id="chooseSaveTarget" type="button">Choose CSV Save Target</button>
@@ -250,12 +316,25 @@
       <label class="file-button" for="importCsv">Import CSV</label>
       <input id="importCsv" type="file" accept=".csv,text/csv">
       <button id="clearDraft" type="button">Clear Local Draft</button>
+      <label>
+        <span class="field-label">Show photos</span>
+        <select id="selectionFilter">
+          <option value="ALL">All candidates</option>
+          <option value="KEEP">KEEP only</option>
+          <option value="PENDING">PENDING only</option>
+          <option value="EXCLUDE">EXCLUDE only</option>
+        </select>
+      </label>
+      <span class="status selection-summary" id="selectionSummary"></span>
       <span class="status" id="status">Ready.</span>
     </div>
   </header>
 
   <main>
     <div class="note">
+      The current ten reviewed photos start as <strong>KEEP</strong>. Twenty alternates from the original
+      <code>sample.csv</code> start as <strong>PENDING</strong>. Select an alternate as KEEP before reviewing it;
+      mark an unsuitable or unreadable photo EXCLUDE. Only KEEP photos with APPROVED feature rows enter the benchmark.
       For direct CSV writes, run <code>python3 manual_audit/review_server.py</code> and open the localhost URL.
       If you open this HTML directly, use <strong>Download CSV</strong>, or in Chrome/Edge use
       <strong>Choose CSV Save Target</strong> once to write updates to a chosen file during this session.
@@ -270,6 +349,7 @@
       "photo_url",
       "species_inat",
       "newcomb_species_name",
+      "photo_selection",
       "feature",
       "species_level_true_value",
       "human_visible",
@@ -277,8 +357,41 @@
       "human_value_if_assignable",
       "matches_species_level_true_value",
       "difficulty",
+      "review_status",
+      "exclusion_reason",
+      "reviewer",
+      "reviewed_at",
       "notes",
     ];
+
+    const REQUIRED_CSV_COLUMNS = CSV_COLUMNS.filter((column) => column !== "photo_selection");
+    const PHOTO_EXCLUSION_REASON = "Photo excluded during candidate selection.";
+
+    const REFERENCE_CATALOG = {
+      "3 Regular Parts": { description: "Radially symmetrical flower with three similar petal-like parts.", illustration: "../newcomb_wildflower_guide/illustrations/regular_flowers.png" },
+      "4 Regular Parts": { description: "Radially symmetrical flower with four similar petal-like parts.", illustration: "../newcomb_wildflower_guide/illustrations/regular_flowers.png" },
+      "5 Regular Parts": { description: "Radially symmetrical flower with five similar petal-like parts.", illustration: "../newcomb_wildflower_guide/illustrations/regular_flowers.png" },
+      "6 Regular Parts": { description: "Radially symmetrical flower with six similar petal-like parts.", illustration: "../newcomb_wildflower_guide/illustrations/regular_flowers.png" },
+      "7 or More Regular Parts": { description: "Radially symmetrical flower with seven or more similar petal-like parts or rays.", illustration: "../newcomb_wildflower_guide/illustrations/regular_flowers.png" },
+      "Irregular Flowers": { description: "Not radially symmetrical; the visible parts differ in size, shape, or color.", illustration: "../newcomb_wildflower_guide/illustrations/irregular_flowers.png" },
+      "Parts Indistinguishable": { description: "Petal-like parts are absent or too small to count or distinguish." },
+      "Wildflowers - Alternate Leaves": { description: "Stem leaves occur singly, alternating from one point on the stem to another.", illustration: "../newcomb_wildflower_guide/illustrations/alternate_leaves.png" },
+      "Wildflowers - Opposite or Whorled Leaves": { description: "Stem leaves grow across from one another in pairs, or in circles of three or more.", illustration: "../newcomb_wildflower_guide/illustrations/opposite_leaves.png" },
+      "Wildflowers - Basal Leaves Only": { description: "Leaves grow only from the base of the plant.", illustration: "../newcomb_wildflower_guide/illustrations/basal_leaves.png" },
+      "Wildflowers - No Apparent Leaves": { description: "No leaves are apparent in the plant form used by the key." },
+      "Vines": { description: "Long trailing, twining, or climbing stems, generally over two feet long." },
+      "Shrubs": { description: "A woody-stemmed plant, usually under ten feet high at maturity." },
+      "Leaves Entire": { description: "The leaf margin is even and unbroken.", illustration: "../newcomb_wildflower_guide/illustrations/leaves_entire.png" },
+      "Leaves Toothed or Lobed": { description: "The margin has shallow teeth or deeper indentations that form lobes.", illustration: "../newcomb_wildflower_guide/illustrations/leaves_toothed.png" },
+      "Leaves Divided": { description: "The leaf is separated into leaflets, or indentations extend almost to the midrib.", illustration: "../newcomb_wildflower_guide/illustrations/leaves_divided.png" },
+      "No Apparent Leaves": { description: "No leaves are apparent in the image or plant form." },
+    };
+
+    const FEATURE_OPTIONS = {
+      "key_flower_type": ["3 Regular Parts", "4 Regular Parts", "5 Regular Parts", "6 Regular Parts", "7 or More Regular Parts", "Irregular Flowers", "Parts Indistinguishable"],
+      "key_plant_type": ["Shrubs", "Vines", "Wildflowers - Alternate Leaves", "Wildflowers - Basal Leaves Only", "Wildflowers - No Apparent Leaves", "Wildflowers - Opposite or Whorled Leaves"],
+      "key_leaf_type": ["Leaves Divided", "Leaves Entire", "Leaves Toothed or Lobed", "No Apparent Leaves"],
+    };
 
     const INITIAL_ROWS = [
       {"photo_id":"89166741","photo_url":"https://inaturalist-open-data.s3.amazonaws.com/photos/89166741/original.jpg","species_inat":"Lactuca serriola","newcomb_species_name":"Lactuca scariola","feature":"key_flower_type","species_level_true_value":"7 or More Regular Parts","human_visible":"","human_can_assign_value":"","human_value_if_assignable":"","matches_species_level_true_value":"","difficulty":"","notes":""},
@@ -317,22 +430,30 @@
     let fileHandle = null;
     let writeTimer = null;
     let serverSaveTimer = null;
+    let selectionFilter = "ALL";
     const SERVER_MODE = ["127.0.0.1", "localhost"].includes(window.location.hostname);
 
     const samplesEl = document.querySelector("#samples");
     const statusEl = document.querySelector("#status");
+    const selectionSummaryEl = document.querySelector("#selectionSummary");
+
+    function normalizeRow(row, defaultSelection = "PENDING") {
+      const normalized = {};
+      for (const column of CSV_COLUMNS) normalized[column] = row[column] || "";
+      normalized.photo_selection = String(row.photo_selection || defaultSelection).toUpperCase();
+      normalized.review_status = String(row.review_status || "PENDING").toUpperCase();
+      return normalized;
+    }
 
     function loadRows() {
       const saved = localStorage.getItem(STORAGE_KEY);
-      if (!saved) return structuredClone(INITIAL_ROWS);
+      if (!saved) return INITIAL_ROWS.map((row) => normalizeRow(row, "KEEP"));
       try {
         const parsed = JSON.parse(saved);
-        if (!Array.isArray(parsed) || parsed.length !== INITIAL_ROWS.length) {
-          return structuredClone(INITIAL_ROWS);
-        }
-        return parsed.map((row, index) => ({ ...INITIAL_ROWS[index], ...row }));
+        if (!Array.isArray(parsed) || !parsed.length) return INITIAL_ROWS.map((row) => normalizeRow(row, "KEEP"));
+        return parsed.map((row) => normalizeRow(row, "KEEP"));
       } catch {
-        return structuredClone(INITIAL_ROWS);
+        return INITIAL_ROWS.map((row) => normalizeRow(row, "KEEP"));
       }
     }
 
@@ -369,11 +490,26 @@
             photo_url: row.photo_url,
             species_inat: row.species_inat,
             newcomb_species_name: row.newcomb_species_name,
+            photo_selection: row.photo_selection || "PENDING",
             rows: [],
           };
           groups.push(group);
         }
         group.rows.push(row);
+      }
+      const speciesSeen = new Map();
+      const speciesTotals = new Map();
+      for (const group of groups) {
+        speciesTotals.set(
+          group.newcomb_species_name,
+          (speciesTotals.get(group.newcomb_species_name) || 0) + 1,
+        );
+      }
+      for (const group of groups) {
+        const position = (speciesSeen.get(group.newcomb_species_name) || 0) + 1;
+        speciesSeen.set(group.newcomb_species_name, position);
+        group.candidate_position = position;
+        group.candidate_total = speciesTotals.get(group.newcomb_species_name);
       }
       return groups;
     }
@@ -400,8 +536,17 @@
     }
 
     function render() {
-      samplesEl.innerHTML = groupByPhoto().map((sample, sampleIndex) => `
-        <section class="sample" id="photo-${escapeHtml(sample.photo_id)}">
+      const allSamples = groupByPhoto();
+      const counts = { KEEP: 0, PENDING: 0, EXCLUDE: 0 };
+      for (const sample of allSamples) counts[sample.photo_selection] += 1;
+      selectionSummaryEl.textContent = `KEEP ${counts.KEEP}/10 · PENDING ${counts.PENDING} · EXCLUDE ${counts.EXCLUDE}`;
+      selectionSummaryEl.classList.toggle("danger", counts.KEEP !== 10);
+      const visibleSamples = selectionFilter === "ALL"
+        ? allSamples
+        : allSamples.filter((sample) => sample.photo_selection === selectionFilter);
+
+      samplesEl.innerHTML = visibleSamples.map((sample, sampleIndex) => `
+        <section class="sample selection-${escapeHtml(sample.photo_selection.toLowerCase())}" id="photo-${escapeHtml(sample.photo_id)}">
           <div class="image-wrap">
             <img src="${escapeHtml(sample.photo_url)}" alt="${escapeHtml(sample.species_inat)} sample photo ${escapeHtml(sample.photo_id)}">
           </div>
@@ -409,14 +554,29 @@
             <h2>${sampleIndex + 1}. ${escapeHtml(sample.species_inat)}</h2>
             <div class="ids">
               Newcomb: <em>${escapeHtml(sample.newcomb_species_name)}</em> ·
+              candidate ${sample.candidate_position} of ${sample.candidate_total} ·
               photo_id: ${escapeHtml(sample.photo_id)} ·
               <a href="${escapeHtml(sample.photo_url)}" target="_blank" rel="noreferrer">open image</a>
             </div>
-            <table>
+            <div class="photo-selection-bar">
+              <label>
+                <span class="field-label">Photo-level decision</span>
+                <select data-photo-id="${escapeHtml(sample.photo_id)}" data-photo-selection="true">
+                  ${["PENDING", "KEEP", "EXCLUDE"].map((option) => `<option value="${option}"${option === sample.photo_selection ? " selected" : ""}>${option}</option>`).join("")}
+                </select>
+              </label>
+              <div class="photo-selection-help">
+                KEEP counts toward the target of ten. PENDING stays in the comparison pool.
+                EXCLUDE removes all three feature rows from formal evaluation.
+              </div>
+            </div>
+            <details class="feature-audit"${sample.photo_selection === "KEEP" ? " open" : ""}>
+              <summary>Feature labels (${sample.rows.length})</summary>
+              <table>
               <thead>
                 <tr>
                   <th>Feature</th>
-                  <th>Species-level true value</th>
+                  <th>Reference vocabulary</th>
                   <th>Audit fields</th>
                   <th>Notes</th>
                 </tr>
@@ -424,11 +584,28 @@
               <tbody>
                 ${sample.rows.map((row) => {
                   const index = rowIndex(row);
-                  const isComplete = row.human_visible && row.human_can_assign_value && row.difficulty;
+                  const isComplete = ["APPROVED", "EXCLUDE"].includes(row.review_status);
+                  const featureOptions = FEATURE_OPTIONS[row.feature] || [];
                   return `
                     <tr class="${isComplete ? "complete" : ""}">
                       <td class="feature">${escapeHtml(row.feature)}</td>
-                      <td class="true-value">${escapeHtml(row.species_level_true_value)}</td>
+                      <td class="true-value">
+                        <div class="reference">
+                          <strong>Review all allowed values before assigning:</strong>
+                          ${featureOptions.map((value) => {
+                            const reference = REFERENCE_CATALOG[value] || {};
+                            return `<details>
+                              <summary>${escapeHtml(value)}</summary>
+                              <div>${escapeHtml(reference.description || "No reference description available.")}</div>
+                              ${reference.illustration ? `<img src="${escapeHtml(reference.illustration)}" alt="Reference illustration for ${escapeHtml(value)}">` : ""}
+                            </details>`;
+                          }).join("")}
+                        </div>
+                        <details>
+                          <summary>Reveal species-level Newcomb value only after independent labeling</summary>
+                          ${escapeHtml(row.species_level_true_value)}
+                        </details>
+                      </td>
                       <td>
                         <div class="audit-grid">
                           <label>
@@ -445,15 +622,31 @@
                           </label>
                           <label>
                             <span class="field-label">human_value_if_assignable</span>
-                            <input type="text" data-index="${index}" data-field="human_value_if_assignable" value="${escapeHtml(row.human_value_if_assignable)}">
+                            ${selectField(index, "human_value_if_assignable", ["", ...featureOptions])}
                           </label>
                           <label>
                             <span class="field-label">difficulty</span>
                             ${selectField(index, "difficulty", ["", "easy", "medium", "hard"])}
                           </label>
+                          <label>
+                            <span class="field-label">review_status</span>
+                            ${selectField(index, "review_status", ["PENDING", "APPROVED", "EXCLUDE"])}
+                          </label>
+                          <label>
+                            <span class="field-label">reviewer</span>
+                            <input type="text" data-index="${index}" data-field="reviewer" value="${escapeHtml(row.reviewer)}">
+                          </label>
+                          <label>
+                            <span class="field-label">reviewed_at (ISO-8601)</span>
+                            <input type="text" data-index="${index}" data-field="reviewed_at" value="${escapeHtml(row.reviewed_at)}">
+                          </label>
                         </div>
                       </td>
                       <td class="notes-cell">
+                        <label>
+                          <span class="field-label">exclusion_reason (required for EXCLUDE)</span>
+                          <textarea data-index="${index}" data-field="exclusion_reason">${escapeHtml(row.exclusion_reason)}</textarea>
+                        </label>
                         <label>
                           <span class="field-label">notes</span>
                           <textarea data-index="${index}" data-field="notes">${escapeHtml(row.notes)}</textarea>
@@ -463,7 +656,8 @@
                   `;
                 }).join("")}
               </tbody>
-            </table>
+              </table>
+            </details>
           </div>
         </section>
       `).join("");
@@ -626,7 +820,7 @@
     function importRowsFromCsvText(text) {
       const parsed = parseCsv(text);
       const headers = parsed[0] || [];
-      const missingColumns = CSV_COLUMNS.filter((column) => !headers.includes(column));
+      const missingColumns = REQUIRED_CSV_COLUMNS.filter((column) => !headers.includes(column));
       if (missingColumns.length) {
         throw new Error(`Missing columns: ${missingColumns.join(", ")}`);
       }
@@ -637,10 +831,8 @@
         });
         return row;
       });
-      if (importedRows.length !== rows.length) {
-        throw new Error(`Import has ${importedRows.length} rows, expected ${rows.length}`);
-      }
-      return importedRows.map((row, index) => ({ ...INITIAL_ROWS[index], ...row }));
+      const defaultSelection = headers.includes("photo_selection") ? "PENDING" : "KEEP";
+      return importedRows.map((row) => normalizeRow(row, defaultSelection));
     }
 
     async function importCsv(event) {
@@ -658,18 +850,57 @@
       event.target.value = "";
     }
 
-    function clearDraft() {
+    async function clearDraft() {
       const ok = window.confirm("Clear the local draft and reset all human audit fields on this page?");
       if (!ok) return;
-      rows = structuredClone(INITIAL_ROWS);
       localStorage.removeItem(STORAGE_KEY);
+      if (SERVER_MODE) {
+        try {
+          const response = await fetch("/api/load", { cache: "no-store" });
+          if (!response.ok) throw new Error(`load failed: ${response.status}`);
+          rows = importRowsFromCsvText(await response.text());
+          saveDraft();
+          render();
+          setStatus("Local draft cleared and CSV reloaded.");
+          return;
+        } catch {
+          setStatus("Could not reload the CSV. The existing page data was left in place.", true);
+          return;
+        }
+      }
+      rows = INITIAL_ROWS.map((row) => normalizeRow(row, "KEEP"));
       render();
-      scheduleSaves();
       setStatus("Local draft cleared.");
+    }
+
+    function updatePhotoSelection(photoId, selection) {
+      for (const row of rows) {
+        if (row.photo_id !== photoId) continue;
+        row.photo_selection = selection;
+        if (selection === "EXCLUDE") {
+          row.review_status = "EXCLUDE";
+          if (!row.exclusion_reason) row.exclusion_reason = PHOTO_EXCLUSION_REASON;
+        } else if (
+          row.review_status === "EXCLUDE"
+          && row.exclusion_reason === PHOTO_EXCLUSION_REASON
+        ) {
+          row.review_status = "PENDING";
+          row.exclusion_reason = "";
+        }
+      }
+      saveDraft();
+      scheduleSaves();
+      render();
+      setStatus(SERVER_MODE ? "Photo decision saved. Writing CSV..." : "Photo decision saved locally.");
     }
 
     function updateRowFromEvent(event) {
       const target = event.target;
+      const photoId = target.dataset.photoId;
+      if (photoId && target.dataset.photoSelection) {
+        updatePhotoSelection(photoId, target.value);
+        return;
+      }
       const index = Number(target.dataset.index);
       const field = target.dataset.field;
       if (!Number.isInteger(index) || !field) return;
@@ -691,6 +922,10 @@
     document.querySelector("#copyCsv").addEventListener("click", copyCsv);
     document.querySelector("#importCsv").addEventListener("change", importCsv);
     document.querySelector("#clearDraft").addEventListener("click", clearDraft);
+    document.querySelector("#selectionFilter").addEventListener("change", (event) => {
+      selectionFilter = event.target.value;
+      render();
+    });
 
     bootstrap();
   </script>

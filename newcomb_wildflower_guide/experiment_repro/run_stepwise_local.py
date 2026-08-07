@@ -7,6 +7,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 import re
 import threading
+import time
 
 import pandas as pd
 
@@ -37,6 +38,7 @@ FEATURES = [
 ]
 SAMPLE_LIMIT = os.environ.get("EXPERIMENT_SAMPLE_LIMIT")
 IMAGE_SET = os.environ.get("EXPERIMENT_IMAGE_SET", DEFAULT_IMAGE_SET)
+DATA_SPLIT = os.environ.get("EXPERIMENT_DATA_SPLIT", "all").strip().lower()
 PROMPT_SET_ID = os.environ.get("EXPERIMENT_PROMPT_SET", DEFAULT_PROMPT_SET_ID)
 RUN_ID = os.environ.get("EXPERIMENT_RUN_ID", "run-001")
 RUN_STARTED = datetime.now().astimezone()
@@ -87,6 +89,24 @@ def apply_sample_limit(sample: pd.DataFrame) -> pd.DataFrame:
     return sample.head(limit)
 
 
+def apply_data_split(sample: pd.DataFrame) -> pd.DataFrame:
+    if DATA_SPLIT == "all":
+        return sample
+    feature_tier_columns = [f"benchmark_tier__{feature}" for feature in PRIMARY_FEATURES]
+    available_feature_tiers = [column for column in feature_tier_columns if column in sample.columns]
+    if available_feature_tiers:
+        selected = sample[sample[available_feature_tiers].eq(DATA_SPLIT).any(axis=1)]
+    elif "benchmark_tier" in sample.columns:
+        selected = sample[sample["benchmark_tier"].fillna("").astype(str).str.lower().eq(DATA_SPLIT)]
+    else:
+        raise ValueError(
+            f"EXPERIMENT_DATA_SPLIT={DATA_SPLIT!r} requires an image set with a benchmark_tier column"
+        )
+    if selected.empty:
+        raise ValueError(f"No rows in image set {IMAGE_SET!r} have benchmark_tier={DATA_SPLIT!r}")
+    return selected
+
+
 def main() -> None:
     inputs = load_inputs(IMAGE_SET)
     ref_mat = inputs["ref_mat"]
@@ -100,7 +120,7 @@ def main() -> None:
     if unknown_features:
         raise ValueError(f"Unsupported EXPERIMENT_FEATURES: {', '.join(unknown_features)}")
 
-    sample = apply_sample_limit(sample)
+    sample = apply_sample_limit(apply_data_split(sample))
 
     OUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     options_by_feature = {
@@ -134,8 +154,11 @@ def main() -> None:
             if (RUN_ID, model, obs_id, feature_col) in done:
                 return
 
+        task_started = time.perf_counter()
         p1_prompt_parts = existence_parts(feature_col, row["photo_url"], true_value, prompt_set)
+        p1_started = time.perf_counter()
         p1_raw = call_model(model, p1_prompt_parts)
+        p1_latency_seconds = time.perf_counter() - p1_started
         p1_parsed = parse_ync(p1_raw)
         p1_parse_rule = "parse_ync: startswith YES -> YES; startswith NO -> NO; contains INC -> INCONCLUSIVE; else INCONCLUSIVE"
 
@@ -143,7 +166,9 @@ def main() -> None:
         options = options_by_feature.get(feature_col, [])
         if p1_parsed == "YES":
             p2_prompt_parts = blind_mc_parts(feature_col, options, row["photo_url"], prompt_set)
+            p2_started = time.perf_counter()
             p2_raw = call_model(model, p2_prompt_parts)
+            p2_latency_seconds = time.perf_counter() - p2_started
             p2_parsed = parse_mc(p2_raw, values)
             p2_parse_rule = "parse_mc: exact value match; else substring value match; else contains 'cannot determine' -> INCONCLUSIVE; else leading option number; else INCONCLUSIVE"
         else:
@@ -151,6 +176,7 @@ def main() -> None:
             p2_raw = ""
             p2_parsed = "NOT_APPLICABLE"
             p2_parse_rule = f"P2 skipped because P1 was {p1_parsed}; parsed as NOT_APPLICABLE"
+            p2_latency_seconds = 0.0
 
         if p2_parsed == true_value:
             feature_correct, committed = True, True
@@ -169,6 +195,7 @@ def main() -> None:
                     "model": model,
                     "prompt_set": prompt_set["id"],
                     "image_set": IMAGE_SET,
+                    "data_split": DATA_SPLIT,
                     "sample_limit": sample_limit_label(),
                     "features_requested": FEATURES_REQUESTED,
                     "observation_id": obs_id,
@@ -179,6 +206,20 @@ def main() -> None:
                     "newcomb_species_name": row["newcomb_species_name"],
                     "feature": feature_col,
                     "true_value": true_value,
+                    "true_value_source": (
+                        "photo_level_human"
+                        if str(row.get(f"human_value__{feature_col}", "")).strip()
+                        else "species_level_newcomb"
+                    ),
+                    "benchmark_tier": row.get("benchmark_tier", ""),
+                    "review_status": row.get(f"review_status__{feature_col}", ""),
+                    "human_visible": row.get(f"human_visible__{feature_col}", ""),
+                    "human_can_assign_value": row.get(f"human_can_assign__{feature_col}", ""),
+                    "human_value_if_assignable": row.get(f"human_value__{feature_col}", ""),
+                    "difficulty": row.get(f"difficulty__{feature_col}", ""),
+                    "p1_latency_seconds": round(p1_latency_seconds, 6),
+                    "p2_latency_seconds": round(p2_latency_seconds, 6),
+                    "total_latency_seconds": round(time.perf_counter() - task_started, 6),
                     "p1_prompt_parts_json": json.dumps(p1_prompt_parts, ensure_ascii=False),
                     "p1_raw": p1_raw,
                     "p1_parsed": p1_parsed,
@@ -215,6 +256,13 @@ def main() -> None:
         for row in sample_records:
             obs_id = str(row["observation_id"])
             for feature_col in FEATURES:
+                if DATA_SPLIT != "all":
+                    feature_tier = str(row.get(f"benchmark_tier__{feature_col}", "")).strip().lower()
+                    if feature_tier != DATA_SPLIT:
+                        continue
+                review_status_column = f"review_status__{feature_col}"
+                if review_status_column in row and str(row.get(review_status_column, "")).upper() != "APPROVED":
+                    continue
                 if (RUN_ID, model, obs_id, feature_col) in done:
                     skipped_done += 1
                     continue

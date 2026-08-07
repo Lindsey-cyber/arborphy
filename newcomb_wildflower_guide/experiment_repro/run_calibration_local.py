@@ -32,6 +32,10 @@ DEFAULT_PROMPT_TYPES = [
     "blind_mc",
     "blind_mc_no_reference_photos",
 ]
+ALLOWED_PROMPT_TYPES = [
+    *DEFAULT_PROMPT_TYPES,
+    "blind_mc_text_only",
+]
 
 
 def selected_prompt_types() -> set[str]:
@@ -39,9 +43,9 @@ def selected_prompt_types() -> set[str]:
     if not raw:
         return set(DEFAULT_PROMPT_TYPES)
     selected = {value.strip() for value in raw.split(",") if value.strip()}
-    unknown = selected.difference(DEFAULT_PROMPT_TYPES)
+    unknown = selected.difference(ALLOWED_PROMPT_TYPES)
     if unknown:
-        allowed = ", ".join(DEFAULT_PROMPT_TYPES)
+        allowed = ", ".join(ALLOWED_PROMPT_TYPES)
         raise SystemExit(f"Unknown calibration prompt type(s): {', '.join(sorted(unknown))}. Allowed: {allowed}")
     return selected
 
@@ -135,10 +139,30 @@ def main() -> None:
                         [o["value"] for o in options],
                     )
                 )
+            if "blind_mc_text_only" in prompt_types:
+                tasks.append(
+                    (
+                        model,
+                        true_value,
+                        "blind_mc_text_only",
+                        feature_col,
+                        true_value,
+                        blind_mc_parts(
+                            feature_col,
+                            options,
+                            ref_img,
+                            prompt_context="calibration",
+                            include_reference_photos=False,
+                            include_reference_illustrations=False,
+                        ),
+                        "mc",
+                        [o["value"] for o in options],
+                    )
+                )
 
     pending = [task for task in tasks if (task[0], task[3], task[1], task[2]) not in done]
     print(f"\nPrimary reference exemplars: {len(primary_refs)}")
-    print(f"Prompt types: {', '.join(prompt_type for prompt_type in DEFAULT_PROMPT_TYPES if prompt_type in prompt_types)}")
+    print(f"Prompt types: {', '.join(prompt_type for prompt_type in ALLOWED_PROMPT_TYPES if prompt_type in prompt_types)}")
     print(f"Total prompt tasks: {len(tasks)}")
     print(f"Pending prompt tasks: {len(pending)}")
     print(f"Workers: {NUM_WORKERS}")
@@ -190,6 +214,10 @@ def save_row(done: set, model: str, feature_value: str, prompt_type: str, featur
             "parsed": parsed,
             "expected": expected,
             "correct": parsed == expected,
+            "query_images": 1,
+            "reference_photos": 0 if prompt_type == "blind_mc_text_only" else pd.NA,
+            "reference_illustrations": 0 if prompt_type == "blind_mc_text_only" else pd.NA,
+            "option_context": "labels_and_text_descriptions" if prompt_type == "blind_mc_text_only" else pd.NA,
         }
     ]).to_csv(OUT_FILE, mode="a", header=not OUT_FILE.exists(), index=False)
     done.add(key)

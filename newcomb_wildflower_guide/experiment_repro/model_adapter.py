@@ -17,11 +17,15 @@ def call_model(model: str, parts: list[Any]) -> str:
     Supported modes:
     - `EXPERIMENT_MODEL_MODE=mock` returns deterministic placeholder answers.
     - `EXPERIMENT_MODEL_MODE=command` shells out to `EXPERIMENT_MODEL_COMMAND`.
+    - `EXPERIMENT_MODEL_MODE=openrouter` calls the OpenRouter API.
+    - `EXPERIMENT_MODEL_MODE=hf_clip` runs the local zero-shot CLIP adapter in-process.
+    - `EXPERIMENT_MODEL_MODE=local_parts` localizes organs and matches local visual references.
 
     In command mode, the command receives a JSON payload on stdin:
       {"model": "...", "parts": [...]}
 
     The command must print a plain-text model response to stdout.
+
     """
 
     mode = os.environ.get("EXPERIMENT_MODEL_MODE", "mock").strip().lower()
@@ -31,6 +35,10 @@ def call_model(model: str, parts: list[Any]) -> str:
         return _command_response(model, parts)
     if mode == "openrouter":
         return _openrouter_response(model, parts)
+    if mode == "hf_clip":
+        return _hf_clip_response(model, parts)
+    if mode == "local_parts":
+        return _local_parts_response(model, parts)
     raise ModelAdapterError(f"Unsupported EXPERIMENT_MODEL_MODE: {mode}")
 
 
@@ -80,3 +88,23 @@ def _openrouter_response(model: str, parts: list[Any]) -> str:
     from openrouter_command_adapter import call_openrouter
 
     return call_openrouter({"model": model, "parts": parts})
+
+
+def _hf_clip_response(model: str, parts: list[Any]) -> str:
+    adapter_dir = Path(__file__).resolve().parents[2] / "scripts" / "adapters"
+    if str(adapter_dir) not in sys.path:
+        sys.path.insert(0, str(adapter_dir))
+
+    from hf_clip_adapter import handle
+
+    return handle({"model": model, "parts": parts})
+
+
+def _local_parts_response(model: str, parts: list[Any]) -> str:
+    adapter_dir = Path(__file__).resolve().parents[2] / "scripts" / "adapters"
+    if str(adapter_dir) not in sys.path:
+        sys.path.insert(0, str(adapter_dir))
+
+    from local_parts_adapter import handle
+
+    return handle({"model": model, "parts": parts})
